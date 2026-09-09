@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VGGT Calibration Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar Stepper -->
+    <aside class="sidebar">
+      <h1>VGGT <span style="font-weight: 400;">Calibration</span></h1>
+      <div class="stepper">
+        <div class="step active" data-step="1">
+          <div class="step-number">1</div>
+          <div class="step-label">Upload Videos</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-number">2</div>
+          <div class="step-label">VGGT Processing</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-number">3</div>
+          <div class="step-label">Manual Annotation</div>
+        </div>
+        <div class="step" data-step="4">
+          <div class="step-number">4</div>
+          <div class="step-label">Quality Report</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- View 1: Upload Videos -->
+      <section id="view-1" class="view-section active">
+        <div class="card">
+          <h2>Upload Synchronized Videos</h2>
+          <p>Drop in N synchronized videos (one per camera). The pipeline supports any number of cameras. Videos must show the same instant in every view.</p>
+          
+          <div class="drop-zone" id="drop-zone">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <h3>Drag & Drop video files here</h3>
+            <p>or click to browse</p>
+            <input type="file" id="file-input" multiple accept="video/*" style="display: none;">
+          </div>
+          
+          <div class="file-list" id="file-list"></div>
+
+          <div id="upload-info" style="margin-top: 1rem;"></div>
+
+          <div style="margin-top: 2rem; text-align: right;">
+            <button class="btn btn-primary" id="btn-next-1" disabled>
+              Next Step <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 2: VGGT Processing -->
+      <section id="view-2" class="view-section">
+        <div class="card">
+          <h2>VGGT Inference & Prior Aggregation</h2>
+          <p>This step extracts frames, runs the VGGT model on the GPU, and aggregates the multi-frame prior.</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; margin-top: 2rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; max-width: 300px;">
+              <label for="max-frames-input" style="font-weight: 500;">Max Frames Sampled</label>
+              <input type="number" id="max-frames-input" value="100" min="0" style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white;">
+              <small style="color: var(--text-secondary);">Set to 0 to sample all frames</small>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; max-width: 300px;">
+              <label for="keep-best-input" style="font-weight: 500;">% Best Frames to Keep</label>
+              <input type="number" id="keep-best-input" value="100" min="1" max="100" style="padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white;">
+              <small style="color: var(--text-secondary);">Excludes worst frames based on consistency</small>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="btn-run-pipeline">
+            <i class="fa-solid fa-play"></i> Run Pipeline
+          </button>
+          
+          <div style="margin-top: 1.5rem;">
+            <div class="terminal" id="terminal-output">
+              > Waiting to start...
+            </div>
+          </div>
+          
+          <div style="margin-top: 2rem; text-align: right;">
+            <button class="btn btn-primary" id="btn-next-2" disabled>
+              Continue to Annotation <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 3: Annotation Canvas -->
+      <section id="view-3" class="view-section" style="padding: 0; height: 100%;">
+        <div class="annotation-layout" style="display: flex; flex-direction: row; height: 100%;">
+          
+          <!-- Viewport Area -->
+          <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid var(--border-color);">
+            
+            <!-- Toolbar -->
+            <div style="padding: 1rem; background: var(--bg-glass); display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid var(--border-color);">
+              <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(0,0,0,0.3); padding: 0.25rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                <button class="btn" id="tool-annotate" style="padding: 0.4rem 0.6rem; background: var(--accent-color); color: white;"><i class="fa-solid fa-crosshairs"></i></button>
+                <button class="btn" id="tool-pan" style="padding: 0.4rem 0.6rem; background: transparent; color: var(--text-secondary);"><i class="fa-solid fa-hand"></i></button>
+              </div>
+
+              <div style="width: 1px; height: 24px; background: var(--border-color);"></div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button class="btn" id="btn-prev-frame" style="padding: 0.5rem;"><i class="fa-solid fa-chevron-left"></i></button>
+                <input type="range" id="frame-slider" min="0" max="0" value="0" style="width: 100px;">
+                <span id="frame-label" style="font-size: 0.9rem; width: 60px; font-variant-numeric: tabular-nums;">Frame -</span>
+                <button class="btn" id="btn-next-frame" style="padding: 0.5rem;"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+
+              <div style="width: 1px; height: 24px; background: var(--border-color);"></div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-sun" style="color: var(--text-secondary);" title="Brightness"></i>
+                <input type="range" id="brightness-slider" min="0.1" max="3" step="0.1" value="1" style="width: 80px;">
+              </div>
+              
+              <div style="width: 1px; height: 24px; background: var(--border-color);"></div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-circle" style="color: var(--text-secondary); font-size: 0.8rem;" title="Point Size"></i>
+                <input type="range" id="point-size-slider" min="1" max="20" step="1" value="5" style="width: 80px;">
+              </div>
+
+              <div style="width: 1px; height: 24px; background: var(--border-color);"></div>
+
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button class="btn" id="btn-zoom-out" style="padding: 0.5rem;"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                <span id="zoom-label" style="font-size: 0.85rem; width: 40px; text-align: center;">100%</span>
+                <button class="btn" id="btn-zoom-in" style="padding: 0.5rem;"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button class="btn" id="btn-zoom-reset" style="padding: 0.5rem; font-size: 0.8rem;">Reset</button>
+              </div>
+            </div>
+
+            <!-- Main Canvas Workspace -->
+            <div id="main-workspace" style="flex: 1; background: #000; position: relative; overflow: hidden; cursor: grab;">
+               <div id="canvas-wrapper" style="position: absolute; transform-origin: 0 0; width: 100%; height: 100%;">
+                 <img id="main-image" style="display: none;" />
+                 <canvas id="main-canvas" style="width: 100%; height: 100%; position: absolute; cursor: crosshair;"></canvas>
+               </div>
+            </div>
+
+            <!-- Thumbnails Strip -->
+            <div id="thumbnails-strip" style="height: 220px; background: var(--bg-glass); border-top: 1px solid var(--border-color); display: flex; gap: 1rem; padding: 1rem; overflow-x: auto;">
+              <!-- Thumbnails populated dynamically -->
+            </div>
+          </div>
+          
+          <!-- Sidebar -->
+          <div class="annotation-sidebar" style="width: 320px; padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div class="card" style="margin: 0; padding: 1.5rem; flex: none;">
+              <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-location-crosshairs"></i> Current Point</h3>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <input type="text" id="point-label" placeholder="Label (e.g., nose)" style="flex: 1; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: white;">
+                <button class="btn btn-primary" id="btn-add-point" style="padding: 0.5rem;"><i class="fa-solid fa-plus"></i></button>
+              </div>
+            </div>
+            
+            <div class="points-list" id="points-list">
+              <h3>Points</h3>
+            </div>
+            
+            <div class="distances-list" id="distances-list">
+              <h3>Known Distances (mm)</h3>
+              <button class="btn" onclick="addDistancePrompt()" style="width: 100%; font-size: 0.85rem; margin-top: 0.5rem;"><i class="fa-solid fa-plus"></i> Add Distance</button>
+            </div>
+            
+            <button class="btn btn-primary" id="btn-next-3" style="margin-top: auto;">
+              Run Refinement <i class="fa-solid fa-check-double"></i>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- View 4: Quality Report -->
+      <section id="view-4" class="view-section">
+        <div class="card">
+          <h2>Trust Report</h2>
+          <p>This 3-tier gate tells you if you can trust the calibration.</p>
+          
+          <div class="quality-gate">
+            <div class="metric-card">
+              <div style="color: var(--text-secondary);">Tier 1: Reprojection RMSE</div>
+              <div class="metric-value">...<span style="font-size: 1rem;">px</span></div>
+              <div class="metric-status">PENDING</div>
+            </div>
+            <div class="metric-card">
+              <div style="color: var(--text-secondary);">Tier 2: Prior Rotation Spread</div>
+              <div class="metric-value">...<span style="font-size: 1rem;">°</span></div>
+              <div class="metric-status">PENDING</div>
+            </div>
+            <div class="metric-card" style="border-color: var(--accent-color); background: rgba(59, 130, 246, 0.05);">
+              <div style="color: var(--text-secondary);">Tier 3: Held-out Distance Error</div>
+              <div class="metric-value" style="color: var(--accent-color);">...<span style="font-size: 1rem;">mm</span></div>
+              <div class="metric-status">PENDING</div>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center;">
+            <button class="btn btn-primary" id="btn-export-anipose" style="font-size: 1.1rem; padding: 1rem 2rem;">
+              <i class="fa-solid fa-download"></i> Export Anipose calibration.toml
+            </button>
+            <button class="btn" id="btn-export-json" style="font-size: 1.1rem; padding: 1rem 2rem;">
+              <i class="fa-solid fa-file-code"></i> Export generic JSON
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script src="/static/script.js"></script>
+</body>
+</html>

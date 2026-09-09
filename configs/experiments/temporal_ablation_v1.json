@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "design_only_not_consumed_by_training_entrypoint",
+  "design_document": "docs/temporal_architecture_ablation_design.md",
+  "shared": {
+    "model": "vggt_omega_multi_instance_core23",
+    "input_axes": ["B", "T", "V", "C", "H", "W"],
+    "spatial_batch_axes": ["B*T", "V", "C", "H", "W"],
+    "window_size": 16,
+    "frame_step_stored_samples": 1,
+    "temporal_policy": "causal",
+    "history_limit_steps": 16,
+    "hidden_dim": 256,
+    "adapter_layers": 2,
+    "attention_heads": 8,
+    "seeds": [17, 29, 43],
+    "stage1_backbone": "frozen",
+    "spatial_checkpoint": "REQUIRED_SAME_CONTENT_HASH_ALL_VARIANTS",
+    "train_manifest": "REQUIRED_FROZEN_SOURCE_GROUP_MANIFEST",
+    "validation_manifest": "REQUIRED_INDEPENDENT_SOURCE_GROUP_MANIFEST",
+    "test_manifest": "REQUIRED_HELD_OUT_SOURCE_GROUP_MANIFEST",
+    "training_mix": "REQUIRED_SAME_DATASET_BALANCED_MIX_ALL_VARIANTS",
+    "normalization": "same_effective_frame_view_and_valid_label_budget",
+    "camera_policy": "shared_fixed_calibration_per_session",
+    "pose_feedback_from_external_tracker_when_off": false,
+    "metric_temporal_loss_requires_verified_clock": true,
+    "pseudo_labels_are_ground_truth": false
+  },
+  "variants": [
+    {"id": "A0", "adapter": "identity", "temporal_losses": false},
+    {"id": "A1", "adapter": "identity", "temporal_losses": true},
+    {"id": "A2", "adapter": "causal_instance_joint", "temporal_losses": false},
+    {"id": "A3", "adapter": "causal_instance_joint", "temporal_losses": true},
+    {"id": "C0", "adapter": "frame_only_parameter_matched_mlp", "temporal_losses": false},
+    {"id": "C1", "checkpoint_from": "A0", "postprocess": "validation_tuned_causal_filter", "retrain": false}
+  ],
+  "future_sweeps": {
+    "window_sizes": [1, 8, 16, 32],
+    "offline_bidirectional": "separate_upper_bound",
+    "oracle_gt_association": "diagnostic_only_not_main_results"
+  }
+}

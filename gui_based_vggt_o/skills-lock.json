@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "literature-search-arxiv": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/literature_search_arxiv/SKILL.md",
+      "computedHash": "d5d30aff5887a6014ceebf5a9f81e14961ac3b785a33c7a4302ce98c23901574"
+    },
+    "literature-search-biorxiv": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/literature_search_biorxiv/SKILL.md",
+      "computedHash": "230ee5ac5e8a4e4bc14dff18a07a0655d36555bccb817d4e6045c757e34d7d39"
+    },
+    "literature-search-europepmc": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/literature_search_europepmc/SKILL.md",
+      "computedHash": "5d297f213c6bb28ec56e278c5828d22b8e63c2b4ed3fbe34879d83f611747574"
+    },
+    "literature-search-openalex": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/literature_search_openalex/SKILL.md",
+      "computedHash": "a78befcf34b78b76bb31d4a2096f19cd5e67d3a8f5a93a03e0ce09e05ab53845"
+    },
+    "pubmed-database": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/pubmed_database/SKILL.md",
+      "computedHash": "af05ca9b88839c9132c3c4a1b7293d1b1d613158e1507f10866ecf3a7143eee3"
+    },
+    "scienceskillscommon": {
+      "source": "google-deepmind/science-skills",
+      "sourceType": "github",
+      "skillPath": "skills/scienceskillscommon/SKILL.md",
+      "computedHash": "1b697594d32ec1e236e225f991487bddd19a3c3ab6efce91208822029263dd8d"
+    }
+  }
+}

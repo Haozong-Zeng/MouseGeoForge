@@ -1,0 +1,138 @@
+{
+  "format": "mousegeoforge_blenderpymouse_production_projects_v1",
+  "destination_root": "BlenderPyMouseProjects",
+  "projects": [
+    {
+      "source": "blender/AniposeSyntheticProjects/E_L2_2024-11-18_1_Trial_1/E_L2_2024-11-18_1_Trial_1_AniposeSyntheticReady.blend",
+      "destination": "PseudoSynthetic/E_L2_2024-11-18_1_Trial_1/E_L2_2024-11-18_1_Trial_1_AniposeSyntheticReady.blend",
+      "datasets": ["E_L2_2024-11-18_1_Trial_1_PseudoSynthetic", "E_L2_2024-11-18_1_Trial_1_PseudoSyntheticTransfered"]
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FB_R3_2024-03-16_1_Trial_5/FB_R3_2024-03-16_1_Trial_5_AniposeSyntheticReady.blend",
+      "destination": "PseudoSynthetic/FB_R3_2024-03-16_1_Trial_5/FB_R3_2024-03-16_1_Trial_5_AniposeSyntheticReady.blend",
+      "datasets": ["FB_R3_2024-03-16_1_Trial_5_PseudoSynthetic", "FB_R3_2024-03-16_1_Trial_5_PseudoSyntheticTransfered"]
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FJ_L2_2024-06-24_1_Trial_7/FJ_L2_2024-06-24_1_Trial_7_AniposeSyntheticReady.blend",
+      "destination": "PseudoSynthetic/FJ_L2_2024-06-24_1_Trial_7/FJ_L2_2024-06-24_1_Trial_7_AniposeSyntheticReady.blend",
+      "datasets": ["FJ_L2_2024-06-24_1_Trial_7_PseudoSynthetic", "FJ_L2_2024-06-24_1_Trial_7_PseudoSyntheticTransfered"]
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FS_L2_2024-06-25_1_Trial_2/FS_L2_2024-06-25_1_Trial_2_AniposeSyntheticReady.blend",
+      "destination": "PseudoSynthetic/FS_L2_2024-06-25_1_Trial_2/FS_L2_2024-06-25_1_Trial_2_AniposeSyntheticReady.blend",
+      "datasets": ["FS_L2_2024-06-25_1_Trial_2_PseudoSynthetic", "FS_L2_2024-06-25_1_Trial_2_PseudoSyntheticTransfered"]
+    },
+    {
+      "source": "dataset/Homecage/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1.blend",
+      "destination": "Homecage/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1.blend",
+      "datasets": ["Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1"]
+    },
+    {
+      "source": "dataset/Homecage/Homecage-BlackFur-KeypointMoseq-Core23-Sample10-Frames200-399.blend",
+      "destination": "Homecage/Homecage-BlackFur-KeypointMoseq-Core23-Sample10-Frames200-399.blend",
+      "datasets": ["Homecage-BlackFur-KeypointMoseq-Core23-Sample10-Frames200-399"]
+    },
+    {
+      "source": "dataset/Cylinder/PyMouseStudio-BlackFur-orbbec-FixedCamera.blend",
+      "destination": "Openfield/PyMouseStudio-BlackFur-orbbec-FixedCamera.blend",
+      "datasets": ["Openfield-BlackFur-CranialWindow-ClimbWall", "Openfield-BlackFur-CranialWindow-WashFace", "Openfield-BlackFur-CranialWindow-WalkAround"]
+    },
+    {
+      "source": "dataset/Cylinder/PyMouseStudio-BrownFur-ClimbWall.blend",
+      "destination": "Cylinder/PyMouseStudio-BrownFur-ClimbWall.blend",
+      "datasets": ["PyMouseStudio-BrownFur-ClimbWall-Core23"]
+    },
+    {
+      "source": "dataset/Cylinder/PyMouseStudio-fur-SceneOnly-MoSeqPose-Sample10-First200-mm.blend",
+      "destination": "Cylinder/PyMouseStudio-fur-SceneOnly-MoSeqPose-Sample10-First200-mm.blend",
+      "datasets": ["PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200"]
+    },
+    {
+      "source": "dataset/Cylinder/PyMouseStudio-BrownFur-WalkAround.blend",
+      "destination": "Cylinder/PyMouseStudio-BrownFur-WalkAround.blend",
+      "datasets": ["PyMouseStudio-BrownFur-WalkAround-Core23"]
+    },
+    {
+      "source": "dataset/Cylinder/PyMouseStudio-BrownFur-WashFace.blend",
+      "destination": "Cylinder/PyMouseStudio-BrownFur-WashFace.blend",
+      "datasets": ["PyMouseStudio-BrownFur-WashFace-Core23"]
+    },
+    {
+      "source": "blender/PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-FGcamB-ForelimbFurFix.blend",
+      "destination": "WaterReaching/PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-FGcamB-ForelimbFurFix.blend",
+      "datasets": ["PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-FGcamB-ForelimbFurFix"]
+    },
+    {
+      "source": "blender/PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-WashFace-ForelimbFurFix.blend",
+      "destination": "WaterReaching/PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-WashFace-ForelimbFurFix.blend",
+      "datasets": ["PyMouseStudio-BlackFur-WaterReaching-FrameToFrame-WashFace-ForelimbFurFix"]
+    },
+    {
+      "source": "blender/predefined_animation/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FGcamB.blend",
+      "destination": "WaterReaching/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FGcamB.blend",
+      "datasets": ["PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FGcamB"]
+    },
+    {
+      "source": "blender/predefined_animation/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FScamC-mapping.blend",
+      "destination": "WaterReaching/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FScamC-mapping.blend",
+      "datasets": ["PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-FScamC-mapping"]
+    },
+    {
+      "source": "blender/predefined_animation/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-WashFace.blend",
+      "destination": "WaterReaching/PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-WashFace.blend",
+      "datasets": ["PyMouseStudio-BrowmFur-WaterReaching-FrameToFrame-WashFace"]
+    },
+    {
+      "source": "blender/predefined_animation/PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FGcamB.blend",
+      "destination": "WaterReaching/PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FGcamB.blend",
+      "datasets": ["PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FGcamB"]
+    },
+    {
+      "source": "blender/predefined_animation/PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FScamC-mapping.blend",
+      "destination": "WaterReaching/PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FScamC-mapping.blend",
+      "datasets": ["PyMouseStudio-WhiteFur-WaterReaching-FrameToFrame-FScamC-mapping"]
+    }
+  ],
+  "support_files": [
+    {
+      "source": "blender/keypoint_mapping/mouse_hand_vertex_keypoint_map.pkl",
+      "destination": "WaterReaching/keypoint_mapping/mouse_hand_vertex_keypoint_map.pkl"
+    },
+    {
+      "source": "blender/keypoint_mapping/mouse_hand_vertex_keypoint_map.audit.json",
+      "destination": "WaterReaching/keypoint_mapping/mouse_hand_vertex_keypoint_map.audit.json"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/E_L2_2024-11-18_1_Trial_1/mouse_hand_vertex_keypoint_map.pkl",
+      "destination": "PseudoSynthetic/E_L2_2024-11-18_1_Trial_1/mouse_hand_vertex_keypoint_map.pkl"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/E_L2_2024-11-18_1_Trial_1/mouse_hand_vertex_keypoint_map.audit.json",
+      "destination": "PseudoSynthetic/E_L2_2024-11-18_1_Trial_1/mouse_hand_vertex_keypoint_map.audit.json"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FB_R3_2024-03-16_1_Trial_5/mouse_hand_vertex_keypoint_map.pkl",
+      "destination": "PseudoSynthetic/FB_R3_2024-03-16_1_Trial_5/mouse_hand_vertex_keypoint_map.pkl"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FB_R3_2024-03-16_1_Trial_5/mouse_hand_vertex_keypoint_map.audit.json",
+      "destination": "PseudoSynthetic/FB_R3_2024-03-16_1_Trial_5/mouse_hand_vertex_keypoint_map.audit.json"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FJ_L2_2024-06-24_1_Trial_7/mouse_hand_vertex_keypoint_map.pkl",
+      "destination": "PseudoSynthetic/FJ_L2_2024-06-24_1_Trial_7/mouse_hand_vertex_keypoint_map.pkl"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FJ_L2_2024-06-24_1_Trial_7/mouse_hand_vertex_keypoint_map.audit.json",
+      "destination": "PseudoSynthetic/FJ_L2_2024-06-24_1_Trial_7/mouse_hand_vertex_keypoint_map.audit.json"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FS_L2_2024-06-25_1_Trial_2/mouse_hand_vertex_keypoint_map.pkl",
+      "destination": "PseudoSynthetic/FS_L2_2024-06-25_1_Trial_2/mouse_hand_vertex_keypoint_map.pkl"
+    },
+    {
+      "source": "blender/AniposeSyntheticProjects/FS_L2_2024-06-25_1_Trial_2/mouse_hand_vertex_keypoint_map.audit.json",
+      "destination": "PseudoSynthetic/FS_L2_2024-06-25_1_Trial_2/mouse_hand_vertex_keypoint_map.audit.json"
+    }
+  ]
+}

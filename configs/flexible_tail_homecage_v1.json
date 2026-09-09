@@ -1,0 +1,33 @@
+{
+  "schema": "mousegeoforge.flexible_tail.v1",
+  "conditioning": {
+    "hard": ["tail_base_world"],
+    "weak": ["body_to_tail_root_tangent", "previous_frame_curvature"],
+    "ignored_from_real_source": ["tail_q1", "tail_q2", "tail_q3", "tail_q4", "tail_q5", "tail_tip"]
+  },
+  "sampling": {
+    "bone_chain": ["TailStart_M", "Tail0_M", "Tail1_M", "Tail2_M", "Tail3_M", "Tail4_M", "Tail5_M", "Tail6_M", "Tail7_M", "Tail8_M", "Tail9_M", "Tail10_M", "Tail11_M"],
+    "proximal_lock_segments": 2,
+    "yaw_sigma_degrees": 10.0,
+    "pitch_sigma_degrees": 5.0,
+    "distal_noise_gain": 1.6,
+    "curvature_ar": 0.78,
+    "temporal_ar": 0.97,
+    "maximum_bend_degrees": 28.0
+  },
+  "collision": {
+    "tail_radius_mm": 0.8,
+    "floor_clearance_mm": 0.15,
+    "body_collision_start_point": 2,
+    "proxies": ["posterior_torso_ellipsoid", "hindquarter_ellipsoid", "other_mouse_ellipsoids"],
+    "arena": ["floor", "homecage_inner_walls"],
+    "correction_iterations": 40,
+    "collision_tolerance_mm": 0.05,
+    "reject_unresolved_frames": true
+  },
+  "output": {
+    "driver": "Tail_NURBSCurve Spline IK",
+    "audit_per_frame": true,
+    "preserve_body_and_limb_animation": true
+  }
+}
