@@ -60,6 +60,32 @@ class DepthPoseModel(nn.Module):
         grad = torch.no_grad() if self.freeze_encoder else nullcontext()
         with grad, amp:
             cached, patch_start = self.aggregator(images)
+        return self._decode(images, cached, patch_start, coupling=mode)
+
+    def forward_cached(self, images, cached, patch_start, *, coupling=None):
+        """Decode deterministic frozen-encoder features (no augmentation changes).
+
+        This is an optimization for controlled spatial experiments, not a time
+        cache. Callers must bind features to exact RGB, view order and encoder.
+        """
+        if not self.freeze_encoder:
+            raise ValueError('Cached training requires a frozen encoder')
+        return self._decode(images, cached, patch_start, coupling=coupling)
+
+    def _decode(self, images, cached, patch_start, *, coupling=None):
+        if images.ndim != 5 or images.shape[2] != 3:
+            raise ValueError('Expected [B,V,3,H,W]')
+        mode = self.coupling if coupling is None else coupling
+        if mode not in ('off', 'local_depth_features'):
+            raise ValueError('Unknown coupling mode')
+        h, w = images.shape[-2:]
+        patch = self.instance_pose_head.patch_size
+        if h % patch or w % patch:
+            raise ValueError('Image dimensions must be divisible by patch size')
+        for i in self.dense_head.intermediate_layer_idx:
+            x = cached[i]
+            if x is None or x.shape[:3] != (*images.shape[:2], patch_start+(h//patch)*(w//patch)):
+                raise ValueError('Cached feature geometry does not match RGB')
         # Match upstream decoder fp32 path, even inside caller autocast.
         with torch.autocast(device_type=images.device.type, enabled=False):
             adapted = self.shared_adapter(cached, patch_start)

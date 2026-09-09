@@ -109,3 +109,11 @@ python tools/smoke_depth_pose_joint.py \
 小规模对照；再决定是否加入 offset。生产训练前需确认细粒度 semantic mask 覆盖率，
 完善 per-instance/part depth balance、部分实例标注的负样本屏蔽和跨数据单位映射。
 现有 smoke 明确要求完整人工实例标注，不可直接拿 DANNCE 无标注帧套用负样本 loss。
+
+### 后续预审计更正（2026-09-09）
+
+小规模对照的可见表面投影审计和图像检查发现：本轮所用 Homecage DiversePose400、
+BrownFur ClimbWall/WashFace 的 PFM 应以 `pfm_flip_y=True` 读取。之前 smoke 的 False
+设置虽能通过有限梯度测试，但深度标签上下颠倒，不能作为几何训练正确性的证据。
+已更正 smoke 默认设置；正式对照在正确翻转后运行。没有修改/翻转数据目录中的原文件，
+也没有把这个结论泛化到所有真实数据集。对照入口逐帧检查深度与可见表面锚点对齐。

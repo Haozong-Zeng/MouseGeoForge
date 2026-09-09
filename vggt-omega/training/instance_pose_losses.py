@@ -93,6 +93,13 @@ def instance_pose_loss(
     objectness = predictions["instance_objectness_logits"]
     object_target = torch.zeros_like(objectness)
     object_weight = torch.full_like(objectness, float(weights.no_object))
+    # Missing/unlabeled instances are not negative detections. This flag is
+    # explicit per view; omission preserves the legacy fully-annotated path.
+    complete = targets.get("detection_annotation_complete")
+    if complete is not None:
+        if complete.shape != objectness.shape[:2] or complete.dtype != torch.bool:
+            raise ValueError('detection_annotation_complete must be bool [B,V]')
+        object_weight = object_weight * complete[..., None]
     matched_prediction: list[tuple[int, int, int]] = []
     matched_target: list[tuple[int, int, int]] = []
     for batch_index, view_matches in enumerate(matches):
@@ -321,6 +328,7 @@ def instance_targets_from_batch(batch: dict[str, Any]) -> dict[str, torch.Tensor
             f"Incomplete multi-instance keypoints; missing {missing_keypoints}"
         )
     optional = (
+        "detection_annotation_complete",
         "box_valid",
         "masks",
         "mask_valid",

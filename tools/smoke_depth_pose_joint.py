@@ -28,6 +28,8 @@ def main():
     parser.add_argument('--scene', action='append', type=Path, required=True)
     parser.add_argument('--steps-per-scene', type=int, default=2)
     parser.add_argument('--coupling', choices=['off', 'local_depth_features'], default='local_depth_features')
+    parser.add_argument('--pfm-flip-y', action=argparse.BooleanOptionalAction, default=True,
+                        help='Audited Blender exports use bottom-up PFM; do not assume for real datasets')
     parser.add_argument('--report', type=Path, default=ROOT/'output/depth_pose_joint_smoke/report.json')
     args = parser.parse_args()
     if not torch.cuda.is_available():
@@ -38,7 +40,7 @@ def main():
     torch.set_num_threads(2)
     scenes = [load_scene(p.resolve()) for p in args.scene]
     views = min(2, min(len(s.frames) for s in scenes))
-    ds = BlendedMVSDataset(scenes, views, 128, 128, 1, 17, False, False,
+    ds = BlendedMVSDataset(scenes, views, 128, 128, 1, 17, False, args.pfm_flip_y,
                           False, 'median_baseline', views, True)
     if len(ds.keypoint_names) != 23:
         raise ValueError(f'Smoke requires Core23 only, found {len(ds.keypoint_names)} channels')
@@ -105,6 +107,7 @@ def main():
               'coupling': args.coupling, 'checkpoint': str(args.checkpoint),
               'loaded_encoder_depth_tensors': len(expected), 'encoder_frozen': True,
               'detach_depth_features': True, 'new_instance_head': True,
+              'pfm_flip_y': args.pfm_flip_y,
               'camera_depth_scale': 'same_static_rig_median_baseline_per_scene',
               'trained_weights_saved': False, 'records': records,
               'cuda_peak_allocated_bytes': torch.cuda.max_memory_allocated()}
