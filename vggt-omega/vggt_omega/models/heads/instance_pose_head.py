@@ -127,6 +127,8 @@ class MultiInstanceMouseHead(nn.Module):
         aggregated_tokens_list: list[torch.Tensor | None],
         images: torch.Tensor,
         patch_token_start: int,
+        *,
+        keypoint_token_refiner=None,
     ) -> dict[str, torch.Tensor]:
         if patch_token_start is None:
             raise ValueError("patch_token_start is required")
@@ -175,6 +177,13 @@ class MultiInstanceMouseHead(nn.Module):
             memory,
         ).view(frame_count, self.num_queries, self.num_keypoints, self.hidden_dim)
         coarse_xy = self.coarse_keypoint_xy(keypoint_tokens).sigmoid()
+        # Optional downstream feature bridge; default preserves the legacy path.
+        # The callback receives predictions only, never GT instance IDs/masks.
+        if keypoint_token_refiner is not None:
+            keypoint_tokens = keypoint_token_refiner(
+                tokens=keypoint_tokens, coarse_xy=coarse_xy, mask_logits=mask_logits,
+            )
+            coarse_xy = self.coarse_keypoint_xy(keypoint_tokens).sigmoid()
         visibility_logits = self.keypoint_visibility(keypoint_tokens).squeeze(-1)
         sigma = 1e-3 + F.softplus(self.keypoint_log_sigma(keypoint_tokens).squeeze(-1))
         local_logits, refined_xy = self._local_refinement(

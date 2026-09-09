@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "design_only_not_full_training_config",
+  "document": "docs/depth_pose_joint_research_and_plan.md",
+  "factors": ["temporal", "explicit_depth_pose_coupling", "tail_curve_supervision"],
+  "shared": {
+    "depth_supervision": "same_labels_semantic_weights_and_loss_in_all_8",
+    "keypoint_supervision": "same_Core23_labels_and_base_losses",
+    "joint_off": "shared_trainable_adapter_independent_decoders",
+    "joint_on": "local_depth_feature_bridge_v1",
+    "tail_representation": "same_7_point_output",
+    "temporal_auxiliary_loss_weight": 0,
+    "seeds": [17, 29, 43],
+    "split": "motion_source_and_animal_group_disjoint",
+    "inference_modality": "RGB_with_same_fixed_calibration",
+    "history": "causal_if_temporal_enabled",
+    "training_budget": "same_frame_view_and_label_exposure"
+  },
+  "variants": [
+    {"id": "T0J0R0", "temporal": false, "explicit_depth_pose_coupling": false, "tail_curve_supervision": false},
+    {"id": "T0J0R1", "temporal": false, "explicit_depth_pose_coupling": false, "tail_curve_supervision": true},
+    {"id": "T0J1R0", "temporal": false, "explicit_depth_pose_coupling": true, "tail_curve_supervision": false},
+    {"id": "T0J1R1", "temporal": false, "explicit_depth_pose_coupling": true, "tail_curve_supervision": true},
+    {"id": "T1J0R0", "temporal": true, "explicit_depth_pose_coupling": false, "tail_curve_supervision": false},
+    {"id": "T1J0R1", "temporal": true, "explicit_depth_pose_coupling": false, "tail_curve_supervision": true},
+    {"id": "T1J1R0", "temporal": true, "explicit_depth_pose_coupling": true, "tail_curve_supervision": false},
+    {"id": "T1J1R1", "temporal": true, "explicit_depth_pose_coupling": true, "tail_curve_supervision": true}
+  ],
+  "not_yet_implemented": ["temporal_adapter", "multi_instance_tail_curve_loss", "full_clip_trainer", "surface_joint_offset"]
+}

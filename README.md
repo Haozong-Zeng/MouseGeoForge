@@ -11,6 +11,7 @@ trained models, Blender assets, or an already integrated temporal training syste
 | Directory | Purpose |
 | --- | --- |
 | `vggt-omega/` | Upstream model source plus local multi-instance heads, losses, loaders and training tools |
+| `mousegeoforge/`, `tests/` | New composition models, shared adapters, optional depth-pose bridge and tests |
 | `BlenderScripts/` | Blender scene construction, animation, rendering and annotation tools |
 | `tools/`, `scripts/` | Dataset conversion, validation and workflow utilities |
 | `configs/` | Workflow configuration and proposed experiment specifications |
@@ -27,6 +28,8 @@ should be assumed portable or safe to run as a batch without reviewing its scope
 
 - [Multi-instance architecture and implementation status](docs/multi_mouse_instance_pose_architecture.md)
 - [Temporal architecture and controlled ablations](docs/temporal_architecture_ablation_design.md)
+- [Depth-pose research and current implementation](docs/depth_pose_joint_research_and_plan.md)
+- [Derived repository organization decision](docs/derived_repository_structure_research.md)
 - [DANNCE 25 fps mask/depth delivery](docs/dannce_25fps_full_pseudo_depth.md)
 - [Temporal indexing and source groups](docs/temporal_dataset_delivery.md)
 - [Alternative research routes](docs/multi_mouse_experiment_routes_backlog.md)
@@ -44,8 +47,10 @@ python -m venv .venv
 source .venv/bin/activate
 # Install the appropriate torch + torchvision build for your hardware.
 pip install -e ./vggt-omega
+pip install -e .
 pip install scipy opencv-python matplotlib tqdm
 PYTHONPATH=vggt-omega python -m unittest discover -s vggt-omega/training -p test_temporal_window_index.py
+python tools/validate_repository_snapshot.py
 ```
 
 Dataset preparation needs separately acquired data and, for some workflows,
@@ -60,6 +65,32 @@ Reliable Blender animations have `temporal_index.jsonl`; DANNCE sessions have
 index is implemented. The default Blender training entrypoint still consumes
 independent multiview poses. The temporal adapter and experiment matrix in the
 design document are **proposed**, not implemented or benchmarked.
+
+## Depth-pose integration status
+
+`mousegeoforge.models.DepthPoseModel` is implemented with a shared trainable token
+adapter and optional `local_depth_features` coupling. Both task heads remain active
+when coupling is `off`. The legacy model defaults are unchanged. The wrapper is
+frame-level `[B,V,3,H,W]`; it rejects a time axis rather than silently mixing time
+into views. It does not yet implement temporal attention or surface-to-joint offsets.
+
+```python
+from vggt_omega.models import VGGTOmega
+from mousegeoforge.models import DepthPoseModel
+
+spatial = VGGTOmega(enable_camera=False, enable_depth=True,
+                    enable_multi_instance_pose=True, num_keypoints=23)
+# Load and verify your upstream encoder/depth checkpoint before wrapping.
+model = DepthPoseModel.from_spatial_model(spatial, coupling="off")
+# Switch to coupling="local_depth_features" for explicit depth-to-pose fusion.
+```
+
+The main planned experiment is temporal × explicit depth-pose coupling × tail
+curve supervision (8 variants). See `configs/experiments/temporal_depth_tail_factorial_v1.json`.
+This matrix is a specification, not an executable full trainer. The older temporal
+module/loss matrix remains a secondary diagnostic. Two-step real-asset GPU smoke
+checks verify integration only; no comparative accuracy or generalization claim
+has been established.
 
 ## Licenses
 

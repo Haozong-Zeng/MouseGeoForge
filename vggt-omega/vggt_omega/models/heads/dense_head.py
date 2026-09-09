@@ -75,32 +75,40 @@ class DenseHead(nn.Module):
         images: torch.Tensor,
         patch_token_start: int,
         frames_chunk_size: int | None = 8,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+        return_features: bool = False,
+    ) -> tuple[torch.Tensor, ...]:
         if patch_token_start is None:
             raise ValueError("patch_token_start is required for DenseHead")
 
         _, num_frames, _, _, _ = images.shape
 
         if frames_chunk_size is None or frames_chunk_size >= num_frames:
-            return self._forward_impl(aggregated_tokens_list, images, patch_token_start)
+            return self._forward_impl(aggregated_tokens_list, images, patch_token_start,
+                                      return_features=return_features)
 
         assert frames_chunk_size > 0
 
         depth_chunks = []
         depth_conf_chunks = []
+        feature_chunks = []
         for frames_start_idx in range(0, num_frames, frames_chunk_size):
             frames_end_idx = min(frames_start_idx + frames_chunk_size, num_frames)
-            depth_chunk, depth_conf_chunk = self._forward_impl(
+            result = self._forward_impl(
                 aggregated_tokens_list,
                 images,
                 patch_token_start,
                 frames_start_idx,
                 frames_end_idx,
+                return_features=return_features,
             )
+            depth_chunk, depth_conf_chunk = result[:2]
             depth_chunks.append(depth_chunk)
             depth_conf_chunks.append(depth_conf_chunk)
+            if return_features:
+                feature_chunks.append(result[2])
 
-        return torch.cat(depth_chunks, dim=1), torch.cat(depth_conf_chunks, dim=1)
+        result = (torch.cat(depth_chunks, dim=1), torch.cat(depth_conf_chunks, dim=1))
+        return (*result, torch.cat(feature_chunks, dim=1)) if return_features else result
 
     def _forward_impl(
         self,
@@ -109,7 +117,8 @@ class DenseHead(nn.Module):
         patch_token_start: int,
         frames_start_idx: int | None = None,
         frames_end_idx: int | None = None,
-    ) -> tuple[torch.Tensor, torch.Tensor]:
+        return_features: bool = False,
+    ) -> tuple[torch.Tensor, ...]:
         if frames_start_idx is not None and frames_end_idx is not None:
             images = images[:, frames_start_idx:frames_end_idx].contiguous()
 
@@ -155,6 +164,8 @@ class DenseHead(nn.Module):
         if depth.dtype != torch.float32 or depth_conf.dtype != torch.float32:
             raise TypeError(f"DenseHead outputs must be fp32, got depth={depth.dtype}, conf={depth_conf.dtype}")
 
+        if return_features:
+            return depth, depth_conf, fused.view(batch_size, num_frames, *fused.shape[1:])
         return depth, depth_conf
 
     def _apply_pos_embed(self, x: torch.Tensor, width: int, height: int, ratio: float = 0.1) -> torch.Tensor:

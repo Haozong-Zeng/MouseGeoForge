@@ -4,6 +4,9 @@
 !/.gitattributes
 !/README.md
 !/THIRD_PARTY_NOTICES.md
+!/pyproject.toml
+!/mousegeoforge/
+!/tests/
 !/.github/
 !/BlenderScripts/
 !/configs/

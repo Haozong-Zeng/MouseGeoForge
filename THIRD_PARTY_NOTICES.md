@@ -7,6 +7,9 @@
 - License: [FAIR Noncommercial Research License](vggt-omega/LICENSE)
 - Local additions/modifications: instance/keypoint/surface heads, model wiring,
   training and geometry losses, dataset loaders and tests.
+- New composition layer: `mousegeoforge/` reuses the model components. Minimal
+  backward-compatible hooks in the depth and instance heads expose depth features
+  and accept an optional keypoint token refiner; upstream notices are retained.
 
 The files are versioned as ordinary source in MouseGeoForge, not as an empty
 submodule pointer. The original local nested Git repository is preserved on the

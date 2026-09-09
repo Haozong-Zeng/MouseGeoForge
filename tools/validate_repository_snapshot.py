@@ -12,6 +12,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'vggt-omega'))
+sys.path.insert(0, str(ROOT))
 
 
 def main():
@@ -21,6 +22,10 @@ def main():
     assert spec['status'] == 'design_only_not_consumed_by_training_entrypoint'
     assert {r['id'] for r in spec['variants']} == {'A0', 'A1', 'A2', 'A3', 'C0', 'C1'}
     suite = unittest.defaultTestLoader.loadTestsFromName('training.test_temporal_window_index')
+    window_count = suite.countTestCases()
+    joint_suite = unittest.defaultTestLoader.discover(start_dir=str(ROOT/'tests'))
+    joint_count = joint_suite.countTestCases()
+    suite.addTests(joint_suite)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
         raise SystemExit(1)
@@ -33,7 +38,7 @@ def main():
                 value()
                 tested.append(f'{name}.{key}')
                 print(f'PASS {tested[-1]}', flush=True)
-    print(json.dumps({'passed': True, 'window_tests': result.testsRun,
+    print(json.dumps({'passed': True, 'window_tests': window_count, 'depth_pose_tests': joint_count,
                       'head_geometry_tests': len(tested), 'experiment_spec_valid': True}))
 
 

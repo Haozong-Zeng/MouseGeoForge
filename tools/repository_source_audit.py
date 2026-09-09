@@ -13,9 +13,9 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-TREES = {'.github', 'BlenderScripts', 'configs', 'docs', 'scripts', 'tools',
+TREES = {'.github', 'BlenderScripts', 'configs', 'docs', 'scripts', 'tools', 'mousegeoforge', 'tests',
          'vggt-omega', 'gui_based_vggt_o', 'literature-and-research-plan'}
-ROOT_FILES = {'.gitignore', '.gitattributes', 'README.md', 'THIRD_PARTY_NOTICES.md'}
+ROOT_FILES = {'.gitignore', '.gitattributes', 'README.md', 'THIRD_PARTY_NOTICES.md', 'pyproject.toml'}
 PRUNE = {'.git', '__pycache__', '.pytest_cache', 'node_modules', 'checkpoints',
          'gui_data', 'output', 'logs', 'wandb', 'collaborator_blenderpymouse_10frame_package'}
 SECRETS = {

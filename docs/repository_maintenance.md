@@ -2,6 +2,9 @@
 
 The initial repository is private: `Haozong-Zeng/MouseGeoForge`.
 
+New model development lives in `mousegeoforge/` with tests in `tests/`, instead
+of growing a separate copy of VGGT. See `derived_repository_structure_research.md`.
+
 The root `.gitignore` uses a top-level allowlist. Datasets, backup, Blender
 projects, output and downloaded dependencies stay local. Inside source trees,
 model/data binaries, environments, credentials, archives and Zone.Identifier
