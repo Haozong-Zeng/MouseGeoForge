@@ -230,8 +230,12 @@ def main():
     p.add_argument('--output',type=Path,default=ROOT/'output/depth_pose_ablation_pilot_v1')
     p.add_argument('--checkpoint',type=Path,default=ROOT/'vggt-omega/vggt_omega_1b_512.pt')
     p.add_argument('--prepare-only',action='store_true')
+    p.add_argument('--run-seed',type=int,help='Run one configured seed in an independent worker directory')
     args=p.parse_args()
     cfg=json.loads(args.config.read_text())
+    if args.run_seed is not None:
+        if args.run_seed not in cfg['seeds']: raise ValueError('Seed not in registered config')
+        cfg['seeds']=[args.run_seed]
     if cfg['steps']>1000 or cfg['long_side']!=256 or cfg['view_ids']!=[0,2]:
         raise ValueError('This pilot supports at most 1000 steps and the fixed audited geometry')
     if (args.output/'results.json').exists():
