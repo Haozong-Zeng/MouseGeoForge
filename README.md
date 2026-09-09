@@ -1,5 +1,24 @@
 # MouseGeoForge
 
+## Depth–pose coupling pilot
+
+The controlled spatial J-off/J-on pilot and its safeguards are documented in
+[the experiment protocol](docs/depth_pose_pilot_protocol.md). It uses complete
+synthetic labels, source-group-held-out validation, paired seeds, and frozen RGB
+feature caching. It is not yet the production temporal/partial-label trainer.
+The [300/1000-step results](docs/depth_pose_pilot_results.md) do not demonstrate a
+stable joint benefit; coupling stays off by default while pose localization is investigated.
+
+```bash
+python tools/run_depth_pose_ablation.py --prepare-only
+python tools/run_depth_pose_ablation.py
+python tools/analyze_depth_pose_ablation.py
+python tools/verify_depth_pose_ablation.py
+```
+
+The audited Blender subsets require `pfm_flip_y=True`; do not apply that setting
+blindly to real datasets. Outputs/checkpoints remain local under `output/`.
+
 Research workspace for synthetic mouse data generation, real multiview dataset
 conversion, and instance-centric 2D/3D mouse pose estimation with VGGT-Omega.
 
