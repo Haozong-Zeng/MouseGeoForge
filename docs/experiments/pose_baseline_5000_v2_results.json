@@ -1,0 +1,2810 @@
+{
+  "config": {
+    "schema_version": 1,
+    "purpose": "corrected_pose_head_baseline_after_training_only_overfit_gate",
+    "seeds": [
+      17
+    ],
+    "modes": [
+      "off"
+    ],
+    "steps": 5000,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0,
+    "train_frames_per_source": 32,
+    "val_frames_per_source": 16,
+    "view_ids": [
+      0,
+      2
+    ],
+    "long_side": 256,
+    "pfm_flip_y": true,
+    "encoder_frozen": true,
+    "detach_depth_features": true,
+    "cache_encoder_features": true,
+    "augmentation": "none_for_exact_frozen_cache",
+    "depth_weight": 1.0,
+    "pose_weight": 1.0,
+    "local_heatmap_weight": 0.0,
+    "train_eval_interval": 500,
+    "body_depth_balance": 0.5,
+    "keypoint_3d_weight": 0.0,
+    "reprojection_weight": 0.0,
+    "primary_metrics": [
+      "box_matched_nme",
+      "detection_aware_pck_0.1",
+      "body_depth_absrel"
+    ],
+    "checkpoint_policy": "fixed_final_step_no_validation_selection",
+    "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+    "notes": "Run only after no_local_heatmap passes the 8-scene training-only gate. Local refinement forward remains enabled, grid detach remains false. Fresh seed17 initialization; depth supervision restored, bridge off. One-seed baseline, not a paired ablation or unseen-animal evaluation. No dataset expansion."
+  },
+  "provenance": {
+    "checkpoint_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "loaded_tensors": 1343,
+    "torch_version": "2.11.0+cu128",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "git_commit": "1e660263a99c6c7e37eb9609fe8155b07edc2d6a",
+    "deterministic_cudnn": true,
+    "cuda_grid_sample_backward_bitwise_determinism_not_guaranteed": true,
+    "live_cache_exact_parity": true
+  },
+  "runs": [
+    {
+      "seed": 17,
+      "mode": "off",
+      "steps": 5000,
+      "initial_state_sha256": "37713ae8b7ba03b2513675c7c02566b7f2f45ad5aa90386570b2df77da3c1e1f",
+      "train_order_sha256": "6b3b4fdd564d265ddf7e800b9806b3b477dcd4aee0924fba86d65db922bd3dfa",
+      "gradient_audit": {
+        "shared_adapter": 30.543273519724607,
+        "dense_head": 9.133588924058131,
+        "instance_pose_head": 1100.3851911764432,
+        "depth_pose_bridge": 0
+      },
+      "initial_validation": {
+        "source_macro": {
+          "box_matched_nme": 0.553953329772491,
+          "visible_nme": 0.5587396901061832,
+          "occluded_nme": 0.5445129473570198,
+          "body_keypoint_nme": 0.5070923682987996,
+          "tail_nme": 0.6610640988552144,
+          "box_matched_pck_0.1": 0.0033967391304347825,
+          "detection_aware_pck_0.1": 0.0,
+          "matched_mask_iou": 0.018925809679672057,
+          "detection_tp": 0.0,
+          "detection_fp": 0.0,
+          "detection_fn": 3.0,
+          "detection_precision": 0.0,
+          "detection_recall": 0.0,
+          "all_depth_absrel": 0.41985711082816124,
+          "body_depth_absrel": 0.4732199748978019,
+          "background_depth_absrel": 0.417958945967257
+        },
+        "per_source": {
+          "crim13/021309_A29_Block16_BCma1_t": {
+            "box_matched_nme": 0.6422066601441221,
+            "visible_nme": 0.6403722231518105,
+            "occluded_nme": 0.6511062511613028,
+            "body_keypoint_nme": 0.5929403742720751,
+            "tail_nme": 0.7548153135659439,
+            "box_matched_pck_0.1": 0.004076086956521739,
+            "detection_aware_pck_0.1": 0.0,
+            "matched_mask_iou": 0.006218621332436669,
+            "detection_tp": 0.0,
+            "detection_fp": 0.0,
+            "detection_fn": 4.0,
+            "detection_precision": 0.0,
+            "detection_recall": 0.0,
+            "all_depth_absrel": 0.3502934370189905,
+            "body_depth_absrel": 0.36979129165410995,
+            "background_depth_absrel": 0.34986661188304424
+          },
+          "mouse_wash_face_91": {
+            "box_matched_nme": 0.46569999940085993,
+            "visible_nme": 0.47710715706055573,
+            "occluded_nme": 0.43791964355273677,
+            "body_keypoint_nme": 0.421244362325524,
+            "tail_nme": 0.567312884144485,
+            "box_matched_pck_0.1": 0.002717391304347826,
+            "detection_aware_pck_0.1": 0.0,
+            "matched_mask_iou": 0.031632998026907444,
+            "detection_tp": 0.0,
+            "detection_fp": 0.0,
+            "detection_fn": 2.0,
+            "detection_precision": 0.0,
+            "detection_recall": 0.0,
+            "all_depth_absrel": 0.48942078463733196,
+            "body_depth_absrel": 0.5766486581414938,
+            "background_depth_absrel": 0.4860512800514698
+          }
+        },
+        "scenes": 32
+      },
+      "validation": {
+        "source_macro": {
+          "box_matched_nme": 0.17791884123629564,
+          "visible_nme": 0.18550355384816933,
+          "occluded_nme": 0.15688683951881732,
+          "body_keypoint_nme": 0.1669920481773488,
+          "tail_nme": 0.2028943682281741,
+          "box_matched_pck_0.1": 0.2921195652173913,
+          "detection_aware_pck_0.1": 0.2632472826086956,
+          "matched_mask_iou": 0.6524549747409765,
+          "detection_tp": 2.0,
+          "detection_fp": 1.0625,
+          "detection_fn": 1.0,
+          "detection_precision": 0.6953125,
+          "detection_recall": 0.7109375,
+          "all_depth_absrel": 0.04267833346966654,
+          "body_depth_absrel": 0.09208024031249806,
+          "background_depth_absrel": 0.040692900016438216
+        },
+        "per_source": {
+          "crim13/021309_A29_Block16_BCma1_t": {
+            "box_matched_nme": 0.2088654605061532,
+            "visible_nme": 0.21023072745247984,
+            "occluded_nme": 0.19586337357519423,
+            "body_keypoint_nme": 0.18353772680916336,
+            "tail_nme": 0.26675742324213,
+            "box_matched_pck_0.1": 0.2690217391304348,
+            "detection_aware_pck_0.1": 0.2112771739130435,
+            "matched_mask_iou": 0.5157296036486514,
+            "detection_tp": 2.3125,
+            "detection_fp": 1.6875,
+            "detection_fn": 1.6875,
+            "detection_precision": 0.578125,
+            "detection_recall": 0.578125,
+            "all_depth_absrel": 0.04334773309528828,
+            "body_depth_absrel": 0.03934261843096465,
+            "background_depth_absrel": 0.04343394446186721
+          },
+          "mouse_wash_face_91": {
+            "box_matched_nme": 0.14697222196643808,
+            "visible_nme": 0.16077638024385882,
+            "occluded_nme": 0.11791030546244041,
+            "body_keypoint_nme": 0.15044636954553425,
+            "tail_nme": 0.13903131321421824,
+            "box_matched_pck_0.1": 0.3152173913043478,
+            "detection_aware_pck_0.1": 0.3152173913043478,
+            "matched_mask_iou": 0.7891803458333015,
+            "detection_tp": 1.6875,
+            "detection_fp": 0.4375,
+            "detection_fn": 0.3125,
+            "detection_precision": 0.8125,
+            "detection_recall": 0.84375,
+            "all_depth_absrel": 0.042008933844044805,
+            "body_depth_absrel": 0.14481786219403148,
+            "background_depth_absrel": 0.03795185557100922
+          }
+        },
+        "scenes": 32
+      },
+      "training": {
+        "source_macro": {
+          "box_matched_nme": 0.0643577222443958,
+          "visible_nme": 0.06344779587015055,
+          "occluded_nme": 0.06672701576750636,
+          "body_keypoint_nme": 0.05730865725365675,
+          "tail_nme": 0.08046987079465648,
+          "box_matched_pck_0.1": 0.787024456521739,
+          "detection_aware_pck_0.1": 0.7817595108695652,
+          "matched_mask_iou": 0.7175479623256251,
+          "detection_tp": 2.9375,
+          "detection_fp": 0.0625,
+          "detection_fn": 0.0625,
+          "detection_precision": 0.984375,
+          "detection_recall": 0.984375,
+          "all_depth_absrel": 0.03958837396930903,
+          "body_depth_absrel": 0.04442876664688811,
+          "background_depth_absrel": 0.0390610046160873
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.11031594823278916,
+            "visible_nme": 0.10940046826652487,
+            "occluded_nme": 0.11389852475007803,
+            "body_keypoint_nme": 0.09597585321233737,
+            "tail_nme": 0.1430933082795361,
+            "box_matched_pck_0.1": 0.5842391304347825,
+            "detection_aware_pck_0.1": 0.5737092391304348,
+            "matched_mask_iou": 0.602767565054819,
+            "detection_tp": 3.875,
+            "detection_fp": 0.125,
+            "detection_fn": 0.125,
+            "detection_precision": 0.96875,
+            "detection_recall": 0.96875,
+            "all_depth_absrel": 0.041680146707221866,
+            "body_depth_absrel": 0.0260037126718089,
+            "background_depth_absrel": 0.04203858145046979
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.018399496256002432,
+            "visible_nme": 0.01749512347377622,
+            "occluded_nme": 0.019555506784934708,
+            "body_keypoint_nme": 0.018641461294976125,
+            "tail_nme": 0.017846433309776852,
+            "box_matched_pck_0.1": 0.9898097826086956,
+            "detection_aware_pck_0.1": 0.9898097826086956,
+            "matched_mask_iou": 0.8323283595964313,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.0374966012313962,
+            "body_depth_absrel": 0.06285382062196732,
+            "background_depth_absrel": 0.03608342778170481
+          }
+        },
+        "scenes": 64
+      },
+      "elapsed_seconds": 1123.3296201229095,
+      "bridge_disabled_at_eval": null
+    }
+  ],
+  "passed": true,
+  "elapsed_seconds": 1141.4259898662567,
+  "peak_gpu_bytes": 4767198720,
+  "checkpoint_verification": {
+    "passed": true,
+    "runs": [
+      {
+        "seed": 17,
+        "mode": "off",
+        "max_metric_difference": 0.0,
+        "validated_scenes": 32,
+        "passed": true
+      }
+    ]
+  },
+  "training_curve": [
+    {
+      "step": 500,
+      "source_macro": {
+        "box_matched_nme": 0.2456754039684434,
+        "visible_nme": 0.25222616813534704,
+        "occluded_nme": 0.22924182055116266,
+        "body_keypoint_nme": 0.22448032761747072,
+        "tail_nme": 0.2941212927706666,
+        "box_matched_pck_0.1": 0.34408967391304346,
+        "detection_aware_pck_0.1": 0.2727581521739131,
+        "matched_mask_iou": 0.6728481411919347,
+        "detection_tp": 1.078125,
+        "detection_fp": 2.921875,
+        "detection_fn": 1.921875,
+        "detection_precision": 0.26953125,
+        "detection_recall": 0.46875,
+        "all_depth_absrel": 0.05542075028643012,
+        "body_depth_absrel": 0.03552561430842616,
+        "background_depth_absrel": 0.056307245686184615
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.3787345326810559,
+          "visible_nme": 0.38030142727386607,
+          "occluded_nme": 0.3644096828831369,
+          "body_keypoint_nme": 0.33979843025144874,
+          "tail_nme": 0.4677313382344437,
+          "box_matched_pck_0.1": 0.10394021739130435,
+          "detection_aware_pck_0.1": 0.03125,
+          "matched_mask_iou": 0.5233337709651096,
+          "detection_tp": 0.5625,
+          "detection_fp": 3.4375,
+          "detection_fn": 3.4375,
+          "detection_precision": 0.140625,
+          "detection_recall": 0.140625,
+          "all_depth_absrel": 0.045605896040797234,
+          "body_depth_absrel": 0.03278038959251717,
+          "background_depth_absrel": 0.04589732736349106
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.1126162752558309,
+          "visible_nme": 0.12415090899682807,
+          "occluded_nme": 0.09407395821918842,
+          "body_keypoint_nme": 0.1091622249834927,
+          "tail_nme": 0.1205112473068896,
+          "box_matched_pck_0.1": 0.5842391304347826,
+          "detection_aware_pck_0.1": 0.5142663043478262,
+          "matched_mask_iou": 0.8223625114187598,
+          "detection_tp": 1.59375,
+          "detection_fp": 2.40625,
+          "detection_fn": 0.40625,
+          "detection_precision": 0.3984375,
+          "detection_recall": 0.796875,
+          "all_depth_absrel": 0.06523560453206301,
+          "body_depth_absrel": 0.038270839024335146,
+          "background_depth_absrel": 0.06671716400887817
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 1000,
+      "source_macro": {
+        "box_matched_nme": 0.18086442000742903,
+        "visible_nme": 0.18410934616119307,
+        "occluded_nme": 0.17448154578810665,
+        "body_keypoint_nme": 0.1609168220641095,
+        "tail_nme": 0.22645892959215935,
+        "box_matched_pck_0.1": 0.4626358695652174,
+        "detection_aware_pck_0.1": 0.4149116847826087,
+        "matched_mask_iou": 0.6810246335662669,
+        "detection_tp": 1.484375,
+        "detection_fp": 2.03125,
+        "detection_fn": 1.515625,
+        "detection_precision": 0.49088541666666663,
+        "detection_recall": 0.62109375,
+        "all_depth_absrel": 0.03724661425803788,
+        "body_depth_absrel": 0.028557683806866407,
+        "background_depth_absrel": 0.03748332121176645
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.2827829608586794,
+          "visible_nme": 0.2826147510914963,
+          "occluded_nme": 0.2807932811368818,
+          "body_keypoint_nme": 0.2455638359065233,
+          "tail_nme": 0.36785524646360757,
+          "box_matched_pck_0.1": 0.17119565217391303,
+          "detection_aware_pck_0.1": 0.07574728260869565,
+          "matched_mask_iou": 0.5552996010228526,
+          "detection_tp": 0.96875,
+          "detection_fp": 3.03125,
+          "detection_fn": 3.03125,
+          "detection_precision": 0.2421875,
+          "detection_recall": 0.2421875,
+          "all_depth_absrel": 0.04076657770201564,
+          "body_depth_absrel": 0.024042765086051077,
+          "background_depth_absrel": 0.04114976164419204
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.07894587915617866,
+          "visible_nme": 0.08560394123088985,
+          "occluded_nme": 0.06816981043933154,
+          "body_keypoint_nme": 0.07626980822169571,
+          "tail_nme": 0.08506261272071113,
+          "box_matched_pck_0.1": 0.7540760869565217,
+          "detection_aware_pck_0.1": 0.7540760869565217,
+          "matched_mask_iou": 0.8067496661096811,
+          "detection_tp": 2.0,
+          "detection_fp": 1.03125,
+          "detection_fn": 0.0,
+          "detection_precision": 0.7395833333333333,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.03372665081406012,
+          "body_depth_absrel": 0.03307260252768174,
+          "background_depth_absrel": 0.03381688077934086
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 1500,
+      "source_macro": {
+        "box_matched_nme": 0.14423787868188653,
+        "visible_nme": 0.14766036657192017,
+        "occluded_nme": 0.13094959941967171,
+        "body_keypoint_nme": 0.12493757478199541,
+        "tail_nme": 0.18835285902449478,
+        "box_matched_pck_0.1": 0.5399116847826088,
+        "detection_aware_pck_0.1": 0.4806385869565218,
+        "matched_mask_iou": 0.7024245170177892,
+        "detection_tp": 1.765625,
+        "detection_fp": 1.71875,
+        "detection_fn": 1.234375,
+        "detection_precision": 0.5690104166666666,
+        "detection_recall": 0.69140625,
+        "all_depth_absrel": 0.031131591618759558,
+        "body_depth_absrel": 0.0414204434491694,
+        "background_depth_absrel": 0.030417770380154252
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.2238687607536438,
+          "visible_nme": 0.22618396940024946,
+          "occluded_nme": 0.20510591955276913,
+          "body_keypoint_nme": 0.18903267900498122,
+          "tail_nme": 0.3034940904648725,
+          "box_matched_pck_0.1": 0.2252038043478261,
+          "detection_aware_pck_0.1": 0.10665760869565219,
+          "matched_mask_iou": 0.5763934238348156,
+          "detection_tp": 1.53125,
+          "detection_fp": 2.46875,
+          "detection_fn": 2.46875,
+          "detection_precision": 0.3828125,
+          "detection_recall": 0.3828125,
+          "all_depth_absrel": 0.038707208004780114,
+          "body_depth_absrel": 0.02377358451485634,
+          "background_depth_absrel": 0.03904879139736295
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.06460699661012927,
+          "visible_nme": 0.06913676374359087,
+          "occluded_nme": 0.0567932792865743,
+          "body_keypoint_nme": 0.0608424705590096,
+          "tail_nme": 0.07321162758411706,
+          "box_matched_pck_0.1": 0.8546195652173914,
+          "detection_aware_pck_0.1": 0.8546195652173914,
+          "matched_mask_iou": 0.8284556102007627,
+          "detection_tp": 2.0,
+          "detection_fp": 0.96875,
+          "detection_fn": 0.0,
+          "detection_precision": 0.7552083333333333,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.023555975232739,
+          "body_depth_absrel": 0.059067302383482456,
+          "background_depth_absrel": 0.021786749362945557
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 2000,
+      "source_macro": {
+        "box_matched_nme": 0.12262341584239594,
+        "visible_nme": 0.1259544066011492,
+        "occluded_nme": 0.11562203472351973,
+        "body_keypoint_nme": 0.10656551723394614,
+        "tail_nme": 0.15932718409028113,
+        "box_matched_pck_0.1": 0.6212635869565217,
+        "detection_aware_pck_0.1": 0.5888247282608695,
+        "matched_mask_iou": 0.6794561452843482,
+        "detection_tp": 2.40625,
+        "detection_fp": 0.859375,
+        "detection_fn": 0.59375,
+        "detection_precision": 0.78125,
+        "detection_recall": 0.8515625,
+        "all_depth_absrel": 0.039647836121730506,
+        "body_depth_absrel": 0.04224427996086888,
+        "background_depth_absrel": 0.03930422815028578
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.19884113261144631,
+          "visible_nme": 0.1986994314821452,
+          "occluded_nme": 0.1963937492866165,
+          "body_keypoint_nme": 0.17127370719231294,
+          "tail_nme": 0.26185239071232247,
+          "box_matched_pck_0.1": 0.29891304347826086,
+          "detection_aware_pck_0.1": 0.2340353260869565,
+          "matched_mask_iou": 0.5514221606135834,
+          "detection_tp": 2.8125,
+          "detection_fp": 1.1875,
+          "detection_fn": 1.1875,
+          "detection_precision": 0.703125,
+          "detection_recall": 0.703125,
+          "all_depth_absrel": 0.04978743672836572,
+          "body_depth_absrel": 0.038557948369998485,
+          "background_depth_absrel": 0.050038939458318055
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.04640569907334556,
+          "visible_nme": 0.0532093817201532,
+          "occluded_nme": 0.034850320160422964,
+          "body_keypoint_nme": 0.04185732727557934,
+          "tail_nme": 0.056801977468239784,
+          "box_matched_pck_0.1": 0.9436141304347826,
+          "detection_aware_pck_0.1": 0.9436141304347826,
+          "matched_mask_iou": 0.8074901299551129,
+          "detection_tp": 2.0,
+          "detection_fp": 0.53125,
+          "detection_fn": 0.0,
+          "detection_precision": 0.859375,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.029508235515095294,
+          "body_depth_absrel": 0.045930611551739275,
+          "background_depth_absrel": 0.028569516842253506
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 2500,
+      "source_macro": {
+        "box_matched_nme": 0.1016171777571443,
+        "visible_nme": 0.10255882868223024,
+        "occluded_nme": 0.09566484741398278,
+        "body_keypoint_nme": 0.09175310319804453,
+        "tail_nme": 0.1241636338922295,
+        "box_matched_pck_0.1": 0.6526834239130435,
+        "detection_aware_pck_0.1": 0.6373980978260869,
+        "matched_mask_iou": 0.7169235007604584,
+        "detection_tp": 2.78125,
+        "detection_fp": 0.5625,
+        "detection_fn": 0.21875,
+        "detection_precision": 0.8567708333333333,
+        "detection_recall": 0.9453125,
+        "all_depth_absrel": 0.0324136080162134,
+        "body_depth_absrel": 0.03326070643379353,
+        "background_depth_absrel": 0.03210411805775948
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.17032398746117827,
+          "visible_nme": 0.17196906395483025,
+          "occluded_nme": 0.15871261319187213,
+          "body_keypoint_nme": 0.1507320878319547,
+          "tail_nme": 0.21510547232797503,
+          "box_matched_pck_0.1": 0.3454483695652174,
+          "detection_aware_pck_0.1": 0.3148777173913043,
+          "matched_mask_iou": 0.6115828880574554,
+          "detection_tp": 3.5625,
+          "detection_fp": 0.4375,
+          "detection_fn": 0.4375,
+          "detection_precision": 0.890625,
+          "detection_recall": 0.890625,
+          "all_depth_absrel": 0.03924495796673,
+          "body_depth_absrel": 0.02238541655242443,
+          "background_depth_absrel": 0.039632323547266424
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.03291036805311033,
+          "visible_nme": 0.033148593409630236,
+          "occluded_nme": 0.03261708163609342,
+          "body_keypoint_nme": 0.03277411856413437,
+          "tail_nme": 0.03322179545648396,
+          "box_matched_pck_0.1": 0.9599184782608696,
+          "detection_aware_pck_0.1": 0.9599184782608696,
+          "matched_mask_iou": 0.8222641134634614,
+          "detection_tp": 2.0,
+          "detection_fp": 0.6875,
+          "detection_fn": 0.0,
+          "detection_precision": 0.8229166666666666,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.025582258065696806,
+          "body_depth_absrel": 0.04413599631516263,
+          "background_depth_absrel": 0.024575912568252534
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 3000,
+      "source_macro": {
+        "box_matched_nme": 0.08876606608990426,
+        "visible_nme": 0.08920954897639807,
+        "occluded_nme": 0.0879516392571068,
+        "body_keypoint_nme": 0.07884875192786467,
+        "tail_nme": 0.11143421274599469,
+        "box_matched_pck_0.1": 0.7007472826086956,
+        "detection_aware_pck_0.1": 0.6885190217391304,
+        "matched_mask_iou": 0.7169966367655434,
+        "detection_tp": 2.796875,
+        "detection_fp": 0.25,
+        "detection_fn": 0.203125,
+        "detection_precision": 0.93359375,
+        "detection_recall": 0.94921875,
+        "all_depth_absrel": 0.030993230728199705,
+        "body_depth_absrel": 0.03182811100850813,
+        "background_depth_absrel": 0.03071731620002538
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.14808244046909513,
+          "visible_nme": 0.14786415466063726,
+          "occluded_nme": 0.14842063221686508,
+          "body_keypoint_nme": 0.12873166012218462,
+          "tail_nme": 0.19231279554774766,
+          "box_matched_pck_0.1": 0.42595108695652173,
+          "detection_aware_pck_0.1": 0.40149456521739124,
+          "matched_mask_iou": 0.598903022822924,
+          "detection_tp": 3.59375,
+          "detection_fp": 0.40625,
+          "detection_fn": 0.40625,
+          "detection_precision": 0.8984375,
+          "detection_recall": 0.8984375,
+          "all_depth_absrel": 0.040232560597360134,
+          "body_depth_absrel": 0.024639886803925037,
+          "background_depth_absrel": 0.040590280666947365
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.029449691710713363,
+          "visible_nme": 0.030554943292158895,
+          "occluded_nme": 0.027482646297348527,
+          "body_keypoint_nme": 0.028965843733544716,
+          "tail_nme": 0.030555629944241706,
+          "box_matched_pck_0.1": 0.9755434782608695,
+          "detection_aware_pck_0.1": 0.9755434782608695,
+          "matched_mask_iou": 0.8350902507081628,
+          "detection_tp": 2.0,
+          "detection_fp": 0.09375,
+          "detection_fn": 0.0,
+          "detection_precision": 0.96875,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.021753900859039277,
+          "body_depth_absrel": 0.039016335213091224,
+          "background_depth_absrel": 0.020844351733103395
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 3500,
+      "source_macro": {
+        "box_matched_nme": 0.07887755992195035,
+        "visible_nme": 0.07988433411619525,
+        "occluded_nme": 0.07526233572716168,
+        "body_keypoint_nme": 0.07279726567500688,
+        "tail_nme": 0.09277537534353542,
+        "box_matched_pck_0.1": 0.7250339673913042,
+        "detection_aware_pck_0.1": 0.7221467391304347,
+        "matched_mask_iou": 0.6952416095882654,
+        "detection_tp": 2.9375,
+        "detection_fp": 0.09375,
+        "detection_fn": 0.0625,
+        "detection_precision": 0.9739583333333333,
+        "detection_recall": 0.984375,
+        "all_depth_absrel": 0.03769379699951969,
+        "body_depth_absrel": 0.039212554693222046,
+        "background_depth_absrel": 0.03740945059689693
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.13202987882572337,
+          "visible_nme": 0.132470517290391,
+          "occluded_nme": 0.12741378830177236,
+          "body_keypoint_nme": 0.11851098143932859,
+          "tail_nme": 0.16293021570891142,
+          "box_matched_pck_0.1": 0.47588315217391297,
+          "detection_aware_pck_0.1": 0.4701086956521739,
+          "matched_mask_iou": 0.5658375043421984,
+          "detection_tp": 3.875,
+          "detection_fp": 0.125,
+          "detection_fn": 0.125,
+          "detection_precision": 0.96875,
+          "detection_recall": 0.96875,
+          "all_depth_absrel": 0.056622525909915566,
+          "body_depth_absrel": 0.04260546626755968,
+          "background_depth_absrel": 0.056938021909445524
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.025725241018177337,
+          "visible_nme": 0.027298150941999492,
+          "occluded_nme": 0.023110883152550984,
+          "body_keypoint_nme": 0.02708354991068518,
+          "tail_nme": 0.02262053497815941,
+          "box_matched_pck_0.1": 0.9741847826086956,
+          "detection_aware_pck_0.1": 0.9741847826086956,
+          "matched_mask_iou": 0.8246457148343325,
+          "detection_tp": 2.0,
+          "detection_fp": 0.0625,
+          "detection_fn": 0.0,
+          "detection_precision": 0.9791666666666666,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.018765068089123815,
+          "body_depth_absrel": 0.035819643118884414,
+          "background_depth_absrel": 0.01788087928434834
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 4000,
+      "source_macro": {
+        "box_matched_nme": 0.0694089083435064,
+        "visible_nme": 0.06925423728355724,
+        "occluded_nme": 0.06873259900328657,
+        "body_keypoint_nme": 0.06182188785710707,
+        "tail_nme": 0.08675066945527629,
+        "box_matched_pck_0.1": 0.7693614130434783,
+        "detection_aware_pck_0.1": 0.7559442934782609,
+        "matched_mask_iou": 0.7012251883279532,
+        "detection_tp": 2.875,
+        "detection_fp": 0.140625,
+        "detection_fn": 0.125,
+        "detection_precision": 0.9635416666666666,
+        "detection_recall": 0.96875,
+        "all_depth_absrel": 0.031637657433748245,
+        "body_depth_absrel": 0.04740062009659596,
+        "background_depth_absrel": 0.030740715330466628
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.11727429705872608,
+          "visible_nme": 0.11714548593863286,
+          "occluded_nme": 0.11553329665845202,
+          "body_keypoint_nme": 0.10195879440519207,
+          "tail_nme": 0.15228116026680383,
+          "box_matched_pck_0.1": 0.5529891304347826,
+          "detection_aware_pck_0.1": 0.5261548913043479,
+          "matched_mask_iou": 0.5688712284900248,
+          "detection_tp": 3.75,
+          "detection_fp": 0.25,
+          "detection_fn": 0.25,
+          "detection_precision": 0.9375,
+          "detection_recall": 0.9375,
+          "all_depth_absrel": 0.03765108669176698,
+          "body_depth_absrel": 0.028006831475067884,
+          "background_depth_absrel": 0.037875435897149146
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.02154351962828672,
+          "visible_nme": 0.02136298862848163,
+          "occluded_nme": 0.021931901348121126,
+          "body_keypoint_nme": 0.021684981309022078,
+          "tail_nme": 0.021220178643748762,
+          "box_matched_pck_0.1": 0.9857336956521738,
+          "detection_aware_pck_0.1": 0.9857336956521738,
+          "matched_mask_iou": 0.8335791481658816,
+          "detection_tp": 2.0,
+          "detection_fp": 0.03125,
+          "detection_fn": 0.0,
+          "detection_precision": 0.9895833333333333,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.025624228175729513,
+          "body_depth_absrel": 0.06679440871812403,
+          "background_depth_absrel": 0.02360599476378411
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 4500,
+      "source_macro": {
+        "box_matched_nme": 0.06685073686068553,
+        "visible_nme": 0.06632831713037748,
+        "occluded_nme": 0.06709438191559362,
+        "body_keypoint_nme": 0.06028345752140751,
+        "tail_nme": 0.08186166106474957,
+        "box_matched_pck_0.1": 0.7802309782608696,
+        "detection_aware_pck_0.1": 0.779211956521739,
+        "matched_mask_iou": 0.716062274761498,
+        "detection_tp": 2.984375,
+        "detection_fp": 0.015625,
+        "detection_fn": 0.015625,
+        "detection_precision": 0.99609375,
+        "detection_recall": 0.99609375,
+        "all_depth_absrel": 0.02591098635457456,
+        "body_depth_absrel": 0.027893313847016543,
+        "background_depth_absrel": 0.025652109761722386
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.11303665402811416,
+          "visible_nme": 0.11246914299381644,
+          "occluded_nme": 0.11315920551181,
+          "body_keypoint_nme": 0.09911986579032828,
+          "tail_nme": 0.1448464557144819,
+          "box_matched_pck_0.1": 0.5733695652173914,
+          "detection_aware_pck_0.1": 0.5713315217391304,
+          "matched_mask_iou": 0.5991958575323224,
+          "detection_tp": 3.96875,
+          "detection_fp": 0.03125,
+          "detection_fn": 0.03125,
+          "detection_precision": 0.9921875,
+          "detection_recall": 0.9921875,
+          "all_depth_absrel": 0.03288636193610728,
+          "body_depth_absrel": 0.02171454281779006,
+          "background_depth_absrel": 0.03314282256178558
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.0206648196932569,
+          "visible_nme": 0.020187491266938532,
+          "occluded_nme": 0.021029558319377254,
+          "body_keypoint_nme": 0.02144704925248675,
+          "tail_nme": 0.018876866415017245,
+          "box_matched_pck_0.1": 0.9870923913043478,
+          "detection_aware_pck_0.1": 0.9870923913043478,
+          "matched_mask_iou": 0.8329286919906735,
+          "detection_tp": 2.0,
+          "detection_fp": 0.0,
+          "detection_fn": 0.0,
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.018935610773041844,
+          "body_depth_absrel": 0.034072084876243025,
+          "background_depth_absrel": 0.018161396961659193
+        }
+      },
+      "scenes": 64
+    },
+    {
+      "step": 5000,
+      "source_macro": {
+        "box_matched_nme": 0.0643577222443958,
+        "visible_nme": 0.06344779587015055,
+        "occluded_nme": 0.06672701576750636,
+        "body_keypoint_nme": 0.05730865725365675,
+        "tail_nme": 0.08046987079465648,
+        "box_matched_pck_0.1": 0.787024456521739,
+        "detection_aware_pck_0.1": 0.7817595108695652,
+        "matched_mask_iou": 0.7175479623256251,
+        "detection_tp": 2.9375,
+        "detection_fp": 0.0625,
+        "detection_fn": 0.0625,
+        "detection_precision": 0.984375,
+        "detection_recall": 0.984375,
+        "all_depth_absrel": 0.03958837396930903,
+        "body_depth_absrel": 0.04442876664688811,
+        "background_depth_absrel": 0.0390610046160873
+      },
+      "per_source": {
+        "crim13/021709_A25_Block22_BCfe1_t": {
+          "box_matched_nme": 0.11031594823278916,
+          "visible_nme": 0.10940046826652487,
+          "occluded_nme": 0.11389852475007803,
+          "body_keypoint_nme": 0.09597585321233737,
+          "tail_nme": 0.1430933082795361,
+          "box_matched_pck_0.1": 0.5842391304347825,
+          "detection_aware_pck_0.1": 0.5737092391304348,
+          "matched_mask_iou": 0.602767565054819,
+          "detection_tp": 3.875,
+          "detection_fp": 0.125,
+          "detection_fn": 0.125,
+          "detection_precision": 0.96875,
+          "detection_recall": 0.96875,
+          "all_depth_absrel": 0.041680146707221866,
+          "body_depth_absrel": 0.0260037126718089,
+          "background_depth_absrel": 0.04203858145046979
+        },
+        "mouse_climb_wall_91": {
+          "box_matched_nme": 0.018399496256002432,
+          "visible_nme": 0.01749512347377622,
+          "occluded_nme": 0.019555506784934708,
+          "body_keypoint_nme": 0.018641461294976125,
+          "tail_nme": 0.017846433309776852,
+          "box_matched_pck_0.1": 0.9898097826086956,
+          "detection_aware_pck_0.1": 0.9898097826086956,
+          "matched_mask_iou": 0.8323283595964313,
+          "detection_tp": 2.0,
+          "detection_fp": 0.0,
+          "detection_fn": 0.0,
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "all_depth_absrel": 0.0374966012313962,
+          "body_depth_absrel": 0.06285382062196732,
+          "background_depth_absrel": 0.03608342778170481
+        }
+      },
+      "scenes": 64
+    }
+  ],
+  "split_manifest": [
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 1,
+      "source_frame": 1930,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000001",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 7,
+      "source_frame": 2412,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000007",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 14,
+      "source_frame": 2770,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000014",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 20,
+      "source_frame": 3022,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000020",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 27,
+      "source_frame": 3359,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000027",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 33,
+      "source_frame": 3654,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000033",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 40,
+      "source_frame": 4147,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000040",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 46,
+      "source_frame": 4525,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000046",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 52,
+      "source_frame": 4777,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000052",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 59,
+      "source_frame": 5222,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000059",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 65,
+      "source_frame": 5684,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000065",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 73,
+      "source_frame": 6203,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000073",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 79,
+      "source_frame": 6497,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000079",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 85,
+      "source_frame": 6865,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000085",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 92,
+      "source_frame": 7639,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000092",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 98,
+      "source_frame": 8304,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000098",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 105,
+      "source_frame": 9181,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000105",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 111,
+      "source_frame": 9725,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000111",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 118,
+      "source_frame": 10019,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000118",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 124,
+      "source_frame": 10271,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000124",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 130,
+      "source_frame": 10588,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000130",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 137,
+      "source_frame": 10882,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000137",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 143,
+      "source_frame": 11134,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000143",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 150,
+      "source_frame": 11610,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000150",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 156,
+      "source_frame": 12034,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000156",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 161,
+      "source_frame": 12320,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000161",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 168,
+      "source_frame": 12666,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000168",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 174,
+      "source_frame": 13028,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000174",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 181,
+      "source_frame": 13801,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000181",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 187,
+      "source_frame": 14255,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000187",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 194,
+      "source_frame": 14969,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000194",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "crim13/021709_A25_Block22_BCfe1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 200,
+      "source_frame": 16045,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000200",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 1,
+      "source_frame": 1,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000001",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 4,
+      "source_frame": 4,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000004",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 7,
+      "source_frame": 7,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000007",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 10,
+      "source_frame": 10,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000010",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 13,
+      "source_frame": 13,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000013",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 16,
+      "source_frame": 16,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000016",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 18,
+      "source_frame": 18,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000018",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 21,
+      "source_frame": 21,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000021",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 24,
+      "source_frame": 24,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000024",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 27,
+      "source_frame": 27,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000027",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 30,
+      "source_frame": 30,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000030",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 33,
+      "source_frame": 33,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000033",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 36,
+      "source_frame": 36,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000036",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 39,
+      "source_frame": 39,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000039",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 42,
+      "source_frame": 42,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000042",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 45,
+      "source_frame": 45,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000045",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 47,
+      "source_frame": 47,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000047",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 50,
+      "source_frame": 50,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000050",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 53,
+      "source_frame": 53,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000053",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 56,
+      "source_frame": 56,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000056",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 59,
+      "source_frame": 59,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000059",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 62,
+      "source_frame": 62,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000062",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 65,
+      "source_frame": 65,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000065",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 68,
+      "source_frame": 68,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000068",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 71,
+      "source_frame": 71,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000071",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 74,
+      "source_frame": 74,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000074",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 76,
+      "source_frame": 76,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000076",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 79,
+      "source_frame": 79,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000079",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 82,
+      "source_frame": 82,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000082",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 85,
+      "source_frame": 85,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000085",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 88,
+      "source_frame": 88,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000088",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "train",
+      "source_group": "mouse_climb_wall_91",
+      "dataset": "PyMouseStudio-BrownFur-ClimbWall-Core23",
+      "frame": 91,
+      "source_frame": 91,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000091",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 352,
+      "source_frame": 1134,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000352",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 235,
+      "source_frame": 1939,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000235",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 393,
+      "source_frame": 3393,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000393",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 223,
+      "source_frame": 4335,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000223",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 230,
+      "source_frame": 5503,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000230",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 304,
+      "source_frame": 6352,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000304",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 287,
+      "source_frame": 8074,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000287",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 296,
+      "source_frame": 9208,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000296",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 384,
+      "source_frame": 10429,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000384",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 246,
+      "source_frame": 11517,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000246",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 218,
+      "source_frame": 12817,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000218",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 215,
+      "source_frame": 13764,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000215",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 291,
+      "source_frame": 14993,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000291",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 383,
+      "source_frame": 16405,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000383",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 392,
+      "source_frame": 17709,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000392",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "crim13/021309_A29_Block16_BCma1_t",
+      "dataset": "Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1",
+      "frame": 222,
+      "source_frame": 18741,
+      "expected_instances": 2,
+      "image_hw": [
+        144,
+        256
+      ],
+      "depth_units": "millimeter",
+      "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000222",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 1,
+      "source_frame": 1,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000001",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 7,
+      "source_frame": 7,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000007",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 13,
+      "source_frame": 13,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000013",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 19,
+      "source_frame": 19,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000019",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 25,
+      "source_frame": 25,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000025",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 31,
+      "source_frame": 31,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000031",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 37,
+      "source_frame": 37,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000037",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 43,
+      "source_frame": 43,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000043",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 49,
+      "source_frame": 49,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000049",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 55,
+      "source_frame": 55,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000055",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 61,
+      "source_frame": 61,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000061",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 67,
+      "source_frame": 67,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000067",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 73,
+      "source_frame": 73,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000073",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 79,
+      "source_frame": 79,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000079",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 85,
+      "source_frame": 85,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000085",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    },
+    {
+      "split": "val",
+      "source_group": "mouse_wash_face_91",
+      "dataset": "PyMouseStudio-BrownFur-WashFace-Core23",
+      "frame": 91,
+      "source_frame": 91,
+      "expected_instances": 1,
+      "image_hw": [
+        256,
+        256
+      ],
+      "depth_units": "Blender world units",
+      "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000091",
+      "views": [
+        0,
+        2
+      ],
+      "pfm_flip_y": true,
+      "detection_annotation_complete": true
+    }
+  ],
+  "execution_verified": true,
+  "production_ready": false,
+  "paired_ablation": false,
+  "findings": [
+    "Eight-scene pose-only memorization passed; this separate 64-scene multitask baseline is not equally fitted across sources.",
+    "Single-mouse training is well fitted; dual-mouse training remains weaker and both held-out sources show a generalization gap.",
+    "Do not attribute differences from old 1000-step runs to one factor: loss weight and update budget both changed.",
+    "One seed and shared synthetic assets; no evidence for real-animal generalization or coupling benefit.",
+    "No additional training was launched during acceptance."
+  ],
+  "visual_review": {
+    "files": [
+      "output/depth_pose_baseline_5000_v2/seed17_off/visuals/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1_000235.png",
+      "output/depth_pose_baseline_5000_v2/seed17_off/visuals/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1_000352.png",
+      "output/depth_pose_baseline_5000_v2/seed17_off/visuals/PyMouseStudio-BrownFur-WashFace-Core23_000001.png",
+      "output/depth_pose_baseline_5000_v2/seed17_off/visuals/PyMouseStudio-BrownFur-WashFace-Core23_000007.png"
+    ],
+    "observations": [
+      "Dual frame235: body localization improves, but the brown-mouse top-view tail is shortened/misdirected.",
+      "Dual frame352: predicted points cluster and the brown-mouse tail is largely missing; matching colors do not establish identity tracking.",
+      "WashFace frames1/7: trunk is roughly located, but head landmarks extend beyond the mouse and tail extent is shortened.",
+      "Depth preserves coarse cage/body structure but is noisy and blurred at fine boundaries; top-view mouse contrast is weak."
+    ]
+  }
+}

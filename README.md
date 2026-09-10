@@ -10,8 +10,10 @@ The [300/1000-step results](docs/depth_pose_pilot_results.md) do not demonstrate
 stable joint benefit; coupling stays off by default while pose localization is investigated.
 The [8-scene pose diagnostic](docs/pose_overfit_diagnostic.md) identifies local
 heatmap supervision as a major bottleneck in this setting. Disabling that auxiliary
-loss passes the training-only overfit gate; a corrected 5000-step baseline is being
-evaluated separately. This is not evidence of held-out generalization yet.
+loss passes the training-only overfit gate. The corrected 5000-step baseline has
+completed and passed checkpoint reload verification: train/held-out NME is
+0.064/0.178, with a substantial generalization gap and weaker dual-mouse fitting.
+It is not production-ready or a new paired coupling ablation.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
