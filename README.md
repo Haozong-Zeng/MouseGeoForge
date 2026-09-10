@@ -38,7 +38,11 @@ ablation or evidence of real-animal generalization.
 A [768 resolution-only follow-up](docs/pose_diverse_resolution_768_control.md)
 keeps the same diverse400 data, seed, update order, losses and 15000-step schedule.
 It recomputes RGB features from source images; no 512 checkpoint continuation.
-Results are pending independent reload and fixed-frame visual acceptance.
+The run, independent reload and fixed-frame visual review are complete: 768 improves
+single-mouse PCK (41.03% to 49.73%) and dense depth/masks, but worsens dual-mouse
+NME (0.102 to 0.122) and PCK (58.02% to 53.60%). Limb contraction and tail errors
+remain. Keep 512 as the current dual-pose baseline; one seed is not a universal
+resolution ranking. No further experiment was automatically launched.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
