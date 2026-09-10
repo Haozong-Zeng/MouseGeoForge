@@ -28,13 +28,26 @@ def main():
             deltas[split][source]={k:high[k]-v for k,v in metrics.items() if v is not None and high[k] is not None}
     audit=json.loads((folders[1]/'resolution_audit.json').read_text())
     assert audit['passed'] and audit['compared_scenes']==96
+    curves=[json.loads((p/'seed17_off/training_curve.json').read_text()) for p in folders]
     write_json(ROOT/'docs/experiments/pose_resolution_512_results.json',dict(
         execution_verified=True,equal_updates_not_equal_compute=True,
         identical_initialization_and_training_order=True,single_seed=True,
         low=reports[0],high=reports[1],checkpoint_verification=checks,
-        per_source_high_minus_low=deltas,resolution_geometry_audit=audit,
+        per_source_high_minus_low=deltas,resolution_geometry_audit=audit,training_curves=curves,
         limitation='Shared synthetic assets and one seed; no real-animal or causal mechanism claim beyond this resolution intervention.'))
     print(json.dumps(dict(low=runs[0]['validation'],high=runs[1]['validation'],delta=deltas),indent=2))
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    fig,axes=plt.subplots(1,2,figsize=(11,4),layout='constrained')
+    sources=[('mouse_climb_wall_91','Single-mouse training'),
+             ('crim13/021709_A25_Block22_BCfe1_t','Dual-mouse training')]
+    for ax,(source,title) in zip(axes,sources):
+        for side,curve in zip((256,512),curves):
+            ax.plot([r['step'] for r in curve],[r['per_source'][source]['box_matched_nme'] for r in curve],label=str(side))
+        ax.set(title=title,xlabel='Updates',ylabel='Box-matched NME'); ax.grid(alpha=.2); ax.legend(title='Input long side')
+    fig.suptitle('Same initialization / seed17 / fixed data / training curves (not validation)')
+    fig.savefig(folders[1]/'resolution_training_curves.png',dpi=150); plt.close(fig)
 
 
 if __name__=='__main__': main()

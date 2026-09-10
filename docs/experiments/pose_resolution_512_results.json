@@ -1,0 +1,3171 @@
+{
+  "execution_verified": true,
+  "equal_updates_not_equal_compute": true,
+  "identical_initialization_and_training_order": true,
+  "single_seed": true,
+  "low": {
+    "config": {
+      "schema_version": 1,
+      "purpose": "corrected_pose_head_baseline_after_training_only_overfit_gate",
+      "seeds": [
+        17
+      ],
+      "modes": [
+        "off"
+      ],
+      "steps": 5000,
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "gradient_clip": 1.0,
+      "train_frames_per_source": 32,
+      "val_frames_per_source": 16,
+      "view_ids": [
+        0,
+        2
+      ],
+      "long_side": 256,
+      "pfm_flip_y": true,
+      "encoder_frozen": true,
+      "detach_depth_features": true,
+      "cache_encoder_features": true,
+      "augmentation": "none_for_exact_frozen_cache",
+      "depth_weight": 1.0,
+      "pose_weight": 1.0,
+      "local_heatmap_weight": 0.0,
+      "train_eval_interval": 500,
+      "body_depth_balance": 0.5,
+      "keypoint_3d_weight": 0.0,
+      "reprojection_weight": 0.0,
+      "primary_metrics": [
+        "box_matched_nme",
+        "detection_aware_pck_0.1",
+        "body_depth_absrel"
+      ],
+      "checkpoint_policy": "fixed_final_step_no_validation_selection",
+      "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+      "notes": "Run only after no_local_heatmap passes the 8-scene training-only gate. Local refinement forward remains enabled, grid detach remains false. Fresh seed17 initialization; depth supervision restored, bridge off. One-seed baseline, not a paired ablation or unseen-animal evaluation. No dataset expansion."
+    },
+    "provenance": {
+      "checkpoint_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+      "loaded_tensors": 1343,
+      "torch_version": "2.11.0+cu128",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "git_commit": "1e660263a99c6c7e37eb9609fe8155b07edc2d6a",
+      "deterministic_cudnn": true,
+      "cuda_grid_sample_backward_bitwise_determinism_not_guaranteed": true,
+      "live_cache_exact_parity": true
+    },
+    "runs": [
+      {
+        "seed": 17,
+        "mode": "off",
+        "steps": 5000,
+        "initial_state_sha256": "37713ae8b7ba03b2513675c7c02566b7f2f45ad5aa90386570b2df77da3c1e1f",
+        "train_order_sha256": "6b3b4fdd564d265ddf7e800b9806b3b477dcd4aee0924fba86d65db922bd3dfa",
+        "gradient_audit": {
+          "shared_adapter": 30.543273519724607,
+          "dense_head": 9.133588924058131,
+          "instance_pose_head": 1100.3851911764432,
+          "depth_pose_bridge": 0
+        },
+        "initial_validation": {
+          "source_macro": {
+            "box_matched_nme": 0.553953329772491,
+            "visible_nme": 0.5587396901061832,
+            "occluded_nme": 0.5445129473570198,
+            "body_keypoint_nme": 0.5070923682987996,
+            "tail_nme": 0.6610640988552144,
+            "box_matched_pck_0.1": 0.0033967391304347825,
+            "detection_aware_pck_0.1": 0.0,
+            "matched_mask_iou": 0.018925809679672057,
+            "detection_tp": 0.0,
+            "detection_fp": 0.0,
+            "detection_fn": 3.0,
+            "detection_precision": 0.0,
+            "detection_recall": 0.0,
+            "all_depth_absrel": 0.41985711082816124,
+            "body_depth_absrel": 0.4732199748978019,
+            "background_depth_absrel": 0.417958945967257
+          },
+          "per_source": {
+            "crim13/021309_A29_Block16_BCma1_t": {
+              "box_matched_nme": 0.6422066601441221,
+              "visible_nme": 0.6403722231518105,
+              "occluded_nme": 0.6511062511613028,
+              "body_keypoint_nme": 0.5929403742720751,
+              "tail_nme": 0.7548153135659439,
+              "box_matched_pck_0.1": 0.004076086956521739,
+              "detection_aware_pck_0.1": 0.0,
+              "matched_mask_iou": 0.006218621332436669,
+              "detection_tp": 0.0,
+              "detection_fp": 0.0,
+              "detection_fn": 4.0,
+              "detection_precision": 0.0,
+              "detection_recall": 0.0,
+              "all_depth_absrel": 0.3502934370189905,
+              "body_depth_absrel": 0.36979129165410995,
+              "background_depth_absrel": 0.34986661188304424
+            },
+            "mouse_wash_face_91": {
+              "box_matched_nme": 0.46569999940085993,
+              "visible_nme": 0.47710715706055573,
+              "occluded_nme": 0.43791964355273677,
+              "body_keypoint_nme": 0.421244362325524,
+              "tail_nme": 0.567312884144485,
+              "box_matched_pck_0.1": 0.002717391304347826,
+              "detection_aware_pck_0.1": 0.0,
+              "matched_mask_iou": 0.031632998026907444,
+              "detection_tp": 0.0,
+              "detection_fp": 0.0,
+              "detection_fn": 2.0,
+              "detection_precision": 0.0,
+              "detection_recall": 0.0,
+              "all_depth_absrel": 0.48942078463733196,
+              "body_depth_absrel": 0.5766486581414938,
+              "background_depth_absrel": 0.4860512800514698
+            }
+          },
+          "scenes": 32
+        },
+        "validation": {
+          "source_macro": {
+            "box_matched_nme": 0.17791884123629564,
+            "visible_nme": 0.18550355384816933,
+            "occluded_nme": 0.15688683951881732,
+            "body_keypoint_nme": 0.1669920481773488,
+            "tail_nme": 0.2028943682281741,
+            "box_matched_pck_0.1": 0.2921195652173913,
+            "detection_aware_pck_0.1": 0.2632472826086956,
+            "matched_mask_iou": 0.6524549747409765,
+            "detection_tp": 2.0,
+            "detection_fp": 1.0625,
+            "detection_fn": 1.0,
+            "detection_precision": 0.6953125,
+            "detection_recall": 0.7109375,
+            "all_depth_absrel": 0.04267833346966654,
+            "body_depth_absrel": 0.09208024031249806,
+            "background_depth_absrel": 0.040692900016438216
+          },
+          "per_source": {
+            "crim13/021309_A29_Block16_BCma1_t": {
+              "box_matched_nme": 0.2088654605061532,
+              "visible_nme": 0.21023072745247984,
+              "occluded_nme": 0.19586337357519423,
+              "body_keypoint_nme": 0.18353772680916336,
+              "tail_nme": 0.26675742324213,
+              "box_matched_pck_0.1": 0.2690217391304348,
+              "detection_aware_pck_0.1": 0.2112771739130435,
+              "matched_mask_iou": 0.5157296036486514,
+              "detection_tp": 2.3125,
+              "detection_fp": 1.6875,
+              "detection_fn": 1.6875,
+              "detection_precision": 0.578125,
+              "detection_recall": 0.578125,
+              "all_depth_absrel": 0.04334773309528828,
+              "body_depth_absrel": 0.03934261843096465,
+              "background_depth_absrel": 0.04343394446186721
+            },
+            "mouse_wash_face_91": {
+              "box_matched_nme": 0.14697222196643808,
+              "visible_nme": 0.16077638024385882,
+              "occluded_nme": 0.11791030546244041,
+              "body_keypoint_nme": 0.15044636954553425,
+              "tail_nme": 0.13903131321421824,
+              "box_matched_pck_0.1": 0.3152173913043478,
+              "detection_aware_pck_0.1": 0.3152173913043478,
+              "matched_mask_iou": 0.7891803458333015,
+              "detection_tp": 1.6875,
+              "detection_fp": 0.4375,
+              "detection_fn": 0.3125,
+              "detection_precision": 0.8125,
+              "detection_recall": 0.84375,
+              "all_depth_absrel": 0.042008933844044805,
+              "body_depth_absrel": 0.14481786219403148,
+              "background_depth_absrel": 0.03795185557100922
+            }
+          },
+          "scenes": 32
+        },
+        "training": {
+          "source_macro": {
+            "box_matched_nme": 0.0643577222443958,
+            "visible_nme": 0.06344779587015055,
+            "occluded_nme": 0.06672701576750636,
+            "body_keypoint_nme": 0.05730865725365675,
+            "tail_nme": 0.08046987079465648,
+            "box_matched_pck_0.1": 0.787024456521739,
+            "detection_aware_pck_0.1": 0.7817595108695652,
+            "matched_mask_iou": 0.7175479623256251,
+            "detection_tp": 2.9375,
+            "detection_fp": 0.0625,
+            "detection_fn": 0.0625,
+            "detection_precision": 0.984375,
+            "detection_recall": 0.984375,
+            "all_depth_absrel": 0.03958837396930903,
+            "body_depth_absrel": 0.04442876664688811,
+            "background_depth_absrel": 0.0390610046160873
+          },
+          "per_source": {
+            "crim13/021709_A25_Block22_BCfe1_t": {
+              "box_matched_nme": 0.11031594823278916,
+              "visible_nme": 0.10940046826652487,
+              "occluded_nme": 0.11389852475007803,
+              "body_keypoint_nme": 0.09597585321233737,
+              "tail_nme": 0.1430933082795361,
+              "box_matched_pck_0.1": 0.5842391304347825,
+              "detection_aware_pck_0.1": 0.5737092391304348,
+              "matched_mask_iou": 0.602767565054819,
+              "detection_tp": 3.875,
+              "detection_fp": 0.125,
+              "detection_fn": 0.125,
+              "detection_precision": 0.96875,
+              "detection_recall": 0.96875,
+              "all_depth_absrel": 0.041680146707221866,
+              "body_depth_absrel": 0.0260037126718089,
+              "background_depth_absrel": 0.04203858145046979
+            },
+            "mouse_climb_wall_91": {
+              "box_matched_nme": 0.018399496256002432,
+              "visible_nme": 0.01749512347377622,
+              "occluded_nme": 0.019555506784934708,
+              "body_keypoint_nme": 0.018641461294976125,
+              "tail_nme": 0.017846433309776852,
+              "box_matched_pck_0.1": 0.9898097826086956,
+              "detection_aware_pck_0.1": 0.9898097826086956,
+              "matched_mask_iou": 0.8323283595964313,
+              "detection_tp": 2.0,
+              "detection_fp": 0.0,
+              "detection_fn": 0.0,
+              "detection_precision": 1.0,
+              "detection_recall": 1.0,
+              "all_depth_absrel": 0.0374966012313962,
+              "body_depth_absrel": 0.06285382062196732,
+              "background_depth_absrel": 0.03608342778170481
+            }
+          },
+          "scenes": 64
+        },
+        "elapsed_seconds": 1123.3296201229095,
+        "bridge_disabled_at_eval": null
+      }
+    ],
+    "passed": true,
+    "elapsed_seconds": 1141.4259898662567,
+    "peak_gpu_bytes": 4767198720
+  },
+  "high": {
+    "config": {
+      "schema_version": 1,
+      "purpose": "resolution_only_control_against_corrected_256_baseline",
+      "seeds": [
+        17
+      ],
+      "modes": [
+        "off"
+      ],
+      "steps": 5000,
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "gradient_clip": 1.0,
+      "train_frames_per_source": 32,
+      "val_frames_per_source": 16,
+      "view_ids": [
+        0,
+        2
+      ],
+      "long_side": 512,
+      "pfm_flip_y": true,
+      "encoder_frozen": true,
+      "detach_depth_features": true,
+      "cache_encoder_features": true,
+      "augmentation": "none_for_exact_frozen_cache",
+      "depth_weight": 1.0,
+      "pose_weight": 1.0,
+      "local_heatmap_weight": 0.0,
+      "train_eval_interval": 500,
+      "body_depth_balance": 0.5,
+      "keypoint_3d_weight": 0.0,
+      "reprojection_weight": 0.0,
+      "primary_metrics": [
+        "box_matched_nme",
+        "detection_aware_pck_0.1",
+        "body_depth_absrel"
+      ],
+      "checkpoint_policy": "fixed_final_step_no_validation_selection",
+      "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+      "notes": "Only long_side changes from depth_pose_baseline_5000_v2.json: dual512x288, single512x512, loaded directly from original images. Fresh same seed17 initialization and schedule, not high-res fine-tuning. Equal updates, not equal compute. No cropping, architecture, augmentation or loss changes; no 768 training automatically."
+    },
+    "provenance": {
+      "checkpoint_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+      "loaded_tensors": 1343,
+      "torch_version": "2.11.0+cu128",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "git_commit": "c629543e4488c3eb13d95a681fff6e252b6b083e",
+      "deterministic_cudnn": true,
+      "cuda_grid_sample_backward_bitwise_determinism_not_guaranteed": true,
+      "live_cache_exact_parity": true
+    },
+    "runs": [
+      {
+        "seed": 17,
+        "mode": "off",
+        "steps": 5000,
+        "initial_state_sha256": "37713ae8b7ba03b2513675c7c02566b7f2f45ad5aa90386570b2df77da3c1e1f",
+        "train_order_sha256": "6b3b4fdd564d265ddf7e800b9806b3b477dcd4aee0924fba86d65db922bd3dfa",
+        "gradient_audit": {
+          "shared_adapter": 30.12476420029998,
+          "dense_head": 6.242483097455988,
+          "instance_pose_head": 1044.200321920971,
+          "depth_pose_bridge": 0
+        },
+        "initial_validation": {
+          "source_macro": {
+            "box_matched_nme": 0.5516618319347997,
+            "visible_nme": 0.5564965096166491,
+            "occluded_nme": 0.5425966533153906,
+            "body_keypoint_nme": 0.5049786840036177,
+            "tail_nme": 0.6583661700632157,
+            "box_matched_pck_0.1": 0.0033967391304347825,
+            "detection_aware_pck_0.1": 0.0,
+            "matched_mask_iou": 0.019011185287126864,
+            "detection_tp": 0.0,
+            "detection_fp": 0.0,
+            "detection_fn": 3.0,
+            "detection_precision": 0.0,
+            "detection_recall": 0.0,
+            "all_depth_absrel": 0.380821387283504,
+            "body_depth_absrel": 0.3383844941854477,
+            "background_depth_absrel": 0.38352734595537186
+          },
+          "per_source": {
+            "crim13/021309_A29_Block16_BCma1_t": {
+              "box_matched_nme": 0.6401130927678542,
+              "visible_nme": 0.6380858867483407,
+              "occluded_nme": 0.6503112819557418,
+              "body_keypoint_nme": 0.5908454678155977,
+              "tail_nme": 0.7527248069444405,
+              "box_matched_pck_0.1": 0.004076086956521739,
+              "detection_aware_pck_0.1": 0.0,
+              "matched_mask_iou": 0.006774849638532032,
+              "detection_tp": 0.0,
+              "detection_fp": 0.0,
+              "detection_fn": 4.0,
+              "detection_precision": 0.0,
+              "detection_recall": 0.0,
+              "all_depth_absrel": 0.24913383834064007,
+              "body_depth_absrel": 0.3417592626065016,
+              "background_depth_absrel": 0.24712079763412476
+            },
+            "mouse_wash_face_91": {
+              "box_matched_nme": 0.4632105711017452,
+              "visible_nme": 0.4749071324849576,
+              "occluded_nme": 0.4348820246750395,
+              "body_keypoint_nme": 0.4191119001916377,
+              "tail_nme": 0.5640075331819909,
+              "box_matched_pck_0.1": 0.002717391304347826,
+              "detection_aware_pck_0.1": 0.0,
+              "matched_mask_iou": 0.031247520935721695,
+              "detection_tp": 0.0,
+              "detection_fp": 0.0,
+              "detection_fn": 2.0,
+              "detection_precision": 0.0,
+              "detection_recall": 0.0,
+              "all_depth_absrel": 0.512508936226368,
+              "body_depth_absrel": 0.3350097257643938,
+              "background_depth_absrel": 0.519933894276619
+            }
+          },
+          "scenes": 32
+        },
+        "validation": {
+          "source_macro": {
+            "box_matched_nme": 0.15791162724733865,
+            "visible_nme": 0.16194787310409142,
+            "occluded_nme": 0.14458936929846308,
+            "body_keypoint_nme": 0.1445822787961788,
+            "tail_nme": 0.18837870942141827,
+            "box_matched_pck_0.1": 0.39572010869565216,
+            "detection_aware_pck_0.1": 0.3522418478260869,
+            "matched_mask_iou": 0.7831309427310771,
+            "detection_tp": 1.96875,
+            "detection_fp": 1.03125,
+            "detection_fn": 1.03125,
+            "detection_precision": 0.7109375,
+            "detection_recall": 0.7109375,
+            "all_depth_absrel": 0.04421736812219024,
+            "body_depth_absrel": 0.0700929073500447,
+            "background_depth_absrel": 0.04306513332994655
+          },
+          "per_source": {
+            "crim13/021309_A29_Block16_BCma1_t": {
+              "box_matched_nme": 0.2060883470286448,
+              "visible_nme": 0.20706239140984325,
+              "occluded_nme": 0.19435800916073964,
+              "body_keypoint_nme": 0.1773891459929473,
+              "tail_nme": 0.2716865208245248,
+              "box_matched_pck_0.1": 0.2710597826086957,
+              "detection_aware_pck_0.1": 0.18410326086956522,
+              "matched_mask_iou": 0.6793726419637096,
+              "detection_tp": 2.1875,
+              "detection_fp": 1.8125,
+              "detection_fn": 1.8125,
+              "detection_precision": 0.546875,
+              "detection_recall": 0.546875,
+              "all_depth_absrel": 0.051271278178319335,
+              "body_depth_absrel": 0.037193879135884345,
+              "background_depth_absrel": 0.05157635570503771
+            },
+            "mouse_wash_face_91": {
+              "box_matched_nme": 0.10973490746603246,
+              "visible_nme": 0.1168333547983396,
+              "occluded_nme": 0.09482072943618652,
+              "body_keypoint_nme": 0.11177541159941029,
+              "tail_nme": 0.10507089801831171,
+              "box_matched_pck_0.1": 0.5203804347826086,
+              "detection_aware_pck_0.1": 0.5203804347826086,
+              "matched_mask_iou": 0.8868892434984446,
+              "detection_tp": 1.75,
+              "detection_fp": 0.25,
+              "detection_fn": 0.25,
+              "detection_precision": 0.875,
+              "detection_recall": 0.875,
+              "all_depth_absrel": 0.03716345806606114,
+              "body_depth_absrel": 0.10299193556420505,
+              "background_depth_absrel": 0.03455391095485538
+            }
+          },
+          "scenes": 32
+        },
+        "training": {
+          "source_macro": {
+            "box_matched_nme": 0.06544060548079099,
+            "visible_nme": 0.06444008285087374,
+            "occluded_nme": 0.06536650617024044,
+            "body_keypoint_nme": 0.06086338341930997,
+            "tail_nme": 0.07590282733560472,
+            "box_matched_pck_0.1": 0.7875339673913043,
+            "detection_aware_pck_0.1": 0.7837975543478262,
+            "matched_mask_iou": 0.8207133299438283,
+            "detection_tp": 2.96875,
+            "detection_fp": 0.03125,
+            "detection_fn": 0.03125,
+            "detection_precision": 0.9921875,
+            "detection_recall": 0.9921875,
+            "all_depth_absrel": 0.04017131810542196,
+            "body_depth_absrel": 0.042395468102768064,
+            "background_depth_absrel": 0.03971653923508711
+          },
+          "per_source": {
+            "crim13/021709_A25_Block22_BCfe1_t": {
+              "box_matched_nme": 0.10952296323491441,
+              "visible_nme": 0.10956219439367607,
+              "occluded_nme": 0.10662795074417908,
+              "body_keypoint_nme": 0.09972830545741829,
+              "tail_nme": 0.13191075244061978,
+              "box_matched_pck_0.1": 0.5879755434782609,
+              "detection_aware_pck_0.1": 0.5805027173913044,
+              "matched_mask_iou": 0.7311784743797034,
+              "detection_tp": 3.9375,
+              "detection_fp": 0.0625,
+              "detection_fn": 0.0625,
+              "detection_precision": 0.984375,
+              "detection_recall": 0.984375,
+              "all_depth_absrel": 0.05533481249585748,
+              "body_depth_absrel": 0.03255619126139209,
+              "background_depth_absrel": 0.05585544800851494
+            },
+            "mouse_climb_wall_91": {
+              "box_matched_nme": 0.021358247726667563,
+              "visible_nme": 0.01931797130807141,
+              "occluded_nme": 0.024105061596301793,
+              "body_keypoint_nme": 0.02199846138120165,
+              "tail_nme": 0.01989490223058965,
+              "box_matched_pck_0.1": 0.9870923913043478,
+              "detection_aware_pck_0.1": 0.9870923913043478,
+              "matched_mask_iou": 0.9102481855079532,
+              "detection_tp": 2.0,
+              "detection_fp": 0.0,
+              "detection_fn": 0.0,
+              "detection_precision": 1.0,
+              "detection_recall": 1.0,
+              "all_depth_absrel": 0.025007823714986444,
+              "body_depth_absrel": 0.05223474494414404,
+              "background_depth_absrel": 0.023577630461659282
+            }
+          },
+          "scenes": 64
+        },
+        "elapsed_seconds": 1374.200366973877,
+        "bridge_disabled_at_eval": null
+      }
+    ],
+    "passed": true,
+    "elapsed_seconds": 1396.13432097435,
+    "peak_gpu_bytes": 5511140864
+  },
+  "checkpoint_verification": [
+    {
+      "passed": true,
+      "runs": [
+        {
+          "seed": 17,
+          "mode": "off",
+          "max_metric_difference": 0.0,
+          "validated_scenes": 32,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "passed": true,
+      "runs": [
+        {
+          "seed": 17,
+          "mode": "off",
+          "max_metric_difference": 0.0,
+          "validated_scenes": 32,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "per_source_high_minus_low": {
+    "training": {
+      "crim13/021709_A25_Block22_BCfe1_t": {
+        "box_matched_nme": -0.0007929849978747516,
+        "visible_nme": 0.00016172612715119328,
+        "occluded_nme": -0.00727057400589895,
+        "body_keypoint_nme": 0.0037524522450809172,
+        "tail_nme": -0.011182555838916308,
+        "box_matched_pck_0.1": 0.0037364130434783815,
+        "detection_aware_pck_0.1": 0.006793478260869623,
+        "matched_mask_iou": 0.12841090932488441,
+        "detection_tp": 0.0625,
+        "detection_fp": -0.0625,
+        "detection_fn": -0.0625,
+        "detection_precision": 0.015625,
+        "detection_recall": 0.015625,
+        "all_depth_absrel": 0.013654665788635612,
+        "body_depth_absrel": 0.006552478589583188,
+        "background_depth_absrel": 0.013816866558045149
+      },
+      "mouse_climb_wall_91": {
+        "box_matched_nme": 0.002958751470665131,
+        "visible_nme": 0.0018228478342951875,
+        "occluded_nme": 0.004549554811367085,
+        "body_keypoint_nme": 0.0033570000862255256,
+        "tail_nme": 0.0020484689208127987,
+        "box_matched_pck_0.1": -0.0027173913043477826,
+        "detection_aware_pck_0.1": -0.0027173913043477826,
+        "matched_mask_iou": 0.07791982591152191,
+        "detection_tp": 0.0,
+        "detection_fp": 0.0,
+        "detection_fn": 0.0,
+        "detection_precision": 0.0,
+        "detection_recall": 0.0,
+        "all_depth_absrel": -0.012488777516409755,
+        "body_depth_absrel": -0.010619075677823275,
+        "background_depth_absrel": -0.01250579732004553
+      }
+    },
+    "validation": {
+      "crim13/021309_A29_Block16_BCma1_t": {
+        "box_matched_nme": -0.0027771134775083917,
+        "visible_nme": -0.0031683360426365825,
+        "occluded_nme": -0.0015053644144545908,
+        "body_keypoint_nme": -0.006148580816216054,
+        "tail_nme": 0.004929097582394848,
+        "box_matched_pck_0.1": 0.0020380434782608647,
+        "detection_aware_pck_0.1": -0.02717391304347827,
+        "matched_mask_iou": 0.16364303831505822,
+        "detection_tp": -0.125,
+        "detection_fp": 0.125,
+        "detection_fn": 0.125,
+        "detection_precision": -0.03125,
+        "detection_recall": -0.03125,
+        "all_depth_absrel": 0.007923545083031058,
+        "body_depth_absrel": -0.002148739295080304,
+        "background_depth_absrel": 0.0081424112431705
+      },
+      "mouse_wash_face_91": {
+        "box_matched_nme": -0.03723731450040563,
+        "visible_nme": -0.043943025445519215,
+        "occluded_nme": -0.02308957602625389,
+        "body_keypoint_nme": -0.03867095794612396,
+        "tail_nme": -0.033960415195906535,
+        "box_matched_pck_0.1": 0.20516304347826086,
+        "detection_aware_pck_0.1": 0.20516304347826086,
+        "matched_mask_iou": 0.09770889766514301,
+        "detection_tp": 0.0625,
+        "detection_fp": -0.1875,
+        "detection_fn": -0.0625,
+        "detection_precision": 0.0625,
+        "detection_recall": 0.03125,
+        "all_depth_absrel": -0.0048454757779836655,
+        "body_depth_absrel": -0.041825926629826427,
+        "background_depth_absrel": -0.0033979446161538363
+      }
+    }
+  },
+  "resolution_geometry_audit": {
+    "passed": true,
+    "compared_scenes": 96,
+    "only_config_change": "long_side256_to512",
+    "unchanged_world_scale": true,
+    "unchanged_normalized_uv": true,
+    "intrinsics_scaled_twice": true,
+    "records": [
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000001",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.007067416561767459,
+        "flipped_surface_anchor_absrel_median": 0.0938476137816906,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000007",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.005948113976046443,
+        "flipped_surface_anchor_absrel_median": 0.12257196381688118,
+        "surface_anchor_count": 84
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000014",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006520054768770933,
+        "flipped_surface_anchor_absrel_median": 0.07230618596076965,
+        "surface_anchor_count": 79
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000020",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.007013444323092699,
+        "flipped_surface_anchor_absrel_median": 0.2042694240808487,
+        "surface_anchor_count": 83
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000027",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.007355312118306756,
+        "flipped_surface_anchor_absrel_median": 0.07822676002979279,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000033",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.006934606237336993,
+        "flipped_surface_anchor_absrel_median": 0.09858450666069984,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000040",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.005804607877507806,
+        "flipped_surface_anchor_absrel_median": 0.08245174214243889,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000046",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.004406366031616926,
+        "flipped_surface_anchor_absrel_median": 0.16530791670084,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000052",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.004657768411561847,
+        "flipped_surface_anchor_absrel_median": 0.11831403523683548,
+        "surface_anchor_count": 86
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000059",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.007181980414316058,
+        "flipped_surface_anchor_absrel_median": 0.07310814037919044,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000065",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006860718131065369,
+        "flipped_surface_anchor_absrel_median": 0.07330092042684555,
+        "surface_anchor_count": 77
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000073",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006423408631235361,
+        "flipped_surface_anchor_absrel_median": 0.07026747614145279,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000079",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.007291676476597786,
+        "flipped_surface_anchor_absrel_median": 0.08263765648007393,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000085",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.007038371404632926,
+        "flipped_surface_anchor_absrel_median": 0.13666987419128418,
+        "surface_anchor_count": 84
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000092",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.006120528094470501,
+        "flipped_surface_anchor_absrel_median": 0.1819692701101303,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000098",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.006524608936160803,
+        "flipped_surface_anchor_absrel_median": 0.07852311804890633,
+        "surface_anchor_count": 76
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000105",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.007152693811804056,
+        "flipped_surface_anchor_absrel_median": 0.08119270950555801,
+        "surface_anchor_count": 83
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000111",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.005825018044561148,
+        "flipped_surface_anchor_absrel_median": 0.12626951932907104,
+        "surface_anchor_count": 84
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000118",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.007127240765839815,
+        "flipped_surface_anchor_absrel_median": 0.10995875298976898,
+        "surface_anchor_count": 83
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000124",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.005911216605454683,
+        "flipped_surface_anchor_absrel_median": 0.08990471810102463,
+        "surface_anchor_count": 78
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000130",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006137697491794825,
+        "flipped_surface_anchor_absrel_median": 0.08273894339799881,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000137",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.007250684546306729,
+        "flipped_surface_anchor_absrel_median": 0.07068387418985367,
+        "surface_anchor_count": 70
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000143",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.006646766792982817,
+        "flipped_surface_anchor_absrel_median": 0.10466940701007843,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000150",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.0062711420468986034,
+        "flipped_surface_anchor_absrel_median": 0.08988352119922638,
+        "surface_anchor_count": 76
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000156",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.005725096445530653,
+        "flipped_surface_anchor_absrel_median": 0.11542120575904846,
+        "surface_anchor_count": 85
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000161",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.006492991000413895,
+        "flipped_surface_anchor_absrel_median": 0.07751154154539108,
+        "surface_anchor_count": 83
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000168",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006968810688704252,
+        "flipped_surface_anchor_absrel_median": 0.07401637732982635,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000174",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006200367119163275,
+        "flipped_surface_anchor_absrel_median": 0.16033994406461716,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000181",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006513095926493406,
+        "flipped_surface_anchor_absrel_median": 0.0769289918243885,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000187",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.007166733033955097,
+        "flipped_surface_anchor_absrel_median": 0.06725403666496277,
+        "surface_anchor_count": 75
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000194",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.005536620272323489,
+        "flipped_surface_anchor_absrel_median": 0.12867264077067375,
+        "surface_anchor_count": 78
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000200",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.006342772860080004,
+        "flipped_surface_anchor_absrel_median": 0.07815967872738838,
+        "surface_anchor_count": 84
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000001",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.1552734375e-05,
+        "surface_anchor_absrel_median": 0.02351376786828041,
+        "flipped_surface_anchor_absrel_median": 1.700994610786438,
+        "surface_anchor_count": 25
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000004",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.03273825440555811,
+        "flipped_surface_anchor_absrel_median": 1.7782434821128845,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000007",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.013580058701336384,
+        "flipped_surface_anchor_absrel_median": 1.8908832669258118,
+        "surface_anchor_count": 26
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000010",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.009628836065530777,
+        "flipped_surface_anchor_absrel_median": 1.8679620623588562,
+        "surface_anchor_count": 24
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000013",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.010496812872588634,
+        "flipped_surface_anchor_absrel_median": 1.7955018281936646,
+        "surface_anchor_count": 27
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000016",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.01160081010311842,
+        "flipped_surface_anchor_absrel_median": 1.8001505136489868,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000018",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.012675704434514046,
+        "flipped_surface_anchor_absrel_median": 1.8736115097999573,
+        "surface_anchor_count": 28
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000021",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.011495199054479599,
+        "flipped_surface_anchor_absrel_median": 1.5486243963241577,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000024",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.014301869086921215,
+        "flipped_surface_anchor_absrel_median": 1.0723017454147339,
+        "surface_anchor_count": 33
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000027",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.012837916146963835,
+        "flipped_surface_anchor_absrel_median": 1.2158674597740173,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000030",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.1552734375e-05,
+        "surface_anchor_absrel_median": 0.012456641998142004,
+        "flipped_surface_anchor_absrel_median": 0.6268005222082138,
+        "surface_anchor_count": 32
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000033",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.012031106743961573,
+        "flipped_surface_anchor_absrel_median": 0.5861665308475494,
+        "surface_anchor_count": 32
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000036",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.013490326702594757,
+        "flipped_surface_anchor_absrel_median": 0.22838102281093597,
+        "surface_anchor_count": 33
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000039",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.013106404803693295,
+        "flipped_surface_anchor_absrel_median": 1.097699224948883,
+        "surface_anchor_count": 32
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000042",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.011717675253748894,
+        "flipped_surface_anchor_absrel_median": 1.0967950820922852,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000045",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 7.62939453125e-05,
+        "surface_anchor_absrel_median": 0.015624233521521091,
+        "flipped_surface_anchor_absrel_median": 1.0630200505256653,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000047",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.011893492192029953,
+        "flipped_surface_anchor_absrel_median": 1.0827581882476807,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000050",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.012570722959935665,
+        "flipped_surface_anchor_absrel_median": 1.0823553800582886,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000053",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 7.62939453125e-05,
+        "surface_anchor_absrel_median": 0.01356025692075491,
+        "flipped_surface_anchor_absrel_median": 1.0911762118339539,
+        "surface_anchor_count": 28
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000056",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.012230699881911278,
+        "flipped_surface_anchor_absrel_median": 1.0913819670677185,
+        "surface_anchor_count": 28
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000059",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 8.217109279939905e-05,
+        "surface_anchor_absrel_median": 0.014495662413537502,
+        "flipped_surface_anchor_absrel_median": 1.0875756740570068,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000062",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.014970577321946621,
+        "flipped_surface_anchor_absrel_median": 1.0896329879760742,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000065",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 8.217109279939905e-05,
+        "surface_anchor_absrel_median": 0.014383013360202312,
+        "flipped_surface_anchor_absrel_median": 0.9909141361713409,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000068",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.014826172031462193,
+        "flipped_surface_anchor_absrel_median": 1.1178388595581055,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000071",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.011723204515874386,
+        "flipped_surface_anchor_absrel_median": 1.2051515579223633,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000074",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.014093576930463314,
+        "flipped_surface_anchor_absrel_median": 1.7078641653060913,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000076",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.1552734375e-05,
+        "surface_anchor_absrel_median": 0.012011673301458359,
+        "flipped_surface_anchor_absrel_median": 1.7830791473388672,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000079",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.011106415651738644,
+        "flipped_surface_anchor_absrel_median": 1.8294700384140015,
+        "surface_anchor_count": 27
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000082",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.015456548426300287,
+        "flipped_surface_anchor_absrel_median": 1.7609120607376099,
+        "surface_anchor_count": 28
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000085",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.012667875736951828,
+        "flipped_surface_anchor_absrel_median": 1.786366581916809,
+        "surface_anchor_count": 25
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000088",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.1552734375e-05,
+        "surface_anchor_absrel_median": 0.01288478821516037,
+        "flipped_surface_anchor_absrel_median": 1.8214056491851807,
+        "surface_anchor_count": 25
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23/frame_000091",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.650505671743304e-05,
+        "surface_anchor_absrel_median": 0.023513678461313248,
+        "flipped_surface_anchor_absrel_median": 1.7009947299957275,
+        "surface_anchor_count": 25
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000352",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.006614835234358907,
+        "flipped_surface_anchor_absrel_median": 0.07292752340435982,
+        "surface_anchor_count": 76
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000235",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.006071149837225676,
+        "flipped_surface_anchor_absrel_median": 0.1291469931602478,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000393",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.005109359510242939,
+        "flipped_surface_anchor_absrel_median": 0.07770238816738129,
+        "surface_anchor_count": 79
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000223",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.006688098423182964,
+        "flipped_surface_anchor_absrel_median": 0.07281152904033661,
+        "surface_anchor_count": 75
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000230",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.0062933554872870445,
+        "flipped_surface_anchor_absrel_median": 0.07248442247509956,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000304",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006447963882237673,
+        "flipped_surface_anchor_absrel_median": 0.07794494926929474,
+        "surface_anchor_count": 78
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000287",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.57763671875e-05,
+        "surface_anchor_absrel_median": 0.0069073340855538845,
+        "flipped_surface_anchor_absrel_median": 0.07666165754199028,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000296",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 5.50163458683528e-05,
+        "surface_anchor_absrel_median": 0.008104907115921378,
+        "flipped_surface_anchor_absrel_median": 0.07971401512622833,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000384",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006098286248743534,
+        "flipped_surface_anchor_absrel_median": 0.12521355599164963,
+        "surface_anchor_count": 86
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000246",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006355204153805971,
+        "flipped_surface_anchor_absrel_median": 0.14301587641239166,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000218",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.825252835871652e-05,
+        "surface_anchor_absrel_median": 0.006144859362393618,
+        "flipped_surface_anchor_absrel_median": 0.07080752402544022,
+        "surface_anchor_count": 73
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000215",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.005656267050653696,
+        "flipped_surface_anchor_absrel_median": 0.0809004008769989,
+        "surface_anchor_count": 79
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000291",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 4.31583721365314e-05,
+        "surface_anchor_absrel_median": 0.006843540584668517,
+        "flipped_surface_anchor_absrel_median": 0.09833132103085518,
+        "surface_anchor_count": 86
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000383",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.00578372529707849,
+        "flipped_surface_anchor_absrel_median": 0.08765488862991333,
+        "surface_anchor_count": 80
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000392",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.005800618790090084,
+        "flipped_surface_anchor_absrel_median": 0.08364975452423096,
+        "surface_anchor_count": 81
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1/frame_000222",
+        "image_hw": [
+          288,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 3.4119690099032596e-05,
+        "surface_anchor_absrel_median": 0.006717569660395384,
+        "flipped_surface_anchor_absrel_median": 0.14614129811525345,
+        "surface_anchor_count": 82
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000001",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.518557347590104e-05,
+        "surface_anchor_absrel_median": 0.016479546204209328,
+        "flipped_surface_anchor_absrel_median": 2.1269185543060303,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000007",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.115424912422895e-05,
+        "surface_anchor_absrel_median": 0.017336099408566952,
+        "flipped_surface_anchor_absrel_median": 1.9479843974113464,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000013",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.024487974122166634,
+        "flipped_surface_anchor_absrel_median": 1.8559695482254028,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000019",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.014552239328622818,
+        "flipped_surface_anchor_absrel_median": 1.9854763746261597,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000025",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.01470592524856329,
+        "flipped_surface_anchor_absrel_median": 1.9985219240188599,
+        "surface_anchor_count": 29
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000031",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.011654611676931381,
+        "flipped_surface_anchor_absrel_median": 2.047499418258667,
+        "surface_anchor_count": 33
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000037",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.010089884512126446,
+        "flipped_surface_anchor_absrel_median": 2.00919771194458,
+        "surface_anchor_count": 33
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000043",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.291359750321135e-05,
+        "surface_anchor_absrel_median": 0.010370087809860706,
+        "flipped_surface_anchor_absrel_median": 1.934822678565979,
+        "surface_anchor_count": 33
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000049",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.013600560836493969,
+        "flipped_surface_anchor_absrel_median": 2.0276670455932617,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000055",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.014604294672608376,
+        "flipped_surface_anchor_absrel_median": 1.9873601198196411,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000061",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 9.1552734375e-05,
+        "surface_anchor_absrel_median": 0.019285389222204685,
+        "flipped_surface_anchor_absrel_median": 1.9670872688293457,
+        "surface_anchor_count": 34
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000067",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.015627094078809023,
+        "flipped_surface_anchor_absrel_median": 1.9405049085617065,
+        "surface_anchor_count": 32
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000073",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.010524954181164503,
+        "flipped_surface_anchor_absrel_median": 1.9972226023674011,
+        "surface_anchor_count": 30
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000079",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.011120801791548729,
+        "flipped_surface_anchor_absrel_median": 2.0020182132720947,
+        "surface_anchor_count": 31
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000085",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.823938019806519e-05,
+        "surface_anchor_absrel_median": 0.013474494684487581,
+        "flipped_surface_anchor_absrel_median": 1.960534930229187,
+        "surface_anchor_count": 34
+      },
+      {
+        "scene": "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-WashFace-Core23/frame_000091",
+        "image_hw": [
+          512,
+          512
+        ],
+        "actual_view_order": [
+          "2,0"
+        ],
+        "joint_projection_max_px": 6.103515625e-05,
+        "surface_anchor_absrel_median": 0.02709783986210823,
+        "flipped_surface_anchor_absrel_median": 1.9649652242660522,
+        "surface_anchor_count": 29
+      }
+    ]
+  },
+  "training_curves": [
+    [
+      {
+        "step": 500,
+        "source_macro": {
+          "box_matched_nme": 0.2456754039684434,
+          "visible_nme": 0.25222616813534704,
+          "occluded_nme": 0.22924182055116266,
+          "body_keypoint_nme": 0.22448032761747072,
+          "tail_nme": 0.2941212927706666,
+          "box_matched_pck_0.1": 0.34408967391304346,
+          "detection_aware_pck_0.1": 0.2727581521739131,
+          "matched_mask_iou": 0.6728481411919347,
+          "detection_tp": 1.078125,
+          "detection_fp": 2.921875,
+          "detection_fn": 1.921875,
+          "detection_precision": 0.26953125,
+          "detection_recall": 0.46875,
+          "all_depth_absrel": 0.05542075028643012,
+          "body_depth_absrel": 0.03552561430842616,
+          "background_depth_absrel": 0.056307245686184615
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.3787345326810559,
+            "visible_nme": 0.38030142727386607,
+            "occluded_nme": 0.3644096828831369,
+            "body_keypoint_nme": 0.33979843025144874,
+            "tail_nme": 0.4677313382344437,
+            "box_matched_pck_0.1": 0.10394021739130435,
+            "detection_aware_pck_0.1": 0.03125,
+            "matched_mask_iou": 0.5233337709651096,
+            "detection_tp": 0.5625,
+            "detection_fp": 3.4375,
+            "detection_fn": 3.4375,
+            "detection_precision": 0.140625,
+            "detection_recall": 0.140625,
+            "all_depth_absrel": 0.045605896040797234,
+            "body_depth_absrel": 0.03278038959251717,
+            "background_depth_absrel": 0.04589732736349106
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.1126162752558309,
+            "visible_nme": 0.12415090899682807,
+            "occluded_nme": 0.09407395821918842,
+            "body_keypoint_nme": 0.1091622249834927,
+            "tail_nme": 0.1205112473068896,
+            "box_matched_pck_0.1": 0.5842391304347826,
+            "detection_aware_pck_0.1": 0.5142663043478262,
+            "matched_mask_iou": 0.8223625114187598,
+            "detection_tp": 1.59375,
+            "detection_fp": 2.40625,
+            "detection_fn": 0.40625,
+            "detection_precision": 0.3984375,
+            "detection_recall": 0.796875,
+            "all_depth_absrel": 0.06523560453206301,
+            "body_depth_absrel": 0.038270839024335146,
+            "background_depth_absrel": 0.06671716400887817
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 1000,
+        "source_macro": {
+          "box_matched_nme": 0.18086442000742903,
+          "visible_nme": 0.18410934616119307,
+          "occluded_nme": 0.17448154578810665,
+          "body_keypoint_nme": 0.1609168220641095,
+          "tail_nme": 0.22645892959215935,
+          "box_matched_pck_0.1": 0.4626358695652174,
+          "detection_aware_pck_0.1": 0.4149116847826087,
+          "matched_mask_iou": 0.6810246335662669,
+          "detection_tp": 1.484375,
+          "detection_fp": 2.03125,
+          "detection_fn": 1.515625,
+          "detection_precision": 0.49088541666666663,
+          "detection_recall": 0.62109375,
+          "all_depth_absrel": 0.03724661425803788,
+          "body_depth_absrel": 0.028557683806866407,
+          "background_depth_absrel": 0.03748332121176645
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.2827829608586794,
+            "visible_nme": 0.2826147510914963,
+            "occluded_nme": 0.2807932811368818,
+            "body_keypoint_nme": 0.2455638359065233,
+            "tail_nme": 0.36785524646360757,
+            "box_matched_pck_0.1": 0.17119565217391303,
+            "detection_aware_pck_0.1": 0.07574728260869565,
+            "matched_mask_iou": 0.5552996010228526,
+            "detection_tp": 0.96875,
+            "detection_fp": 3.03125,
+            "detection_fn": 3.03125,
+            "detection_precision": 0.2421875,
+            "detection_recall": 0.2421875,
+            "all_depth_absrel": 0.04076657770201564,
+            "body_depth_absrel": 0.024042765086051077,
+            "background_depth_absrel": 0.04114976164419204
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.07894587915617866,
+            "visible_nme": 0.08560394123088985,
+            "occluded_nme": 0.06816981043933154,
+            "body_keypoint_nme": 0.07626980822169571,
+            "tail_nme": 0.08506261272071113,
+            "box_matched_pck_0.1": 0.7540760869565217,
+            "detection_aware_pck_0.1": 0.7540760869565217,
+            "matched_mask_iou": 0.8067496661096811,
+            "detection_tp": 2.0,
+            "detection_fp": 1.03125,
+            "detection_fn": 0.0,
+            "detection_precision": 0.7395833333333333,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.03372665081406012,
+            "body_depth_absrel": 0.03307260252768174,
+            "background_depth_absrel": 0.03381688077934086
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 1500,
+        "source_macro": {
+          "box_matched_nme": 0.14423787868188653,
+          "visible_nme": 0.14766036657192017,
+          "occluded_nme": 0.13094959941967171,
+          "body_keypoint_nme": 0.12493757478199541,
+          "tail_nme": 0.18835285902449478,
+          "box_matched_pck_0.1": 0.5399116847826088,
+          "detection_aware_pck_0.1": 0.4806385869565218,
+          "matched_mask_iou": 0.7024245170177892,
+          "detection_tp": 1.765625,
+          "detection_fp": 1.71875,
+          "detection_fn": 1.234375,
+          "detection_precision": 0.5690104166666666,
+          "detection_recall": 0.69140625,
+          "all_depth_absrel": 0.031131591618759558,
+          "body_depth_absrel": 0.0414204434491694,
+          "background_depth_absrel": 0.030417770380154252
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.2238687607536438,
+            "visible_nme": 0.22618396940024946,
+            "occluded_nme": 0.20510591955276913,
+            "body_keypoint_nme": 0.18903267900498122,
+            "tail_nme": 0.3034940904648725,
+            "box_matched_pck_0.1": 0.2252038043478261,
+            "detection_aware_pck_0.1": 0.10665760869565219,
+            "matched_mask_iou": 0.5763934238348156,
+            "detection_tp": 1.53125,
+            "detection_fp": 2.46875,
+            "detection_fn": 2.46875,
+            "detection_precision": 0.3828125,
+            "detection_recall": 0.3828125,
+            "all_depth_absrel": 0.038707208004780114,
+            "body_depth_absrel": 0.02377358451485634,
+            "background_depth_absrel": 0.03904879139736295
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.06460699661012927,
+            "visible_nme": 0.06913676374359087,
+            "occluded_nme": 0.0567932792865743,
+            "body_keypoint_nme": 0.0608424705590096,
+            "tail_nme": 0.07321162758411706,
+            "box_matched_pck_0.1": 0.8546195652173914,
+            "detection_aware_pck_0.1": 0.8546195652173914,
+            "matched_mask_iou": 0.8284556102007627,
+            "detection_tp": 2.0,
+            "detection_fp": 0.96875,
+            "detection_fn": 0.0,
+            "detection_precision": 0.7552083333333333,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.023555975232739,
+            "body_depth_absrel": 0.059067302383482456,
+            "background_depth_absrel": 0.021786749362945557
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 2000,
+        "source_macro": {
+          "box_matched_nme": 0.12262341584239594,
+          "visible_nme": 0.1259544066011492,
+          "occluded_nme": 0.11562203472351973,
+          "body_keypoint_nme": 0.10656551723394614,
+          "tail_nme": 0.15932718409028113,
+          "box_matched_pck_0.1": 0.6212635869565217,
+          "detection_aware_pck_0.1": 0.5888247282608695,
+          "matched_mask_iou": 0.6794561452843482,
+          "detection_tp": 2.40625,
+          "detection_fp": 0.859375,
+          "detection_fn": 0.59375,
+          "detection_precision": 0.78125,
+          "detection_recall": 0.8515625,
+          "all_depth_absrel": 0.039647836121730506,
+          "body_depth_absrel": 0.04224427996086888,
+          "background_depth_absrel": 0.03930422815028578
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.19884113261144631,
+            "visible_nme": 0.1986994314821452,
+            "occluded_nme": 0.1963937492866165,
+            "body_keypoint_nme": 0.17127370719231294,
+            "tail_nme": 0.26185239071232247,
+            "box_matched_pck_0.1": 0.29891304347826086,
+            "detection_aware_pck_0.1": 0.2340353260869565,
+            "matched_mask_iou": 0.5514221606135834,
+            "detection_tp": 2.8125,
+            "detection_fp": 1.1875,
+            "detection_fn": 1.1875,
+            "detection_precision": 0.703125,
+            "detection_recall": 0.703125,
+            "all_depth_absrel": 0.04978743672836572,
+            "body_depth_absrel": 0.038557948369998485,
+            "background_depth_absrel": 0.050038939458318055
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.04640569907334556,
+            "visible_nme": 0.0532093817201532,
+            "occluded_nme": 0.034850320160422964,
+            "body_keypoint_nme": 0.04185732727557934,
+            "tail_nme": 0.056801977468239784,
+            "box_matched_pck_0.1": 0.9436141304347826,
+            "detection_aware_pck_0.1": 0.9436141304347826,
+            "matched_mask_iou": 0.8074901299551129,
+            "detection_tp": 2.0,
+            "detection_fp": 0.53125,
+            "detection_fn": 0.0,
+            "detection_precision": 0.859375,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.029508235515095294,
+            "body_depth_absrel": 0.045930611551739275,
+            "background_depth_absrel": 0.028569516842253506
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 2500,
+        "source_macro": {
+          "box_matched_nme": 0.1016171777571443,
+          "visible_nme": 0.10255882868223024,
+          "occluded_nme": 0.09566484741398278,
+          "body_keypoint_nme": 0.09175310319804453,
+          "tail_nme": 0.1241636338922295,
+          "box_matched_pck_0.1": 0.6526834239130435,
+          "detection_aware_pck_0.1": 0.6373980978260869,
+          "matched_mask_iou": 0.7169235007604584,
+          "detection_tp": 2.78125,
+          "detection_fp": 0.5625,
+          "detection_fn": 0.21875,
+          "detection_precision": 0.8567708333333333,
+          "detection_recall": 0.9453125,
+          "all_depth_absrel": 0.0324136080162134,
+          "body_depth_absrel": 0.03326070643379353,
+          "background_depth_absrel": 0.03210411805775948
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.17032398746117827,
+            "visible_nme": 0.17196906395483025,
+            "occluded_nme": 0.15871261319187213,
+            "body_keypoint_nme": 0.1507320878319547,
+            "tail_nme": 0.21510547232797503,
+            "box_matched_pck_0.1": 0.3454483695652174,
+            "detection_aware_pck_0.1": 0.3148777173913043,
+            "matched_mask_iou": 0.6115828880574554,
+            "detection_tp": 3.5625,
+            "detection_fp": 0.4375,
+            "detection_fn": 0.4375,
+            "detection_precision": 0.890625,
+            "detection_recall": 0.890625,
+            "all_depth_absrel": 0.03924495796673,
+            "body_depth_absrel": 0.02238541655242443,
+            "background_depth_absrel": 0.039632323547266424
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.03291036805311033,
+            "visible_nme": 0.033148593409630236,
+            "occluded_nme": 0.03261708163609342,
+            "body_keypoint_nme": 0.03277411856413437,
+            "tail_nme": 0.03322179545648396,
+            "box_matched_pck_0.1": 0.9599184782608696,
+            "detection_aware_pck_0.1": 0.9599184782608696,
+            "matched_mask_iou": 0.8222641134634614,
+            "detection_tp": 2.0,
+            "detection_fp": 0.6875,
+            "detection_fn": 0.0,
+            "detection_precision": 0.8229166666666666,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.025582258065696806,
+            "body_depth_absrel": 0.04413599631516263,
+            "background_depth_absrel": 0.024575912568252534
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 3000,
+        "source_macro": {
+          "box_matched_nme": 0.08876606608990426,
+          "visible_nme": 0.08920954897639807,
+          "occluded_nme": 0.0879516392571068,
+          "body_keypoint_nme": 0.07884875192786467,
+          "tail_nme": 0.11143421274599469,
+          "box_matched_pck_0.1": 0.7007472826086956,
+          "detection_aware_pck_0.1": 0.6885190217391304,
+          "matched_mask_iou": 0.7169966367655434,
+          "detection_tp": 2.796875,
+          "detection_fp": 0.25,
+          "detection_fn": 0.203125,
+          "detection_precision": 0.93359375,
+          "detection_recall": 0.94921875,
+          "all_depth_absrel": 0.030993230728199705,
+          "body_depth_absrel": 0.03182811100850813,
+          "background_depth_absrel": 0.03071731620002538
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.14808244046909513,
+            "visible_nme": 0.14786415466063726,
+            "occluded_nme": 0.14842063221686508,
+            "body_keypoint_nme": 0.12873166012218462,
+            "tail_nme": 0.19231279554774766,
+            "box_matched_pck_0.1": 0.42595108695652173,
+            "detection_aware_pck_0.1": 0.40149456521739124,
+            "matched_mask_iou": 0.598903022822924,
+            "detection_tp": 3.59375,
+            "detection_fp": 0.40625,
+            "detection_fn": 0.40625,
+            "detection_precision": 0.8984375,
+            "detection_recall": 0.8984375,
+            "all_depth_absrel": 0.040232560597360134,
+            "body_depth_absrel": 0.024639886803925037,
+            "background_depth_absrel": 0.040590280666947365
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.029449691710713363,
+            "visible_nme": 0.030554943292158895,
+            "occluded_nme": 0.027482646297348527,
+            "body_keypoint_nme": 0.028965843733544716,
+            "tail_nme": 0.030555629944241706,
+            "box_matched_pck_0.1": 0.9755434782608695,
+            "detection_aware_pck_0.1": 0.9755434782608695,
+            "matched_mask_iou": 0.8350902507081628,
+            "detection_tp": 2.0,
+            "detection_fp": 0.09375,
+            "detection_fn": 0.0,
+            "detection_precision": 0.96875,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.021753900859039277,
+            "body_depth_absrel": 0.039016335213091224,
+            "background_depth_absrel": 0.020844351733103395
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 3500,
+        "source_macro": {
+          "box_matched_nme": 0.07887755992195035,
+          "visible_nme": 0.07988433411619525,
+          "occluded_nme": 0.07526233572716168,
+          "body_keypoint_nme": 0.07279726567500688,
+          "tail_nme": 0.09277537534353542,
+          "box_matched_pck_0.1": 0.7250339673913042,
+          "detection_aware_pck_0.1": 0.7221467391304347,
+          "matched_mask_iou": 0.6952416095882654,
+          "detection_tp": 2.9375,
+          "detection_fp": 0.09375,
+          "detection_fn": 0.0625,
+          "detection_precision": 0.9739583333333333,
+          "detection_recall": 0.984375,
+          "all_depth_absrel": 0.03769379699951969,
+          "body_depth_absrel": 0.039212554693222046,
+          "background_depth_absrel": 0.03740945059689693
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.13202987882572337,
+            "visible_nme": 0.132470517290391,
+            "occluded_nme": 0.12741378830177236,
+            "body_keypoint_nme": 0.11851098143932859,
+            "tail_nme": 0.16293021570891142,
+            "box_matched_pck_0.1": 0.47588315217391297,
+            "detection_aware_pck_0.1": 0.4701086956521739,
+            "matched_mask_iou": 0.5658375043421984,
+            "detection_tp": 3.875,
+            "detection_fp": 0.125,
+            "detection_fn": 0.125,
+            "detection_precision": 0.96875,
+            "detection_recall": 0.96875,
+            "all_depth_absrel": 0.056622525909915566,
+            "body_depth_absrel": 0.04260546626755968,
+            "background_depth_absrel": 0.056938021909445524
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.025725241018177337,
+            "visible_nme": 0.027298150941999492,
+            "occluded_nme": 0.023110883152550984,
+            "body_keypoint_nme": 0.02708354991068518,
+            "tail_nme": 0.02262053497815941,
+            "box_matched_pck_0.1": 0.9741847826086956,
+            "detection_aware_pck_0.1": 0.9741847826086956,
+            "matched_mask_iou": 0.8246457148343325,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0625,
+            "detection_fn": 0.0,
+            "detection_precision": 0.9791666666666666,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.018765068089123815,
+            "body_depth_absrel": 0.035819643118884414,
+            "background_depth_absrel": 0.01788087928434834
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 4000,
+        "source_macro": {
+          "box_matched_nme": 0.0694089083435064,
+          "visible_nme": 0.06925423728355724,
+          "occluded_nme": 0.06873259900328657,
+          "body_keypoint_nme": 0.06182188785710707,
+          "tail_nme": 0.08675066945527629,
+          "box_matched_pck_0.1": 0.7693614130434783,
+          "detection_aware_pck_0.1": 0.7559442934782609,
+          "matched_mask_iou": 0.7012251883279532,
+          "detection_tp": 2.875,
+          "detection_fp": 0.140625,
+          "detection_fn": 0.125,
+          "detection_precision": 0.9635416666666666,
+          "detection_recall": 0.96875,
+          "all_depth_absrel": 0.031637657433748245,
+          "body_depth_absrel": 0.04740062009659596,
+          "background_depth_absrel": 0.030740715330466628
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.11727429705872608,
+            "visible_nme": 0.11714548593863286,
+            "occluded_nme": 0.11553329665845202,
+            "body_keypoint_nme": 0.10195879440519207,
+            "tail_nme": 0.15228116026680383,
+            "box_matched_pck_0.1": 0.5529891304347826,
+            "detection_aware_pck_0.1": 0.5261548913043479,
+            "matched_mask_iou": 0.5688712284900248,
+            "detection_tp": 3.75,
+            "detection_fp": 0.25,
+            "detection_fn": 0.25,
+            "detection_precision": 0.9375,
+            "detection_recall": 0.9375,
+            "all_depth_absrel": 0.03765108669176698,
+            "body_depth_absrel": 0.028006831475067884,
+            "background_depth_absrel": 0.037875435897149146
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.02154351962828672,
+            "visible_nme": 0.02136298862848163,
+            "occluded_nme": 0.021931901348121126,
+            "body_keypoint_nme": 0.021684981309022078,
+            "tail_nme": 0.021220178643748762,
+            "box_matched_pck_0.1": 0.9857336956521738,
+            "detection_aware_pck_0.1": 0.9857336956521738,
+            "matched_mask_iou": 0.8335791481658816,
+            "detection_tp": 2.0,
+            "detection_fp": 0.03125,
+            "detection_fn": 0.0,
+            "detection_precision": 0.9895833333333333,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.025624228175729513,
+            "body_depth_absrel": 0.06679440871812403,
+            "background_depth_absrel": 0.02360599476378411
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 4500,
+        "source_macro": {
+          "box_matched_nme": 0.06685073686068553,
+          "visible_nme": 0.06632831713037748,
+          "occluded_nme": 0.06709438191559362,
+          "body_keypoint_nme": 0.06028345752140751,
+          "tail_nme": 0.08186166106474957,
+          "box_matched_pck_0.1": 0.7802309782608696,
+          "detection_aware_pck_0.1": 0.779211956521739,
+          "matched_mask_iou": 0.716062274761498,
+          "detection_tp": 2.984375,
+          "detection_fp": 0.015625,
+          "detection_fn": 0.015625,
+          "detection_precision": 0.99609375,
+          "detection_recall": 0.99609375,
+          "all_depth_absrel": 0.02591098635457456,
+          "body_depth_absrel": 0.027893313847016543,
+          "background_depth_absrel": 0.025652109761722386
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.11303665402811416,
+            "visible_nme": 0.11246914299381644,
+            "occluded_nme": 0.11315920551181,
+            "body_keypoint_nme": 0.09911986579032828,
+            "tail_nme": 0.1448464557144819,
+            "box_matched_pck_0.1": 0.5733695652173914,
+            "detection_aware_pck_0.1": 0.5713315217391304,
+            "matched_mask_iou": 0.5991958575323224,
+            "detection_tp": 3.96875,
+            "detection_fp": 0.03125,
+            "detection_fn": 0.03125,
+            "detection_precision": 0.9921875,
+            "detection_recall": 0.9921875,
+            "all_depth_absrel": 0.03288636193610728,
+            "body_depth_absrel": 0.02171454281779006,
+            "background_depth_absrel": 0.03314282256178558
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.0206648196932569,
+            "visible_nme": 0.020187491266938532,
+            "occluded_nme": 0.021029558319377254,
+            "body_keypoint_nme": 0.02144704925248675,
+            "tail_nme": 0.018876866415017245,
+            "box_matched_pck_0.1": 0.9870923913043478,
+            "detection_aware_pck_0.1": 0.9870923913043478,
+            "matched_mask_iou": 0.8329286919906735,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.018935610773041844,
+            "body_depth_absrel": 0.034072084876243025,
+            "background_depth_absrel": 0.018161396961659193
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 5000,
+        "source_macro": {
+          "box_matched_nme": 0.0643577222443958,
+          "visible_nme": 0.06344779587015055,
+          "occluded_nme": 0.06672701576750636,
+          "body_keypoint_nme": 0.05730865725365675,
+          "tail_nme": 0.08046987079465648,
+          "box_matched_pck_0.1": 0.787024456521739,
+          "detection_aware_pck_0.1": 0.7817595108695652,
+          "matched_mask_iou": 0.7175479623256251,
+          "detection_tp": 2.9375,
+          "detection_fp": 0.0625,
+          "detection_fn": 0.0625,
+          "detection_precision": 0.984375,
+          "detection_recall": 0.984375,
+          "all_depth_absrel": 0.03958837396930903,
+          "body_depth_absrel": 0.04442876664688811,
+          "background_depth_absrel": 0.0390610046160873
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.11031594823278916,
+            "visible_nme": 0.10940046826652487,
+            "occluded_nme": 0.11389852475007803,
+            "body_keypoint_nme": 0.09597585321233737,
+            "tail_nme": 0.1430933082795361,
+            "box_matched_pck_0.1": 0.5842391304347825,
+            "detection_aware_pck_0.1": 0.5737092391304348,
+            "matched_mask_iou": 0.602767565054819,
+            "detection_tp": 3.875,
+            "detection_fp": 0.125,
+            "detection_fn": 0.125,
+            "detection_precision": 0.96875,
+            "detection_recall": 0.96875,
+            "all_depth_absrel": 0.041680146707221866,
+            "body_depth_absrel": 0.0260037126718089,
+            "background_depth_absrel": 0.04203858145046979
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.018399496256002432,
+            "visible_nme": 0.01749512347377622,
+            "occluded_nme": 0.019555506784934708,
+            "body_keypoint_nme": 0.018641461294976125,
+            "tail_nme": 0.017846433309776852,
+            "box_matched_pck_0.1": 0.9898097826086956,
+            "detection_aware_pck_0.1": 0.9898097826086956,
+            "matched_mask_iou": 0.8323283595964313,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.0374966012313962,
+            "body_depth_absrel": 0.06285382062196732,
+            "background_depth_absrel": 0.03608342778170481
+          }
+        },
+        "scenes": 64
+      }
+    ],
+    [
+      {
+        "step": 500,
+        "source_macro": {
+          "box_matched_nme": 0.23218187442351176,
+          "visible_nme": 0.23531558628571675,
+          "occluded_nme": 0.21785263574722868,
+          "body_keypoint_nme": 0.21546820643845876,
+          "tail_nme": 0.27038454410363294,
+          "box_matched_pck_0.1": 0.328125,
+          "detection_aware_pck_0.1": 0.25254755434782605,
+          "matched_mask_iou": 0.7273706698033493,
+          "detection_tp": 1.03125,
+          "detection_fp": 1.96875,
+          "detection_fn": 1.96875,
+          "detection_precision": 0.4375,
+          "detection_recall": 0.4375,
+          "all_depth_absrel": 0.03926989872707054,
+          "body_depth_absrel": 0.03742132120532915,
+          "background_depth_absrel": 0.03906516093411483
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.3404840736149471,
+            "visible_nme": 0.3424667225704987,
+            "occluded_nme": 0.31863607149491163,
+            "body_keypoint_nme": 0.30400800013967455,
+            "tail_nme": 0.42385795584414154,
+            "box_matched_pck_0.1": 0.12160326086956522,
+            "detection_aware_pck_0.1": 0.03702445652173913,
+            "matched_mask_iou": 0.5625796890235506,
+            "detection_tp": 0.625,
+            "detection_fp": 3.375,
+            "detection_fn": 3.375,
+            "detection_precision": 0.15625,
+            "detection_recall": 0.15625,
+            "all_depth_absrel": 0.048548970371484756,
+            "body_depth_absrel": 0.02782064361963421,
+            "background_depth_absrel": 0.049022774677723646
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.12387967523207645,
+            "visible_nme": 0.1281644500009348,
+            "occluded_nme": 0.11706919999954571,
+            "body_keypoint_nme": 0.12692841273724298,
+            "tail_nme": 0.11691113236312438,
+            "box_matched_pck_0.1": 0.5346467391304348,
+            "detection_aware_pck_0.1": 0.468070652173913,
+            "matched_mask_iou": 0.892161650583148,
+            "detection_tp": 1.4375,
+            "detection_fp": 0.5625,
+            "detection_fn": 0.5625,
+            "detection_precision": 0.71875,
+            "detection_recall": 0.71875,
+            "all_depth_absrel": 0.029990827082656324,
+            "body_depth_absrel": 0.04702199879102409,
+            "background_depth_absrel": 0.02910754719050601
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 1000,
+        "source_macro": {
+          "box_matched_nme": 0.18117804030911747,
+          "visible_nme": 0.18427423949862556,
+          "occluded_nme": 0.1662035397015437,
+          "body_keypoint_nme": 0.16389894439907948,
+          "tail_nme": 0.22067311667491854,
+          "box_matched_pck_0.1": 0.4818274456521739,
+          "detection_aware_pck_0.1": 0.4390285326086956,
+          "matched_mask_iou": 0.8045284925028682,
+          "detection_tp": 1.53125,
+          "detection_fp": 1.46875,
+          "detection_fn": 1.46875,
+          "detection_precision": 0.6328125,
+          "detection_recall": 0.6328125,
+          "all_depth_absrel": 0.032301393046509475,
+          "body_depth_absrel": 0.034101678553270176,
+          "background_depth_absrel": 0.031962978100636974
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.29283241091521317,
+            "visible_nme": 0.29625601495534076,
+            "occluded_nme": 0.2678756539265803,
+            "body_keypoint_nme": 0.2583436936160979,
+            "tail_nme": 0.3716637647417623,
+            "box_matched_pck_0.1": 0.14639945652173914,
+            "detection_aware_pck_0.1": 0.06080163043478261,
+            "matched_mask_iou": 0.6950995223596692,
+            "detection_tp": 1.0625,
+            "detection_fp": 2.9375,
+            "detection_fn": 2.9375,
+            "detection_precision": 0.265625,
+            "detection_recall": 0.265625,
+            "all_depth_absrel": 0.04186481924261898,
+            "body_depth_absrel": 0.025519130111206323,
+            "background_depth_absrel": 0.04223826469387859
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.06952366970302176,
+            "visible_nme": 0.07229246404191038,
+            "occluded_nme": 0.0645314254765071,
+            "body_keypoint_nme": 0.06945419518206108,
+            "tail_nme": 0.06968246860807474,
+            "box_matched_pck_0.1": 0.8172554347826086,
+            "detection_aware_pck_0.1": 0.8172554347826086,
+            "matched_mask_iou": 0.9139574626460671,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.02273796685039997,
+            "body_depth_absrel": 0.04268422699533403,
+            "background_depth_absrel": 0.021687691507395357
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 1500,
+        "source_macro": {
+          "box_matched_nme": 0.16678108016768695,
+          "visible_nme": 0.1700198414723047,
+          "occluded_nme": 0.14829828139577006,
+          "body_keypoint_nme": 0.14826901007540982,
+          "tail_nme": 0.209094383235749,
+          "box_matched_pck_0.1": 0.5144361413043479,
+          "detection_aware_pck_0.1": 0.4711277173913043,
+          "matched_mask_iou": 0.8072376871714368,
+          "detection_tp": 1.578125,
+          "detection_fp": 1.421875,
+          "detection_fn": 1.421875,
+          "detection_precision": 0.64453125,
+          "detection_recall": 0.64453125,
+          "all_depth_absrel": 0.03014630649704486,
+          "body_depth_absrel": 0.03266176994657144,
+          "background_depth_absrel": 0.029760577890556306
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.27710625716649107,
+            "visible_nme": 0.2819025962624359,
+            "occluded_nme": 0.24260875330563597,
+            "body_keypoint_nme": 0.24076492556332596,
+            "tail_nme": 0.36017215797372565,
+            "box_matched_pck_0.1": 0.1579483695652174,
+            "detection_aware_pck_0.1": 0.07133152173913043,
+            "matched_mask_iou": 0.7063040214125067,
+            "detection_tp": 1.15625,
+            "detection_fp": 2.84375,
+            "detection_fn": 2.84375,
+            "detection_precision": 0.2890625,
+            "detection_recall": 0.2890625,
+            "all_depth_absrel": 0.03963979100808501,
+            "body_depth_absrel": 0.0223562071332708,
+            "background_depth_absrel": 0.04003658180590719
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.05645590316888284,
+            "visible_nme": 0.05813708668217346,
+            "occluded_nme": 0.053987809485904134,
+            "body_keypoint_nme": 0.05577309458749369,
+            "tail_nme": 0.058016608497772335,
+            "box_matched_pck_0.1": 0.8709239130434783,
+            "detection_aware_pck_0.1": 0.8709239130434783,
+            "matched_mask_iou": 0.908171352930367,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.02065282198600471,
+            "body_depth_absrel": 0.04296733275987208,
+            "background_depth_absrel": 0.01948457397520542
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 2000,
+        "source_macro": {
+          "box_matched_nme": 0.15647756829467535,
+          "visible_nme": 0.15970519710340572,
+          "occluded_nme": 0.1366962264050922,
+          "body_keypoint_nme": 0.1337732197649757,
+          "tail_nme": 0.208373222076846,
+          "box_matched_pck_0.1": 0.5740489130434783,
+          "detection_aware_pck_0.1": 0.5264945652173914,
+          "matched_mask_iou": 0.7844788485409708,
+          "detection_tp": 1.71875,
+          "detection_fp": 1.28125,
+          "detection_fn": 1.28125,
+          "detection_precision": 0.6796875,
+          "detection_recall": 0.6796875,
+          "all_depth_absrel": 0.030760335619561374,
+          "body_depth_absrel": 0.026962196541717276,
+          "background_depth_absrel": 0.030695763183757663
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.2672105466493952,
+            "visible_nme": 0.27146011137993087,
+            "occluded_nme": 0.2316344630970245,
+            "body_keypoint_nme": 0.22428152288898673,
+            "tail_nme": 0.3653340295303289,
+            "box_matched_pck_0.1": 0.2269021739130435,
+            "detection_aware_pck_0.1": 0.13179347826086957,
+            "matched_mask_iou": 0.661973457265276,
+            "detection_tp": 1.4375,
+            "detection_fp": 2.5625,
+            "detection_fn": 2.5625,
+            "detection_precision": 0.359375,
+            "detection_recall": 0.359375,
+            "all_depth_absrel": 0.04238058952614665,
+            "body_depth_absrel": 0.02385552244959399,
+            "background_depth_absrel": 0.04280727810692042
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.045744589939955484,
+            "visible_nme": 0.047950282826880575,
+            "occluded_nme": 0.041757989713159915,
+            "body_keypoint_nme": 0.04326491664096466,
+            "tail_nme": 0.05141241462336309,
+            "box_matched_pck_0.1": 0.9211956521739131,
+            "detection_aware_pck_0.1": 0.9211956521739131,
+            "matched_mask_iou": 0.9069842398166656,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.019140081712976098,
+            "body_depth_absrel": 0.03006887063384056,
+            "background_depth_absrel": 0.018584248260594904
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 2500,
+        "source_macro": {
+          "box_matched_nme": 0.13271555819873673,
+          "visible_nme": 0.13556559377950114,
+          "occluded_nme": 0.11464642696043609,
+          "body_keypoint_nme": 0.1123995208996007,
+          "tail_nme": 0.17915221488247618,
+          "box_matched_pck_0.1": 0.6017323369565217,
+          "detection_aware_pck_0.1": 0.5385529891304348,
+          "matched_mask_iou": 0.8020576508133672,
+          "detection_tp": 1.765625,
+          "detection_fp": 1.234375,
+          "detection_fn": 1.234375,
+          "detection_precision": 0.69140625,
+          "detection_recall": 0.69140625,
+          "all_depth_absrel": 0.032242554356344044,
+          "body_depth_absrel": 0.025487642677035183,
+          "background_depth_absrel": 0.0322849131480325
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.22899656739758464,
+            "visible_nme": 0.23367197378056193,
+            "occluded_nme": 0.19468242403996827,
+            "body_keypoint_nme": 0.19026623305626345,
+            "tail_nme": 0.31752304589203306,
+            "box_matched_pck_0.1": 0.24830163043478262,
+            "detection_aware_pck_0.1": 0.12194293478260869,
+            "matched_mask_iou": 0.69701025437098,
+            "detection_tp": 1.53125,
+            "detection_fp": 2.46875,
+            "detection_fn": 2.46875,
+            "detection_precision": 0.3828125,
+            "detection_recall": 0.3828125,
+            "all_depth_absrel": 0.04144283093046397,
+            "body_depth_absrel": 0.02094043215038255,
+            "background_depth_absrel": 0.041910395375452936
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.03643454899988881,
+            "visible_nme": 0.03745921377844036,
+            "occluded_nme": 0.03461042988090389,
+            "body_keypoint_nme": 0.03453280874293796,
+            "tail_nme": 0.04078138387291931,
+            "box_matched_pck_0.1": 0.9551630434782609,
+            "detection_aware_pck_0.1": 0.9551630434782609,
+            "matched_mask_iou": 0.9071050472557545,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.02304227778222412,
+            "body_depth_absrel": 0.030034853203687817,
+            "background_depth_absrel": 0.022659430920612067
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 3000,
+        "source_macro": {
+          "box_matched_nme": 0.10799976608424677,
+          "visible_nme": 0.11180590503253196,
+          "occluded_nme": 0.08656006854899592,
+          "body_keypoint_nme": 0.09042453640719827,
+          "tail_nme": 0.14817171963178616,
+          "box_matched_pck_0.1": 0.6616847826086957,
+          "detection_aware_pck_0.1": 0.6207540760869565,
+          "matched_mask_iou": 0.811186995008029,
+          "detection_tp": 2.359375,
+          "detection_fp": 0.640625,
+          "detection_fn": 0.640625,
+          "detection_precision": 0.83984375,
+          "detection_recall": 0.83984375,
+          "all_depth_absrel": 0.034098163567250594,
+          "body_depth_absrel": 0.035539436037652194,
+          "background_depth_absrel": 0.03374841081677005
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.18365405600157514,
+            "visible_nme": 0.18932532927676265,
+            "occluded_nme": 0.1443885734361212,
+            "body_keypoint_nme": 0.14981452985904298,
+            "tail_nme": 0.2610015443273629,
+            "box_matched_pck_0.1": 0.3471467391304348,
+            "detection_aware_pck_0.1": 0.26528532608695654,
+            "matched_mask_iou": 0.7183804952073842,
+            "detection_tp": 2.71875,
+            "detection_fp": 1.28125,
+            "detection_fn": 1.28125,
+            "detection_precision": 0.6796875,
+            "detection_recall": 0.6796875,
+            "all_depth_absrel": 0.04224245704244822,
+            "body_depth_absrel": 0.02198350289836526,
+            "background_depth_absrel": 0.04270838515367359
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.0323454761669184,
+            "visible_nme": 0.034286480788301266,
+            "occluded_nme": 0.028731563661870668,
+            "body_keypoint_nme": 0.031034542955353572,
+            "tail_nme": 0.03534189493620943,
+            "box_matched_pck_0.1": 0.9762228260869565,
+            "detection_aware_pck_0.1": 0.9762228260869565,
+            "matched_mask_iou": 0.9039934948086739,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.025953870092052966,
+            "body_depth_absrel": 0.04909536917693913,
+            "background_depth_absrel": 0.024788436479866505
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 3500,
+        "source_macro": {
+          "box_matched_nme": 0.10138247852812485,
+          "visible_nme": 0.10409279506767985,
+          "occluded_nme": 0.08590226308403834,
+          "body_keypoint_nme": 0.08759631943033241,
+          "tail_nme": 0.13289369932307896,
+          "box_matched_pck_0.1": 0.6644021739130435,
+          "detection_aware_pck_0.1": 0.6297554347826086,
+          "matched_mask_iou": 0.821435889811255,
+          "detection_tp": 2.453125,
+          "detection_fp": 0.546875,
+          "detection_fn": 0.546875,
+          "detection_precision": 0.86328125,
+          "detection_recall": 0.86328125,
+          "all_depth_absrel": 0.03951759508345276,
+          "body_depth_absrel": 0.02482584453537129,
+          "background_depth_absrel": 0.03994233286357485
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.17475250220448527,
+            "visible_nme": 0.17872382674494383,
+            "occluded_nme": 0.14633544757652817,
+            "body_keypoint_nme": 0.14912012721958945,
+            "tail_nme": 0.2333407878842471,
+            "box_matched_pck_0.1": 0.35733695652173914,
+            "detection_aware_pck_0.1": 0.2880434782608695,
+            "matched_mask_iou": 0.7344679816160351,
+            "detection_tp": 2.90625,
+            "detection_fp": 1.09375,
+            "detection_fn": 1.09375,
+            "detection_precision": 0.7265625,
+            "detection_recall": 0.7265625,
+            "all_depth_absrel": 0.04211951501201838,
+            "body_depth_absrel": 0.020799972349777818,
+            "background_depth_absrel": 0.04260803293436766
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.02801245485176443,
+            "visible_nme": 0.029461763390415868,
+            "occluded_nme": 0.025469078591548525,
+            "body_keypoint_nme": 0.02607251164107538,
+            "tail_nme": 0.03244661076191083,
+            "box_matched_pck_0.1": 0.9714673913043478,
+            "detection_aware_pck_0.1": 0.9714673913043478,
+            "matched_mask_iou": 0.908403798006475,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.03691567515488714,
+            "body_depth_absrel": 0.02885171672096476,
+            "background_depth_absrel": 0.03727663279278204
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 4000,
+        "source_macro": {
+          "box_matched_nme": 0.08117721916843959,
+          "visible_nme": 0.08188864501065272,
+          "occluded_nme": 0.07583975683382736,
+          "body_keypoint_nme": 0.07168782287560305,
+          "tail_nme": 0.10286726783778022,
+          "box_matched_pck_0.1": 0.7279211956521738,
+          "detection_aware_pck_0.1": 0.7180706521739131,
+          "matched_mask_iou": 0.818600436556153,
+          "detection_tp": 2.84375,
+          "detection_fp": 0.15625,
+          "detection_fn": 0.15625,
+          "detection_precision": 0.9609375,
+          "detection_recall": 0.9609375,
+          "all_depth_absrel": 0.03450746642192826,
+          "body_depth_absrel": 0.025342380540678278,
+          "background_depth_absrel": 0.03468608946423046
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.13840492037078272,
+            "visible_nme": 0.13981680248725878,
+            "occluded_nme": 0.1280292116412915,
+            "body_keypoint_nme": 0.11926247835714321,
+            "tail_nme": 0.18215907354481584,
+            "box_matched_pck_0.1": 0.4714673913043478,
+            "detection_aware_pck_0.1": 0.45176630434782605,
+            "matched_mask_iou": 0.7282081318553537,
+            "detection_tp": 3.6875,
+            "detection_fp": 0.3125,
+            "detection_fn": 0.3125,
+            "detection_precision": 0.921875,
+            "detection_recall": 0.921875,
+            "all_depth_absrel": 0.042138760443776846,
+            "body_depth_absrel": 0.020326168625615537,
+            "background_depth_absrel": 0.04263692907989025
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.023949517966096446,
+            "visible_nme": 0.023960487534046664,
+            "occluded_nme": 0.02365030202636323,
+            "body_keypoint_nme": 0.024113167394062884,
+            "tail_nme": 0.02357546213074459,
+            "box_matched_pck_0.1": 0.984375,
+            "detection_aware_pck_0.1": 0.984375,
+            "matched_mask_iou": 0.9089927412569523,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.026876172400079668,
+            "body_depth_absrel": 0.030358592455741018,
+            "background_depth_absrel": 0.026735249848570675
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 4500,
+        "source_macro": {
+          "box_matched_nme": 0.0829580394895896,
+          "visible_nme": 0.08395542678738017,
+          "occluded_nme": 0.07582312205167058,
+          "body_keypoint_nme": 0.07520782123475556,
+          "tail_nme": 0.10067282407206742,
+          "box_matched_pck_0.1": 0.7094089673913043,
+          "detection_aware_pck_0.1": 0.6915760869565217,
+          "matched_mask_iou": 0.8367458910215646,
+          "detection_tp": 2.75,
+          "detection_fp": 0.25,
+          "detection_fn": 0.25,
+          "detection_precision": 0.9375,
+          "detection_recall": 0.9375,
+          "all_depth_absrel": 0.0543179246596992,
+          "body_depth_absrel": 0.039773762138793245,
+          "background_depth_absrel": 0.05476071918383241
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.14300417071966798,
+            "visible_nme": 0.1444237556778642,
+            "occluded_nme": 0.1298414518603554,
+            "body_keypoint_nme": 0.12781378201196958,
+            "tail_nme": 0.17772505919440718,
+            "box_matched_pck_0.1": 0.4296875,
+            "detection_aware_pck_0.1": 0.3940217391304348,
+            "matched_mask_iou": 0.7565806428901851,
+            "detection_tp": 3.5,
+            "detection_fp": 0.5,
+            "detection_fn": 0.5,
+            "detection_precision": 0.875,
+            "detection_recall": 0.875,
+            "all_depth_absrel": 0.04292924760375172,
+            "body_depth_absrel": 0.024790153081994504,
+            "background_depth_absrel": 0.04334364167880267
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.022911908259511227,
+            "visible_nme": 0.02348709789689615,
+            "occluded_nme": 0.021804792242985746,
+            "body_keypoint_nme": 0.022601860457541534,
+            "tail_nme": 0.02362058894972766,
+            "box_matched_pck_0.1": 0.9891304347826086,
+            "detection_aware_pck_0.1": 0.9891304347826086,
+            "matched_mask_iou": 0.9169111391529441,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.06570660171564668,
+            "body_depth_absrel": 0.054757371195591986,
+            "background_depth_absrel": 0.06617779668886214
+          }
+        },
+        "scenes": 64
+      },
+      {
+        "step": 5000,
+        "source_macro": {
+          "box_matched_nme": 0.06544060548079099,
+          "visible_nme": 0.06444008285087374,
+          "occluded_nme": 0.06536650617024044,
+          "body_keypoint_nme": 0.06086338341930997,
+          "tail_nme": 0.07590282733560472,
+          "box_matched_pck_0.1": 0.7875339673913043,
+          "detection_aware_pck_0.1": 0.7837975543478262,
+          "matched_mask_iou": 0.8207133299438283,
+          "detection_tp": 2.96875,
+          "detection_fp": 0.03125,
+          "detection_fn": 0.03125,
+          "detection_precision": 0.9921875,
+          "detection_recall": 0.9921875,
+          "all_depth_absrel": 0.04017131810542196,
+          "body_depth_absrel": 0.042395468102768064,
+          "background_depth_absrel": 0.03971653923508711
+        },
+        "per_source": {
+          "crim13/021709_A25_Block22_BCfe1_t": {
+            "box_matched_nme": 0.10952296323491441,
+            "visible_nme": 0.10956219439367607,
+            "occluded_nme": 0.10662795074417908,
+            "body_keypoint_nme": 0.09972830545741829,
+            "tail_nme": 0.13191075244061978,
+            "box_matched_pck_0.1": 0.5879755434782609,
+            "detection_aware_pck_0.1": 0.5805027173913044,
+            "matched_mask_iou": 0.7311784743797034,
+            "detection_tp": 3.9375,
+            "detection_fp": 0.0625,
+            "detection_fn": 0.0625,
+            "detection_precision": 0.984375,
+            "detection_recall": 0.984375,
+            "all_depth_absrel": 0.05533481249585748,
+            "body_depth_absrel": 0.03255619126139209,
+            "background_depth_absrel": 0.05585544800851494
+          },
+          "mouse_climb_wall_91": {
+            "box_matched_nme": 0.021358247726667563,
+            "visible_nme": 0.01931797130807141,
+            "occluded_nme": 0.024105061596301793,
+            "body_keypoint_nme": 0.02199846138120165,
+            "tail_nme": 0.01989490223058965,
+            "box_matched_pck_0.1": 0.9870923913043478,
+            "detection_aware_pck_0.1": 0.9870923913043478,
+            "matched_mask_iou": 0.9102481855079532,
+            "detection_tp": 2.0,
+            "detection_fp": 0.0,
+            "detection_fn": 0.0,
+            "detection_precision": 1.0,
+            "detection_recall": 1.0,
+            "all_depth_absrel": 0.025007823714986444,
+            "body_depth_absrel": 0.05223474494414404,
+            "background_depth_absrel": 0.023577630461659282
+          }
+        },
+        "scenes": 64
+      }
+    ]
+  ],
+  "limitation": "Shared synthetic assets and one seed; no real-animal or causal mechanism claim beyond this resolution intervention."
+}
