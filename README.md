@@ -29,7 +29,11 @@ A [diverse-data control](docs/pose_diverse_data_control.md) expands training fro
 64 to 400 scenes across four complete-Core23 Blender datasets, with unchanged
 32-scene validation and the same 512/15000-step optimizer protocol. Real partial
 labels and incompatible finger landmarks are not silently treated as Core23.
-The run is registered; accuracy results are pending.
+The run and independent checkpoint reload are complete: held-out dual-mouse NME
+improved from 0.286 to 0.102 and detection-aware PCK from 9.31% to 58.02%.
+Single-mouse PCK changed only slightly (40.63% to 41.03%); limb contraction and
+depth-background errors remain. This is one synthetic-only seed, not a coupling
+ablation or evidence of real-animal generalization.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
