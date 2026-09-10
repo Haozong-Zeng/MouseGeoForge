@@ -58,6 +58,10 @@ B/C 在两个最终预算的检测 precision/recall 都为 100%。五次运行�
 这不是新 Joff/Jon 对照，不能与旧 Jon 直接归因比较；不增加数据量、不启用时序或尾巴曲线。
 最终记录将区分训练改善与验证泛化，再决定是否扩充数据或重做联合消融。
 
+状态（2026-09-10）：基线已从源码提交 `1e66026` 启动，输出位于
+`output/depth_pose_baseline_5000_v2/`。训练尚未完成；已安排当前任务内的自动复查，
+仅负责本次运行的重载验证、视觉检查、结果归档，不会自动启动额外实验。
+
 机器可读结果：`docs/experiments/pose_overfit_results.json`。
 本机图：`output/pose_overfit_summary/learning_curves.png`。
 

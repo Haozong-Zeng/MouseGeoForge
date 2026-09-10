@@ -8,6 +8,10 @@ synthetic labels, source-group-held-out validation, paired seeds, and frozen RGB
 feature caching. It is not yet the production temporal/partial-label trainer.
 The [300/1000-step results](docs/depth_pose_pilot_results.md) do not demonstrate a
 stable joint benefit; coupling stays off by default while pose localization is investigated.
+The [8-scene pose diagnostic](docs/pose_overfit_diagnostic.md) identifies local
+heatmap supervision as a major bottleneck in this setting. Disabling that auxiliary
+loss passes the training-only overfit gate; a corrected 5000-step baseline is being
+evaluated separately. This is not evidence of held-out generalization yet.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
