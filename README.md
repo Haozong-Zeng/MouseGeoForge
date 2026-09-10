@@ -19,10 +19,11 @@ held-out single-mouse NME improved (0.147 to 0.110), but dual-mouse NME barely
 changed (0.209 to 0.206) and detection-aware PCK declined. Higher resolution alone
 did not resolve dual-mouse failures within the fixed 5000-update budget.
 
-The next [paired convergence control](docs/pose_convergence_control.md) registers
-15000 updates at both resolutions, holding LR for 5000 then applying cosine decay.
-This tests optimization budget before adding ROI or other architecture changes;
-no accuracy conclusion is available yet.
+The [paired convergence control](docs/pose_convergence_control.md) is complete:
+15000 updates with hold/cosine LR reach 97% dual-mouse training PCK, but held-out
+dual-mouse PCK is only 21.40% / 9.31% at 256 / 512. Training poses are now fitted;
+generalization and instance localization, rather than training fit alone, remain
+the next priority. No additional training or architecture intervention was launched.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
