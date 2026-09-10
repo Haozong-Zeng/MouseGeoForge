@@ -58,6 +58,12 @@ def spaced(items, count):
     return [items[i] for i in np.linspace(0, len(items)-1, count).round().astype(int)]
 
 
+def pilot_image_hw(long_side, dual):
+    if long_side not in (256,512,768):
+        raise ValueError('Audited resolution ladder: 256, 512 or 768')
+    return [long_side*9//16 if dual else long_side,long_side]
+
+
 def build_manifest(config):
     plan_path = ROOT/'dataset/Homecage/LightningPose-CRIM13-Diverse400.plan.json'
     plan = json.loads(plan_path.read_text())
@@ -74,7 +80,7 @@ def build_manifest(config):
             result.append(dict(split=split,source_group=f'crim13/{session}',
                                dataset=DUAL,frame=key['scene_frame'],
                                source_frame=key['source_image_frame'],expected_instances=2,
-                               image_hw=[144,256],depth_units='millimeter'))
+                               image_hw=pilot_image_hw(config['long_side'],True),depth_units='millimeter'))
         dataset = f'PyMouseStudio-BrownFur-{action}-Core23'
         group = 'mouse_climb_wall_91' if action == 'ClimbWall' else 'mouse_wash_face_91'
         groups = json.loads((ROOT/'dataset/motion_source_groups.json').read_text())['groups']
@@ -83,7 +89,7 @@ def build_manifest(config):
         for frame in spaced(list(range(1,92)), count):
             result.append(dict(split=split,source_group=group,dataset=dataset,frame=int(frame),
                                source_frame=int(frame),expected_instances=1,
-                               image_hw=[256,256],depth_units='Blender world units'))
+                               image_hw=pilot_image_hw(config['long_side'],False),depth_units='Blender world units'))
     groups = {s:{r['source_group'] for r in result if r['split']==s} for s in ('train','val')}
     assert not groups['train'] & groups['val']
     for r in result:
@@ -236,8 +242,8 @@ def main():
     if args.run_seed is not None:
         if args.run_seed not in cfg['seeds']: raise ValueError('Seed not in registered config')
         cfg['seeds']=[args.run_seed]
-    if not 1 <= cfg['steps'] <= 5000 or cfg['long_side']!=256 or cfg['view_ids']!=[0,2]:
-        raise ValueError('This pilot supports 1..5000 steps and the fixed audited geometry')
+    if not 1 <= cfg['steps'] <= 5000 or cfg['long_side'] not in (256,512,768) or cfg['view_ids']!=[0,2]:
+        raise ValueError('This pilot supports 1..5000 steps, the registered resolution ladder and views [0,2]')
     if not cfg['modes'] or len(set(cfg['modes'])) != len(cfg['modes']):
         raise ValueError('At least one distinct mode is required')
     if (args.output/'results.json').exists():
