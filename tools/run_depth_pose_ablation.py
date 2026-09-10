@@ -29,6 +29,7 @@ from vggt_omega.models.heads.instance_pose_head import MultiInstanceMouseHead
 from mousegeoforge.models import DepthPoseModel
 from mousegeoforge.models.adapters import SharedTokenAdapter, LocalDepthFeatureBridge
 from mousegeoforge.pilot_metrics import evaluate_scene, summarize_records
+from mousegeoforge.pilot_schedule import learning_rates
 
 DUAL = 'Homecage-BlackBrownFur-LightningPose-CRIM13-DiversePose400-DepthHeightV1'
 CORE23 = ['nose','head_center','left_ear','right_ear','neck','spine_center','lumbar_spine',
@@ -242,8 +243,9 @@ def main():
     if args.run_seed is not None:
         if args.run_seed not in cfg['seeds']: raise ValueError('Seed not in registered config')
         cfg['seeds']=[args.run_seed]
-    if not 1 <= cfg['steps'] <= 5000 or cfg['long_side'] not in (256,512,768) or cfg['view_ids']!=[0,2]:
-        raise ValueError('This pilot supports 1..5000 steps, the registered resolution ladder and views [0,2]')
+    lr_values=learning_rates(cfg)
+    if cfg['long_side'] not in (256,512,768) or cfg['view_ids']!=[0,2]:
+        raise ValueError('This pilot supports the registered resolution ladder and views [0,2]')
     if not cfg['modes'] or len(set(cfg['modes'])) != len(cfg['modes']):
         raise ValueError('At least one distinct mode is required')
     if (args.output/'results.json').exists():
@@ -327,12 +329,15 @@ def main():
             assert state_hash(tensor_state(model))==initial_hash
             run=args.output/f'seed{seed}_{mode}'
             run.mkdir(parents=True,exist_ok=True)
+            write_json(run/'learning_rate_schedule.json',lr_values)
             optimizer=torch.optim.AdamW([v for v in model.parameters() if v.requires_grad],
                 lr=cfg['learning_rate'],weight_decay=cfg['weight_decay'])
             before=evaluate(model,data,mode,'val')
             write_json(run/'initial_validation.json',before)
             history=[]; training_curve=[]; began=time.time(); model.train()
             for step,index in enumerate(schedule,1):
+                for group in optimizer.param_groups:
+                    group['lr']=lr_values[step-1]
                 optimizer.zero_grad(set_to_none=True)
                 batch,out=cached_forward(model,train[index],mode)
                 target=instance_targets_from_batch(batch)
@@ -352,13 +357,14 @@ def main():
                     assert all(gradient_audit[k]>0 for k in ('shared_adapter','dense_head','instance_pose_head'))
                 optimizer.step()
                 history.append(dict(step=step,scene=train[index]['record']['scene'],loss=float(loss.detach()),
-                                    depth_loss=float(dl.detach()),pose_loss=float(pl.detach()),gradient_norm=float(gn)))
+                                    depth_loss=float(dl.detach()),pose_loss=float(pl.detach()),gradient_norm=float(gn),
+                                    learning_rate=lr_values[step-1]))
                 if step%25==0 or step==1:
                     print(json.dumps(dict(seed=seed,mode=mode,elapsed_s=round(time.time()-began),**history[-1])),flush=True)
                     write_json(run/'progress.json',dict(seed=seed,mode=mode,step=step,total_steps=cfg['steps'],elapsed_s=time.time()-began))
                 interval=cfg.get('train_eval_interval',0)
                 if interval and (step%interval==0 or step==cfg['steps']):
-                    training_curve.append(dict(step=step,**evaluate(model,data,mode,'train')['summary']))
+                    training_curve.append(dict(step=step,learning_rate=lr_values[step-1],**evaluate(model,data,mode,'train')['summary']))
                     write_json(run/'training_curve.json',training_curve)
                     write_json(run/'history.json',history)
                     print('TRAIN METRICS '+json.dumps(training_curve[-1]),flush=True)
@@ -372,6 +378,8 @@ def main():
                             torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all(),
                             checkpoint_sha256=provenance['checkpoint_sha256']),run/'final_heads.pt')
             result=dict(seed=seed,mode=mode,steps=cfg['steps'],initial_state_sha256=initial_hash,
+                        lr_schedule_sha256=hashlib.sha256(json.dumps(lr_values).encode()).hexdigest(),
+                        train_order_first5000_sha256=hashlib.sha256(json.dumps([train[i]['record']['scene'] for i in schedule[:5000]]).encode()).hexdigest(),
                         train_order_sha256=order_hash,gradient_audit=gradient_audit,
                         initial_validation=before['summary'],validation=after['summary'],
                         training=train_eval['summary'],elapsed_seconds=time.time()-began,

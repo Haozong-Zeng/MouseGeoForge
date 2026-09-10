@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "purpose": "paired_resolution_convergence_15000_hold_cosine_v1",
+  "seeds": [
+    17
+  ],
+  "modes": [
+    "off"
+  ],
+  "steps": 15000,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "gradient_clip": 1,
+  "train_frames_per_source": 32,
+  "val_frames_per_source": 16,
+  "view_ids": [
+    0,
+    2
+  ],
+  "long_side": 512,
+  "pfm_flip_y": true,
+  "encoder_frozen": true,
+  "detach_depth_features": true,
+  "cache_encoder_features": true,
+  "augmentation": "none_for_exact_frozen_cache",
+  "depth_weight": 1,
+  "pose_weight": 1,
+  "local_heatmap_weight": 0,
+  "train_eval_interval": 500,
+  "body_depth_balance": 0.5,
+  "keypoint_3d_weight": 0,
+  "reprojection_weight": 0,
+  "primary_metrics": [
+    "box_matched_nme",
+    "detection_aware_pck_0.1",
+    "body_depth_absrel"
+  ],
+  "checkpoint_policy": "fixed_final_step_no_validation_selection",
+  "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+  "notes": "Fresh paired seed17 initialization; same 64train/32val. First5000 updates match original constant LR; next10000 cosine decay to1e-5. Both resolutions share schedule and fixed final evaluation. No ROI, data, loss or architecture changes. Budget plus schedule intervention; not an isolated LR or step-count ablation.",
+  "lr_schedule": {
+    "type": "hold_cosine",
+    "hold_steps": 5000,
+    "min_learning_rate": 0.00001
+  }
+}

@@ -19,6 +19,11 @@ held-out single-mouse NME improved (0.147 to 0.110), but dual-mouse NME barely
 changed (0.209 to 0.206) and detection-aware PCK declined. Higher resolution alone
 did not resolve dual-mouse failures within the fixed 5000-update budget.
 
+The next [paired convergence control](docs/pose_convergence_control.md) registers
+15000 updates at both resolutions, holding LR for 5000 then applying cosine decay.
+This tests optimization budget before adding ROI or other architecture changes;
+no accuracy conclusion is available yet.
+
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
 python tools/run_depth_pose_ablation.py
