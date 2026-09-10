@@ -99,11 +99,73 @@ def build_manifest(config):
         r['pfm_flip_y'] = config['pfm_flip_y']
         r['detection_annotation_complete'] = True
     assert len({r['scene'] for r in result}) == len(result)
-    return dict(config=config, source_plan_sha256=fingerprint(plan_path),
+    manifest=dict(config=config, source_plan_sha256=fingerprint(plan_path),
                 grouping_sha256=fingerprint(ROOT/'dataset/motion_source_groups.json'),
                 limitations=['same synthetic assets and rigs across splits',
                              'one held-out motion group and one held-out CRIM13 session',
                              'no real-image or unseen-animal generalization claim'],records=result)
+    if config.get('dataset_policy')=='diverse_core23_v1':
+        manifest=extend_diverse_manifest(manifest,by_session)
+    elif config.get('dataset_policy') is not None:
+        raise ValueError('Unknown dataset policy')
+    return manifest
+
+
+def extend_diverse_manifest(manifest, by_session):
+    """400 training scenes; retain exactly the old 32 validation scenes."""
+    cfg=manifest['config']
+    assert cfg['long_side']==512 and cfg['train_frames_per_source']==32 and cfg['val_frames_per_source']==16
+    reference=json.loads((ROOT/cfg['reference_manifest']).read_text())
+    assert reference['source_plan_sha256']==manifest['source_plan_sha256']
+    assert reference['grouping_sha256']==manifest['grouping_sha256']
+    assert [r for r in manifest['records'] if r['split']=='val']==[r for r in reference['records'] if r['split']=='val']
+    dual_template=next(r for r in manifest['records'] if r['split']=='train' and r['expected_instances']==2)
+    single_template=next(r for r in manifest['records'] if r['split']=='train' and r['expected_instances']==1)
+    train=[]
+    dual_keys=by_session['021709_A25_Block22_BCfe1_t']
+    assert len(dual_keys)==200
+    for key in sorted(dual_keys,key=lambda k:k['source_image_frame']):
+        r=dict(dual_template,frame=key['scene_frame'],source_frame=key['source_image_frame'])
+        r['scene']=f"dataset/BlenderPyMouse/{r['dataset']}/frame_{r['frame']:06d}"
+        train.append(r)
+    train.extend(r for r in manifest['records'] if r['split']=='train' and r['expected_instances']==1)
+    new_members=[
+        'Homecage-BlackFur-KeypointMoseq-Core23-Sample10-Frames200-399',
+        'PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200']
+    # Treat both appearances/segments of Sample10 as one conservative source group.
+    groups=json.loads((ROOT/'dataset/motion_source_groups.json').read_text())['groups']
+    for dataset in new_members:
+        for spec in groups.values():
+            if f'BlenderPyMouse/{dataset}' in spec['members']:
+                assert spec['split']=='train', 'Refuse to import a held-out source'
+        paths=sorted((ROOT/'dataset/BlenderPyMouse'/dataset).glob('frame_*'))
+        assert len(paths)==200
+        for path in spaced(paths,84):
+            r=dict(single_template,dataset=dataset,source_group='moseq_sample10',
+                   frame=int(path.name.split('_')[-1]),scene=str(path.relative_to(ROOT)),depth_units='millimeter')
+            r['source_frame']=r['frame']-1+(200 if dataset.startswith('Homecage') else 0)
+            with Image.open(path/'blended_images/00000000.jpg') as im:
+                width,height=im.size
+            r['image_hw']=[round(512*height/width/16)*16,512]
+            train.append(r)
+    validation=[r for r in manifest['records'] if r['split']=='val']
+    validate_diverse_records(train,validation,reference['records'])
+    manifest['records']=train+validation
+    manifest['reference_manifest_sha256']=fingerprint(ROOT/cfg['reference_manifest'])
+    manifest['experimental_source_groups']={'moseq_sample10':dict(split='train',members=new_members,
+        evidence='Conservative same Sample10 source grouping; frame order is not certified temporal')}
+    manifest['limitations'].extend(['dual poses still derive from one training CRIM13 session',
+        'data amount and appearance/motion coverage change together; not a diversity-only causal effect'])
+    return manifest
+
+
+def validate_diverse_records(train, validation, reference):
+    assert len(train)==400 and len(validation)==32
+    assert sum(r['expected_instances']==2 for r in train)==200
+    assert len({r['scene'] for r in train+validation})==432
+    assert not {r['source_group'] for r in train}&{r['source_group'] for r in validation}
+    assert validation==[r for r in reference if r['split']=='val']
+    assert {r['scene'] for r in reference if r['split']=='train'}<={r['scene'] for r in train}
 
 
 def load_batch(record):
@@ -371,6 +433,12 @@ def main():
                     model.train()
             after=evaluate(model,data,mode,'val',visuals=run/'visuals')
             train_eval=evaluate(model,data,mode,'train')
+            reference_train=None
+            if cfg.get('reference_manifest'):
+                reference=json.loads((ROOT/cfg['reference_manifest']).read_text())
+                reference_scenes={r['scene'] for r in reference['records'] if r['split']=='train'}
+                reference_train=evaluate(model,[i for i in data if i['record']['scene'] in reference_scenes],mode,'train')
+                write_json(run/'reference_training.json',reference_train)
             diagnostic=evaluate(model,data,'off','val') if mode!='off' else None
             final_state=tensor_state(model)
             torch.save(dict(model=final_state,config=cfg,coupling=mode,seed=seed,
@@ -383,6 +451,7 @@ def main():
                         train_order_sha256=order_hash,gradient_audit=gradient_audit,
                         initial_validation=before['summary'],validation=after['summary'],
                         training=train_eval['summary'],elapsed_seconds=time.time()-began,
+                        reference_training=reference_train['summary'] if reference_train else None,
                         bridge_disabled_at_eval=diagnostic['summary'] if diagnostic else None)
             write_json(run/'history.json',history); write_json(run/'validation.json',after)
             write_json(run/'result.json',result)

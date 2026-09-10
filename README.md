@@ -25,6 +25,12 @@ dual-mouse PCK is only 21.40% / 9.31% at 256 / 512. Training poses are now fitte
 generalization and instance localization, rather than training fit alone, remain
 the next priority. No additional training or architecture intervention was launched.
 
+A [diverse-data control](docs/pose_diverse_data_control.md) expands training from
+64 to 400 scenes across four complete-Core23 Blender datasets, with unchanged
+32-scene validation and the same 512/15000-step optimizer protocol. Real partial
+labels and incompatible finger landmarks are not silently treated as Core23.
+The run is registered; accuracy results are pending.
+
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
 python tools/run_depth_pose_ablation.py
