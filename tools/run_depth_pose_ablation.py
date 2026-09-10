@@ -236,8 +236,10 @@ def main():
     if args.run_seed is not None:
         if args.run_seed not in cfg['seeds']: raise ValueError('Seed not in registered config')
         cfg['seeds']=[args.run_seed]
-    if cfg['steps']>1000 or cfg['long_side']!=256 or cfg['view_ids']!=[0,2]:
-        raise ValueError('This pilot supports at most 1000 steps and the fixed audited geometry')
+    if not 1 <= cfg['steps'] <= 5000 or cfg['long_side']!=256 or cfg['view_ids']!=[0,2]:
+        raise ValueError('This pilot supports 1..5000 steps and the fixed audited geometry')
+    if not cfg['modes'] or len(set(cfg['modes'])) != len(cfg['modes']):
+        raise ValueError('At least one distinct mode is required')
     if (args.output/'results.json').exists():
         raise FileExistsError('Completed result exists; choose a new output directory')
     torch.set_num_threads(2)
@@ -290,7 +292,8 @@ def main():
             for k in out: torch.testing.assert_close(out[k],live[k],atol=0,rtol=0)
     depth_args=SimpleNamespace(semantic_label_weights='',body_depth_balance=cfg['body_depth_balance'],
                                body_depth_fraction=.5,depth_gradient_weight=0.)
-    weights=InstancePoseLossWeights(keypoint_3d=0.,reprojection=0.)
+    weights=InstancePoseLossWeights(keypoint_3d=0.,reprojection=0.,
+                                   local_heatmap=cfg.get('local_heatmap_weight',1.))
     results=[]
     provenance=dict(checkpoint_sha256=fingerprint(args.checkpoint),loaded_tensors=len(expected),
                     torch_version=torch.__version__,gpu=torch.cuda.get_device_name(),
@@ -322,7 +325,7 @@ def main():
                 lr=cfg['learning_rate'],weight_decay=cfg['weight_decay'])
             before=evaluate(model,data,mode,'val')
             write_json(run/'initial_validation.json',before)
-            history=[]; began=time.time(); model.train()
+            history=[]; training_curve=[]; began=time.time(); model.train()
             for step,index in enumerate(schedule,1):
                 optimizer.zero_grad(set_to_none=True)
                 batch,out=cached_forward(model,train[index],mode)
@@ -347,11 +350,20 @@ def main():
                 if step%25==0 or step==1:
                     print(json.dumps(dict(seed=seed,mode=mode,elapsed_s=round(time.time()-began),**history[-1])),flush=True)
                     write_json(run/'progress.json',dict(seed=seed,mode=mode,step=step,total_steps=cfg['steps'],elapsed_s=time.time()-began))
+                interval=cfg.get('train_eval_interval',0)
+                if interval and (step%interval==0 or step==cfg['steps']):
+                    training_curve.append(dict(step=step,**evaluate(model,data,mode,'train')['summary']))
+                    write_json(run/'training_curve.json',training_curve)
+                    write_json(run/'history.json',history)
+                    print('TRAIN METRICS '+json.dumps(training_curve[-1]),flush=True)
+                    model.train()
             after=evaluate(model,data,mode,'val',visuals=run/'visuals')
             train_eval=evaluate(model,data,mode,'train')
             diagnostic=evaluate(model,data,'off','val') if mode!='off' else None
             final_state=tensor_state(model)
             torch.save(dict(model=final_state,config=cfg,coupling=mode,seed=seed,
+                            optimizer=optimizer.state_dict(),step=cfg['steps'],
+                            torch_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all(),
                             checkpoint_sha256=provenance['checkpoint_sha256']),run/'final_heads.pt')
             result=dict(seed=seed,mode=mode,steps=cfg['steps'],initial_state_sha256=initial_hash,
                         train_order_sha256=order_hash,gradient_audit=gradient_audit,
@@ -368,10 +380,10 @@ def main():
         pair=[r for r in results if r['seed']==seed]
         assert len({r['initial_state_sha256'] for r in pair})==1
         assert len({r['train_order_sha256'] for r in pair})==1
-        assert pair[0]['initial_validation']==pair[1]['initial_validation']
+        assert all(r['initial_validation']==pair[0]['initial_validation'] for r in pair)
     write_json(args.output/'results.json',dict(config=cfg,provenance=provenance,runs=results,
                passed=True,elapsed_seconds=time.time()-start,peak_gpu_bytes=torch.cuda.max_memory_allocated()))
-    print('ALL PAIRED RUNS COMPLETE',flush=True)
+    print('ALL CONFIGURED RUNS COMPLETE',flush=True)
 
 
 if __name__=='__main__': main()

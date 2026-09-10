@@ -39,6 +39,7 @@ class MultiInstanceMouseHead(nn.Module):
         reid_dim: int = 64,
         local_heatmap_size: int = 8,
         local_window_radius: float = 0.10,
+        detach_local_sampling_grid: bool = False,
     ) -> None:
         super().__init__()
         if num_keypoints <= 0 or num_queries <= 0:
@@ -58,6 +59,8 @@ class MultiInstanceMouseHead(nn.Module):
         self.intermediate_layer_idx = tuple(intermediate_layer_idx)
         self.local_heatmap_size = int(local_heatmap_size)
         self.local_window_radius = float(local_window_radius)
+        # Optional gradient routing; default preserves existing checkpoints and behavior.
+        self.detach_local_sampling_grid = bool(detach_local_sampling_grid)
 
         self.token_norms = nn.ModuleList(
             nn.LayerNorm(dim_in, eps=1e-5) for _ in self.intermediate_layer_idx
@@ -285,7 +288,8 @@ class MultiInstanceMouseHead(nn.Module):
         )
         offset_y, offset_x = torch.meshgrid(axis, axis, indexing="ij")
         offsets = torch.stack((offset_x, offset_y), dim=-1)
-        sample_grid = coarse_xy[..., None, None, :] * 2.0 - 1.0
+        grid_center = coarse_xy.detach() if self.detach_local_sampling_grid else coarse_xy
+        sample_grid = grid_center[..., None, None, :] * 2.0 - 1.0
         sample_grid = sample_grid + offsets[None, None, None] * 2.0
         sample_grid = sample_grid.reshape(frame_count, queries * keypoints * size, size, 2)
         local_pixels = F.grid_sample(
