@@ -114,8 +114,10 @@ def build_manifest(config):
 def extend_diverse_manifest(manifest, by_session):
     """400 training scenes; retain exactly the old 32 validation scenes."""
     cfg=manifest['config']
-    assert cfg['long_side']==512 and cfg['train_frames_per_source']==32 and cfg['val_frames_per_source']==16
+    assert cfg['long_side'] in (512,768) and cfg['train_frames_per_source']==32 and cfg['val_frames_per_source']==16
     reference=json.loads((ROOT/cfg['reference_manifest']).read_text())
+    # Compare the same annotated scenes at the requested input resolution only.
+    reference['records']=resize_manifest_records(reference['records'],cfg['long_side'])
     assert reference['source_plan_sha256']==manifest['source_plan_sha256']
     assert reference['grouping_sha256']==manifest['grouping_sha256']
     assert [r for r in manifest['records'] if r['split']=='val']==[r for r in reference['records'] if r['split']=='val']
@@ -146,7 +148,7 @@ def extend_diverse_manifest(manifest, by_session):
             r['source_frame']=r['frame']-1+(200 if dataset.startswith('Homecage') else 0)
             with Image.open(path/'blended_images/00000000.jpg') as im:
                 width,height=im.size
-            r['image_hw']=[round(512*height/width/16)*16,512]
+            r['image_hw']=[round(cfg['long_side']*height/width/16)*16,cfg['long_side']]
             train.append(r)
     validation=[r for r in manifest['records'] if r['split']=='val']
     validate_diverse_records(train,validation,reference['records'])
@@ -157,6 +159,13 @@ def extend_diverse_manifest(manifest, by_session):
     manifest['limitations'].extend(['dual poses still derive from one training CRIM13 session',
         'data amount and appearance/motion coverage change together; not a diversity-only causal effect'])
     return manifest
+
+
+def resize_manifest_records(records, long_side):
+    if long_side not in (512,768):
+        raise ValueError('Registered diverse-data resolutions: 512 or 768')
+    return [dict(r,image_hw=[round(long_side*r['image_hw'][0]/r['image_hw'][1]/16)*16,long_side])
+            for r in records]
 
 
 def validate_diverse_records(train, validation, reference):

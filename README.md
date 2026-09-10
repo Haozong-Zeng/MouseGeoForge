@@ -35,6 +35,11 @@ Single-mouse PCK changed only slightly (40.63% to 41.03%); limb contraction and
 depth-background errors remain. This is one synthetic-only seed, not a coupling
 ablation or evidence of real-animal generalization.
 
+A [768 resolution-only follow-up](docs/pose_diverse_resolution_768_control.md)
+keeps the same diverse400 data, seed, update order, losses and 15000-step schedule.
+It recomputes RGB features from source images; no 512 checkpoint continuation.
+Results are pending independent reload and fixed-frame visual acceptance.
+
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
 python tools/run_depth_pose_ablation.py

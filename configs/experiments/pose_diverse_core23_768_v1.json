@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "paired_diverse_core23_resolution_768_v1",
+  "seeds": [
+    17
+  ],
+  "modes": [
+    "off"
+  ],
+  "steps": 15000,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "gradient_clip": 1,
+  "train_frames_per_source": 32,
+  "val_frames_per_source": 16,
+  "view_ids": [
+    0,
+    2
+  ],
+  "long_side": 768,
+  "pfm_flip_y": true,
+  "encoder_frozen": true,
+  "detach_depth_features": true,
+  "cache_encoder_features": true,
+  "augmentation": "none_for_exact_frozen_cache",
+  "depth_weight": 1,
+  "pose_weight": 1,
+  "local_heatmap_weight": 0,
+  "train_eval_interval": 500,
+  "body_depth_balance": 0.5,
+  "keypoint_3d_weight": 0,
+  "reprojection_weight": 0,
+  "primary_metrics": [
+    "box_matched_nme",
+    "detection_aware_pck_0.1",
+    "body_depth_absrel"
+  ],
+  "checkpoint_policy": "fixed_final_step_no_validation_selection",
+  "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+  "notes": "Resolution-only control against completed diverse400 512/15k: identical 400train/32val scene identities, view order, seed17 initialization, sample order, losses and hold/cosine LR. Fresh weights, not continued training. Native RGB resized directly to 768 long side with aspect ratio preserved; no ROI, augmentation, new sources, real labels, temporal or coupling changes. Same updates, not equal compute.",
+  "lr_schedule": {
+    "type": "hold_cosine",
+    "hold_steps": 5000,
+    "min_learning_rate": 0.00001
+  },
+  "dataset_policy": "diverse_core23_v1",
+  "reference_manifest": "output/pose_convergence_512_15000_v1/manifest.json"
+}
