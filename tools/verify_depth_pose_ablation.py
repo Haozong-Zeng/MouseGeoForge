@@ -13,6 +13,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,default=ROOT/'output/depth_pose_ablation_pilot_v1')
     p.add_argument('--checkpoint',type=Path,default=ROOT/'vggt-omega/vggt_omega_1b_512.pt')
+    p.add_argument('--visual-frame',type=int,action='append',default=[],
+                   help='Also render this fixed frame for every matching source (repeatable)')
     a=p.parse_args()
     results=json.loads((a.output/'results.json').read_text())
     assert fingerprint(a.checkpoint)==results['provenance']['checkpoint_sha256']
@@ -31,7 +33,7 @@ def main():
     manifest=json.loads((a.output/'manifest.json').read_text())
     data=[]
     for r in manifest['records']:
-        if r['split']!='val': continue
+        if r['split']!='val' and r['frame'] not in a.visual_frame: continue
         b=load_batch(r)
         with torch.no_grad(),torch.autocast('cuda',dtype=torch.bfloat16):
             cached,patch_start=model.aggregator(b['images'].cuda())
@@ -56,6 +58,9 @@ def main():
                 assert error<1e-6,(r['seed'],r['mode'],key,error)
         records.append(dict(seed=r['seed'],mode=r['mode'],max_metric_difference=max_error,
                             validated_scenes=len(check['records']),passed=True))
+        for item in data:
+            if item['record']['frame'] in a.visual_frame:
+                evaluate(model,[item],r['mode'],item['record']['split'],visuals=folder/'diagnostic_visuals')
         print(records[-1],flush=True)
     write_json(a.output/'checkpoint_verification.json',dict(passed=True,runs=records))
 

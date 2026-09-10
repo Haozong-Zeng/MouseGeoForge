@@ -14,6 +14,8 @@ loss passes the training-only overfit gate. The corrected 5000-step baseline has
 completed and passed checkpoint reload verification: train/held-out NME is
 0.064/0.178, with a substantial generalization gap and weaker dual-mouse fitting.
 It is not production-ready or a new paired coupling ablation.
+A [resolution-only 512 control](docs/pose_resolution_control.md) is now running
+with the same split, seed, losses and 5000-update budget; its accuracy is not yet known.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only

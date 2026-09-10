@@ -39,4 +39,15 @@ long_side 不同，源场景与分组完全相同；world scale、外参、实�
    本轮单种子，仍共享合成资产，不声称真实动物泛化。
 
 输出：`output/depth_pose_resolution_512_v1/`，原 256 结果不覆盖。
-状态：启动前审计通过，准备执行正式 5000 步训练；尚无 512 精度结果。
+状态：已从源码提交 `c629543` 启动正式 5000 步 GPU 训练；尚无 512 最终精度结果。
+已恢复当前任务内的自动验收，完成或需要用户决定时暂停，不自动启动 768。
+
+验收命令：
+
+```bash
+python tools/verify_depth_pose_ablation.py --output output/depth_pose_resolution_512_v1 --visual-frame 40 --visual-frame 98 --visual-frame 246 --visual-frame 393
+python tools/compare_pose_resolution.py
+```
+
+256 基线已使用新增的 `--visual-frame` 功能复算，32 验证场景最大指标差异仍为 0；
+固定困难帧参照图保存在该基线的 `seed17_off/diagnostic_visuals/` 下。
