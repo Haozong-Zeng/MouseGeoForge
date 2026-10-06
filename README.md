@@ -1,5 +1,53 @@
 # MouseGeoForge
 
+## Current research and distribution status (2026-10-06)
+
+The latest [local-evidence and instance-grouping experiments](docs/local_evidence_instance_grouping_plan_20261005.md)
+remain exploratory. Fixed development-set evaluation did not establish a robust
+overall winner: duplicate detections, instance/foot assignment and cross-source
+generalization remain unresolved. The experiment automation was stopped by the
+user; no new checkpoint was promoted to the default model.
+
+This repository is source-only. Data, model weights, rendered assets, virtual
+environments and experiment outputs must remain outside Git. Do not use
+`git add -f` to bypass the exclusions. Original annotations and final Blender
+projects remain in `dataset/` and `BlenderPyMouseProjects/` locally.
+
+Local distribution preparation (no commit, push or upload):
+
+```bash
+python tools/prepare_source_distribution.py --output backup/release-preflight --snapshot
+python tools/package_local_assets.py plan --output backup/asset-packages --part-gib 16
+python tools/package_local_assets.py run --output backup/asset-packages --workers 2
+```
+
+The asset packer retains originals and writes independently extractable
+`.tar.gz` parts, per-file SHA-256 manifests, archive checksums, and progress JSON.
+The 16 GiB target is **uncompressed source size**, not an upload-service limit;
+a single larger file is kept intact. It excludes existing `backup/`, environments
+and general third-party source trees; selected pretrained weights are included.
+Existing DeepLabCut download ZIPs are inventoried without redundant recompression.
+To restore, extract all parts for a dataset into a separate empty directory,
+verify the manifests, then move the restored tree as needed. Never extract over
+live data without reviewing conflicts. Resume an interrupted job by rerunning
+the same `run` command; source changes fail verification rather than silently
+changing the snapshot. Do not modify datasets while packaging is active.
+
+On 2026-10-06, 92 untracked historical Blender appearance probes/review scripts
+with no references in Git-eligible source/docs, plus old `tmp/` and `Log/`, were
+moved reversibly to `backup/workspace_cleanup_20261006/`. The exact move mapping
+is stored there as `move_plan.json`. Reusable conversion/training code, experiment
+records, effective annotations, weights and final Blender scenes were retained.
+Historical probes can be restored to their recorded paths if needed. Downloaded
+projects and environments were not relocated because local workflows reference
+them. No source, dataset or checkpoint was deleted.
+
+Review third-party licenses and dataset redistribution rights before sharing
+the asset packages; local packaging does not imply permission to publish them.
+See [third-party notices](THIRD_PARTY_NOTICES.md). Before a GitHub push, review the
+diff and untracked source list, run relevant tests and inspect the preflight
+report. The heuristic secret scan is not an exhaustive security audit.
+
 ## Depth–pose coupling pilot
 
 The controlled spatial J-off/J-on pilot and its safeguards are documented in
@@ -41,8 +89,9 @@ It recomputes RGB features from source images; no 512 checkpoint continuation.
 The run, independent reload and fixed-frame visual review are complete: 768 improves
 single-mouse PCK (41.03% to 49.73%) and dense depth/masks, but worsens dual-mouse
 NME (0.102 to 0.122) and PCK (58.02% to 53.60%). Limb contraction and tail errors
-remain. Keep 512 as the current dual-pose baseline; one seed is not a universal
-resolution ranking. No further experiment was automatically launched.
+remain. One seed is not a universal resolution ranking. The user has provisionally
+selected 768 for subsequent development; retain 512 as the paired reference.
+This choice does not assert 768 superiority or launch additional training.
 
 ```bash
 python tools/run_depth_pose_ablation.py --prepare-only
@@ -83,6 +132,32 @@ should be assumed portable or safe to run as a batch without reviewing its scope
 - [Multi-instance architecture and implementation status](docs/multi_mouse_instance_pose_architecture.md)
 - [Temporal architecture and controlled ablations](docs/temporal_architecture_ablation_design.md)
 - [Depth-pose research and current implementation](docs/depth_pose_joint_research_and_plan.md)
+- [Occlusion-aware labels, robust fusion and 768 calibration audit](docs/occlusion_aware_pose_v1.md)
+- [Held-out uncertainty calibration and Blender evaluation diagnostics](docs/occlusion_aware_pose_v2.md)
+- [Decoupled pixel-space robust fusion: implementation and controlled evaluation](docs/occlusion_aware_pose_v3.md)
+- [Two/four-view context and geometry controls, with camera-label audit](docs/occlusion_aware_pose_v4.md)
+- [Unified 1–N view input: interfaces, sampling, scale contract and training plan](docs/variable_view_pose_design.md)
+- [Bounded automatic variable-view adaptation run and recovery ledger](docs/variable_view_auto_run.md)
+- [Variable-view adaptation results: gains, retention failures and visual audit](docs/variable_view_adaptation_v1_results.md)
+- [Variable-view replay V2: single-mouse and fixed-pair retention control](docs/variable_view_replay_v2.md)
+- [Variable-view V3: matched-budget lower-learning-rate replay control](docs/variable_view_lr_v3.md)
+- [Variable-view V4: final fresh-seed replication and stopping criteria](docs/variable_view_seed_v4.md)
+- [Variable-view final summary: replication limits and tail-specific next direction](docs/variable_view_final_summary.md)
+- [Tail point-versus-curve supervision: matched-budget pilot and error audit](docs/tail_supervision_v1.md)
+- [Cylinder bottom-view audit: missing validation coverage and frozen synthetic controls](docs/cylinder_bottom_view_audit_20260910.md)
+- [Cylinder physical-view balance V1: matched-budget training and calibrated validation](docs/cylinder_view_balance_v1.md)
+- [Cylinder pose-head-only isolation: frozen depth and camera-combination coverage audit](docs/cylinder_pose_only_v1.md)
+- [Cylinder combination coverage V2: decoupled pose, camera subsets and reference order](docs/cylinder_combinations_v2.md)
+- [Cylinder localization audit: coarse-window coverage, local heatmaps and frozen temperature diagnostics](docs/cylinder_localization_audit_v1.md)
+- [Cylinder coarse-body auxiliary control](docs/cylinder_coarse_aux_v1.md) and [autonomous cycle ledger](docs/cylinder_auto_cycle.md)
+- [Cylinder local-grid gradient audit: indirect opposition versus actual direction reversal](docs/cylinder_grid_gradient_audit_v1.md)
+- [Cylinder matched-camera train/development gap](docs/cylinder_pose_gap_v1.md) and [train-source mixture: 14/17 gates with retention/depth tradeoffs](docs/cylinder_source_mix_v1.md)
+- [Cylinder retention and geometry decomposition: box failures, tail drift and common-support 3D](docs/cylinder_retention_geometry_v1.md)
+- [Cylinder body epipolar supervision: fixed-budget preflight and control](docs/cylinder_epipolar_v1.md)
+- [Cylinder dual replay retention preflight: teacher quality gates and rejected training proposal](docs/cylinder_replay_retention_v1.md)
+- [Cylinder replay coverage audit: same-source nonreplayed poses and body localization regression](docs/cylinder_replay_coverage_v1.md)
+- [Cylinder task-gradient audit](docs/cylinder_task_gradients_v1.md) and [conditional local-temperature control](docs/cylinder_adaptive_temperature_v1.md)
+- [Five-hour autonomous cycle log](docs/cylinder_five_hour_cycle_20260911.md)
 - [Derived repository organization decision](docs/derived_repository_structure_research.md)
 - [DANNCE 25 fps mask/depth delivery](docs/dannce_25fps_full_pseudo_depth.md)
 - [Temporal indexing and source groups](docs/temporal_dataset_delivery.md)

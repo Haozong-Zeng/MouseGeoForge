@@ -96,3 +96,8 @@ __pycache__/
 /output/DANNCE-4DGS-Pilot-mm1-f0000-0079/
 /third_party/
 *.part
+*.partial
+*.tar.zst
+*.tar.xz
+*.rar
+*.bin

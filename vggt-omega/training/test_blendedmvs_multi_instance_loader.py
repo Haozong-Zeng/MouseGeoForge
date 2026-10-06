@@ -15,6 +15,30 @@ from training.instance_pose_losses import instance_targets_from_batch
 NAMES = np.asarray(["nose", "neck", "tail_base"])
 
 
+def test_coordinate_availability_is_not_visibility_or_in_frame(tmp_path: Path) -> None:
+    write_scene(tmp_path/'partial',1)
+    path=tmp_path/'partial/keypoints.npz'
+    with np.load(path) as a:
+        payload=dict(a)
+    payload['xy_label_valid']=np.ones((2,3),bool)
+    payload['xy_label_valid'][:,0]=False
+    payload['uv'][:,2]=np.nan
+    payload['surface_visible'][:,1]=False  # Annotated, occluded: keep xy loss.
+    payload['visibility_valid']=np.ones((2,3),bool)
+    payload['visibility_valid'][:,2]=False
+    np.savez(path,**payload)
+    dataset=BlendedMVSDataset(scenes=[load_scene(tmp_path/'partial')],num_views=2,
+        image_width=96,image_height=64,samples_per_scene=1,seed=1,
+        use_masked_images=False,pfm_flip_y=False,canonicalize_camera=False,
+        scale_mode='raw',top_srcs=2,load_keypoints=True)
+    sample=dataset[0]
+    assert sample['instance_keypoint_in_frame'].all()
+    assert sample['instance_keypoint_valid'][:,0].tolist()==[[False,True,False],[False,True,False]]
+    assert not sample['instance_keypoint_visible'][:,0,1].any()
+    assert torch.isfinite(sample['instance_keypoint_xy']).all()
+    assert (sample['instance_keypoint_occlusion_cause']==-1).all()
+
+
 def test_explicit_yolo_boxes_without_segmentation(tmp_path: Path) -> None:
     root = tmp_path / "yolo"
     write_scene(root, 1)

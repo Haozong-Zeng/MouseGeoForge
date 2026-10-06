@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "purpose": "occlusion_aware_pose_768_v1",
+  "seeds": [
+    17
+  ],
+  "modes": [
+    "off"
+  ],
+  "steps": 15000,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.01,
+  "gradient_clip": 1,
+  "train_frames_per_source": 32,
+  "val_frames_per_source": 16,
+  "view_ids": [
+    0,
+    2
+  ],
+  "long_side": 768,
+  "pfm_flip_y": true,
+  "encoder_frozen": true,
+  "detach_depth_features": true,
+  "cache_encoder_features": true,
+  "augmentation": "none_for_exact_frozen_cache",
+  "depth_weight": 1,
+  "pose_weight": 1,
+  "local_heatmap_weight": 0,
+  "train_eval_interval": 500,
+  "body_depth_balance": 0.5,
+  "keypoint_3d_weight": 0,
+  "reprojection_weight": 0,
+  "primary_metrics": [
+    "box_matched_nme",
+    "detection_aware_pck_0.1",
+    "body_depth_absrel"
+  ],
+  "checkpoint_policy": "fixed_final_step_no_validation_selection",
+  "split_policy": "climb_train_wash_val_and_CRIM13_source_session_disjoint",
+  "notes": "Prepared, not launched: same diverse400 768 RGB protocol with isolated scale-only uncertainty NLL. Pose and depth heads are unchanged. Explicit geometry weights remain zero until source-pose discrepancies and out-of-sample uncertainty are resolved. Never use sigma-only pilot weights for production fusion: its held-out calibration gate failed. No temporal, tail-curve, pixel occlusion augmentation or depth-pose bridge changes.",
+  "lr_schedule": {
+    "type": "hold_cosine",
+    "hold_steps": 5000,
+    "min_learning_rate": 0.00001
+  },
+  "dataset_policy": "diverse_core23_v1",
+  "reference_manifest": "output/pose_convergence_512_15000_v1/manifest.json",
+  "keypoint_uncertainty_weight": 0.05,
+  "geometry_mode": "robust",
+  "uncertainty_calibrated": false
+}

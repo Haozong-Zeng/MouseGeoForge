@@ -725,6 +725,9 @@ def load_selected_instances(
         "keypoint_valid": np.zeros(
             (view_count, max_instances, keypoint_count), dtype=bool
         ),
+        "keypoint_in_frame": np.zeros((view_count, max_instances, keypoint_count), dtype=bool),
+        "keypoint_label_valid": np.zeros((view_count, max_instances, keypoint_count), dtype=bool),
+        "keypoint_occlusion_cause": np.full((view_count, max_instances, keypoint_count), -1, dtype=np.int8),
         "keypoint_visible": np.zeros(
             (view_count, max_instances, keypoint_count), dtype=bool
         ),
@@ -739,6 +742,7 @@ def load_selected_instances(
         ),
         "name_valid": np.zeros((max_instances, keypoint_count), dtype=bool),
         "world_valid": np.zeros((max_instances, keypoint_count), dtype=bool),
+        "surface_valid": np.zeros((max_instances, keypoint_count), dtype=bool),
     }
     path = scene.root / "keypoints.npz"
     source_view_ids: list[int] = []
@@ -748,6 +752,9 @@ def load_selected_instances(
     source_boxes = source_box_valid = None
     if canonical_names and path.is_file():
         with np.load(path, allow_pickle=False) as arrays:
+            from training.keypoint_contract import read_validity, read_occlusion
+            availability = read_validity(arrays, path)
+            source_occlusion_cause = read_occlusion(arrays, path)
             source_names = [str(value) for value in arrays["names"]]
             source_view_ids = [int(value) for value in arrays["view_ids"]]
             source_joint_world = arrays["joint_world_xyz"].astype(np.float32)
@@ -755,16 +762,10 @@ def load_selected_instances(
             source_uv = arrays["uv"].astype(np.float32)
             source_in_frame = arrays["in_frame"].astype(bool)
             source_visible = arrays["surface_visible"].astype(bool)
-            source_world_valid = (
-                arrays["world_valid"].astype(bool)
-                if "world_valid" in arrays
-                else np.isfinite(source_joint_world).all(axis=-1)
-            )
-            source_visibility_valid = (
-                arrays["visibility_valid"].astype(bool)
-                if "visibility_valid" in arrays
-                else source_in_frame.copy()
-            )
+            source_world_valid = availability['world_valid']
+            source_visibility_valid = availability['visibility_valid']
+            source_label_valid = availability['xy_label_valid']
+            source_surface_valid = availability['surface_valid']
             source_ids = (
                 arrays["instance_ids"].astype(np.int64)
                 if "instance_ids" in arrays
@@ -784,6 +785,9 @@ def load_selected_instances(
             source_visible = source_visible[:, None]
             source_world_valid = source_world_valid[None]
             source_visibility_valid = source_visibility_valid[:, None]
+            source_label_valid = source_label_valid[:, None]
+            source_surface_valid = source_surface_valid[None]
+            source_occlusion_cause = source_occlusion_cause[:, None]
         if source_joint_world.ndim != 3 or source_uv.ndim != 4:
             raise ValueError(
                 f"Unsupported keypoint instance layout in {path}: "
@@ -830,6 +834,9 @@ def load_selected_instances(
         result["surface_world_xyz"][:source_instance_count] = surface_world
         result["name_valid"][:source_instance_count] = valid_names
         result["world_valid"][:source_instance_count] = world_valid
+        result["surface_valid"][:source_instance_count] = (
+            np.take(source_surface_valid, name_indices, axis=1) & valid_names[None]
+        )
         ids = (
             source_ids
             if source_ids is not None
@@ -855,6 +862,11 @@ def load_selected_instances(
                 np.take(source_in_frame[source_index], source_name_indices, axis=1)
                 & valid_names[None]
             )
+            label_valid = np.take(source_label_valid[source_index], source_name_indices, axis=1) & valid_names[None]
+            cause = np.take(source_occlusion_cause[source_index], source_name_indices, axis=1).copy()
+            cause[~in_frame] = -1
+            result['keypoint_occlusion_cause'][selected_index, :source_instance_count] = cause
+            uv[~np.isfinite(uv)] = 0.0
             visible = (
                 np.take(source_visible[source_index], source_name_indices, axis=1)
                 & in_frame
@@ -870,7 +882,9 @@ def load_selected_instances(
             result["keypoint_xy"][selected_index, :source_instance_count] = uv
             result["keypoint_xy"][selected_index, :source_instance_count, :, 0] /= float(output_width)
             result["keypoint_xy"][selected_index, :source_instance_count, :, 1] /= float(output_height)
-            result["keypoint_valid"][selected_index, :source_instance_count] = in_frame
+            result["keypoint_in_frame"][selected_index, :source_instance_count] = in_frame
+            result["keypoint_label_valid"][selected_index, :source_instance_count] = label_valid
+            result["keypoint_valid"][selected_index, :source_instance_count] = in_frame & label_valid
             result["keypoint_visible"][selected_index, :source_instance_count] = visible
             result["keypoint_visibility_valid"][selected_index, :source_instance_count] = (
                 visibility_valid
@@ -901,29 +915,21 @@ def load_selected_instances(
                 if keypoint_index is None:
                     continue
                 result["name_valid"][0, keypoint_index] = True
-                if not bool(item.get("visible", False)):
-                    continue
-                if "x" not in item or "y" not in item:
-                    continue
-                x = float(item["x"])
-                y = float(item["y"])
-                in_frame = (
-                    np.isfinite(x)
-                    and np.isfinite(y)
-                    and 0.0 <= x < original_width
-                    and 0.0 <= y < original_height
-                )
-                if not in_frame:
+                from training.keypoint_contract import legacy_point
+                xy, in_frame, label_valid, visible, known = legacy_point(item, original_width, original_height)
+                result['keypoint_in_frame'][selected_index, 0, keypoint_index] = in_frame
+                result['keypoint_label_valid'][selected_index, 0, keypoint_index] = label_valid
+                if not (in_frame and label_valid):
                     continue
                 result["keypoint_xy"][selected_index, 0, keypoint_index] = (
-                    x / original_width,
-                    y / original_height,
+                    xy[0] / original_width,
+                    xy[1] / original_height,
                 )
                 result["keypoint_valid"][selected_index, 0, keypoint_index] = True
-                result["keypoint_visible"][selected_index, 0, keypoint_index] = True
+                result["keypoint_visible"][selected_index, 0, keypoint_index] = visible
                 result["keypoint_visibility_valid"][
                     selected_index, 0, keypoint_index
-                ] = True
+                ] = known
                 found_legacy = True
         if found_legacy:
             source_instance_count = 1
@@ -1012,6 +1018,7 @@ class BlendedMVSDataset(Dataset):
         scale_mode: str,
         top_srcs: int,
         load_keypoints: bool,
+        normalization_scale_override: float | None = None,
     ) -> None:
         if not scenes:
             raise ValueError("BlendedMVSDataset needs at least one scene")
@@ -1026,6 +1033,11 @@ class BlendedMVSDataset(Dataset):
         self.pfm_flip_y = pfm_flip_y
         self.canonicalize_camera = canonicalize_camera
         self.scale_mode = scale_mode
+        if normalization_scale_override is not None and (
+            not np.isfinite(normalization_scale_override) or normalization_scale_override <= 0
+        ):
+            raise ValueError('normalization_scale_override must be finite and positive')
+        self.normalization_scale_override = normalization_scale_override
         self.top_srcs = top_srcs
         self.load_keypoints = load_keypoints
         self.keypoint_names = discover_keypoint_names(scenes) if load_keypoints else []
@@ -1107,7 +1119,10 @@ class BlendedMVSDataset(Dataset):
         )
         scale = 1.0
         scale_source = "raw"
-        if self.scale_mode == "mean_point_distance":
+        if self.normalization_scale_override is not None:
+            scale = float(self.normalization_scale_override)
+            scale_source = 'fixed_scene_scale'
+        elif self.scale_mode == "mean_point_distance":
             scale = mean_world_point_distance(
                 depths_np,
                 masks_np,
@@ -1115,12 +1130,12 @@ class BlendedMVSDataset(Dataset):
                 torch.stack(intrinsics).numpy(),
             )
             scale_source = "mean_point_distance"
-        if self.scale_mode in {"median_depth", "auto"}:
+        if self.normalization_scale_override is None and self.scale_mode in {"median_depth", "auto"}:
             valid_depths = depths_np[masks_np]
             if valid_depths.size:
                 scale = max(float(np.median(valid_depths)), 1e-6)
                 scale_source = "median_depth"
-        if self.scale_mode == "median_baseline" or (self.scale_mode == "auto" and scale_source == "raw"):
+        if self.normalization_scale_override is None and (self.scale_mode == "median_baseline" or (self.scale_mode == "auto" and scale_source == "raw")):
             valid_extrinsics = extrinsics_np[camera_available_np]
             if len(valid_extrinsics) >= 2:
                 scale = median_camera_baseline(valid_extrinsics)
@@ -1197,6 +1212,9 @@ class BlendedMVSDataset(Dataset):
             "mask_valid": torch.from_numpy(instances["mask_valid"]).bool(),
             "instance_keypoint_xy": torch.from_numpy(instances["keypoint_xy"]).float(),
             "instance_keypoint_valid": torch.from_numpy(instances["keypoint_valid"]).bool(),
+            "instance_keypoint_in_frame": torch.from_numpy(instances["keypoint_in_frame"]).bool(),
+            "instance_keypoint_label_valid": torch.from_numpy(instances["keypoint_label_valid"]).bool(),
+            "instance_keypoint_occlusion_cause": torch.from_numpy(instances["keypoint_occlusion_cause"]).long(),
             "instance_keypoint_visible": torch.from_numpy(instances["keypoint_visible"]).bool(),
             "instance_keypoint_visibility_valid": torch.from_numpy(
                 instances["keypoint_visibility_valid"]
@@ -1208,6 +1226,7 @@ class BlendedMVSDataset(Dataset):
                 instances["surface_world_xyz"]
             ).float(),
             "instance_world_valid": torch.from_numpy(instances["world_valid"]).bool(),
+            "instance_surface_valid": torch.from_numpy(instances["surface_valid"]).bool(),
         }
 
 

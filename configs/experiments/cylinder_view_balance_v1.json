@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "seed": 17,
+  "steps": 800,
+  "arms": ["side_control", "balanced_views"],
+  "arm_learning_rates": {"side_control": 0.000003, "balanced_views": 0.000003},
+  "weight_decay": 0.01,
+  "gradient_clip": 1.0,
+  "cache_limit_gib": 32,
+  "max_run_hours": 2,
+  "long_side": 768,
+  "cylinder_train_scenes": 16,
+  "cylinder_development_scenes": 8,
+  "replay_scenes_per_dataset": 8,
+  "checkpoint": "output/pose_diverse_core23_768_v1/seed17_off/final_heads.pt",
+  "manifest": "output/pose_diverse_core23_768_v1/manifest.json",
+  "encoder_frozen": true,
+  "coupling": "off",
+  "scope": "synthetic Cylinder development; real Cylinder unavailable",
+  "replay_policy": "50% Cylinder ClimbWall view sampling, 25% original dual pair, 25% original single Sample10 pairs",
+  "normalization": "fixed original pair baseline per scene, unchanged across subsets",
+  "budget_policy": "identical scenes, V counts, image shapes and seed per optimizer slot; only Cylinder camera selection changes",
+  "checkpoint_policy": "fixed final step; no validation checkpoint selection or automatic promotion",
+  "acceptance": {
+    "bottom_body_nme_ratio_max": 0.9,
+    "bottom_vs_control_ratio_max": 0.95,
+    "retention_nme_ratio_max": 1.05,
+    "retention_pck_drop_max": 0.03,
+    "body_depth_ratio_max": 1.1,
+    "top_body_nme_ratio_max": 1.05
+  }
+}

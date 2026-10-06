@@ -23,6 +23,24 @@ class InstancePoseLossWeights:
     keypoint_3d: float = 1.0
     reprojection: float = 1.0
     no_object: float = 0.1
+    keypoint_uncertainty: float = 0.0
+
+
+def keypoint_uncertainty_loss(xy, sigma, target_xy, valid):
+    """Isotropic normalized-UV Gaussian NLL, calibrating scale only.
+
+    Coordinate residuals are detached; existing all-labeled-point coordinate
+    supervision remains unchanged. A log-scale term prevents inflation escape.
+    Calibration still needs held-out reliability checks before fusion use.
+    """
+    if sigma.shape != xy.shape[:-1] or valid.shape != sigma.shape:
+        raise ValueError('Uncertainty/validity shape mismatch')
+    mask = valid.bool() & torch.isfinite(target_xy).all(-1)
+    if not mask.any():
+        return sigma.sum()*0.
+    residual = (xy[mask].detach()-target_xy[mask]).float()
+    scale = sigma[mask].float().clamp_min(1e-3)
+    return (.5*(residual/scale[:, None]).square().sum(-1)+2*scale.log()).mean()
 
 
 @torch.no_grad()
@@ -87,6 +105,8 @@ def instance_pose_loss(
     *,
     image_size: tuple[int, int] | None = None,
     world_scale: float = 1.0,
+    geometry_mode: str = 'legacy',
+    uncertainty_calibrated: bool = False,
 ) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
     """Compute set-prediction losses while ignoring absent partial labels."""
     matches = hungarian_match_instances(predictions, targets)
@@ -121,7 +141,7 @@ def instance_pose_loss(
 
     zero = objectness.mean() * 0.0
     box_l1 = box_giou = mask_bce = mask_dice = zero
-    keypoint_l1 = visibility_loss = local_heatmap_loss = zero
+    keypoint_l1 = visibility_loss = local_heatmap_loss = uncertainty_loss = zero
     if matched_prediction:
         device = objectness.device
         pred_index = tuple(
@@ -151,25 +171,24 @@ def instance_pose_loss(
         predicted_xy = predictions["instance_keypoint_xy"][pred_index]
         target_xy = targets["keypoint_xy"][target_index]
         point_valid = targets["keypoint_valid"][target_index]
+        if weights.keypoint_uncertainty:
+            uncertainty_loss = keypoint_uncertainty_loss(
+                predicted_xy, predictions['instance_keypoint_sigma'][pred_index], target_xy, point_valid)
+        predicted_visibility = predictions['instance_keypoint_visibility_logits'][pred_index]
+        visibility_target = targets.get('keypoint_visible', targets['keypoint_valid'])[target_index]
+        visibility_supervised = targets.get('keypoint_visibility_valid', targets['keypoint_valid'])[target_index].bool()
+        if visibility_supervised.any():
+            # Visibility availability is independent of whether a precise xy was
+            # labeled. The loader already masks unmapped/padded/out-of-frame slots.
+            visibility_loss = F.binary_cross_entropy_with_logits(
+                predicted_visibility[visibility_supervised],
+                visibility_target[visibility_supervised].to(predicted_visibility.dtype))
         if point_valid.any():
             keypoint_l1 = F.smooth_l1_loss(
                 predicted_xy[point_valid],
                 target_xy[point_valid],
                 beta=0.01,
             )
-            predicted_visibility = predictions[
-                "instance_keypoint_visibility_logits"
-            ][pred_index]
-            visibility_target = targets.get("keypoint_visible", targets["keypoint_valid"])[target_index]
-            visibility_valid = targets.get(
-                "keypoint_visibility_valid", targets["keypoint_valid"]
-            )[target_index]
-            visibility_supervised = point_valid & visibility_valid
-            if visibility_supervised.any():
-                visibility_loss = F.binary_cross_entropy_with_logits(
-                    predicted_visibility[visibility_supervised],
-                    visibility_target[visibility_supervised].to(predicted_visibility.dtype),
-                )
             local_heatmap_loss = _local_keypoint_heatmap_loss(
                 predictions["instance_keypoint_local_heatmap_logits"][pred_index],
                 predictions["instance_keypoint_coarse_xy"][pred_index],
@@ -194,15 +213,22 @@ def instance_pose_loss(
                 mask_dice = _dice_loss(predicted_masks, target_masks)
 
     reid_loss = _matched_reid_loss(predictions, targets, matches)
-    keypoint_3d_loss, reprojection_loss, geometry_logs = (
-        _matched_multiview_geometry_losses(
+    if weights.keypoint_3d or weights.reprojection:
+        keypoint_3d_loss, reprojection_loss, geometry_logs = _matched_multiview_geometry_losses(
             predictions,
             targets,
             matches,
             image_size=image_size,
             world_scale=world_scale,
+            geometry_mode=geometry_mode,
+            uncertainty_calibrated=uncertainty_calibrated,
         )
-    )
+    else:
+        # Disabled geometry is a true off switch, not an expensive solve with a
+        # zero multiplier. Dedicated diagnostics compute geometry explicitly.
+        keypoint_3d_loss = reprojection_loss = zero
+        geometry_logs = {key: zero.detach() for key in (
+            'instance_3d_points', 'instance_reprojection_points', 'instance_geometry_instances')}
     total = (
         weights.objectness * objectness_loss
         + weights.box_l1 * box_l1
@@ -215,6 +241,7 @@ def instance_pose_loss(
         + weights.reid * reid_loss
         + weights.keypoint_3d * keypoint_3d_loss
         + weights.reprojection * reprojection_loss
+        + weights.keypoint_uncertainty * uncertainty_loss
     )
     logs = {
         "loss_instance_pose": total,
@@ -225,6 +252,7 @@ def instance_pose_loss(
         "loss_instance_mask_dice": mask_dice,
         "loss_instance_keypoint_l1": keypoint_l1,
         "loss_instance_keypoint_visibility": visibility_loss,
+        "loss_instance_keypoint_uncertainty": uncertainty_loss,
         "loss_instance_local_heatmap": local_heatmap_loss,
         "loss_instance_reid": reid_loss,
         "loss_instance_keypoint_3d": keypoint_3d_loss,
@@ -300,6 +328,10 @@ def instance_targets_from_batch(batch: dict[str, Any]) -> dict[str, torch.Tensor
     aliases = {
         "keypoint_xy": ("instance_keypoint_xy", "keypoint_xy"),
         "keypoint_valid": ("instance_keypoint_valid", "keypoint_valid"),
+        "keypoint_in_frame": ("instance_keypoint_in_frame", "keypoint_in_frame"),
+        "keypoint_label_valid": ("instance_keypoint_label_valid", "keypoint_label_valid"),
+        "keypoint_occlusion_cause": ("instance_keypoint_occlusion_cause", "keypoint_occlusion_cause"),
+        "surface_valid": ("instance_surface_valid", "surface_valid"),
         "keypoint_visible": ("instance_keypoint_visible", "keypoint_visible"),
         "keypoint_visibility_valid": (
             "instance_keypoint_visibility_valid",
@@ -458,6 +490,8 @@ def _matched_multiview_geometry_losses(
     *,
     image_size: tuple[int, int] | None,
     world_scale: float,
+    geometry_mode: str = 'legacy',
+    uncertainty_calibrated: bool = False,
 ) -> tuple[torch.Tensor, torch.Tensor, dict[str, torch.Tensor]]:
     """Triangulate and supervise each persistent instance independently.
 
@@ -467,6 +501,10 @@ def _matched_multiview_geometry_losses(
     with more visible points cannot dominate another animal in the same frame.
     """
     predicted_xy = predictions["instance_keypoint_xy"]
+    if geometry_mode not in ('legacy', 'robust', 'robust_sigma'):
+        raise ValueError(f'Unknown geometry mode: {geometry_mode}')
+    if geometry_mode == 'robust_sigma' and not uncertainty_calibrated:
+        raise ValueError('robust_sigma requires held-out uncertainty calibration')
     zero = predicted_xy.mean() * 0.0
     required = (
         "keypoint_world_xyz",
@@ -584,6 +622,19 @@ def _matched_multiview_geometry_losses(
                     normal + torch.eye(3, device=normal.device, dtype=normal.dtype) * damping,
                     design.transpose(0, 1) @ rhs,
                 )
+                if geometry_mode != 'legacy':
+                    from vggt_omega.utils.robust_pose_geometry import triangulate_robust
+                    xy = torch.stack([predicted_xy[batch_index, v, q, keypoint_index]
+                                      for v, q, _ in observations])*pixel_scale
+                    sigma = None
+                    if geometry_mode == 'robust_sigma':
+                        sigma = torch.stack([predictions['instance_keypoint_sigma'][batch_index, v, q, keypoint_index]
+                                             for v, q, _ in observations])[:, None]*pixel_scale
+                    result = triangulate_robust(xy, torch.stack(projection_matrices),
+                                                sigma_px=sigma, uncertainty_calibrated=uncertainty_calibrated)
+                    if not result.supported:
+                        continue
+                    triangulated = result.xyz
                 if not torch.isfinite(triangulated).all():
                     continue
                 triangulated_count += 1

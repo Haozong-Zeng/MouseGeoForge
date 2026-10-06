@@ -188,7 +188,10 @@ class MultiInstanceMouseHead(nn.Module):
             )
             coarse_xy = self.coarse_keypoint_xy(keypoint_tokens).sigmoid()
         visibility_logits = self.keypoint_visibility(keypoint_tokens).squeeze(-1)
-        sigma = 1e-3 + F.softplus(self.keypoint_log_sigma(keypoint_tokens).squeeze(-1))
+        # Isolated error-scale branch: uncertainty calibration must not move the
+        # pose features to make their residuals easier to explain. State keys and
+        # numeric forward outputs remain compatible with existing checkpoints.
+        sigma = 1e-3 + F.softplus(self.keypoint_log_sigma(keypoint_tokens.detach()).squeeze(-1))
         local_logits, refined_xy = self._local_refinement(
             pixel_feature,
             keypoint_tokens,

@@ -177,17 +177,30 @@ def validate_diverse_records(train, validation, reference):
     assert {r['scene'] for r in reference if r['split']=='train'}<={r['scene'] for r in train}
 
 
-def load_batch(record):
+def load_batch(record, *, num_views=2):
+    if num_views < 1 or len(record['views']) != num_views or len(set(record['views'])) != num_views:
+        raise ValueError('Pilot record must specify exactly num_views distinct cameras')
+    if num_views == 1 and record.get('normalization_scale') is None:
+        raise ValueError('Single-view pilot requires an explicit scene-level normalization_scale')
     scene = load_scene(ROOT/record['scene'])
     scene = replace(scene, frames={i:scene.frames[i] for i in record['views']}, pair_map={})
+    order = record.get('diagnostic_view_order')
+    if order is not None:
+        if len(order) != num_views or set(order) != set(record['views']):
+            raise ValueError('Diagnostic camera order must be a permutation of requested views')
+        # One reference and exactly V-1 sources: no sampling/order changes.
+        scene = replace(scene, pair_map={order[0]: order[1:]})
     h,w = record['image_hw']
-    ds = BlendedMVSDataset([scene],2,w,h,1,17,False,record['pfm_flip_y'],False,
-                          'median_baseline',2,True)
+    ds = BlendedMVSDataset([scene],num_views,w,h,1,17,False,record['pfm_flip_y'],False,
+                          'median_baseline',2,True,
+                          normalization_scale_override=record.get('normalization_scale'))
     if ds.keypoint_names != CORE23:
         raise ValueError(f"Unexpected keypoint order: {ds.keypoint_names}")
     ds.max_instances = 2
     batch = default_collate([ds[0]])
-    batch['detection_annotation_complete'] = torch.ones(1,2,dtype=torch.bool)
+    batch['detection_annotation_complete'] = torch.ones(1,num_views,dtype=torch.bool)
+    if order is not None and batch['view_ids'][0] != ','.join(map(str, order)):
+        raise ValueError('Loader changed the locked diagnostic camera order')
     if int(batch['actual_instance_count'][0]) != record['expected_instances']:
         raise ValueError('Instance count mismatch')
     if not batch['depth_available'].all() or not batch['camera_available'].all():
@@ -371,8 +384,10 @@ def main():
             for k in out: torch.testing.assert_close(out[k],live[k],atol=0,rtol=0)
     depth_args=SimpleNamespace(semantic_label_weights='',body_depth_balance=cfg['body_depth_balance'],
                                body_depth_fraction=.5,depth_gradient_weight=0.)
-    weights=InstancePoseLossWeights(keypoint_3d=0.,reprojection=0.,
-                                   local_heatmap=cfg.get('local_heatmap_weight',1.))
+    weights=InstancePoseLossWeights(keypoint_3d=cfg.get('keypoint_3d_weight',0.),
+                                   reprojection=cfg.get('reprojection_weight',0.),
+                                   local_heatmap=cfg.get('local_heatmap_weight',1.),
+                                   keypoint_uncertainty=cfg.get('keypoint_uncertainty_weight',0.))
     results=[]
     provenance=dict(checkpoint_sha256=fingerprint(args.checkpoint),loaded_tensors=len(expected),
                     torch_version=torch.__version__,gpu=torch.cuda.get_device_name(),
@@ -413,7 +428,9 @@ def main():
                 batch,out=cached_forward(model,train[index],mode)
                 target=instance_targets_from_batch(batch)
                 dl=depth_loss(out['depth'],batch['depths'],batch['depth_masks'],batch['body_masks'],batch['semantic_masks'],depth_args)['loss_depth']
-                pl,logs=instance_pose_loss(out,target,weights,image_size=batch['images'].shape[-2:])
+                pl,logs=instance_pose_loss(out,target,weights,image_size=batch['images'].shape[-2:],
+                    geometry_mode=cfg.get('geometry_mode','legacy'),
+                    uncertainty_calibrated=cfg.get('uncertainty_calibrated',False))
                 loss=cfg['depth_weight']*dl+cfg['pose_weight']*pl
                 if not torch.isfinite(loss): raise RuntimeError('Nonfinite loss')
                 loss.backward()

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "seed": 17,
+  "steps": 800,
+  "arms": ["pose_head_only"],
+  "arm_learning_rates": {"pose_head_only": 0.000003},
+  "weight_decay": 0.01,
+  "gradient_clip": 1.0,
+  "cache_limit_gib": 32,
+  "max_run_hours": 2,
+  "long_side": 768,
+  "checkpoint": "output/pose_diverse_core23_768_v1/seed17_off/final_heads.pt",
+  "manifest": "output/pose_diverse_core23_768_v1/manifest.json",
+  "parent_run": "output/cylinder_view_balance_v1",
+  "parent_arm": "balanced_views",
+  "trainable_scope": "instance_pose_head only",
+  "encoder_frozen": true,
+  "coupling": "off",
+  "budget_policy": "Exact parent balanced-view scene/view/order/resolution schedule: 800 updates, 1800 images, 3540384 spatial patch tokens",
+  "checkpoint_policy": "Same original initialization, fixed final step, no validation selection or automatic promotion",
+  "acceptance": {
+    "bottom_body_nme_ratio_max": 0.9,
+    "bottom_vs_control_ratio_max": 0.95,
+    "retention_nme_ratio_max": 1.05,
+    "retention_pck_drop_max": 0.03,
+    "body_depth_ratio_max": 1.1,
+    "top_body_nme_ratio_max": 1.05
+  },
+  "isolation_questions": {
+    "multiview_bottom_groups": ["side_bottom", "sides_bottom", "sides_bottom_top"],
+    "minimum_nme_gain_vs_joint_update": 0.05,
+    "frozen_depth_max_difference": 0.000001,
+    "known_calibration_required": true
+  }
+}

@@ -46,7 +46,7 @@ class DepthPoseModel(nn.Module):
         return self
 
     def forward(self, images, *, coupling=None):
-        if images.ndim != 5 or images.shape[2] != 3:
+        if images.ndim != 5 or images.shape[2] != 3 or min(images.shape[:2]) < 1:
             raise ValueError('Expected [B,V,3,H,W]; time must not be flattened into views')
         if any(size % self.instance_pose_head.patch_size for size in images.shape[-2:]):
             raise ValueError('Image dimensions must be divisible by patch size')
@@ -62,6 +62,20 @@ class DepthPoseModel(nn.Module):
             cached, patch_start = self.aggregator(images)
         return self._decode(images, cached, patch_start, coupling=mode)
 
+    def forward_ragged(self, image_sets, *, coupling=None):
+        """Run independent [V,3,H,W] sets without fake-view padding.
+
+        Each result has B=1 and its own real view count. This correctness-first
+        path makes separate forwards; use equal-V/H/W buckets for throughput.
+        Losses should be averaged per scene, not summed over its view count.
+        """
+        if not isinstance(image_sets, (list, tuple)) or not image_sets:
+            raise ValueError('At least one image set is required')
+        for images in image_sets:
+            if images.ndim != 4 or images.shape[0] < 1 or images.shape[1] != 3:
+                raise ValueError('Each image set must have shape [V,3,H,W], V>=1')
+        return [self.forward(images.unsqueeze(0), coupling=coupling) for images in image_sets]
+
     def forward_cached(self, images, cached, patch_start, *, coupling=None):
         """Decode deterministic frozen-encoder features (no augmentation changes).
 
@@ -73,7 +87,7 @@ class DepthPoseModel(nn.Module):
         return self._decode(images, cached, patch_start, coupling=coupling)
 
     def _decode(self, images, cached, patch_start, *, coupling=None):
-        if images.ndim != 5 or images.shape[2] != 3:
+        if images.ndim != 5 or images.shape[2] != 3 or min(images.shape[:2]) < 1:
             raise ValueError('Expected [B,V,3,H,W]')
         mode = self.coupling if coupling is None else coupling
         if mode not in ('off', 'local_depth_features'):

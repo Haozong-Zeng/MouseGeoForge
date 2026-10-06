@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "purpose": "Source-disjoint real validation preparation; not an authorized training run",
+  "real_manifest": "dataset/PyMouseStudioRaw/_validation_v2/sequences.jsonl",
+  "source_groups": {
+    "development": ["AZ", "C", "E", "F"],
+    "locked_holdout": ["G", "U"]
+  },
+  "group_rule": "Conservative session-name family grouping, not verified animal identity; all cameras/frames/derivatives from a family remain together.",
+  "train_allowed": false,
+  "frame_policy": "8 uniform indices per sequence for framewise review; separate 32 consecutive middle frames for temporal review. Locked before model predictions.",
+  "view_combinations": {
+    "bottom_only": ["A"],
+    "single_side": ["D"],
+    "side_pair": ["D", "E"],
+    "side_pair_and_bottom": ["D", "E", "A"],
+    "all_available": "manifest camera list; never fabricate missing cameras"
+  },
+  "physical_view_evidence": "AZL3 3-frame visual review: A bottom, B-G side; other sessions presumed same rig pending metadata/visual confirmation",
+  "input_resolution": "native1080x1200 for preparation; evaluation768 long edge with recorded resize/padding transform; never substitute synthetic square K",
+  "undistort_policy": "Explicit paired RGB/mask/keypoint correction using own K and distortion. Raw-video preprocessing history is pending user confirmation. No default correction or double-correction.",
+  "metric_permissions": {
+    "input_visual_QA": true,
+    "DLC_pseudo_label_agreement": true,
+    "manual_keypoint_accuracy": false,
+    "bottom_view_keypoint_accuracy": false,
+    "metric_depth_accuracy": false,
+    "multi_mouse_detection_accuracy": false
+  },
+  "holdout_unlock_requires": [
+    "Freeze candidate checkpoints and metric protocol before access",
+    "Confirm lens correction and synchronization conventions",
+    "Establish independent reviewed labels for claimed accuracy metrics"
+  ],
+  "synthetic_regression_reference": "output/cylinder_adaptive_temperature_v1/protocol.json",
+  "synthetic_regression_is_fresh_holdout": false,
+  "training_or_checkpoint_updates": false
+}

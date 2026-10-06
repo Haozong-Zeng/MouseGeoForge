@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "interfaces_and_smoke_only_full_training_not_started",
+  "objective": "One shared model for one or more real simultaneous views; no duplicated or padded fake views",
+  "long_side": 768,
+  "seed": 17,
+  "view_sampling": {
+    "min_views": 1,
+    "pilot_max_views": 4,
+    "architecture_max_views": null,
+    "counts": "balanced 1..min(available,pilot_max_views)",
+    "subset_and_order": "deterministic random sample without replacement before encoder",
+    "reference_camera": "randomized through sampled view order",
+    "source_split": "retain original train/validation source groups; no viewed development scenes enter training"
+  },
+  "batching": "equal view-count/resolution buckets, or independent ragged forwards; no attention padding yet",
+  "normalization": "explicit scene/session scale fixed across subsets, with native-unit provenance",
+  "cache": "separate encoder cache for exact RGB, view subset, order, preprocessing and encoder hash",
+  "losses": {
+    "all_view_counts": ["instance_detection", "valid_2d_keypoints", "known_visibility", "valid_depth"],
+    "multiview_only": ["triangulated_3d_if_supported", "triangulated_reprojection_if_supported"],
+    "single_view_3d": "no triangulation; learned metric joint lifting remains a separate unimplemented path",
+    "reduction": "per-scene means before averaging independent ragged scenes"
+  },
+  "evaluation": {
+    "group_by": ["view_count", "physical_camera_subset", "visible_or_occluded", "single_or_multi_instance"],
+    "comparisons": ["fixed_two_view_control", "random_two_view_pairs", "variable_one_to_four_views"],
+    "budget": "report updates, images, encoder tokens and GPU time separately",
+    "deployment": "no automatic promotion from shape/smoke tests"
+  }
+}

@@ -1,0 +1,16 @@
+"""Persist launched shared-token2D experiment without overriding its active PID."""
+import datetime as dt,json,shutil
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1];CYCLE=ROOT/'output/core23_spatial_cycle_20261004'
+
+def main():
+    path=CYCLE/'shared_view_train_context_v1/protocol.json';protocol=json.loads(path.read_text());assert protocol['context']=='shared_first_special_tokens_original_image_order'
+    next_action=('Shared-token2D adaptation chain LAUNCHED session75071: prepare_reversed_view_context_20261005.py --shared-tokens TRAIN, then --shared-tokens --role validation, then train_view_context_control_20261004.py --shared-control. Checkactualstate/PID/status/failure; DO NOT duplicate. Outputs shared_view_train_context_v1(1223), shared_view_validation_context_v1(112), shared_token_pose_control_v1. Originalimageorder NOTreversed. Runtimefirstcamera/registertokens copiedtoother slots duringfeatureextraction, restoreassert everyforward. Original3category cachedgoldens and fullsingleviewexactcontrols included. Stageplan shared_token_stage_plan.json. Botharms original/shared800steps3seeds17/29/43, same50percent single50percent paired andschedule; full138queries; initializeview_contextmixed800pose, frozen detection_view_contextmixed800detector weights. Featurecontext canchange detectorpredictions andGTboxassociation, explicitcovariate. Evaluatebotharms onpaired/single/shared contexts versusinitial, nojointgeometryloss orshareddepthGT. Oncecomplete render review_view_context_control_20261004.py --shared-control ONCE (IMPLEMENTED), inspectrawcamA/camD/syntheticdualsamefixedexamples, reliability/camera/back/dual andtrain/validationcurves. Checkoriginalarmagainst prior view_order_control_v1/fixed: sameinit/schedule/detector/optimizer shouldreplaywithin numericaltolerance (do notsilentlyassume). Then decide whether fullRGBshared2Dbranch integration warranted. Validator doesNOT YET supporttrainedsharedcontrol; implementexplicitflagandmatchinggoldens ifneeded. Preserve originalmultiviewgeometry fromoriginaltokenpass; replaceonlyevaluated2Dfields fromsharedtokenpass, restorationsinglecontrol anddefaultofftests, noteauxiliaryposefieldsunreconciled. Compare1/2/allbothorders, detectionprecision/counts vsconditional/gatedpose, symmetryvsaccuracy. Detectoradaptation is laterseparatestage ifjustified, notautomatic. No productionpromotion; originalannotations, lockedGR2UR2UR3 andgeometrycheckpointuntouched. No needfill16h; trainingstop10:18:46UTC hardstop10:48:46UTC.')
+    plan=json.loads((CYCLE/'plan.json').read_text());plan['next_command']=next_action;(CYCLE/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
+    state=json.loads((CYCLE/'state.json').read_text());state.update(next=next_action,updated_utc=dt.datetime.now(dt.timezone.utc).isoformat());entry='shared_token_2d_adaptation_chain_launched'
+    if entry not in state['completed']:state['completed'].append(entry)
+    (CYCLE/'state.json').write_text(json.dumps(state,indent=2)+'\n')
+    dest=Path('/mnt/c/Users/55395/Downloads/PyMouseStudio-Core23-Spatial-20261004');shutil.copy2(CYCLE/'shared_token_stage_plan.json',dest/'shared_token_stage_plan.json')
+    print(json.dumps(dict(active_job=state['active_job'],pid=state['active_pid'],next='Shared-token feature extraction then matchedpose800steps3seeds')))
+
+if __name__=='__main__':main()
