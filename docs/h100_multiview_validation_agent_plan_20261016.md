@@ -1,20 +1,23 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
-Date: 2026-10-16. Status: planning handoff; no new training cycle has been launched.
+Date: 2026-10-16. Status: H100 cluster planning handoff, with an authorized
+16-hour local precursor described below. The cluster allocation has not started.
 
 The next round should determine whether learned paw identity correspondence,
 learned 3D feature fusion, and more diverse training data reduce severe errors on
 unseen animals and acquisitions. Keep VGGT as the main backbone. Prioritize two
-controlled research tracks, then consider encoder adaptation if the measured
-budget permits it.
+controlled research tracks. Add the DDMS-inspired representation comparison
+below when the layer diagnostic and measured budget support it; this is the
+priority of the newly authorized local precursor.
 
 The user expects at least four NVIDIA H100 GPUs, provisionally 80 GB each, for
 48 continuous hours. Four GPUs provide a nominal ceiling of 192 GPU-hours;
 initialization, data loading, evaluation and failures consume part of that
 budget. Node topology, interconnect, storage, scheduler and actual availability
 are still unspecified. The user permits larger and more diverse datasets for
-the new round. This request authorizes preparing and publishing the plan; it
-does not itself schedule a cluster allocation or restart an old automation.
+the new round. The subsequent user instruction authorizes updating this route
+and starting a new 16-hour cycle on the local workstation. It does not allocate
+the H100 cluster or extend the closed 18-hour cycle.
 
 ## First actions for the receiving agent
 
@@ -267,6 +270,118 @@ Start with a fixed, documented supervision recipe. Add supervised reprojection
 as a separate ablation if warranted; do not change the representation, losses
 and augmentation together. Independent trusted 3D evaluation is required for a
 physical 3D accuracy claim.
+
+## DDMS inspired representation learning
+
+[DDMS v2](https://arxiv.org/html/2608.23850v2) combines 2D foundation features
+with frozen Depth Anything 3 geometry features, learns discriminative
+correspondences with a semantic anchor, then distills the teacher into a
+single-view student. Its Table 4 shows why ranking alone is insufficient:
+direct ranking fine-tuning increases ScanNet correspondence PCK at 10 pixels
+from 21.72 to 67.14 while reducing SPair semantic PCK from 68.56 to 57.36.
+The complete method reports 66.01 and 75.46 respectively. These are different
+benchmark coordinate systems and are not MouseGeoForge endpoint metrics.
+The paper selects an intermediate DA3 layer; its layer number does not transfer
+to VGGT. As checked on 2026-10-16, the [official repository](https://github.com/ubc-vision/ddms)
+and [project](https://ubc-vision.github.io/ddms/) list code and models as coming
+soon. A local adaptation is a mechanism test, not a faithful reproduction.
+
+### Proposed MouseGeoForge controls
+
+First compare the existing single-view patch encoder, the four already exposed
+VGGT aggregation layers (zero-based 4, 11, 17 and 23), and the current 256-channel
+pose memory. Use exactly the same registered same-instant paw correspondences,
+contralateral negatives, preprocessing and sampling. Report both native feature
+dimensions and a common fixed projected dimension with seeds 17, 29 and 43.
+Preserve all layers in the result, rather than reporting only the best layer.
+Select any subsequent layer using training-side diagnostics only; disclose
+selection when interpreting later development results. GT-position descriptor
+probes are conditional diagnostics, not automatic localization measurements.
+
+If that diagnostic supports representation work, register these arms:
+
+| Arm | Intervention | Comparison purpose |
+| --- | --- | --- |
+| C0 | Frozen encoder with the common candidate matcher | Reference |
+| C1 | Limited image-encoder adaptation with correspondence ranking | Representation adaptation |
+| C2 | C1 plus an anchor to the frozen original feature space | Semantic retention |
+| C3 | C2 plus frozen VGGT multiview context in a residual fusion module | Geometric context |
+
+Use the same candidate pool, calibration, crop mechanism, label support,
+negative sampler, image schedule, matcher, endpoint and paired initialization.
+C1/C2 is the first minimum treatment/control comparison. Reserve an identical
+context module and initialization for C2/C3 with context inputs disabled in C2;
+record actual trainable counts and FLOPs. C0 intentionally freezes adaptation
+parameters, so it is a system reference rather than a claim of identical
+trainable capacity. Do not change hard-negative sampling in the anchor contrast.
+
+Use annotated same-paw identity across synchronized views for sparse supervision.
+Different known paws can touch: spatial proximity alone cannot make them
+positives. Unknown identities are neither negatives nor absence labels. Dense
+surface correspondence requires audited synthetic or measured geometry and
+visibility; noisy VGGT depth is not a strong label. Do not copy the paper's
+centimeter thresholds to mouse anatomy. Keep anatomical identity and physical
+surface correspondence as distinct supervision types.
+
+Image-encoder adaptation must read and encode pixels and update the intended
+encoder parameters. Verify nonzero finite gradients, changed adapter weights,
+frozen backbone checksums, and pixel/feature provenance. A learned projection
+on cached 256-dimensional memory does not satisfy this contrast. Frozen
+geometry context can be cached only with its exact encoder/preprocessing hash.
+
+Judge automatic candidate selections and full-known localization, including
+identity confusions, tail errors and per-acquisition harm. Descriptor ranking
+and similarity margins only explain outcomes. Require self-only and shuffled
+source controls for C3. Keep target-view refinement separate from pure-source
+prediction. If a teacher does not improve the actual endpoint, do not spend the
+remaining allocation on student distillation. A single-view student is a later
+cost/missing-camera experiment, not an assumed cure for visual ambiguity.
+
+This route tests information and training changes absent from the previous
+frozen-memory metric and peer-view utility-ranking experiments. It does not
+reopen those failed variants or justify another unrestricted loss scan. For
+H100 execution, replace a lower-priority optional comparison with a complete
+C1/C2 or C2/C3 pair if necessary; do not silently add all four arms to the
+12-endpoint base budget. Prioritize confirmation over expanding the matrix.
+
+## Authorized 16 hour local precursor
+
+The local run is `ddms_identity_cycle_20261016`. Its authoritative absolute
+start, optimization stop and hard stop are recorded in the new local
+`output/ddms_identity_cycle_20261016/plan.json`. The hard stop is exactly
+16 hours after registration; optimization stops 30 minutes earlier. The final
+30 minutes are reserved for frozen scoring, evidence review and closeout.
+The observed workstation has one NVIDIA RTX PRO 6000 Blackwell Max-Q GPU,
+reported by the driver as 97,887 MiB. This local allocation is separate from
+the planned four-or-more H100 allocation.
+
+The local order is provenance and environment audit, FIT-only representation
+layer diagnostics, image-gradient and throughput feasibility, then a registered
+paired adaptation experiment if it fits. Use seeds 17, 29 and 43 and complete
+acquisition holdouts. Freeze budgets after profiling and before outcomes;
+never reduce the unfavorable arm or select a seed/epoch after scoring. If a
+complete contrast cannot fit, retain the feasibility result and defer training.
+The original five-point selector remains an archived reference.
+
+Begin with the registered corrected real FIT subset: 134 synchronized groups,
+874 views and 3,085 known five-point annotations (2,432 paw annotations).
+FR3 CAL remains repeated development and is not needed for the initial probes.
+The user's broader-data permission supports metadata inventory and subsequent
+explicit admission manifests; it does not make old DEV-mixed caches a valid
+source. Before loading a new payload, fix its training/development/sealed-test
+role, semantic mapping, acquisition split and upstream exposure. Never silently
+admit the previously protected GR2, UR2, UR3 or historical DEV payloads.
+
+Use only the new supervisor and queue, while respecting the existing local
+shared GPU lock at `output/teacher_temporal_cycle_20261001/gpu_job.lock`.
+Verify boot ID, process start ticks and process group before recovery or stop.
+Preserve old STOP files, frozen scripts, results and failures. No cluster jobs,
+model promotion, real pseudolabel publication, temporal modeling, internal spine
+targets, collaborator-native DINOv3 or raw-label edits are authorized here.
+Keep the existing `pymousestudio` heartbeat on this thread, update it for the
+new window, and pause it during closeout. The supervisor independently enforces
+deadlines even if a heartbeat is delayed. The final heartbeat must finish
+closeout within the window, without relying on a later wakeup.
 
 ## Conditional encoder and data experiments
 
