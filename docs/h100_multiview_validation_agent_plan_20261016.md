@@ -1,40 +1,51 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
-Date: 2026-10-16. Status: H100 cluster planning handoff, with an authorized
-16-hour local precursor described below. The cluster allocation has not started.
+Created: 2026-10-16. Updated: 2026-10-17 after the local cycle closeout and the
+July Water Reaching versus October 6 free-behavior implementation audit.
+Status: planning and evidence review only. The user's current instruction is
+**do not start new training**. The H100 allocation has not started, and the
+16-hour local precursor is closed with its automation paused.
 
-The next round should determine whether learned paw identity correspondence,
-learned 3D feature fusion, and more diverse training data reduce severe errors on
-unseen animals and acquisitions. Keep VGGT as the main backbone. Prioritize two
-controlled research tracks. Add the DDMS-inspired representation comparison
-below when the layer diagnostic and measured budget support it; this is the
-priority of the newly authorized local precursor.
+The immediate research priority is to test the direct spatial heatmap readout
+path before further candidate-ranking or encoder-adaptation work. The July
+success and October failure did not use the same encoder checkpoint, feature
+interface, spatial head, view context, supervision or evaluation population.
+Their difference does not establish a limitation of VGGT or DINO features.
+Keep VGGT for the first controlled bridge. Candidate identity correspondence,
+learned 3D fusion and encoder/data expansion remain conditional follow-ups.
+This revision supersedes the previous order of those tracks; it authorizes no
+new run, supervisor, queue, allocation or dataset admission.
 
 The user expects at least four NVIDIA H100 GPUs, provisionally 80 GB each, for
 48 continuous hours. Four GPUs provide a nominal ceiling of 192 GPU-hours;
 initialization, data loading, evaluation and failures consume part of that
 budget. Node topology, interconnect, storage, scheduler and actual availability
-are still unspecified. The user permits larger and more diverse datasets for
-the new round. The subsequent user instruction authorizes updating this route
-and starting a new 16-hour cycle on the local workstation. It does not allocate
-the H100 cluster or extend the closed 18-hour cycle.
+are still unspecified. The user permits larger and more diverse datasets,
+subject to the admission and exposure requirements below. The October 16
+authorization applied to one bounded local cycle, which is now closed; it does
+not allocate the H100 cluster or extend either completed local cycle. The
+current request updates the route document only.
 
 ## First actions for the receiving agent
 
 1. Read this document and applicable repository instructions. Inspect the Git
    revision and working tree before changing files.
-2. Verify the prior cycle closeout if its local artifacts are available. Preserve
-   its STOP markers, frozen protocols, outputs and negative results.
+2. Read the July/October comparison and the completed local cycle closeouts.
+   Preserve STOP markers, frozen protocols, outputs and negative results. Do not
+   restart either cycle or interpret this document as permission to train.
 3. Inventory the datasets, annotations, calibration and upstream checkpoints
    actually available on the new nodes. Distinguish a synchronized multiview
    time point from an acquisition session, an animal and an image.
 4. Prepare versioned manifests for training, development and sealed testing.
    Record historical exposure, including exposure through upstream detectors.
-5. Verify a small data load and baseline replay, then profile representative
-   single-GPU jobs before fixing the run matrix.
-6. Before execution, resolve the allocation, absolute start and stop times,
-   scheduler ownership, endpoint budgets and evaluation gates in a new run
-   configuration. Treat the schedule below as relative to that future start.
+5. Complete the read-only error decomposition on admitted, exported predictions.
+   Separate anatomical identity, spatial localization and instance detection;
+   keep GT-assisted diagnostics out of the automatic endpoint.
+6. If the user later authorizes execution, verify admitted inputs and baseline
+   replay, profile a representative single-GPU job, and register the heatmap
+   bridge before launching it. Resolve allocation, absolute start/stop times,
+   ownership, endpoint budgets and gates in a new configuration. The schedule
+   below is relative to that future start, not an active authorization.
 
 Repository source, local research evidence and execution readiness are distinct.
 The repository is source-only. Many recent scripts and all experiment outputs,
@@ -95,16 +106,161 @@ independent experiments.
 
 ## Research questions and priorities
 
-The mandatory work should answer two questions:
+The next controlled work, if authorized, should answer:
 
-1. Does learning cross-camera paw identity improve final localization and reduce
-   large errors when the candidate pool and upstream evidence are held fixed?
-2. Does learned fusion of VGGT features in a common 3D coordinate system improve
-   unseen-acquisition performance over a matched geometric aggregation control?
+1. Does a stronger spatial heatmap readout improve automatic localization and
+   anatomical identity using exactly the existing frozen memory?
+2. Does bypassing the old synthetic-task compression interface improve that
+   readout further, with the encoder and inference information held fixed?
+3. Do any gains survive acquisition holdouts, rather than only improving FIT?
 
-The conditional work should separate the effects of encoder adaptation and
-training data diversity. Do not spend the entire allocation on a broad loss,
-temperature, resolution or head-size sweep.
+Only then choose a justified follow-up: data coverage, instance localization,
+cross-view identity, learned 3D fusion or encoder adaptation. Do not spend the
+allocation on a broad loss, temperature, resolution or head-size sweep.
+
+## July Water Reaching versus October 6 free-behavior audit
+
+The located July success is a VGGT-Omega multiview heatmap experiment, not an
+isolated native-DINOv2/v3 baseline. It demonstrates a useful spatial readout of
+these features in that task; it does not compare backbone families. The
+October 6 implementation also predicts dense spatial heatmaps. Do not conflate
+it with the later fixed-candidate matcher experiments.
+
+| Component | July 28 Water Reaching | October 6 free behavior | Interpretation |
+| --- | --- | --- | --- |
+| Encoder weights | Geometry-adapted step6000 checkpoint, frozen during heatmap-head training | Released VGGT checkpoint, frozen | Frozen does not mean the same initialization |
+| Feature interface | Final aggregation-layer tokens, 2048 channels, with a trainable input projection in the new head | Aggregation layers 4/11/17/23, each projected to 256 channels, averaged, then sine position encoding added | October uses learned compressed instance memory, not raw patch or final-layer features |
+| Projection provenance | Learned for the heatmap task | Inherited from the earlier synthetic-only instance/pose training and frozen | Task/domain bias is plausible; information loss has not been causally established |
+| Context | Three synchronized views jointly encoded | Actual single-view re-encoding followed by a frozen cache | View context changed together with the head and feature interface |
+| Spatial head | Width 256; two residual blocks containing four 3x3 convolutions; about 3.44M trainable parameters including auxiliary branches | Width 64 shallow neck plus small shared/per-keypoint readout; 102,807/103,687 trainable parameters | The small-head comparison did not test the July spatial architecture |
+| Heatmap/decode | Stride 4; upsample logits; global soft-argmax | Stride 4; upsample conditioned features before readout; peak-centered 5x5 local expectation | Same output stride does not imply the same readout or decoding behavior |
+| Instance localization | One head-fixed animal; no detector/query/box conditioning | Six instance queries; predicted boxes/tokens condition the head; soft outside-box penalty | Detection and semantic localization are separate possible failure stages; the penalty is not a hard crop |
+| Supervision | Synthetic labels plus DLC/Anipose real references; likelihood threshold 0.7; heatmap, visibility and 3D-related objectives | Reliable real nose/four-paw labels plus broader synthetic semantics; unknowns masked; 2D Gaussian CE | Label support, source, filtering and losses differ |
+| Real-data split | 16 training trials and 6 validation trials; validation animal identifiers also occur in training | FIT/CAL/DEV roles; FR3 CAL repeatedly developed on, with upstream detector FR3/ClimbWall exposure | July is trial-held, not animal-held; October is not clean end-to-end sealed-test evidence |
+| Selection and units | Validation-selected checkpoint; 624x416 input pixels | Seeded fixed-endpoint contrasts plus development decisions; long-side-768 input coordinates | Cross-run pixel means are not matched treatment effects |
+
+July head training used 651 sampled synchronized real training examples and 125
+validation examples, plus 919 synthetic training scenes and 16 validation
+scenes. The synthetic split selected the last scenes after discovery/filtering;
+it was not an independently established animal/acquisition split. October FIT
+contained 874 real views from 134 groups plus 118 synthetic views, not 992
+independent acquisitions. The real five-point and synthetic larger-keypoint
+tasks must not be silently treated as identical supervision.
+
+The July evaluation reports finger mean 6.07 pixels on 3,678 retained points,
+palm mean 4.72 and head mean 4.37, against filtered DLC/Anipose references. The
+presentation's overall 4.95 comes from a different training-validation sample
+budget, not the same aggregate evaluation. The checkpoint was selected using
+the real predicted-rig 3D validation metric. These are meaningful engineering
+results, but not full-denominator, independent human-GT deployment accuracy.
+No comparable July P95 or anatomical-swap endpoint was reported there.
+
+### What the October evidence establishes
+
+The initial mixed-training CAL bottom-view tail audit is consistent across all
+three seeds:
+
+| Seed | Paw errors over 100 input pixels | Of those, within 32 pixels of the contralateral same-type paw | Detection gate failed | Target outside soft-prior support |
+| --- | ---: | ---: | ---: | ---: |
+| 17 | 34 | 34 | 14 | 1 |
+| 29 | 33 | 32 | 14 | 1 |
+| 43 | 31 | 30 | 12 | 0 |
+
+Each seed's bottom slice contains 87 known paw points. Diagnostic categories
+overlap. Near-contralateral predictions are an identity-confusion proxy, not a
+verified reciprocal-swap rate. Even detection-success bottom points have large
+errors; box failure alone cannot explain the tail. Inspection of the exported
+bottom-view panels also shows detection-success cases with misplaced semantic
+points, alongside better cases. Selected panels are not population estimates.
+
+For the later fixed-real-exposure baseline with synthetic weight 0.25 and sigma
+12, three-seed mean conditional real-five-point error is 9.68 pixels on FIT
+versus 23.18 on CAL. Bottom mean is 16.02 versus 51.95; the mean of per-seed
+bottom P95s is 92.73 versus 227.09. These historical coordinate-error summaries
+are not the new full-denominator nearest-rank endpoint with failed predictions
+assigned infinity. They show both a residual FIT tail and an acquisition/domain
+generalization gap; they do not separate architecture from data causally.
+
+The scale inventory finds median real-bottom body equivalent side about 486
+pixels versus 187 in synthetic-bottom views. Synthetic motion sources are
+concentrated. There were synthetic bottom views, so absence of all bottom-view
+training is not the explanation. Detection adaptation improved joint endpoints
+without consistently improving conditional bottom-coordinate error. Narrower
+sigma and the small per-keypoint head already have negative controlled results;
+corrected-label October 12 repeats did not establish a per-keypoint advantage.
+Do not present those interventions, or frozen multiview context already tested
+elsewhere, as untested fixes.
+
+October 6 used annotations preceding the October 11 correction. Preserve its
+scores as historical evidence; use the corrected manifest for a new comparison.
+Label revision alone is not an established explanation for all failures.
+Native-memory cache parity was checked, so caching itself is not evidence that
+the representation was corrupted. The most supported diagnosis is anatomical
+identity confusion plus weak generalization, with an additional detection
+bottleneck. A restricted feature interface and spatial readout remain testable
+mechanistic hypotheses, not a proven limit of the backbone.
+
+### Minimum validation bridge, proposed only
+
+First use existing admitted exported predictions for an identity/localization
+decomposition: fixed anatomical identities versus a GT-assisted assignment
+diagnostic restricted to mutually known paw labels, stratified by detection
+success/failure and acquisition. Preserve overlap and unknown-label cases.
+GT-assisted reassignment is a diagnostic lower bound, never an automatic score.
+GT-position feature probes already supply the location and therefore do not
+measure spatial search, proposal robustness or final identity assignment.
+Do not open the old mixed-DEV tensor payload to perform this analysis.
+
+If training is subsequently authorized, use the following three arms. Their H
+prefix avoids confusion with the archived A/B/C candidate and DDMS arms.
+
+| Arm | Frozen feature input and trainable readout | Question |
+| --- | --- | --- |
+| H0 | Existing 256-channel memory plus October-style small heatmap head | Rebuild the baseline on the common corrected protocol |
+| H1 | Identical memory plus a July-style spatial residual-convolution head | Does a richer spatial readout recover useful information already available? |
+| H2 | Raw final aggregation-layer 2048-channel features from the same frozen encoder, plus the same spatial-head family | Does bypassing the old task-specific compression interface add benefit? |
+
+Run all seeds 17, 29 and 43: nine endpoints on the first registered development
+split. This is a focused bridge, not a full factorial or a reproduction of all
+July conditions. H0/H1 tests the spatial-head design as a whole, not parameter
+count alone. H1/H2 tests the feature interface including its trainable input
+projection; disclose parameter/FLOP differences rather than claiming a pure
+dimension ablation. Use final-layer selection from this architectural question,
+not a held-out best-layer search.
+
+Hold the encoder checkpoint, single-view input, image transform, automatic
+instance boxes/queries, available information, label support, heatmap loss,
+decoder, sampling schedule and fixed training endpoint constant. Keep paired
+initial tensors for homologous modules and record unavoidable architectural
+differences. Do not transfer the July geometry-adapted checkpoint into H2 alone.
+Begin with admitted corrected real five-point data only; defer synthetic mixing,
+additional view context, 3D losses and LoRA so they do not confound this bridge.
+Keep all synchronized/neighboring frames from a capture in one role. Audit
+upstream checkpoint exposure: a held-out head-training acquisition with exposed
+upstream modules is conditional evaluation, not end-to-end independence.
+
+Register endpoint cost and continuation/harm thresholds before execution. Freeze
+every registered arm's predictions for all three seeds before scoring coverage32,
+full-denominator nearest-rank P95, anatomical-confusion proxies and per-paw/camera/acquisition
+results. Count missing/rejected/nonfinite predictions as misses and infinite
+error. Report 704x768 reference-coordinate and original-image errors separately.
+Keep detected-only metrics and GT-assisted diagnostics separate. Retain the
+90% coverage32 / P95 at most 32 reference pixels deployment target without
+equating it with a research continuation gate.
+
+| Observed result | Next justified direction |
+| --- | --- |
+| H1 improves over H0; H2 adds little | Confirm spatial-readout improvement on further acquisition holdouts |
+| H2 improves further | Investigate the old compression/interface, with capacity accounting, before encoder adaptation |
+| FIT improves but held-out acquisitions do not | Prioritize acquisition/appearance/pose coverage and independent data admission |
+| Conditional pose is good but full-denominator results remain poor | Isolate automatic instance localization and detection failures |
+| All arms retain anatomical confusion | Reassess identity supervision and information ambiguity; then consider a controlled cross-view mechanism |
+
+No branch follows solely from a better GT-position descriptor score. A native
+DINO baseline would require its own registered checkpoint, exposure, resolution,
+head and budget controls; the July result does not establish such a comparison.
+It is not part of this minimum bridge or permission to use collaborator-native
+DINOv3.
 
 ## Data design and evaluation independence
 
@@ -115,12 +271,14 @@ and any task-specific pretraining use training data only. Use development data
 for architecture selection and registered training decisions. Freeze the final
 models, thresholds and selection policy before producing sealed-test scores.
 
-Include both head-fixed and freely moving mice as named domains. The primary
-experiment can train on both domains and evaluate each separately on unseen
-animals or acquisitions. Cross-domain transfer in both directions is an
-additional experiment if each domain has sufficient independent data and the
-compute budget allows it. Do not silently treat head fixation as a training
-label, a fixed anatomical pose or a reason to exclude difficult paws.
+Include head-fixed and freely moving mice as named domains in the inventory.
+The first heatmap bridge uses the admitted corrected real five-point cohort;
+it does not silently pool July finger-joint labels with free-behavior paw labels.
+A later joint-domain experiment requires explicit semantic mapping and separate
+evaluation on unseen animals or acquisitions in each domain. Cross-domain
+transfer in both directions is conditional on sufficient independent data and
+budget. Do not silently treat head fixation as a training label, a fixed
+anatomical pose or a reason to exclude difficult paws.
 
 | Evaluation slice | Intended question |
 | --- | --- |
@@ -188,6 +346,9 @@ surface point clouds must not become strong landmark labels.
 
 ## Track A Candidate identity correspondence
 
+Conditional follow-up after the heatmap bridge or an independently supported
+candidate-selection hypothesis. This is no longer the mandatory first track.
+
 ### Core comparison
 
 Freeze the candidate pool, candidate extraction, calibration, image coordinate
@@ -236,6 +397,9 @@ tests source use without leaking test annotations.
 
 ## Track B Learned 3D feature fusion
 
+Conditional follow-up. A positive GT-position feature diagnostic alone does not
+justify launching this track ahead of the direct spatial-readout comparison.
+
 Retain VGGT and project multiview image features into a common calibrated 3D
 representation. Start with local sparse 3D queries or a coarse volume. Predict
 five semantic landmark distributions, allowing uncertainty or multiple
@@ -273,6 +437,13 @@ physical 3D accuracy claim.
 
 ## DDMS inspired representation learning
 
+Historical mechanism proposal, retained with its controls. The local precursor
+has since completed descriptor and automatic-endpoint experiments. Its handoff
+records that GT diagnostic gains did not rescue the negative automatic result.
+Read those frozen outputs before proposing any repeat. This section is no
+longer the next execution step; it does not override the no-training instruction
+or the heatmap bridge priority.
+
 [DDMS v2](https://arxiv.org/html/2608.23850v2) combines 2D foundation features
 with frozen Depth Anything 3 geometry features, learns discriminative
 correspondences with a semantic anchor, then distills the teacher into a
@@ -298,7 +469,8 @@ Select any subsequent layer using training-side diagnostics only; disclose
 selection when interpreting later development results. GT-position descriptor
 probes are conditional diagnostics, not automatic localization measurements.
 
-If that diagnostic supports representation work, register these arms:
+For any later, separately justified representation experiment, the original
+control definitions were:
 
 | Arm | Intervention | Comparison purpose |
 | --- | --- | --- |
@@ -309,7 +481,7 @@ If that diagnostic supports representation work, register these arms:
 
 Use the same candidate pool, calibration, crop mechanism, label support,
 negative sampler, image schedule, matcher, endpoint and paired initialization.
-C1/C2 is the first minimum treatment/control comparison. Reserve an identical
+C1/C2 was the original minimum treatment/control comparison. Reserve an identical
 context module and initialization for C2/C3 with context inputs disabled in C2;
 record actual trainable counts and FLOPs. C0 intentionally freezes adaptation
 parameters, so it is a system reference rather than a claim of identical
@@ -337,51 +509,56 @@ prediction. If a teacher does not improve the actual endpoint, do not spend the
 remaining allocation on student distillation. A single-view student is a later
 cost/missing-camera experiment, not an assumed cure for visual ambiguity.
 
-This route tests information and training changes absent from the previous
-frozen-memory metric and peer-view utility-ranking experiments. It does not
-reopen those failed variants or justify another unrestricted loss scan. For
-H100 execution, replace a lower-priority optional comparison with a complete
-C1/C2 or C2/C3 pair if necessary; do not silently add all four arms to the
-12-endpoint base budget. Prioritize confirmation over expanding the matrix.
+This route originally addressed changes absent from the earlier frozen-memory
+metric and peer-view utility-ranking experiments. The completed local evidence
+must now inform any successor. Do not reopen failed variants or add another
+unrestricted loss scan. Any justified C1/C2 or C2/C3 successor replaces a
+lower-priority complete comparison within the measured budget; it must not be
+silently added to the nine-endpoint heatmap bridge. Prioritize confirmation.
 
-## Authorized 16 hour local precursor
+## Completed 16 hour local precursor
 
-The local run is `ddms_identity_cycle_20261016`. Its authoritative absolute
-start, optimization stop and hard stop are recorded in the new local
-`output/ddms_identity_cycle_20261016/plan.json`. The hard stop is exactly
-16 hours after registration; optimization stops 30 minutes earlier. The final
-30 minutes are reserved for frozen scoring, evidence review and closeout.
+The local run was `ddms_identity_cycle_20261016`. Its registered start was
+2026-10-16 21:08:51 UTC, optimization stop 2026-10-17 12:38:51 UTC, and hard stop
+2026-10-17 13:08:51 UTC. The local handoff at 12:41 UTC records
+`closed_final_report_frozen_automation_paused`; the supervisor records
+`stopped`. The closeout records owned-runtime shutdown, GPU/shared-lock
+inspection, report freeze and automation pause. Do not resume this window or
+append to its queue. The current instruction explicitly prohibits new training.
+
+Authoritative local records are `output/ddms_identity_cycle_20261016/plan.json`,
+`next_actions.json`, `heartbeat_launch_handoff.json`, `state.json`,
+`supervisor.json`, and `final_closeout_v12/report.json`. Preserve their history.
 The observed workstation has one NVIDIA RTX PRO 6000 Blackwell Max-Q GPU,
 reported by the driver as 97,887 MiB. This local allocation is separate from
 the planned four-or-more H100 allocation.
 
-The local order is provenance and environment audit, FIT-only representation
-layer diagnostics, image-gradient and throughput feasibility, then a registered
-paired adaptation experiment if it fits. Use seeds 17, 29 and 43 and complete
-acquisition holdouts. Freeze budgets after profiling and before outcomes;
-never reduce the unfavorable arm or select a seed/epoch after scoring. If a
-complete contrast cannot fit, retain the feasibility result and defer training.
-The original five-point selector remains an archived reference.
+The handoff records completed provenance/layer diagnostics, actual pixel
+re-encoding and encoder-gradient feasibility, paired encoder experiments,
+negative-type, source-quality, coordinate-jitter and proposal-objective
+experiments, independent numerical audits and actual image review. Technical job
+counts do not count independent experiments. Preserve every seed, failure and
+partial result. A better GT-coordinate representation diagnostic did not by
+itself establish better automatic keypoints. Use the frozen endpoint reports,
+not descriptor metrics, for any further continuation decision. The original
+five-point selector remains an archived reference.
 
-Begin with the registered corrected real FIT subset: 134 synchronized groups,
+The registered corrected real FIT subset contained 134 synchronized groups,
 874 views and 3,085 known five-point annotations (2,432 paw annotations).
-FR3 CAL remains repeated development and is not needed for the initial probes.
+FR3 CAL remains repeated development; it was not used in the initial FIT probes.
 The user's broader-data permission supports metadata inventory and subsequent
 explicit admission manifests; it does not make old DEV-mixed caches a valid
 source. Before loading a new payload, fix its training/development/sealed-test
 role, semantic mapping, acquisition split and upstream exposure. Never silently
 admit the previously protected GR2, UR2, UR3 or historical DEV payloads.
 
-Use only the new supervisor and queue, while respecting the existing local
-shared GPU lock at `output/teacher_temporal_cycle_20261001/gpu_job.lock`.
-Verify boot ID, process start ticks and process group before recovery or stop.
-Preserve old STOP files, frozen scripts, results and failures. No cluster jobs,
-model promotion, real pseudolabel publication, temporal modeling, internal spine
-targets, collaborator-native DINOv3 or raw-label edits are authorized here.
-Keep the existing `pymousestudio` heartbeat on this thread, update it for the
-new window, and pause it during closeout. The supervisor independently enforces
-deadlines even if a heartbeat is delayed. The final heartbeat must finish
-closeout within the window, without relying on a later wakeup.
+The closed run used its own supervisor/queue and the shared local GPU lock at
+`output/teacher_temporal_cycle_20261001/gpu_job.lock`. Keep its STOP files, frozen
+scripts, protocols, checkpoints and raw labels intact. Do not restart the
+paused `pymousestudio` automation as part of this document update. Any future
+authorized run needs a new namespace and deadline; verify boot ID, start ticks
+and process group for process control. No model promotion or real pseudolabel
+publication is authorized by this plan.
 
 ## Conditional encoder and data experiments
 
@@ -421,7 +598,8 @@ from the same few scenes do not establish greater diversity.
 
 ## Compute allocation and run matrix
 
-The following is a scheduling envelope, not a measured training-time estimate.
+The following is a future scheduling envelope, not execution permission or a
+measured training-time estimate. It replaces the earlier mandatory A/B matrix.
 Set absolute UTC deadlines when the run starts; the hard stop is T0 plus 48
 hours, with optimization stopping at T0 plus 40 hours. Additional GPUs increase
 parallel capacity, not the authorized wall-clock duration.
@@ -429,22 +607,23 @@ parallel capacity, not the authorized wall-clock duration.
 | Elapsed time | Priority | Required output |
 | --- | --- | --- |
 | 0-6 hours | Data/exposure audit, baseline replay, loading and GPU profiling | Frozen manifests, verified baseline, feasible endpoint budgets |
-| 6-24 hours | A0/A1 and B0/B1 core comparisons | Registered paired endpoints and development evaluation |
+| 6-24 hours | H0/H1/H2 heatmap bridge, all three seeds | Registered fixed endpoints and full-denominator development evaluation |
 | 24-40 hours | Confirmation on additional held-out acquisitions/folds | Repeated results for the most promising complete comparison; conditional additions only if budget remains |
 | 40-48 hours | No further optimization; frozen inference and audit | Sealed-test results, visual review, resource accounting and final report |
 
-Use seeds 17, 29 and 43 for paired comparisons. The four core arms across three
-seeds would require 12 training endpoints on one registered development split.
-This is a provisional matrix: measure cost first. If it cannot fit, defer an
-entire lower-priority comparison, beginning with Track B, rather than selectively
-dropping unfavorable seeds or completing only a treatment arm. Preserve Track A
-and its control as the minimum scientific comparison.
+Use seeds 17, 29 and 43. H0/H1/H2 require nine endpoints on one registered
+development split. Measure cost before fixing the endpoint. If the bridge cannot
+fit, reduce its common endpoint before launch or defer a complete comparison:
+H0/H1 across all seeds tests the head first, with H2 explicitly deferred. Never
+drop an unfavorable seed or complete only a treatment. This is not a commitment
+to exhaust the allocation; preserve confirmation and final-audit time.
 
 For confirmation, prioritize one complete treatment/control pair on up to two
 additional acquisition-held-out folds with all three seeds, if feasible. Use
 development folds for this selection. Freeze the final model-selection policy
-before sealed testing. A2, A3, encoder adaptation, synthetic training and full
-external baseline reproduction must not displace core confirmation or closure.
+before sealed testing. Tracks A/B, DDMS successors, encoder adaptation, synthetic
+training and external baseline reproduction must not displace bridge
+confirmation or closure. Adding views or July 3D losses is a separate contrast.
 
 Parallelize independent seeds, folds and matched arms first. Use within-node
 multi-GPU training when a model requires it or a benchmark demonstrates a net
@@ -563,9 +742,11 @@ At completion, provide:
    swaps, overlap, missing views and tail errors. Record which images were
    actually inspected; generating a contact sheet is not an inspection receipt.
 5. Frozen configurations, source/checkpoint/output hashes and replay results.
-6. A final decision explaining whether identity matching, 3D fusion or data/
-   encoder adaptation improved unseen-acquisition behavior, and what remains
-   unresolved. Distinguish development findings from sealed-test evidence.
+6. A final decision explaining whether the spatial readout or feature interface
+   improved unseen-acquisition behavior, and whether the remaining bottleneck
+   is identity, instance localization or generalization. Report conditional
+   identity/fusion/data/encoder experiments separately if conducted. Distinguish
+   development findings from sealed-test evidence.
 7. A closeout record confirming the optimization stop, owned-job shutdown and
    final report freeze.
 
@@ -582,6 +763,22 @@ because a historical script mentions them.
 
 | Local path | Purpose |
 | --- | --- |
+| `vggt-omega/training/run_keypoint_head_all29_624x416.sh` | July checkpoint, trial split, supervision and optimization settings |
+| `vggt-omega/vggt_omega/models/heads/keypoint_head.py` | July final-layer spatial heatmap architecture |
+| `output/blenderpymouse_vggt_omega_all/run_20260728_keypoint_head_all29_frozen_624x416_e5/evaluation_best/summary.json` | July filtered-reference evaluation and denominators |
+| `output/keypoint_head_cycle_20261006/head_ab_seed17_v1/source/keypoint_adapter_readout.py` | Immutable October head implementation, conditioning and decoder |
+| `output/keypoint_head_cycle_20261006/head_ab_seed17_v1/protocol.json` | October paired schedules, supervision and feature contract |
+| `tools/prepare_single_view_context_20261004.py` | Actual single-view feature preparation and checkpoint chain |
+| `output/surface_curve_cycle_20261003/training_v1/protocol.json` | Lineage to the earlier synthetic-trained instance-head projections |
+| `output/pose_diverse_core23_768_v1/manifest.json` | Synthetic-only predecessor training provenance |
+| `output/keypoint_head_cycle_20261006/pose_failure_audit_v1/results.json` | Three-seed tail/identity/detection attribution |
+| `output/keypoint_head_cycle_20261006/decision_heatmap_fit_gap_results_v1.json` | FIT/CAL gap, historical metric definitions |
+| `output/keypoint_head_cycle_20261006/training_view_scale_audit_v1/results.json` | Real/synthetic scale and view support |
+| `output/keypoint_head_cycle_20261006/final_dev_visual_review_v1/head_architecture_seed17/examples_02.jpg` | Actually inspected October bottom-view examples |
+| `output/ppt_figures_vggt_keypoints_20260728/01_keypoint_prediction_real.png` | Actually inspected July examples; mixed metric populations require the caveat above |
+| `output/ddms_identity_cycle_20261016/next_actions.json` | Completed local experiment/audit inventory and no remaining queued plan |
+| `output/ddms_identity_cycle_20261016/final_closeout_v12/report.json` | Frozen closeout, ownership/GPU checks and automation pause |
+| `output/ddms_identity_cycle_20261016/final_closeout_v12/freeze_receipt.json` | Final report freeze provenance |
 | `output/semantic_matching_cycle_20261015/final_closeout_v1.json` | Authoritative lifecycle status, main selector result and limitations |
 | `output/semantic_matching_cycle_20261015/final_audit_reports_v37/20261016T073618169304Z/index.html` | Frozen final report |
 | `output/semantic_matching_cycle_20261015/final_audit_reports_v37/20261016T073618169304Z/frozen_manifest.json` | Frozen report provenance |
