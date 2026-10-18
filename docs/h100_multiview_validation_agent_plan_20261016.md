@@ -1,5 +1,33 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Latest planning update — 2026-10-18 data scale and external bottom views
+
+Use [the current strategy and data-scale plan](data_scale_and_current_strategy_20261018.md)
+for the latest data and experiment priorities. H100/multi-GPU work should
+prioritize a sufficiently trained **full admitted training pool**, with
+acquisition/rig-based 25/50/100% learning curves where budget permits. Small
+subsets are implementation pilots, not the default allocation workload.
+Repeated views or adjacent video frames are not independent animals, rigs or
+captures; monitor exposure and held-out generalization, not GPU utilization alone.
+"All data" excludes development/sealed tests, unadmitted data and unsupported
+supervision. Measure multi-GPU throughput and preserve complete matched arms
+and seeds17/29/43; more data/GPUs are not a guarantee against overfitting.
+
+The latest external review favors PanoMouse as a conditional 2D bottom/paw
+supervision source. Its released3D reprojection median/mean is9.48/12.95 native
+pixels across92 landmarks, not calibration-board error or physical3D accuracy.
+Its PKL and JSON contain identical K/R/T, with no calibration residual report.
+OSF remains pending collaborator calibration/physical-dimension/annotation and
+license evidence. Neither dataset is silently admitted for training.
+
+Known-calibration deployment and unknown-rig camera generalization are separate
+questions. A frozen released-encoder external2D heatmap baseline is an independent
+data/readout test; it does not promote the failed geometry checkpoint. Adapted
+geometry-to-keypoint progression remains gated. The scale/retention diagnosis,
+data expansion, paired controls and resource rules are specified in the linked
+strategy. This documentation update starts no training, cluster allocation or
+automation; dated execution claims below are historical.
+
 ## Current priority override — 2026-10-18 final geometry review
 
 The [bottom-view geometry roadmap](bottom_geometry_experiment_roadmap_20261018.md)
