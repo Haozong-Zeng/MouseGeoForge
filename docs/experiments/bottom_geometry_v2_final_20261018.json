@@ -1,0 +1,1270 @@
+{
+  "schema_version": 1,
+  "experiment": "pure_geometry_bottom_20261018_v2",
+  "seed": 17,
+  "optimizer_updates": 4000,
+  "effective_batch": 8,
+  "training_samples": 32000,
+  "completed_utc": "2026-10-18T18:05:49.451247+00:00",
+  "primary_endpoint": "final EMA at update 4000; no best-intermediate selection",
+  "fixed_evaluation_audit": {
+    "passed": true,
+    "camera_packs": 337,
+    "row_identity_and_support_match": [
+      "release",
+      "final_ema",
+      "final_raw"
+    ],
+    "training_steps_contiguous": true
+  },
+  "exposures": {
+    "new_rig": 8000,
+    "bottom": 4000,
+    "replay": 9000,
+    "real": 8000,
+    "dannce": 2000,
+    "water": 1000
+  },
+  "automatic_next_arm": false,
+  "model_promoted": false,
+  "gates": {
+    "ema": {
+      "unseen_bottom_rotation_median_improve30": false,
+      "unseen_bottom_rotation_p95_improve30": false,
+      "unseen_bottom_rotation_p95_le10": false,
+      "unseen_bottom_direction_p95_le15": false,
+      "unseen_bottom_joint_coverage_gain5pp": false,
+      "retention_real_other_rotation": false,
+      "retention_motion_other_joint_transfer": false,
+      "retention_unseen_other_joint_transfer": false
+    },
+    "raw": {
+      "unseen_bottom_rotation_median_improve30": false,
+      "unseen_bottom_rotation_p95_improve30": false,
+      "unseen_bottom_rotation_p95_le10": false,
+      "unseen_bottom_direction_p95_le15": false,
+      "unseen_bottom_joint_coverage_gain5pp": false,
+      "retention_real_other_rotation": false,
+      "retention_motion_other_joint_transfer": false,
+      "retention_unseen_other_joint_transfer": false
+    }
+  },
+  "summaries": {
+    "release": {
+      "known_rig_diagnostic": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 188,
+            "mean": 150.39653136882376,
+            "median": 160.43858337402344,
+            "p95": 178.6815948486328
+          },
+          "direction_deg": {
+            "n": 188,
+            "mean": 49.22305835434731,
+            "median": 44.71377372741699,
+            "p95": 96.28489685058594
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 2392,
+            "coverage32": 0.06605351170568562,
+            "invalid": 0,
+            "p95": 405.122314453125
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 330,
+            "mean": 7.657830530585665,
+            "median": 3.9537495374679565,
+            "p95": 28.943086624145508
+          },
+          "direction_deg": {
+            "n": 330,
+            "mean": 7.437172403931617,
+            "median": 3.195762515068054,
+            "p95": 18.07381820678711
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 1972,
+            "coverage32": 0.055780933062880324,
+            "invalid": 0,
+            "p95": 288.3193664550781
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 16,
+            "mean": 84.47566330432892,
+            "median": 80.34551620483398,
+            "p95": 176.37765502929688
+          },
+          "direction_deg": {
+            "n": 16,
+            "mean": 48.10396319627762,
+            "median": 24.25688648223877,
+            "p95": 165.35289001464844
+          },
+          "body_absrel": {
+            "n": 16,
+            "mean": 0.3258519365917891,
+            "median": 0.31829437613487244,
+            "p95": 0.5349643230438232
+          },
+          "centered_shape_rmse": {
+            "n": 16,
+            "mean": 0.042333898367360234,
+            "median": 0.041514066979289055,
+            "p95": 0.061278194189071655
+          },
+          "predicted_camera_depth": {
+            "support": 592,
+            "coverage32": 0.0016891891891891893,
+            "invalid": 3,
+            "p95": 653.1064453125
+          },
+          "known_camera_depth": {
+            "support": 592,
+            "coverage32": 0.0777027027027027,
+            "invalid": 0,
+            "p95": 488.02789306640625
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 108,
+            "mean": 23.84187797539764,
+            "median": 4.169391870498657,
+            "p95": 119.8111572265625
+          },
+          "direction_deg": {
+            "n": 108,
+            "mean": 17.898429758501827,
+            "median": 3.659433960914612,
+            "p95": 92.16201782226562
+          },
+          "body_absrel": {
+            "n": 92,
+            "mean": 0.2828981684034933,
+            "median": 0.2878579646348953,
+            "p95": 0.5441051125526428
+          },
+          "centered_shape_rmse": {
+            "n": 92,
+            "mean": 0.05761781638569158,
+            "median": 0.05632895976305008,
+            "p95": 0.0872408077120781
+          },
+          "predicted_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.5503489531405783,
+            "invalid": 0,
+            "p95": 202.7120361328125
+          },
+          "known_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.04685942173479561,
+            "invalid": 0,
+            "p95": 493.2959899902344
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "unseen_rig_gate": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 86.40118344624837,
+            "median": 82.89225006103516,
+            "p95": 117.68708801269531
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 80.36244010925293,
+            "median": 71.44149017333984,
+            "p95": 161.48544311523438
+          },
+          "body_absrel": {
+            "n": 6,
+            "mean": 0.14211427544554076,
+            "median": 0.13690568506717682,
+            "p95": 0.24479976296424866
+          },
+          "centered_shape_rmse": {
+            "n": 6,
+            "mean": 0.02187109940374891,
+            "median": 0.02195157017558813,
+            "p95": 0.036219529807567596
+          },
+          "predicted_camera_depth": {
+            "support": 485,
+            "coverage32": 0.061855670103092786,
+            "invalid": 0,
+            "p95": 237.00274658203125
+          },
+          "known_camera_depth": {
+            "support": 485,
+            "coverage32": 0.30721649484536084,
+            "invalid": 0,
+            "p95": 183.20872497558594
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 87.84044649203618,
+            "median": 104.60637283325195,
+            "p95": 120.08247375488281
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 71.99742790063222,
+            "median": 63.82252311706543,
+            "p95": 147.02398681640625
+          },
+          "body_absrel": {
+            "n": 12,
+            "mean": 0.07401887001469731,
+            "median": 0.06792857497930527,
+            "p95": 0.16486915946006775
+          },
+          "centered_shape_rmse": {
+            "n": 12,
+            "mean": 0.024065037180359166,
+            "median": 0.02305887546390295,
+            "p95": 0.04700315743684769
+          },
+          "predicted_camera_depth": {
+            "support": 107,
+            "coverage32": 0.2523364485981308,
+            "invalid": 0,
+            "p95": 156.14114379882812
+          },
+          "known_camera_depth": {
+            "support": 107,
+            "coverage32": 0.35514018691588783,
+            "invalid": 0,
+            "p95": 127.07979583740234
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "per_source": {
+        "AZR2L2": {
+          "bottom": {
+            "camera_pairs": 50,
+            "rotation_mean": 146.94107452392578,
+            "rotation_p95": 178.5082244873047,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 100,
+            "rotation_mean": 3.8502962321043013,
+            "rotation_p95": 9.358642578125,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR2": {
+          "bottom": {
+            "camera_pairs": 72,
+            "rotation_mean": 151.16954835255942,
+            "rotation_p95": 179.27853393554688,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 120,
+            "rotation_mean": 11.53218048165242,
+            "rotation_p95": 55.486507415771484,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR3": {
+          "bottom": {
+            "camera_pairs": 66,
+            "rotation_mean": 152.17101045088336,
+            "rotation_p95": 177.48130798339844,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 110,
+            "rotation_mean": 6.89266176440499,
+            "rotation_p95": 25.836532592773438,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "anipose_trial/FJ_L2_2024-06-24_1_Trial_7": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 16,
+            "rotation_mean": 3.033469595015049,
+            "rotation_p95": 6.039229393005371,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "crim13/021309_A29_Block16_BCma1_t": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 32,
+            "rotation_mean": 1.8105594860389829,
+            "rotation_p95": 4.418661117553711,
+            "transfer_support": 469,
+            "transfer_coverage32": 0.8933901918976546
+          }
+        },
+        "mouse_wash_face_91": {
+          "bottom": {
+            "camera_pairs": 16,
+            "rotation_mean": 84.47566330432892,
+            "rotation_p95": 176.37765502929688,
+            "transfer_support": 592,
+            "transfer_coverage32": 0.0016891891891891893
+          },
+          "other": {
+            "camera_pairs": 20,
+            "rotation_mean": 88.95996948480607,
+            "rotation_p95": 120.26084899902344,
+            "transfer_support": 534,
+            "transfer_coverage32": 0.24906367041198502
+          }
+        },
+        "val_rig06": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 89.6067886352539,
+            "rotation_p95": 103.94674682617188,
+            "transfer_support": 196,
+            "transfer_coverage32": 0.09183673469387756
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 119.79869588216145,
+            "rotation_p95": 120.08247375488281,
+            "transfer_support": 72,
+            "transfer_coverage32": 0.125
+          }
+        },
+        "val_rig07": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 83.19557825724284,
+            "rotation_p95": 117.68708801269531,
+            "transfer_support": 289,
+            "transfer_coverage32": 0.04152249134948097
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 55.88219710191091,
+            "rotation_p95": 89.58502197265625,
+            "transfer_support": 35,
+            "transfer_coverage32": 0.5142857142857142
+          }
+        },
+        "water_reaching_fs_cam_c": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 40,
+            "rotation_mean": 17.23125036433339,
+            "rotation_p95": 61.535255432128906,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        }
+      }
+    },
+    "ema": {
+      "known_rig_diagnostic": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 188,
+            "mean": 117.74840085049892,
+            "median": 117.10527038574219,
+            "p95": 173.9845733642578
+          },
+          "direction_deg": {
+            "n": 188,
+            "mean": 45.619374171216435,
+            "median": 44.811119079589844,
+            "p95": 89.37318420410156
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 2392,
+            "coverage32": 0.3942307692307692,
+            "invalid": 0,
+            "p95": 146.85731506347656
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 330,
+            "mean": 26.219126134207755,
+            "median": 20.228970527648926,
+            "p95": 53.2821159362793
+          },
+          "direction_deg": {
+            "n": 330,
+            "mean": 11.267456088102225,
+            "median": 8.768451690673828,
+            "p95": 19.990032196044922
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 1972,
+            "coverage32": 0.5436105476673428,
+            "invalid": 0,
+            "p95": 92.73213958740234
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 16,
+            "mean": 66.99753963947296,
+            "median": 54.42802047729492,
+            "p95": 170.40289306640625
+          },
+          "direction_deg": {
+            "n": 16,
+            "mean": 27.801812946796417,
+            "median": 15.189134120941162,
+            "p95": 66.21527862548828
+          },
+          "body_absrel": {
+            "n": 16,
+            "mean": 0.052251864108256996,
+            "median": 0.045247746631503105,
+            "p95": 0.10150215029716492
+          },
+          "centered_shape_rmse": {
+            "n": 16,
+            "mean": 0.03564259328413755,
+            "median": 0.03401589207351208,
+            "p95": 0.04494620859622955
+          },
+          "predicted_camera_depth": {
+            "support": 592,
+            "coverage32": 0.07601351351351351,
+            "invalid": 0,
+            "p95": 335.01483154296875
+          },
+          "known_camera_depth": {
+            "support": 592,
+            "coverage32": 0.4510135135135135,
+            "invalid": 0,
+            "p95": 108.74408721923828
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 108,
+            "mean": 22.266906100290793,
+            "median": 7.72282862663269,
+            "p95": 80.73516082763672
+          },
+          "direction_deg": {
+            "n": 108,
+            "mean": 11.420219078108117,
+            "median": 7.788387775421143,
+            "p95": 40.28482437133789
+          },
+          "body_absrel": {
+            "n": 92,
+            "mean": 0.05590368607385165,
+            "median": 0.05761967599391937,
+            "p95": 0.10307638347148895
+          },
+          "centered_shape_rmse": {
+            "n": 92,
+            "mean": 0.04822322950981881,
+            "median": 0.04647901840507984,
+            "p95": 0.07370494306087494
+          },
+          "predicted_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.29810568295114653,
+            "invalid": 0,
+            "p95": 248.73995971679688
+          },
+          "known_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.4675972083748754,
+            "invalid": 0,
+            "p95": 89.02304077148438
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "unseen_rig_gate": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 92.8586934407552,
+            "median": 96.05476379394531,
+            "p95": 144.40185546875
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 54.83984851837158,
+            "median": 62.069204330444336,
+            "p95": 86.23223114013672
+          },
+          "body_absrel": {
+            "n": 6,
+            "mean": 0.16853129553298155,
+            "median": 0.14383957162499428,
+            "p95": 0.33613184094429016
+          },
+          "centered_shape_rmse": {
+            "n": 6,
+            "mean": 0.017465431553622086,
+            "median": 0.01835138350725174,
+            "p95": 0.021761000156402588
+          },
+          "predicted_camera_depth": {
+            "support": 485,
+            "coverage32": 0.020618556701030927,
+            "invalid": 0,
+            "p95": 346.0873107910156
+          },
+          "known_camera_depth": {
+            "support": 485,
+            "coverage32": 0.14432989690721648,
+            "invalid": 0,
+            "p95": 180.81369018554688
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 25.519379377365112,
+            "median": 24.850473403930664,
+            "p95": 40.383819580078125
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 13.117072105407715,
+            "median": 13.307921409606934,
+            "p95": 19.48113250732422
+          },
+          "body_absrel": {
+            "n": 12,
+            "mean": 0.0721614258363843,
+            "median": 0.0450952909886837,
+            "p95": 0.17754389345645905
+          },
+          "centered_shape_rmse": {
+            "n": 12,
+            "mean": 0.017883910099044442,
+            "median": 0.016301549971103668,
+            "p95": 0.03153735399246216
+          },
+          "predicted_camera_depth": {
+            "support": 107,
+            "coverage32": 0.18691588785046728,
+            "invalid": 0,
+            "p95": 145.9791717529297
+          },
+          "known_camera_depth": {
+            "support": 107,
+            "coverage32": 0.34579439252336447,
+            "invalid": 0,
+            "p95": 172.85244750976562
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "per_source": {
+        "AZR2L2": {
+          "bottom": {
+            "camera_pairs": 50,
+            "rotation_mean": 115.12236419677734,
+            "rotation_p95": 173.9845733642578,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 100,
+            "rotation_mean": 17.84906294822693,
+            "rotation_p95": 26.32383918762207,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR2": {
+          "bottom": {
+            "camera_pairs": 72,
+            "rotation_mean": 120.88202534781561,
+            "rotation_p95": 175.54376220703125,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 120,
+            "rotation_mean": 34.044667303562164,
+            "rotation_p95": 147.8845977783203,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR3": {
+          "bottom": {
+            "camera_pairs": 66,
+            "rotation_mean": 116.31932310624556,
+            "rotation_p95": 173.2714080810547,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 110,
+            "rotation_mean": 25.29132048216733,
+            "rotation_p95": 53.120521545410156,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "anipose_trial/FJ_L2_2024-06-24_1_Trial_7": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 16,
+            "rotation_mean": 3.294269345700741,
+            "rotation_p95": 6.950587272644043,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "crim13/021309_A29_Block16_BCma1_t": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 32,
+            "rotation_mean": 5.258513558655977,
+            "rotation_p95": 10.765453338623047,
+            "transfer_support": 469,
+            "transfer_coverage32": 0.4520255863539446
+          }
+        },
+        "mouse_wash_face_91": {
+          "bottom": {
+            "camera_pairs": 16,
+            "rotation_mean": 66.99753963947296,
+            "rotation_p95": 170.40289306640625,
+            "transfer_support": 592,
+            "transfer_coverage32": 0.07601351351351351
+          },
+          "other": {
+            "camera_pairs": 20,
+            "rotation_mean": 59.97747688293457,
+            "rotation_p95": 150.955322265625,
+            "transfer_support": 534,
+            "transfer_coverage32": 0.16292134831460675
+          }
+        },
+        "val_rig06": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 129.4761479695638,
+            "rotation_p95": 144.40185546875,
+            "transfer_support": 196,
+            "transfer_coverage32": 0.030612244897959183
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 21.01050329208374,
+            "rotation_p95": 37.722137451171875,
+            "transfer_support": 72,
+            "transfer_coverage32": 0.18055555555555555
+          }
+        },
+        "val_rig07": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 56.24123891194662,
+            "rotation_p95": 85.71155548095703,
+            "transfer_support": 289,
+            "transfer_coverage32": 0.013840830449826988
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 30.028255462646484,
+            "rotation_p95": 40.383819580078125,
+            "transfer_support": 35,
+            "transfer_coverage32": 0.2
+          }
+        },
+        "water_reaching_fs_cam_c": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 40,
+            "rotation_mean": 24.607389444112776,
+            "rotation_p95": 71.40827178955078,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        }
+      }
+    },
+    "raw": {
+      "known_rig_diagnostic": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 188,
+            "mean": 117.66019408246304,
+            "median": 115.96623992919922,
+            "p95": 173.7724609375
+          },
+          "direction_deg": {
+            "n": 188,
+            "mean": 45.627765589572014,
+            "median": 44.810462951660156,
+            "p95": 89.82612609863281
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 2392,
+            "coverage32": 0.4059364548494983,
+            "invalid": 0,
+            "p95": 146.90524291992188
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 330,
+            "mean": 25.51829530542547,
+            "median": 19.769765853881836,
+            "p95": 52.368045806884766
+          },
+          "direction_deg": {
+            "n": 330,
+            "mean": 11.38136220773061,
+            "median": 8.758724212646484,
+            "p95": 19.878246307373047
+          },
+          "body_absrel": null,
+          "centered_shape_rmse": null,
+          "predicted_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_depth": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          },
+          "known_camera_sparse": {
+            "support": 1972,
+            "coverage32": 0.5623732251521298,
+            "invalid": 0,
+            "p95": 90.28376007080078
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 16,
+            "mean": 65.94563859701157,
+            "median": 53.36041069030762,
+            "p95": 167.64122009277344
+          },
+          "direction_deg": {
+            "n": 16,
+            "mean": 27.432518281042576,
+            "median": 14.96322774887085,
+            "p95": 66.88081359863281
+          },
+          "body_absrel": {
+            "n": 16,
+            "mean": 0.05724926176480949,
+            "median": 0.05238995514810085,
+            "p95": 0.11287084966897964
+          },
+          "centered_shape_rmse": {
+            "n": 16,
+            "mean": 0.03567586746066809,
+            "median": 0.034280821681022644,
+            "p95": 0.04495866224169731
+          },
+          "predicted_camera_depth": {
+            "support": 592,
+            "coverage32": 0.07263513513513513,
+            "invalid": 0,
+            "p95": 346.4853515625
+          },
+          "known_camera_depth": {
+            "support": 592,
+            "coverage32": 0.42905405405405406,
+            "invalid": 0,
+            "p95": 116.99463653564453
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 108,
+            "mean": 21.56814063809536,
+            "median": 7.76579737663269,
+            "p95": 77.95828247070312
+          },
+          "direction_deg": {
+            "n": 108,
+            "mean": 11.196423762926349,
+            "median": 7.6792097091674805,
+            "p95": 38.83461380004883
+          },
+          "body_absrel": {
+            "n": 92,
+            "mean": 0.05500861443579197,
+            "median": 0.05858819559216499,
+            "p95": 0.10115687549114227
+          },
+          "centered_shape_rmse": {
+            "n": 92,
+            "mean": 0.04799348358874735,
+            "median": 0.04670056886970997,
+            "p95": 0.07383695244789124
+          },
+          "predicted_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.317048853439681,
+            "invalid": 0,
+            "p95": 246.7423858642578
+          },
+          "known_camera_depth": {
+            "support": 1003,
+            "coverage32": 0.46560319042871384,
+            "invalid": 0,
+            "p95": 88.33563995361328
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "unseen_rig_gate": {
+        "bottom": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 91.7463550567627,
+            "median": 94.20455551147461,
+            "p95": 144.5146484375
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 55.223113695780434,
+            "median": 61.94814872741699,
+            "p95": 87.61016082763672
+          },
+          "body_absrel": {
+            "n": 6,
+            "mean": 0.17030482615033785,
+            "median": 0.14720351248979568,
+            "p95": 0.33834484219551086
+          },
+          "centered_shape_rmse": {
+            "n": 6,
+            "mean": 0.01732852418596546,
+            "median": 0.018569364212453365,
+            "p95": 0.021174989640712738
+          },
+          "predicted_camera_depth": {
+            "support": 485,
+            "coverage32": 0.020618556701030927,
+            "invalid": 0,
+            "p95": 324.7053527832031
+          },
+          "known_camera_depth": {
+            "support": 485,
+            "coverage32": 0.15670103092783505,
+            "invalid": 0,
+            "p95": 181.92169189453125
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        },
+        "other": {
+          "rotation_deg": {
+            "n": 6,
+            "mean": 24.679468870162964,
+            "median": 24.52630043029785,
+            "p95": 41.80280685424805
+          },
+          "direction_deg": {
+            "n": 6,
+            "mean": 12.541471163431803,
+            "median": 12.927287101745605,
+            "p95": 18.026697158813477
+          },
+          "body_absrel": {
+            "n": 12,
+            "mean": 0.07660119623566668,
+            "median": 0.044508202001452446,
+            "p95": 0.18816998600959778
+          },
+          "centered_shape_rmse": {
+            "n": 12,
+            "mean": 0.01781444833613932,
+            "median": 0.016224024817347527,
+            "p95": 0.031240567564964294
+          },
+          "predicted_camera_depth": {
+            "support": 107,
+            "coverage32": 0.18691588785046728,
+            "invalid": 0,
+            "p95": 150.84796142578125
+          },
+          "known_camera_depth": {
+            "support": 107,
+            "coverage32": 0.3364485981308411,
+            "invalid": 0,
+            "p95": 186.969482421875
+          },
+          "known_camera_sparse": {
+            "support": 0,
+            "coverage32": null,
+            "invalid": 0,
+            "p95": null
+          }
+        }
+      },
+      "per_source": {
+        "AZR2L2": {
+          "bottom": {
+            "camera_pairs": 50,
+            "rotation_mean": 114.67328369140625,
+            "rotation_p95": 173.2329559326172,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 100,
+            "rotation_mean": 17.375378575325012,
+            "rotation_p95": 25.50177574157715,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR2": {
+          "bottom": {
+            "camera_pairs": 72,
+            "rotation_mean": 120.7335606680976,
+            "rotation_p95": 176.0836181640625,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 120,
+            "rotation_mean": 33.39554651180903,
+            "rotation_p95": 150.55410766601562,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "FR3": {
+          "bottom": {
+            "camera_pairs": 66,
+            "rotation_mean": 116.57024143681382,
+            "rotation_p95": 173.7724609375,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 110,
+            "rotation_mean": 24.32758192582564,
+            "rotation_p95": 52.368045806884766,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "anipose_trial/FJ_L2_2024-06-24_1_Trial_7": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 16,
+            "rotation_mean": 3.2457470186054707,
+            "rotation_p95": 7.3988237380981445,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        },
+        "crim13/021309_A29_Block16_BCma1_t": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 32,
+            "rotation_mean": 5.653218695893884,
+            "rotation_p95": 10.21200180053711,
+            "transfer_support": 469,
+            "transfer_coverage32": 0.5010660980810234
+          }
+        },
+        "mouse_wash_face_91": {
+          "bottom": {
+            "camera_pairs": 16,
+            "rotation_mean": 65.94563859701157,
+            "rotation_p95": 167.64122009277344,
+            "transfer_support": 592,
+            "transfer_coverage32": 0.07263513513513513
+          },
+          "other": {
+            "camera_pairs": 20,
+            "rotation_mean": 57.39458208084106,
+            "rotation_p95": 139.48141479492188,
+            "transfer_support": 534,
+            "transfer_coverage32": 0.15543071161048688
+          }
+        },
+        "val_rig06": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 129.0007527669271,
+            "rotation_p95": 144.5146484375,
+            "transfer_support": 196,
+            "transfer_coverage32": 0.030612244897959183
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 19.07380183537801,
+            "rotation_p95": 35.22623062133789,
+            "transfer_support": 72,
+            "transfer_coverage32": 0.18055555555555555
+          }
+        },
+        "val_rig07": {
+          "bottom": {
+            "camera_pairs": 3,
+            "rotation_mean": 54.491957346598305,
+            "rotation_p95": 83.35640716552734,
+            "transfer_support": 289,
+            "transfer_coverage32": 0.01384083044982699
+          },
+          "other": {
+            "camera_pairs": 3,
+            "rotation_mean": 30.285135904947918,
+            "rotation_p95": 41.80280685424805,
+            "transfer_support": 35,
+            "transfer_coverage32": 0.2
+          }
+        },
+        "water_reaching_fs_cam_c": {
+          "bottom": {
+            "camera_pairs": 0,
+            "rotation_mean": null,
+            "rotation_p95": null,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          },
+          "other": {
+            "camera_pairs": 40,
+            "rotation_mean": 23.715814918279648,
+            "rotation_p95": 69.04460906982422,
+            "transfer_support": 0,
+            "transfer_coverage32": null
+          }
+        }
+      }
+    }
+  },
+  "source_artifacts": {
+    "release": {
+      "path": "output/pure_geometry_bottom_20261018_v2/geometry_seed17/release_baseline.json",
+      "sha256": "f07706b4f182c78be187d2bf046f1afaef20d367cac806b229e7cbcd3cde64eb"
+    },
+    "ema": {
+      "path": "output/pure_geometry_bottom_20261018_v2/geometry_seed17/ema_final_step004000.json",
+      "sha256": "5f4b89f1fc07df7ff8f155b8af4d7830c7e7ef9d9225d54cd7b6a6ba44ab3ff7"
+    },
+    "raw": {
+      "path": "output/pure_geometry_bottom_20261018_v2/geometry_seed17/raw_final_step004000.json",
+      "sha256": "35ea8f5483f7c6d4c410927dd340ce0a907f4fcb7ea4c9834b93d78c3b30c70c"
+    }
+  },
+  "limitations": [
+    "All nine real acquisitions share identical calibration; camera output is diagnostic, not unseen-device evidence.",
+    "Real sparse reprojection uses manual source points and known K/E; it is not automatic keypoint accuracy or metric 3D ground truth.",
+    "32px transfer/sparse thresholds use the fixed 704x768 reference coordinate convention.",
+    "Unseen synthetic rig evaluation has two rigs and six scenes, six bottom rotation pairs; nearest-rank P95 is their maximum.",
+    "Existing synthetic motion holdouts share training rigs.",
+    "Four CPU workers; encoder remains batch 1; only camera/depth heads batch up to 4; effective batch remains 8."
+  ]
+}

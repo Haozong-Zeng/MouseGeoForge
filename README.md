@@ -1,5 +1,22 @@
 # MouseGeoForge
 
+## Current experiment route (2026-10-18)
+
+The [bottom-view geometry roadmap](docs/bottom_geometry_experiment_roadmap_20261018.md)
+supersedes the execution order in earlier plans. The fresh-release pure-geometry
+feasibility run completed 4,000 updates with final raw/EMA evaluation. Known-camera
+real reprojection improved, but unseen-rig bottom pose and other-view retention
+failed: unseen bottom rotation P95 117.69° → 144.40°, and real other-view mean
+rotation 7.66° → 26.22° (final EMA). No checkpoint is promoted.
+
+Next: diagnose geometry and retention, then run a newly registered matched
+geometry comparison; only after geometry acceptance train a frozen-encoder 2D
+head to convergence, compare encoder adaptation from that same head, and proceed
+to 3D keypoints. The [paired v2 protocol](docs/bottom_domain_paired_v2_20261018.md)
+is registered but has not run. Current supervisors exited; frozen controls and
+keypoint stages do not start automatically. See the
+[final quantitative evidence](docs/experiments/bottom_geometry_v2_final_20261018.json).
+
 ## Current research and distribution status (2026-10-06)
 
 The latest [local-evidence and instance-grouping experiments](docs/local_evidence_instance_grouping_plan_20261005.md)

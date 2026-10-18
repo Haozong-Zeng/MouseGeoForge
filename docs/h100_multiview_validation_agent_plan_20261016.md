@@ -1,5 +1,23 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Current priority override — 2026-10-18 final geometry review
+
+The [bottom-view geometry roadmap](bottom_geometry_experiment_roadmap_20261018.md)
+is the current execution order; dated priorities below are historical proposals.
+The pure-geometry feasibility run completed 4,000 updates, including final raw
+and EMA validation. It did not pass unseen-rig bottom pose or other-view
+retention gates. Known-calibration real reprojection gains do not establish
+unknown-device camera generalization or automatic 3D keypoint accuracy.
+
+Diagnose geometry and retention, register any recipe/data revision, then execute
+a matched geometry pair from common released weights. Only accepted geometry
+can advance to frozen-encoder 2D-head convergence, a same-head frozen/adapted
+comparison, and finally 3D keypoints. The [paired v2 protocol](bottom_domain_paired_v2_20261018.md)
+is registered, not executed. This feasibility run is not retroactively a paired
+arm. All current supervisors exited with automatic next-arm dispatch disabled;
+no frozen control, keypoint job or H100 allocation is launched by this update.
+See [final raw/EMA evidence](experiments/bottom_geometry_v2_final_20261018.json).
+
 Created: 2026-10-16. Updated: 2026-10-17 after the local cycle closeout and the
 July Water Reaching versus October 6 free-behavior implementation audit.
 Status: planning and evidence review only. The user's current instruction is
