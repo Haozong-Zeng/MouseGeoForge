@@ -2,20 +2,23 @@
 
 ## Current experiment route (2026-10-18)
 
-The [bottom-view geometry roadmap](docs/bottom_geometry_experiment_roadmap_20261018.md)
-supersedes the execution order in earlier plans. The fresh-release pure-geometry
-feasibility run completed 4,000 updates with final raw/EMA evaluation. Known-camera
-real reprojection improved, but unseen-rig bottom pose and other-view retention
-failed: unseen bottom rotation P95 117.69° → 144.40°, and real other-view mean
-rotation 7.66° → 26.22° (final EMA). No checkpoint is promoted.
+The [v3 scale diagnosis and staged experiment plan](docs/bottom_geometry_v3_reconciled_plan_20261018.md)
+now defines the next bottom-view geometry comparison. Zero-weight-update tests
+on all71 real validation groups separate fixed training-fitted scale from
+validation-label oracle alignment. Scale explains part of the v2 gains, while
+head drift, quaternion conditioning and limited rig coverage remain concerns.
+The completed v2 run failed unseen-rig pose/retention gates; no model is promoted.
 
-Next: diagnose geometry and retention, then run a newly registered matched
-geometry comparison; only after geometry acceptance train a frozen-encoder 2D
-head to convergence, compare encoder adaptation from that same head, and proceed
-to 3D keypoints. The [paired v2 protocol](docs/bottom_domain_paired_v2_20261018.md)
-is registered but has not run. Current supervisors exited; frozen controls and
-keypoint stages do not start automatically. See the
-[final quantitative evidence](docs/experiments/bottom_geometry_v2_final_20261018.json).
+Next: freeze scale/evaluation rules and numerical safeguards; compare baseline,
+native-GT and shared-scale objectives, then retention; finally run matched
+frozen/last-two-block encoder pairs with seeds17/29/43. Planned synthetic rig
+counts are48/12/8 for training/development/sealed confirmation, not generated data.
+The [full admitted training-pool and H100 strategy](docs/data_scale_and_current_strategy_20261018.md)
+remains in force; local1500/4000-update pilots are not full-data convergence budgets.
+A frozen released-encoder external2D baseline remains an independent route.
+Adapted geometry-to-2D/3D promotion stays gated. No new training, rendering or
+automatic next arm has started. See [scale evidence](docs/experiments/bottom_geometry_zero_train_scale_20261018.json)
+and the [frozen v2 results](docs/experiments/bottom_geometry_v2_final_20261018.json).
 
 ## Current research and distribution status (2026-10-06)
 

@@ -1,5 +1,22 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Bottom-geometry mechanism update — 2026-10-18
+
+Use the [reconciled v3 scale/retention plan](bottom_geometry_v3_reconciled_plan_20261018.md)
+for the local geometry experiment order: zero-training scale diagnostics,
+native-GT versus shared-scale recipe screening, retention, then matched G0/G1
+encoder comparisons. The initial encoder-by-projection four-arm design is a
+historical alternative. No new training, rendering or queued control has started.
+
+The full admitted training-pool, external2D and H100 requirements below remain
+in force. The local1500/4000-update budgets and proposed48/12/8 rigs are mechanism
+pilots, not limits on full-data training or evidence of convergence. Frozen
+released-encoder external2D readout tests remain separate from promotion of
+adapted geometry. [Zero-training scale evidence](experiments/bottom_geometry_zero_train_scale_20261018.json)
+distinguishes training-fitted calibration from validation-label oracle diagnosis;
+[head/gradient diagnostics](experiments/bottom_geometry_failure_diagnosis_20261018.json)
+do not establish a single cause or promote a checkpoint.
+
 ## Latest planning update — 2026-10-18 data scale and external bottom views
 
 Use [the current strategy and data-scale plan](data_scale_and_current_strategy_20261018.md)

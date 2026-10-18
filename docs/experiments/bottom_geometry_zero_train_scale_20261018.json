@@ -1,0 +1,211 @@
+{
+  "as_of_utc": "2026-10-18T20:37:44.690606+00:00",
+  "training_launched": false,
+  "optimizer_steps": 0,
+  "validation_groups": 71,
+  "validation_packs": 259,
+  "training_scale_calibration_packs": 24,
+  "support": {
+    "bottom": 2392,
+    "other": 1972
+  },
+  "fixed_identical_selection_audit_passed": true,
+  "endpoints": {
+    "release": {
+      "fixed_training_scalar": 0.8430792393817834,
+      "summary": {
+        "unaligned": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.06605351170568562,
+            "p95": 405.1220756937896,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.055780933062880324,
+            "p95": 288.3192736440631,
+            "invalid": 0
+          }
+        },
+        "fixed_train_fitted": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.21112040133779264,
+            "p95": 263.82413064866756,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.3291075050709939,
+            "p95": 161.32565018539302,
+            "invalid": 0
+          }
+        },
+        "known_camera_baseline": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.19690635451505017,
+            "p95": 586.7347522256408,
+            "invalid": 12
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.3209939148073022,
+            "p95": 720.915292658117,
+            "invalid": 6
+          }
+        },
+        "oracle_validation_labels": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.42474916387959866,
+            "p95": 180.55558745849305,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.6602434077079108,
+            "p95": 76.97097299426552,
+            "invalid": 0
+          }
+        }
+      }
+    },
+    "final_ema": {
+      "fixed_training_scalar": 0.9943987478251831,
+      "summary": {
+        "unaligned": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.3942307692307692,
+            "p95": 146.8573909958525,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.5436105476673428,
+            "p95": 92.73217810321984,
+            "invalid": 0
+          }
+        },
+        "fixed_train_fitted": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.36998327759197325,
+            "p95": 151.23721544508788,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.5233265720081136,
+            "p95": 90.7277989362261,
+            "invalid": 0
+          }
+        },
+        "known_camera_baseline": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.0,
+            "p95": 706.7037929572357,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.0,
+            "p95": 655.3332054032752,
+            "invalid": 0
+          }
+        },
+        "oracle_validation_labels": {
+          "bottom": {
+            "support": 2392,
+            "coverage32": 0.5204849498327759,
+            "p95": 125.6614153036348,
+            "invalid": 0
+          },
+          "other": {
+            "support": 1972,
+            "coverage32": 0.7281947261663286,
+            "p95": 69.11557183995308,
+            "invalid": 0
+          }
+        }
+      }
+    }
+  },
+  "source_hashes": {
+    "zero_train_scale_baseline.json": "fb7785a38c89706e6fbfb14424bfae791d977f754d69d6fad8a5a85ca14c5463",
+    "zero_train_scale_final_ema.json": "3af112294fb430fd492d213335c5d2f4903394ed55351ceb1db09c897f1b84f8",
+    "shared_scale_math_fixtures.json": "108fdd33816aa70ee86b388e6dc3a1b53e124411d8f54efa6b93ec14acb2fbea",
+    "hidden_camera_scale_counterexample.json": "eddd03ac8a11579a6f46b82a03fea3492674946eb80eee535320b521caf83828"
+  },
+  "primary_sources": [
+    "https://github.com/facebookresearch/vggt-omega/blob/main/training/train_utils/normalization.py",
+    "https://arxiv.org/html/2605.15195v1"
+  ],
+  "caveats": [
+    "Per-pack oracle reads target validation annotations and is diagnostic, not a deployment score.",
+    "All metrics use manual source rays and known calibration; not automatic keypoint accuracy.",
+    "Fixed scalar was fitted on training annotations only; this is one-rig calibration, not new-device generalization.",
+    "Camera-baseline-derived scaling has severe tails and is not an accepted deployment estimator."
+  ],
+  "method_definitions": {
+    "unaligned": "Given K/E and raw predicted depth, without fitted scale.",
+    "fixed_train_fitted": "One scalar per endpoint fitted on the same24 training packs, then frozen across all71 validation groups.",
+    "oracle_validation_labels": "One scalar per validation pack fitted using target labels; diagnostic only, not deployment.",
+    "known_camera_baseline": "Predicted side-camera baseline to given baseline ratio; no target labels for scale, but severe tails; not an accepted deployment estimator."
+  },
+  "mathematical_fixtures": {
+    "shared_scale_math_fixtures.json": {
+      "scope": "toy shared-positive-scale objective math only; not an implemented or validated v3 trainer",
+      "training_launched": false,
+      "optimizer_steps": 0,
+      "formula": "s=exp(mean(log(Zgt)-log(Zpred))); L=mean(log(s*Zpred/Zgt)^2)+mean(((s*Tpred-Tgt)/geomean(Zgt))^2)",
+      "tests": [
+        {
+          "kind": "joint_prediction_rescale",
+          "factor": 0.1,
+          "loss_delta": 2.168404344971009e-18
+        },
+        {
+          "kind": "joint_prediction_rescale",
+          "factor": 2.0,
+          "loss_delta": 0.0
+        },
+        {
+          "kind": "joint_prediction_rescale",
+          "factor": 10.0,
+          "loss_delta": 0.0
+        },
+        {
+          "kind": "joint_target_rescale",
+          "factor": 0.2,
+          "loss_delta": 9.75781955236954e-18
+        },
+        {
+          "kind": "joint_target_rescale",
+          "factor": 5.0,
+          "loss_delta": 1.951563910473908e-18
+        }
+      ],
+      "consistent_t_z_scale_loss": 2.5015690055429763e-32,
+      "mismatched_t_z_scale_loss": 0.03240740740740739,
+      "autograd_gradcheck": true,
+      "all_passed": true,
+      "warning": "Never fit depth and camera translation scales separately; missing real dense depth needs a separately specified train-only or calibration-based scale estimator."
+    },
+    "hidden_camera_scale_counterexample.json": {
+      "scope": "counterexample: identical observed three cameras and scene, changing only four unobserved rig cameras",
+      "visible_pack_baseline": 1.0,
+      "full_rig_baseline_near_hidden": 1.4142135381698608,
+      "full_rig_baseline_far_hidden": 99.01010131835938,
+      "same_visible_depth_2_normalized_targets": [
+        1.4142135865763297,
+        0.020199959129111014
+      ],
+      "training_launched": false,
+      "conclusion": "Full-rig baseline normalization can depend on cameras absent from model input. A baseline restricted to observed cameras is not inherently unobservable in calibrated multiview geometry."
+    }
+  }
+}

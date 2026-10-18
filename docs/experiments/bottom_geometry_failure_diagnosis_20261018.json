@@ -1,0 +1,3310 @@
+{
+  "as_of_utc": "2026-10-18",
+  "training_launched": false,
+  "optimizer_steps": 0,
+  "inference_packs_per_endpoint": 52,
+  "hybrid_packs_per_endpoint": 28,
+  "gradient_probe_actual_schedule_updates": [
+    3,
+    4,
+    5
+  ],
+  "aggregates": {
+    "release": {
+      "randomized_rig_train": {
+        "packs": 24,
+        "bottom": {
+          "rotation_mean": 148.45034631093344,
+          "body_absrel_mean": 0.22841738366211453,
+          "joint": {
+            "support": 1451,
+            "coverage32": 0.08476912474155755
+          },
+          "known_camera_pred_depth": {
+            "support": 1451,
+            "coverage32": 0.08545830461750517
+          },
+          "pred_camera_gt_depth": {
+            "support": 1451,
+            "coverage32": 0.030323914541695383
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 1451,
+            "coverage32": 0.0006891798759476223
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 1451,
+            "coverage32": 0.35148173673328736
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 1451,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 1451,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 104.28644752502441,
+          "body_absrel_mean": 0.22695181829233965,
+          "joint": {
+            "support": 365,
+            "coverage32": 0.2054794520547945
+          },
+          "known_camera_pred_depth": {
+            "support": 365,
+            "coverage32": 0.14246575342465753
+          },
+          "pred_camera_gt_depth": {
+            "support": 365,
+            "coverage32": 0.1589041095890411
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 365,
+            "coverage32": 0.0273972602739726
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 365,
+            "coverage32": 0.4
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 365,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 365,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 0.44155535101890564
+          },
+          "depth_ratio": {
+            "median": 0.9802473485469818
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -0.6454478582431273
+          }
+        }
+      },
+      "unseen_rig_gate": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 86.40118344624837,
+          "body_absrel_mean": 0.14211427544554076,
+          "joint": {
+            "support": 485,
+            "coverage32": 0.061855670103092786
+          },
+          "known_camera_pred_depth": {
+            "support": 485,
+            "coverage32": 0.30721649484536084
+          },
+          "pred_camera_gt_depth": {
+            "support": 485,
+            "coverage32": 0.07216494845360824
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 485,
+            "coverage32": 0.0288659793814433
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 485,
+            "coverage32": 0.5608247422680412
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 485,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 485,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 87.84044649203618,
+          "body_absrel_mean": 0.07401887001469731,
+          "joint": {
+            "support": 107,
+            "coverage32": 0.2523364485981308
+          },
+          "known_camera_pred_depth": {
+            "support": 107,
+            "coverage32": 0.35514018691588783
+          },
+          "pred_camera_gt_depth": {
+            "support": 107,
+            "coverage32": 0.16822429906542055
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 107,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 107,
+            "coverage32": 0.5794392523364486
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 107,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 107,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 0.3764038132503629
+          },
+          "depth_ratio": {
+            "median": 1.0303268730640411
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -1.9030704640074547
+          }
+        }
+      },
+      "known_rig_diagnostic": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 129.19075393676758,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 84,
+            "coverage32": 0.023809523809523808
+          }
+        },
+        "other": {
+          "rotation_mean": 4.675474445025126,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 38,
+            "coverage32": 0.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.1037936210632324
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "packs": 16,
+        "bottom": {
+          "rotation_mean": 115.30126571655273,
+          "body_absrel_mean": 0.04697422496974468,
+          "joint": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_pred_depth": {
+            "support": 89,
+            "coverage32": 0.3707865168539326
+          },
+          "pred_camera_gt_depth": {
+            "support": 89,
+            "coverage32": 0.011235955056179775
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 89,
+            "coverage32": 0.4606741573033708
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 89,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 89,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 13.677684981089373,
+          "body_absrel_mean": 0.23597834445536137,
+          "joint": {
+            "support": 185,
+            "coverage32": 0.745945945945946
+          },
+          "known_camera_pred_depth": {
+            "support": 185,
+            "coverage32": 0.043243243243243246
+          },
+          "pred_camera_gt_depth": {
+            "support": 185,
+            "coverage32": 0.021621621621621623
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 185,
+            "coverage32": 0.6378378378378379
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 185,
+            "coverage32": 0.6594594594594595
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 185,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 185,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 0.8566202521324158
+          },
+          "depth_ratio": {
+            "median": 1.1551096439361572
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -0.02753992947988377
+          }
+        }
+      }
+    },
+    "final_ema": {
+      "randomized_rig_train": {
+        "packs": 24,
+        "bottom": {
+          "rotation_mean": 57.95011727015177,
+          "body_absrel_mean": 0.06741591672956322,
+          "joint": {
+            "support": 1451,
+            "coverage32": 0.05995864920744314
+          },
+          "known_camera_pred_depth": {
+            "support": 1451,
+            "coverage32": 0.5341144038594073
+          },
+          "pred_camera_gt_depth": {
+            "support": 1451,
+            "coverage32": 0.06616126809097174
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 1451,
+            "coverage32": 0.0647829083390765
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 1451,
+            "coverage32": 0.4962095106822881
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 1451,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 1451,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 15.397389451662699,
+          "body_absrel_mean": 0.05415582614174733,
+          "joint": {
+            "support": 365,
+            "coverage32": 0.27123287671232876
+          },
+          "known_camera_pred_depth": {
+            "support": 365,
+            "coverage32": 0.6602739726027397
+          },
+          "pred_camera_gt_depth": {
+            "support": 365,
+            "coverage32": 0.14246575342465753
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 365,
+            "coverage32": 0.2356164383561644
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 365,
+            "coverage32": 0.8328767123287671
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 365,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 365,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.043155163526535
+          },
+          "depth_ratio": {
+            "median": 0.9897453784942627
+          },
+          "log_translation_over_depth_ratio": {
+            "median": 0.04248790374356137
+          }
+        }
+      },
+      "unseen_rig_gate": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 92.8586934407552,
+          "body_absrel_mean": 0.16853129553298155,
+          "joint": {
+            "support": 485,
+            "coverage32": 0.020618556701030927
+          },
+          "known_camera_pred_depth": {
+            "support": 485,
+            "coverage32": 0.14432989690721648
+          },
+          "pred_camera_gt_depth": {
+            "support": 485,
+            "coverage32": 0.030927835051546393
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 485,
+            "coverage32": 0.002061855670103093
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 485,
+            "coverage32": 0.18762886597938144
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 485,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 485,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 25.519379377365112,
+          "body_absrel_mean": 0.0721614258363843,
+          "joint": {
+            "support": 107,
+            "coverage32": 0.18691588785046728
+          },
+          "known_camera_pred_depth": {
+            "support": 107,
+            "coverage32": 0.34579439252336447
+          },
+          "pred_camera_gt_depth": {
+            "support": 107,
+            "coverage32": 0.17757009345794392
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 107,
+            "coverage32": 0.14953271028037382
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 107,
+            "coverage32": 0.514018691588785
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 107,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 107,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.170324221253395
+          },
+          "depth_ratio": {
+            "median": 1.051426887512207
+          },
+          "log_translation_over_depth_ratio": {
+            "median": 0.08846378028125004
+          }
+        }
+      },
+      "known_rig_diagnostic": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 103.2236836751302,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 84,
+            "coverage32": 0.44047619047619047
+          }
+        },
+        "other": {
+          "rotation_mean": 25.64002259572347,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 38,
+            "coverage32": 0.631578947368421
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.6121240258216858
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "packs": 16,
+        "bottom": {
+          "rotation_mean": 116.55066299438477,
+          "body_absrel_mean": 0.05520221218466759,
+          "joint": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_pred_depth": {
+            "support": 89,
+            "coverage32": 0.2808988764044944
+          },
+          "pred_camera_gt_depth": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 89,
+            "coverage32": 0.6966292134831461
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 89,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 89,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 9.81194669008255,
+          "body_absrel_mean": 0.05571418871275253,
+          "joint": {
+            "support": 185,
+            "coverage32": 0.372972972972973
+          },
+          "known_camera_pred_depth": {
+            "support": 185,
+            "coverage32": 0.3081081081081081
+          },
+          "pred_camera_gt_depth": {
+            "support": 185,
+            "coverage32": 0.15135135135135136
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 185,
+            "coverage32": 0.5081081081081081
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 185,
+            "coverage32": 0.7945945945945946
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 185,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 185,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.1878606081008911
+          },
+          "depth_ratio": {
+            "median": 1.0358318090438843
+          },
+          "log_translation_over_depth_ratio": {
+            "median": 0.14680756810857004
+          }
+        }
+      }
+    },
+    "release_encoder_final_heads": {
+      "unseen_rig_gate": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 85.01774660746257,
+          "body_absrel_mean": 0.16586581679681936,
+          "joint": {
+            "support": 485,
+            "coverage32": 0.016494845360824743
+          },
+          "known_camera_pred_depth": {
+            "support": 485,
+            "coverage32": 0.1463917525773196
+          },
+          "pred_camera_gt_depth": {
+            "support": 485,
+            "coverage32": 0.018556701030927835
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 485,
+            "coverage32": 0.004123711340206186
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 485,
+            "coverage32": 0.177319587628866
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 485,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 485,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 26.315465052922566,
+          "body_absrel_mean": 0.07261332248648007,
+          "joint": {
+            "support": 107,
+            "coverage32": 0.14953271028037382
+          },
+          "known_camera_pred_depth": {
+            "support": 107,
+            "coverage32": 0.34579439252336447
+          },
+          "pred_camera_gt_depth": {
+            "support": 107,
+            "coverage32": 0.028037383177570093
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 107,
+            "coverage32": 0.028037383177570093
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 107,
+            "coverage32": 0.514018691588785
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 107,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 107,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.0886891037225723
+          },
+          "depth_ratio": {
+            "median": 1.0509910583496094
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -0.009216670800890982
+          }
+        }
+      },
+      "known_rig_diagnostic": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 102.93572171529134,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 84,
+            "coverage32": 0.42857142857142855
+          }
+        },
+        "other": {
+          "rotation_mean": 31.108017603556316,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 38,
+            "coverage32": 0.631578947368421
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.6725361049175262
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "packs": 16,
+        "bottom": {
+          "rotation_mean": 114.38827514648438,
+          "body_absrel_mean": 0.05675719492137432,
+          "joint": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_pred_depth": {
+            "support": 89,
+            "coverage32": 0.23595505617977527
+          },
+          "pred_camera_gt_depth": {
+            "support": 89,
+            "coverage32": 0.011235955056179775
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 89,
+            "coverage32": 0.7191011235955056
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 89,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 89,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 19.305916896233192,
+          "body_absrel_mean": 0.057711124109725155,
+          "joint": {
+            "support": 185,
+            "coverage32": 0.3027027027027027
+          },
+          "known_camera_pred_depth": {
+            "support": 185,
+            "coverage32": 0.2918918918918919
+          },
+          "pred_camera_gt_depth": {
+            "support": 185,
+            "coverage32": 0.14054054054054055
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 185,
+            "coverage32": 0.42702702702702705
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 185,
+            "coverage32": 0.8054054054054054
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 185,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 185,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.178665041923523
+          },
+          "depth_ratio": {
+            "median": 1.0389189720153809
+          },
+          "log_translation_over_depth_ratio": {
+            "median": 0.16746055911477659
+          }
+        }
+      }
+    },
+    "final_encoder_release_heads": {
+      "unseen_rig_gate": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 85.71342595418294,
+          "body_absrel_mean": 0.1447910126298666,
+          "joint": {
+            "support": 485,
+            "coverage32": 0.10515463917525773
+          },
+          "known_camera_pred_depth": {
+            "support": 485,
+            "coverage32": 0.311340206185567
+          },
+          "pred_camera_gt_depth": {
+            "support": 485,
+            "coverage32": 0.1154639175257732
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 485,
+            "coverage32": 0.002061855670103093
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 485,
+            "coverage32": 0.5587628865979382
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 485,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 485,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 87.82768948872884,
+          "body_absrel_mean": 0.07464009841593604,
+          "joint": {
+            "support": 107,
+            "coverage32": 0.205607476635514
+          },
+          "known_camera_pred_depth": {
+            "support": 107,
+            "coverage32": 0.35514018691588783
+          },
+          "pred_camera_gt_depth": {
+            "support": 107,
+            "coverage32": 0.17757009345794392
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 107,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 107,
+            "coverage32": 0.5794392523364486
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 107,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 107,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 0.3732193890027702
+          },
+          "depth_ratio": {
+            "median": 1.0415625870227814
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -1.8807994717337952
+          }
+        }
+      },
+      "known_rig_diagnostic": {
+        "packs": 6,
+        "bottom": {
+          "rotation_mean": 126.38768895467122,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 84,
+            "coverage32": 0.023809523809523808
+          }
+        },
+        "other": {
+          "rotation_mean": 4.568441430727641,
+          "body_absrel_mean": null,
+          "known_camera_sparse": {
+            "support": 38,
+            "coverage32": 0.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 1.1074948906898499
+          }
+        }
+      },
+      "motion_holdout_not_unseen_rig": {
+        "packs": 16,
+        "bottom": {
+          "rotation_mean": 113.40530014038086,
+          "body_absrel_mean": 0.06486042030155659,
+          "joint": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_pred_depth": {
+            "support": 89,
+            "coverage32": 0.2696629213483146
+          },
+          "pred_camera_gt_depth": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 89,
+            "coverage32": 0.0
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 89,
+            "coverage32": 0.4606741573033708
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 89,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 89,
+            "coverage32": 1.0
+          }
+        },
+        "other": {
+          "rotation_mean": 13.483095379976126,
+          "body_absrel_mean": 0.23396715645988783,
+          "joint": {
+            "support": 185,
+            "coverage32": 0.7351351351351352
+          },
+          "known_camera_pred_depth": {
+            "support": 185,
+            "coverage32": 0.043243243243243246
+          },
+          "pred_camera_gt_depth": {
+            "support": 185,
+            "coverage32": 0.021621621621621623
+          },
+          "pred_camera_gt_depth_oracle_translation_scale": {
+            "support": 185,
+            "coverage32": 0.6378378378378379
+          },
+          "known_camera_oracle_depth_scale": {
+            "support": 185,
+            "coverage32": 0.6594594594594595
+          },
+          "perfect_geometry_encoding_roundtrip": {
+            "support": 185,
+            "coverage32": 1.0
+          },
+          "perfect_geometry_known_intrinsics": {
+            "support": 185,
+            "coverage32": 1.0
+          }
+        },
+        "scale_diagnostics": {
+          "translation_ratio": {
+            "median": 0.8548706620931625
+          },
+          "depth_ratio": {
+            "median": 1.1532394886016846
+          },
+          "log_translation_over_depth_ratio": {
+            "median": -0.038740512131365826
+          }
+        }
+      }
+    }
+  },
+  "source_artifacts": {
+    "logs_and_coverage.json": "a2f73d3dc32b5d6d9eefef6836cd9a1101079103e28b1b85fb6a208c43e8bf8e",
+    "selection.json": "2a2ec8f2b74abedc8bf91b0d9873c051555bf3f40d1000dac0c1030bf90d0cf7",
+    "inference_release.json": "8ff0ed08a55acca3b851df42fc70be07fdbcb776a113b6da7426be8c72636ca7",
+    "inference_final_ema.json": "0fcb2844926189835b21b9dffa64bcd1323fa5365606b96428144a6e8b312c47",
+    "inference_release_encoder_final_heads.json": "65b399234c720c508bc3ad71bd101a4b454a3c10e1bc988f96e2e8d1a638b08e",
+    "inference_final_encoder_release_heads.json": "d6e3f7620b6eafefb19f7693fe64267e65140c276da7aee7b05a8afa8ae580ea",
+    "gradient_probe_release.json": "1d47f0f361739cfb1717433882eb0ad35a517657f63cbfd56c8c73cd3665cce7",
+    "gradient_probe_final_ema.json": "8adf4c6f0d5ac5879859851cb5db5042186cb59ea1073073a00fd5816e805668",
+    "camera_output_conditioning.json": "65212d9321317197bed9425fff0740dc203f7129ba07677c416ef5afda63592d"
+  },
+  "caveats": [
+    "Fixed small diagnostic subsets are not the full final validation population.",
+    "Only six unseen-rig scenes match the full unseen-rig validation support exactly.",
+    "GT-assisted rescaling and GT-depth replacement are diagnostic interventions, not guaranteed error bounds, not deployable metrics.",
+    "Module swaps are inference interventions and cannot replace matched training controls.",
+    "Euclidean task-gradient cosine is not the AdamW-preconditioned update direction."
+  ],
+  "logs_and_coverage": {
+    "training_updates": 4000,
+    "contiguous": true,
+    "clipping": {
+      "all": {
+        "norm": {
+          "n": 4000,
+          "median": 41.39584922790527,
+          "p95": 303.43301544189416,
+          "mean": 97.71539939582348,
+          "maximum": 15396.8720703125
+        },
+        "fraction": 0.895
+      },
+      "first500": {
+        "norm": {
+          "n": 500,
+          "median": 26.9137020111084,
+          "p95": 527.1838256835937,
+          "mean": 147.12023281288148,
+          "maximum": 5821.5029296875
+        },
+        "fraction": 0.844
+      },
+      "501_1500": {
+        "norm": {
+          "n": 1000,
+          "median": 27.617704391479492,
+          "p95": 347.10691375732404,
+          "mean": 90.38698890066146,
+          "maximum": 3380.0224609375
+        },
+        "fraction": 0.661
+      },
+      "1501_2500": {
+        "norm": {
+          "n": 1000,
+          "median": 47.82071304321289,
+          "p95": 257.8277359008789,
+          "mean": 116.39712460517883,
+          "maximum": 15396.8720703125
+        },
+        "fraction": 0.998
+      },
+      "2501_4000": {
+        "norm": {
+          "n": 1500,
+          "median": 46.343162536621094,
+          "p95": 215.99106750488278,
+          "mean": 73.67824511400859,
+          "maximum": 2361.9072265625
+        },
+        "fraction": 0.9993333333333333
+      }
+    },
+    "logged_gradient_sources": [
+      {
+        "role": "new_rig",
+        "group": "mouse_climb_wall_91",
+        "n": 80
+      },
+      {
+        "role": "bottom",
+        "group": "moseq_sample10_all_correlated_variants",
+        "n": 40
+      },
+      {
+        "role": "replay",
+        "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+        "n": 40
+      },
+      {
+        "role": "real",
+        "group": "AZL3",
+        "n": 14
+      },
+      {
+        "role": "real",
+        "group": "AZR2",
+        "n": 14
+      },
+      {
+        "role": "dannce",
+        "group": "dannce_mouse_1",
+        "n": 40
+      },
+      {
+        "role": "replay",
+        "group": "anipose_trial/FB_R3_2024-03-16_1_Trial_5",
+        "n": 40
+      },
+      {
+        "role": "real",
+        "group": "CR2",
+        "n": 13
+      },
+      {
+        "role": "real",
+        "group": "EL2",
+        "n": 13
+      },
+      {
+        "role": "real",
+        "group": "EL2L2",
+        "n": 13
+      },
+      {
+        "role": "real",
+        "group": "ER3L2",
+        "n": 13
+      }
+    ],
+    "gradient_tasks": {
+      "new_rig": {
+        "n": 80,
+        "cosines": {
+          "camera/depth": {
+            "stats": {
+              "n": 80,
+              "median": -0.0037882097445549627,
+              "p95": 0.0815623399939249,
+              "mean": -0.003742693298963114,
+              "maximum": 0.13155410777880588
+            },
+            "negative": 0.55,
+            "below_minus03": 0.0
+          },
+          "camera/shape": {
+            "stats": {
+              "n": 80,
+              "median": 0.006662746363398845,
+              "p95": 0.05421984065526562,
+              "mean": 0.00567715734812928,
+              "maximum": 0.07889240075804403
+            },
+            "negative": 0.3625,
+            "below_minus03": 0.0
+          },
+          "camera/transfer": {
+            "stats": {
+              "n": 80,
+              "median": -0.18196614639004857,
+              "p95": 0.5415474720991896,
+              "mean": -0.13806878757009927,
+              "maximum": 0.9619180039513885
+            },
+            "negative": 0.625,
+            "below_minus03": 0.425
+          },
+          "depth/shape": {
+            "stats": {
+              "n": 80,
+              "median": 0.002859978684721611,
+              "p95": 0.5351085802585797,
+              "mean": 0.03350669185891908,
+              "maximum": 0.7042449895660076
+            },
+            "negative": 0.5,
+            "below_minus03": 0.125
+          },
+          "depth/transfer": {
+            "stats": {
+              "n": 80,
+              "median": -0.056188418498128376,
+              "p95": 0.20179627313510864,
+              "mean": -0.055670019865507125,
+              "maximum": 0.5479930378558558
+            },
+            "negative": 0.65,
+            "below_minus03": 0.0625
+          },
+          "shape/transfer": {
+            "stats": {
+              "n": 80,
+              "median": 0.00034872481436598656,
+              "p95": 0.11973058121871433,
+              "mean": -0.005121115639150423,
+              "maximum": 0.20466818409414417
+            },
+            "negative": 0.4875,
+            "below_minus03": 0.0125
+          }
+        },
+        "weighted_norms": {
+          "camera": {
+            "n": 80,
+            "median": 2.844122342525992,
+            "p95": 10.516606756144288,
+            "mean": 3.882484903153491,
+            "maximum": 21.9385212685587
+          },
+          "depth": {
+            "n": 80,
+            "median": 0.26536234284032023,
+            "p95": 0.9591183407524715,
+            "mean": 0.40752338453448084,
+            "maximum": 5.628632289916571
+          },
+          "shape": {
+            "n": 80,
+            "median": 0.33565516289876673,
+            "p95": 1.2368679005857919,
+            "mean": 0.4661649059833829,
+            "maximum": 1.8772560385114936
+          },
+          "transfer": {
+            "n": 80,
+            "median": 1.0174713539168283,
+            "p95": 2.3605015758082812,
+            "mean": 1.1920945406186292,
+            "maximum": 4.529383996358173
+          }
+        }
+      },
+      "bottom": {
+        "n": 40,
+        "cosines": {
+          "camera/depth": {
+            "stats": {
+              "n": 40,
+              "median": 0.005279192236386239,
+              "p95": 0.05870162299210041,
+              "mean": 0.004330725703042697,
+              "maximum": 0.18268266796663976
+            },
+            "negative": 0.4,
+            "below_minus03": 0.0
+          },
+          "camera/shape": {
+            "stats": {
+              "n": 40,
+              "median": -0.005173792181333521,
+              "p95": 0.07198905291794447,
+              "mean": 0.004540491928087969,
+              "maximum": 0.15251364832756362
+            },
+            "negative": 0.55,
+            "below_minus03": 0.0
+          },
+          "camera/transfer": {
+            "stats": {
+              "n": 39,
+              "median": -0.09641437036520585,
+              "p95": 0.8011905766104769,
+              "mean": -0.04213271442891309,
+              "maximum": 0.841366525602763
+            },
+            "negative": 0.5384615384615384,
+            "below_minus03": 0.41025641025641024
+          },
+          "depth/shape": {
+            "stats": {
+              "n": 40,
+              "median": 0.36632186704467934,
+              "p95": 0.7879697447719827,
+              "mean": 0.28910557904323136,
+              "maximum": 0.968709192101479
+            },
+            "negative": 0.225,
+            "below_minus03": 0.075
+          },
+          "depth/transfer": {
+            "stats": {
+              "n": 39,
+              "median": 0.022642950909172063,
+              "p95": 0.4191702831382644,
+              "mean": -0.008213997001142644,
+              "maximum": 0.4608267846844824
+            },
+            "negative": 0.4358974358974359,
+            "below_minus03": 0.07692307692307693
+          },
+          "shape/transfer": {
+            "stats": {
+              "n": 39,
+              "median": 0.020959887518958307,
+              "p95": 0.37810026828151827,
+              "mean": 0.0023688023141749215,
+              "maximum": 0.7228640060451423
+            },
+            "negative": 0.46153846153846156,
+            "below_minus03": 0.05128205128205128
+          }
+        },
+        "weighted_norms": {
+          "camera": {
+            "n": 40,
+            "median": 4.344713586223129,
+            "p95": 16.771741279019697,
+            "mean": 5.721284856884269,
+            "maximum": 18.342946294342696
+          },
+          "depth": {
+            "n": 40,
+            "median": 1.0563865497877467,
+            "p95": 9.994682550559252,
+            "mean": 2.6614005621879437,
+            "maximum": 25.5913345819819
+          },
+          "shape": {
+            "n": 40,
+            "median": 21.508464314944064,
+            "p95": 121.73870474228713,
+            "mean": 33.42033778147938,
+            "maximum": 220.7786225356915
+          },
+          "transfer": {
+            "n": 39,
+            "median": 0.8438347655744758,
+            "p95": 78.66983219280748,
+            "mean": 26.52981038613055,
+            "maximum": 695.3222650739086
+          }
+        }
+      },
+      "replay": {
+        "n": 80,
+        "cosines": {
+          "camera/depth": {
+            "stats": {
+              "n": 80,
+              "median": 0.0051602237132048175,
+              "p95": 0.103452763175057,
+              "mean": 0.010345174465814181,
+              "maximum": 0.20578325197990902
+            },
+            "negative": 0.45,
+            "below_minus03": 0.0
+          }
+        },
+        "weighted_norms": {
+          "camera": {
+            "n": 80,
+            "median": 1.4541029954123337,
+            "p95": 3.4033973401248643,
+            "mean": 1.557996224993169,
+            "maximum": 3.9984425488165893
+          },
+          "depth": {
+            "n": 80,
+            "median": 0.14457747817825897,
+            "p95": 0.6618030070773671,
+            "mean": 0.2314150048751542,
+            "maximum": 1.2286189236243295
+          }
+        }
+      },
+      "real": {
+        "n": 80,
+        "cosines": {},
+        "weighted_norms": {
+          "real_sparse": {
+            "n": 80,
+            "median": 0.5446255454077396,
+            "p95": 1.0541259704770778,
+            "mean": 0.5977115536443796,
+            "maximum": 1.4292549354729227
+          }
+        }
+      },
+      "dannce": {
+        "n": 40,
+        "cosines": {},
+        "weighted_norms": {
+          "camera": {
+            "n": 40,
+            "median": 1.7082526014024446,
+            "p95": 3.736444925583628,
+            "mean": 6.936581438408015,
+            "maximum": 199.4034032238569
+          }
+        }
+      }
+    },
+    "coverage": {
+      "bottom": {
+        "exposures": 4000,
+        "unique_records": 291,
+        "groups": {
+          "moseq_sample10_all_correlated_variants": 200,
+          "mouse_climb_wall_91": 91
+        },
+        "rig_exposures": {
+          "None": 4000
+        },
+        "unique_packs": 1455
+      },
+      "dannce": {
+        "exposures": 2000,
+        "unique_records": 2000,
+        "groups": {
+          "dannce_mouse_1": 2000
+        },
+        "rig_exposures": {
+          "dannce/1": 2000
+        },
+        "unique_packs": 2000
+      },
+      "new_rig": {
+        "exposures": 8000,
+        "unique_records": 24,
+        "groups": {
+          "mouse_climb_wall_91": 24
+        },
+        "rig_exposures": {
+          "train_rig01": 1335,
+          "train_rig04": 1334,
+          "train_rig05": 1333,
+          "train_rig03": 1332,
+          "train_rig00": 1332,
+          "train_rig02": 1334
+        },
+        "unique_packs": 48
+      },
+      "real": {
+        "exposures": 8000,
+        "unique_records": 134,
+        "groups": {
+          "AZL3": 23,
+          "AZR2": 24,
+          "CR2": 16,
+          "EL2": 22,
+          "EL2L2": 24,
+          "ER3L2": 25
+        },
+        "rig_exposures": {
+          "None": 8000
+        },
+        "unique_packs": 1072
+      },
+      "replay": {
+        "exposures": 9000,
+        "unique_records": 899,
+        "groups": {
+          "anipose_trial/E_L2_2024-11-18_1_Trial_1": 204,
+          "anipose_trial/FB_R3_2024-03-16_1_Trial_5": 204,
+          "crim13/021709_A25_Block22_BCfe1_t": 200,
+          "moseq_sample10_all_correlated_variants": 200,
+          "mouse_climb_wall_91": 91
+        },
+        "rig_exposures": {
+          "None": 9000
+        },
+        "unique_packs": 2368
+      },
+      "water": {
+        "exposures": 1000,
+        "unique_records": 1000,
+        "groups": {
+          "water_reaching_fg_cam_b": 1000
+        },
+        "rig_exposures": {
+          "None": 1000
+        },
+        "unique_packs": 1000
+      }
+    },
+    "calibration": {
+      "weights": {
+        "camera": 1.0412726115220914,
+        "depth": 11.354388458291247,
+        "shape": 62.90525935911429,
+        "transfer": 2.2064033005274744,
+        "real_sparse": 1.991129753984352
+      },
+      "task_sample_counts": {
+        "camera": 12,
+        "depth": 11,
+        "shape": 9,
+        "transfer": 8,
+        "real_sparse": 4
+      },
+      "source_counts": {
+        "mouse_climb_wall_91": 6,
+        "moseq_sample10_all_correlated_variants": 2,
+        "anipose_trial/E_L2_2024-11-18_1_Trial_1": 1,
+        "AZL3": 1,
+        "AZR2": 1,
+        "dannce_mouse_1": 1,
+        "anipose_trial/FB_R3_2024-03-16_1_Trial_5": 1,
+        "crim13/021709_A25_Block22_BCfe1_t": 1,
+        "CR2": 1,
+        "EL2": 1
+      }
+    }
+  },
+  "camera_output_conditioning": {
+    "rows": [
+      {
+        "endpoint": "release",
+        "update": 3,
+        "slot": 0,
+        "role": "new_rig",
+        "group": "mouse_climb_wall_91",
+        "qnorm": [
+          [
+            0.9985449910163879,
+            0.8325130939483643,
+            0.8884201049804688
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.7341843247413635,
+              0.7726122140884399
+            ],
+            [
+              0.7859817743301392,
+              0.8151165246963501
+            ],
+            [
+              0.7841625213623047,
+              0.8164187669754028
+            ]
+          ]
+        ],
+        "loss": 2.3760650157928467,
+        "output_gradient_norms": {
+          "translation": 0.5903027057647705,
+          "quaternion": 2.676696538925171,
+          "fov": 0.002735018264502287
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 3,
+        "slot": 2,
+        "role": "bottom",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            0.9971715211868286,
+            0.9792328476905823,
+            0.970832884311676
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.8147560358047485,
+              0.8142873644828796
+            ],
+            [
+              0.7846286296844482,
+              0.7815024256706238
+            ],
+            [
+              0.794586718082428,
+              0.7808796167373657
+            ]
+          ]
+        ],
+        "loss": 2.214245319366455,
+        "output_gradient_norms": {
+          "translation": 4.029832363128662,
+          "quaternion": 2.4542760848999023,
+          "fov": 0.0019076478201895952
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 3,
+        "slot": 3,
+        "role": "replay",
+        "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+        "qnorm": [
+          [
+            1.0000232458114624,
+            0.9990047812461853,
+            1.0021995306015015
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.7770237922668457,
+              0.7718984484672546
+            ],
+            [
+              0.6387320160865784,
+              0.6400966644287109
+            ],
+            [
+              0.6702378392219543,
+              0.670145571231842
+            ]
+          ]
+        ],
+        "loss": 0.04972367361187935,
+        "output_gradient_norms": {
+          "translation": 0.028594357892870903,
+          "quaternion": 2.383854627609253,
+          "fov": 0.003491793991997838
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 3,
+        "slot": 6,
+        "role": "dannce",
+        "group": "dannce_mouse_1",
+        "qnorm": [
+          [
+            0.9997982382774353,
+            1.0025198459625244,
+            0.9946171641349792
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.5919137001037598,
+              0.5934234261512756
+            ],
+            [
+              0.6381237506866455,
+              0.6456321477890015
+            ],
+            [
+              0.6706664562225342,
+              0.679991602897644
+            ]
+          ]
+        ],
+        "loss": 0.07836034893989563,
+        "output_gradient_norms": {
+          "translation": 0.07544399052858353,
+          "quaternion": 2.373751163482666,
+          "fov": 0.0018592836568132043
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 4,
+        "slot": 2,
+        "role": "bottom",
+        "group": "mouse_climb_wall_91",
+        "qnorm": [
+          [
+            0.9993329644203186,
+            0.9997175335884094,
+            0.9148190021514893
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.4548720717430115,
+              0.44906073808670044
+            ],
+            [
+              0.5064535737037659,
+              0.501556396484375
+            ],
+            [
+              0.5463957190513611,
+              0.5411340594291687
+            ]
+          ]
+        ],
+        "loss": 1.692035436630249,
+        "output_gradient_norms": {
+          "translation": 1.2650175094604492,
+          "quaternion": 1.921170711517334,
+          "fov": 0.009540572762489319
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 4,
+        "slot": 3,
+        "role": "replay",
+        "group": "crim13/021709_A25_Block22_BCfe1_t",
+        "qnorm": [
+          [
+            1.0002723932266235,
+            0.9937458634376526,
+            0.9986943006515503
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.1080461740493774,
+              1.111444115638733
+            ],
+            [
+              1.1830798387527466,
+              1.1863502264022827
+            ],
+            [
+              1.1825371980667114,
+              1.186140537261963
+            ]
+          ]
+        ],
+        "loss": 0.03179682046175003,
+        "output_gradient_norms": {
+          "translation": 0.05426059290766716,
+          "quaternion": 2.4422924518585205,
+          "fov": 0.0015979903982952237
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 4,
+        "slot": 6,
+        "role": "replay",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            1.00020170211792,
+            1.0003854036331177,
+            0.9927365779876709
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.2208945751190186,
+              1.219174861907959
+            ],
+            [
+              1.1889489889144897,
+              1.186928629875183
+            ],
+            [
+              1.1119319200515747,
+              1.1027525663375854
+            ]
+          ]
+        ],
+        "loss": 0.06693179160356522,
+        "output_gradient_norms": {
+          "translation": 0.04991985857486725,
+          "quaternion": 2.332125425338745,
+          "fov": 0.0022735900711268187
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 4,
+        "slot": 7,
+        "role": "water",
+        "group": "water_reaching_fg_cam_b",
+        "qnorm": [
+          [
+            0.9998539090156555,
+            0.9935945272445679,
+            0.9943625330924988
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.8487508296966553,
+              0.8500989079475403
+            ],
+            [
+              0.8539081811904907,
+              0.8551310300827026
+            ],
+            [
+              0.8535762429237366,
+              0.8596059679985046
+            ]
+          ]
+        ],
+        "loss": 0.6072813868522644,
+        "output_gradient_norms": {
+          "translation": 0.561279833316803,
+          "quaternion": 2.5484113693237305,
+          "fov": 0.013723141513764858
+        }
+      },
+      {
+        "endpoint": "release",
+        "update": 5,
+        "slot": 2,
+        "role": "bottom",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            0.9955486059188843,
+            0.955123782157898,
+            0.9532670378684998
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.7992125153541565,
+              0.8066388964653015
+            ],
+            [
+              0.7761021256446838,
+              0.7706856727600098
+            ],
+            [
+              0.7917885780334473,
+              0.7800889611244202
+            ]
+          ]
+        ],
+        "loss": 2.0894248485565186,
+        "output_gradient_norms": {
+          "translation": 4.584141731262207,
+          "quaternion": 2.3661274909973145,
+          "fov": 0.0016342796152457595
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 3,
+        "slot": 0,
+        "role": "new_rig",
+        "group": "mouse_climb_wall_91",
+        "qnorm": [
+          [
+            0.12219759076833725,
+            0.530775785446167,
+            0.5151121020317078
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.3161134719848633,
+              1.4559648036956787
+            ],
+            [
+              1.3416481018066406,
+              1.3043153285980225
+            ],
+            [
+              1.3470215797424316,
+              1.3283292055130005
+            ]
+          ]
+        ],
+        "loss": 0.7650339603424072,
+        "output_gradient_norms": {
+          "translation": 0.10930828750133514,
+          "quaternion": 5.208276748657227,
+          "fov": 0.02064388245344162
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 3,
+        "slot": 2,
+        "role": "bottom",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            0.20447306334972382,
+            0.4865736663341522,
+            0.6174126267433167
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.418612003326416,
+              1.5260615348815918
+            ],
+            [
+              1.236222505569458,
+              1.4855877161026
+            ],
+            [
+              1.5090749263763428,
+              1.566341519355774
+            ]
+          ]
+        ],
+        "loss": 0.8486149907112122,
+        "output_gradient_norms": {
+          "translation": 0.1402049958705902,
+          "quaternion": 6.350533485412598,
+          "fov": 0.02923709899187088
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 3,
+        "slot": 3,
+        "role": "replay",
+        "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+        "qnorm": [
+          [
+            0.23492488265037537,
+            0.6365078091621399,
+            0.41405895352363586
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.347984790802002,
+              1.4279876947402954
+            ],
+            [
+              0.9395455718040466,
+              1.1752753257751465
+            ],
+            [
+              1.141568660736084,
+              1.2906121015548706
+            ]
+          ]
+        ],
+        "loss": 0.07138995081186295,
+        "output_gradient_norms": {
+          "translation": 0.04107038304209709,
+          "quaternion": 8.550332069396973,
+          "fov": 0.02535417303442955
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 3,
+        "slot": 6,
+        "role": "dannce",
+        "group": "dannce_mouse_1",
+        "qnorm": [
+          [
+            0.23032160103321075,
+            0.6456671953201294,
+            0.7293480634689331
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.1177821159362793,
+              1.2077504396438599
+            ],
+            [
+              1.0722198486328125,
+              1.2011208534240723
+            ],
+            [
+              0.9920879602432251,
+              1.262741208076477
+            ]
+          ]
+        ],
+        "loss": 0.12626583874225616,
+        "output_gradient_norms": {
+          "translation": 0.08369549363851547,
+          "quaternion": 8.3630952835083,
+          "fov": 0.019685277715325356
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 4,
+        "slot": 2,
+        "role": "bottom",
+        "group": "mouse_climb_wall_91",
+        "qnorm": [
+          [
+            0.15874864161014557,
+            0.008383366279304028,
+            0.3806743621826172
+          ]
+        ],
+        "fov": [
+          [
+            [
+              0.9807388186454773,
+              1.0400038957595825
+            ],
+            [
+              0.9024266004562378,
+              0.9598995447158813
+            ],
+            [
+              1.0650076866149902,
+              1.043056845664978
+            ]
+          ]
+        ],
+        "loss": 1.2888827323913574,
+        "output_gradient_norms": {
+          "translation": 0.24527347087860107,
+          "quaternion": 129.71688842773438,
+          "fov": 0.01116164494305849
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 4,
+        "slot": 3,
+        "role": "replay",
+        "group": "crim13/021709_A25_Block22_BCfe1_t",
+        "qnorm": [
+          [
+            0.24082449078559875,
+            0.5473788380622864,
+            0.2018263190984726
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.7142081260681152,
+              1.7975283861160278
+            ],
+            [
+              1.619779348373413,
+              1.5100605487823486
+            ],
+            [
+              1.6341838836669922,
+              1.4641120433807373
+            ]
+          ]
+        ],
+        "loss": 0.14248338341712952,
+        "output_gradient_norms": {
+          "translation": 0.0714978277683258,
+          "quaternion": 5.792377948760986,
+          "fov": 0.020159000530838966
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 4,
+        "slot": 6,
+        "role": "replay",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            0.21263237297534943,
+            0.496577650308609,
+            0.27298834919929504
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.7764885425567627,
+              1.8460015058517456
+            ],
+            [
+              1.6651763916015625,
+              1.7784560918807983
+            ],
+            [
+              1.6394779682159424,
+              1.7601792812347412
+            ]
+          ]
+        ],
+        "loss": 0.11976972967386246,
+        "output_gradient_norms": {
+          "translation": 0.08765697479248047,
+          "quaternion": 5.560502052307129,
+          "fov": 0.02473042719066143
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 4,
+        "slot": 7,
+        "role": "water",
+        "group": "water_reaching_fg_cam_b",
+        "qnorm": [
+          [
+            0.19303163886070251,
+            0.49946489930152893,
+            0.6915280818939209
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.4209926128387451,
+              1.4934221506118774
+            ],
+            [
+              1.243013858795166,
+              1.4250925779342651
+            ],
+            [
+              1.1766903400421143,
+              1.4297186136245728
+            ]
+          ]
+        ],
+        "loss": 0.5034583210945129,
+        "output_gradient_norms": {
+          "translation": 0.09034250676631927,
+          "quaternion": 3.315593719482422,
+          "fov": 0.034823399037122726
+        }
+      },
+      {
+        "endpoint": "final_ema",
+        "update": 5,
+        "slot": 2,
+        "role": "bottom",
+        "group": "moseq_sample10_all_correlated_variants",
+        "qnorm": [
+          [
+            0.21508072316646576,
+            0.37041571736335754,
+            0.5190327167510986
+          ]
+        ],
+        "fov": [
+          [
+            [
+              1.4062519073486328,
+              1.5198860168457031
+            ],
+            [
+              1.2259583473205566,
+              1.5085444450378418
+            ],
+            [
+              1.3097765445709229,
+              1.6097455024719238
+            ]
+          ]
+        ],
+        "loss": 0.7687991857528687,
+        "output_gradient_norms": {
+          "translation": 0.24143633246421814,
+          "quaternion": 8.652935981750488,
+          "fov": 0.028295915573835373
+        }
+      }
+    ],
+    "training_launched": false,
+    "optimizer_steps": 0
+  },
+  "gradient_probe": {
+    "release": {
+      "endpoint": "release",
+      "updates": [
+        {
+          "schedule_update": 3,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.8055297771614067,
+                  "camera_head": 22.57754720058018,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 3.1427584304927425,
+                  "camera_head": 0.0,
+                  "depth_head": 23.522703577936483
+                },
+                "shape": {
+                  "shared": 1.0208264129698013,
+                  "camera_head": 0.0,
+                  "depth_head": 10.805826404182039
+                },
+                "transfer": {
+                  "shared": 2.426784604771606,
+                  "camera_head": 28.463626475735957,
+                  "depth_head": 9.01950064805769
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.026074925417645,
+                  "camera_head": 39.89510745646667,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 3.2229697194262985,
+                  "camera_head": 0.0,
+                  "depth_head": 18.615762411617506
+                },
+                "shape": {
+                  "shared": 2.1583470568902214,
+                  "camera_head": 0.0,
+                  "depth_head": 17.85399588381171
+                },
+                "transfer": {
+                  "shared": 0.9710886244783992,
+                  "camera_head": 17.668598598175365,
+                  "depth_head": 0.4378480749717693
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.6531119775685819,
+                  "camera_head": 24.809973174091905,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 19.129174216929847,
+                  "camera_head": 0.0,
+                  "depth_head": 209.4070245787503
+                },
+                "shape": {
+                  "shared": 0.3500036908605505,
+                  "camera_head": 0.0,
+                  "depth_head": 11.090724281585711
+                },
+                "transfer": {
+                  "shared": 2.7147119912733975,
+                  "camera_head": 69.9649666804776,
+                  "depth_head": 20.393444895303716
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.44439030679969815,
+                  "camera_head": 15.463918525206562,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.9911914442194171,
+                  "camera_head": 0.0,
+                  "depth_head": 5.363344889254347
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "EL2L2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 1.7638476576888862,
+                  "camera_head": 0.0,
+                  "depth_head": 9.886476030246103
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "ER3L2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.9151386071997041,
+                  "camera_head": 0.0,
+                  "depth_head": 6.401555095397974
+                }
+              }
+            },
+            {
+              "role": "dannce",
+              "group": "dannce_mouse_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.136860045223432,
+                  "camera_head": 18.68386512164911,
+                  "depth_head": 0.0
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/FB_R3_2024-03-16_1_Trial_5",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.4434724632185287,
+                  "camera_head": 15.064514904756312,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 1.3227766695598768,
+                  "camera_head": 0.0,
+                  "depth_head": 7.402538241977264
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 0.5298080444335938,
+            "depth": 2.8851613998413086,
+            "shape": 0.30671223998069763,
+            "transfer": 0.5067427754402161,
+            "real_sparse": 0.3070835769176483
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": -0.016277844086289406,
+            "camera/shape": -0.010739686898887157,
+            "camera/transfer": 0.22022220492362976,
+            "camera/real_sparse": 0.023922879248857498,
+            "depth/shape": 0.2031461000442505,
+            "depth/transfer": -0.18689318001270294,
+            "depth/real_sparse": -0.5271785855293274,
+            "shape/transfer": -0.05170772597193718,
+            "shape/real_sparse": -0.057233527302742004,
+            "transfer/real_sparse": 0.10570987313985825
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:moseq_sample10_all_correlated_variants": 0.3937003016471863,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.1649613380432129,
+            "new_rig:mouse_climb_wall_91 | real:EL2L2": -0.3611902892589569,
+            "new_rig:mouse_climb_wall_91 | real:ER3L2": -0.30063971877098083,
+            "new_rig:mouse_climb_wall_91 | dannce:dannce_mouse_1": 0.027341164648532867,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.15678536891937256,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.1469087451696396,
+            "bottom:moseq_sample10_all_correlated_variants | real:EL2L2": -0.4234374761581421,
+            "bottom:moseq_sample10_all_correlated_variants | real:ER3L2": -0.341245174407959,
+            "bottom:moseq_sample10_all_correlated_variants | dannce:dannce_mouse_1": -0.05040138587355614,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.15124881267547607,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | real:EL2L2": -0.21797850728034973,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | real:ER3L2": -0.32894304394721985,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | dannce:dannce_mouse_1": 0.016362659633159637,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.9010614156723022,
+            "real:EL2L2 | real:ER3L2": 0.6463353037834167,
+            "real:EL2L2 | dannce:dannce_mouse_1": 0.02100871130824089,
+            "real:EL2L2 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.2312723994255066,
+            "real:ER3L2 | dannce:dannce_mouse_1": 0.024828823283314705,
+            "real:ER3L2 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.3495858907699585,
+            "dannce:dannce_mouse_1 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.0036186445504426956
+          },
+          "camera_vs_other_tasks": 0.02482588402926922,
+          "camera_vs_total": 0.2114967405796051,
+          "shared_total_norm": 2.8297946453094482
+        },
+        {
+          "schedule_update": 4,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.529065869094099,
+                  "camera_head": 26.54178441242355,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 5.2781867186429325,
+                  "camera_head": 0.0,
+                  "depth_head": 30.169000692001713
+                },
+                "shape": {
+                  "shared": 1.134255814130606,
+                  "camera_head": 0.0,
+                  "depth_head": 9.614510354621396
+                },
+                "transfer": {
+                  "shared": 2.351156328111895,
+                  "camera_head": 27.365851531893178,
+                  "depth_head": 11.5357932938276
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.4663390789197455,
+                  "camera_head": 25.253667146168073,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 2.460961121008935,
+                  "camera_head": 0.0,
+                  "depth_head": 21.444791291268427
+                },
+                "shape": {
+                  "shared": 1.4193044895510567,
+                  "camera_head": 0.0,
+                  "depth_head": 15.340432205628973
+                },
+                "transfer": {
+                  "shared": 0.5206227403381342,
+                  "camera_head": 8.219478080618233,
+                  "depth_head": 0.22036210350892776
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.1617837328152587,
+                  "camera_head": 13.847917008345682,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 3.5293295366295627,
+                  "camera_head": 0.0,
+                  "depth_head": 25.072229751336206
+                },
+                "shape": {
+                  "shared": 1.78375951055674,
+                  "camera_head": 0.0,
+                  "depth_head": 12.733195189695586
+                },
+                "transfer": {
+                  "shared": 2.7300930952906843,
+                  "camera_head": 38.908904281770525,
+                  "depth_head": 17.349567598785644
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "crim13/021709_A25_Block22_BCfe1_t",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.7180433363553662,
+                  "camera_head": 27.277357174033565,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.619830078894963,
+                  "camera_head": 0.0,
+                  "depth_head": 3.5561893546787946
+                },
+                "shape": {
+                  "shared": 0.6131199547254439,
+                  "camera_head": 0.0,
+                  "depth_head": 8.93171005771217
+                },
+                "transfer": {
+                  "shared": 0.16598767628428424,
+                  "camera_head": 4.845451243908451,
+                  "depth_head": 0.9769390621926937
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "AZL3",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.9749922508997695,
+                  "camera_head": 0.0,
+                  "depth_head": 6.111880481058683
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "AZR2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 1.0563319457892026,
+                  "camera_head": 0.0,
+                  "depth_head": 6.3184796376610635
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.9252366022130094,
+                  "camera_head": 27.143301428465254,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.9084344687913996,
+                  "camera_head": 0.0,
+                  "depth_head": 4.396070648468206
+                },
+                "shape": {
+                  "shared": 0.9412349970912504,
+                  "camera_head": 0.0,
+                  "depth_head": 28.28975294082496
+                },
+                "transfer": {
+                  "shared": 0.1771224423650808,
+                  "camera_head": 5.655492912791641,
+                  "depth_head": 0.709046130489643
+                }
+              }
+            },
+            {
+              "role": "water",
+              "group": "water_reaching_fg_cam_b",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.9038250309663983,
+                  "camera_head": 19.832385507337676,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.5529227343711667,
+                  "camera_head": 0.0,
+                  "depth_head": 3.1818045848074323
+                },
+                "shape": {
+                  "shared": 1.9461246842996065,
+                  "camera_head": 0.0,
+                  "depth_head": 16.8238150726543
+                },
+                "transfer": {
+                  "shared": 1.0482718319099253,
+                  "camera_head": 21.84903947993362,
+                  "depth_head": 6.846042126807573
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 0.5457853078842163,
+            "depth": 1.1756924390792847,
+            "shape": 0.3899238109588623,
+            "transfer": 0.5239361524581909,
+            "real_sparse": 0.22860828042030334
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": 0.0266839899122715,
+            "camera/shape": 0.027952296659350395,
+            "camera/transfer": 0.09393209964036942,
+            "camera/real_sparse": -0.04889007285237312,
+            "depth/shape": 0.10956905037164688,
+            "depth/transfer": -0.317893385887146,
+            "depth/real_sparse": -0.6431859731674194,
+            "shape/transfer": -0.024387702345848083,
+            "shape/real_sparse": -0.11892511695623398,
+            "transfer/real_sparse": 0.1968243420124054
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:mouse_climb_wall_91": 0.40776315331459045,
+            "new_rig:mouse_climb_wall_91 | replay:crim13/021709_A25_Block22_BCfe1_t": -0.1349387764930725,
+            "new_rig:mouse_climb_wall_91 | real:AZL3": -0.4327153265476227,
+            "new_rig:mouse_climb_wall_91 | real:AZR2": -0.5194371342658997,
+            "new_rig:mouse_climb_wall_91 | replay:moseq_sample10_all_correlated_variants": -0.1701727658510208,
+            "new_rig:mouse_climb_wall_91 | water:water_reaching_fg_cam_b": 0.06179656833410263,
+            "bottom:mouse_climb_wall_91 | replay:crim13/021709_A25_Block22_BCfe1_t": -0.12243393808603287,
+            "bottom:mouse_climb_wall_91 | real:AZL3": -0.3834756314754486,
+            "bottom:mouse_climb_wall_91 | real:AZR2": -0.37660375237464905,
+            "bottom:mouse_climb_wall_91 | replay:moseq_sample10_all_correlated_variants": -0.2420583963394165,
+            "bottom:mouse_climb_wall_91 | water:water_reaching_fg_cam_b": 0.0010092660086229444,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | real:AZL3": 0.2851671874523163,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | real:AZR2": 0.2463677078485489,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | replay:moseq_sample10_all_correlated_variants": 0.1577332466840744,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | water:water_reaching_fg_cam_b": -0.1529056280851364,
+            "real:AZL3 | real:AZR2": 0.6205874085426331,
+            "real:AZL3 | replay:moseq_sample10_all_correlated_variants": 0.337390273809433,
+            "real:AZL3 | water:water_reaching_fg_cam_b": -0.13805705308914185,
+            "real:AZR2 | replay:moseq_sample10_all_correlated_variants": 0.27889400720596313,
+            "real:AZR2 | water:water_reaching_fg_cam_b": -0.12089144438505173,
+            "replay:moseq_sample10_all_correlated_variants | water:water_reaching_fg_cam_b": -0.07659639418125153
+          },
+          "camera_vs_other_tasks": 0.07211604714393616,
+          "camera_vs_total": 0.49104732275009155,
+          "shared_total_norm": 1.2750186920166016
+        },
+        {
+          "schedule_update": 5,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.0975555979319427,
+                  "camera_head": 27.8878214349386,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.5007833239430901,
+                  "camera_head": 0.0,
+                  "depth_head": 4.093506181487178
+                },
+                "shape": {
+                  "shared": 1.1848829382062067,
+                  "camera_head": 0.0,
+                  "depth_head": 15.129793036459258
+                },
+                "transfer": {
+                  "shared": 0.9214808948410583,
+                  "camera_head": 18.870143783916504,
+                  "depth_head": 3.103150229116718
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.0008452279007443,
+                  "camera_head": 17.708984840545742,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 1.053831303856429,
+                  "camera_head": 0.0,
+                  "depth_head": 7.744107580041249
+                },
+                "shape": {
+                  "shared": 1.693952671450725,
+                  "camera_head": 0.0,
+                  "depth_head": 16.256248363279102
+                },
+                "transfer": {
+                  "shared": 1.2324223351631678,
+                  "camera_head": 25.815124405969033,
+                  "depth_head": 2.4080925575385868
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.7494853984296703,
+                  "camera_head": 24.214672556812072,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 23.879823835652132,
+                  "camera_head": 0.0,
+                  "depth_head": 240.72120858352835
+                },
+                "shape": {
+                  "shared": 0.3445545746458971,
+                  "camera_head": 0.0,
+                  "depth_head": 9.49615441623182
+                },
+                "transfer": {
+                  "shared": 2.392698302332804,
+                  "camera_head": 63.08053623445044,
+                  "depth_head": 14.405763482055958
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.015180150891660043,
+                  "camera_head": 0.8196053027445469,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.06695455481787158,
+                  "camera_head": 0.0,
+                  "depth_head": 0.8189418972352078
+                },
+                "shape": {
+                  "shared": 0.7119783071135771,
+                  "camera_head": 0.0,
+                  "depth_head": 29.816999635014902
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "CR2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 1.1651279778701067,
+                  "camera_head": 0.0,
+                  "depth_head": 5.995935724139805
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "EL2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.7844124211927559,
+                  "camera_head": 0.0,
+                  "depth_head": 4.825335028606323
+                }
+              }
+            },
+            {
+              "role": "dannce",
+              "group": "dannce_mouse_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.0077905143129695,
+                  "camera_head": 32.192679563604585,
+                  "depth_head": 0.0
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.48414739183250477,
+                  "camera_head": 14.170867861339428,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 1.3811212965641861,
+                  "camera_head": 0.0,
+                  "depth_head": 7.323544469992674
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 0.3219597041606903,
+            "depth": 3.0526461601257324,
+            "shape": 0.2712447941303253,
+            "transfer": 0.37839990854263306,
+            "real_sparse": 0.21654222905635834
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": 0.01436067745089531,
+            "camera/shape": 0.032897837460041046,
+            "camera/transfer": 0.23101645708084106,
+            "camera/real_sparse": -0.03749030828475952,
+            "depth/shape": 0.019785942509770393,
+            "depth/transfer": -0.10672127455472946,
+            "depth/real_sparse": -0.34714898467063904,
+            "shape/transfer": 0.0032834617886692286,
+            "shape/real_sparse": -0.03559844195842743,
+            "transfer/real_sparse": 0.03571651503443718
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:moseq_sample10_all_correlated_variants": 0.1453927755355835,
+            "new_rig:mouse_climb_wall_91 | replay:mouse_climb_wall_91": -0.057441744953393936,
+            "new_rig:mouse_climb_wall_91 | real:CR2": -0.09939344227313995,
+            "new_rig:mouse_climb_wall_91 | real:EL2": -0.11605305224657059,
+            "new_rig:mouse_climb_wall_91 | dannce:dannce_mouse_1": -0.2506415843963623,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.0809665396809578,
+            "bottom:moseq_sample10_all_correlated_variants | replay:mouse_climb_wall_91": -0.07729292660951614,
+            "bottom:moseq_sample10_all_correlated_variants | real:CR2": -0.2700464427471161,
+            "bottom:moseq_sample10_all_correlated_variants | real:EL2": -0.3107452690601349,
+            "bottom:moseq_sample10_all_correlated_variants | dannce:dannce_mouse_1": -0.043130453675985336,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.13134728372097015,
+            "replay:mouse_climb_wall_91 | real:CR2": 0.059122756123542786,
+            "replay:mouse_climb_wall_91 | real:EL2": 0.04667803272604942,
+            "replay:mouse_climb_wall_91 | dannce:dannce_mouse_1": 0.019757572561502457,
+            "replay:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.04893920570611954,
+            "real:CR2 | real:EL2": 0.5624918341636658,
+            "real:CR2 | dannce:dannce_mouse_1": 0.018314145505428314,
+            "real:CR2 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.24446162581443787,
+            "real:EL2 | dannce:dannce_mouse_1": 0.013381012715399265,
+            "real:EL2 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.36393237113952637,
+            "dannce:dannce_mouse_1 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.00932176411151886
+          },
+          "camera_vs_other_tasks": 0.04423696547746658,
+          "camera_vs_total": 0.15050101280212402,
+          "shared_total_norm": 3.0167205333709717
+        }
+      ],
+      "optimizer_steps": 0,
+      "caveat": "Read-only gradients at fixed endpoint in eval mode. Euclidean gradient cosines are not causal AdamW update attribution."
+    },
+    "final_ema": {
+      "endpoint": "final_ema",
+      "updates": [
+        {
+          "schedule_update": 3,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 3.1422833193868818,
+                  "camera_head": 37.544661265694415,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.17113304917272804,
+                  "camera_head": 0.0,
+                  "depth_head": 1.8084464815350596
+                },
+                "shape": {
+                  "shared": 0.13604484161228506,
+                  "camera_head": 0.0,
+                  "depth_head": 3.541457796181307
+                },
+                "transfer": {
+                  "shared": 1.2417396891887564,
+                  "camera_head": 18.20093766658857,
+                  "depth_head": 1.8753723676827692
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 5.852213622298227,
+                  "camera_head": 91.99697385013148,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.3685295302002068,
+                  "camera_head": 0.0,
+                  "depth_head": 5.790236515695242
+                },
+                "shape": {
+                  "shared": 0.20374026242604365,
+                  "camera_head": 0.0,
+                  "depth_head": 3.835298804454107
+                },
+                "transfer": {
+                  "shared": 0.9944359951711466,
+                  "camera_head": 17.10986667259347,
+                  "depth_head": 2.501746905245884
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 6.172849214315406,
+                  "camera_head": 61.76498220527925,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.8083387052292658,
+                  "camera_head": 0.0,
+                  "depth_head": 19.3953617273987
+                },
+                "shape": {
+                  "shared": 16.945040274318817,
+                  "camera_head": 0.0,
+                  "depth_head": 589.2203428516526
+                },
+                "transfer": {
+                  "shared": 0.8058434149796376,
+                  "camera_head": 13.778936806632354,
+                  "depth_head": 28.159432121159796
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.38324241115712,
+                  "camera_head": 49.703516197098196,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.11649122350640144,
+                  "camera_head": 0.0,
+                  "depth_head": 1.1893583164562744
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "EL2L2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 1.0463691856788262,
+                  "camera_head": 0.0,
+                  "depth_head": 8.851831061871065
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "ER3L2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.4499398037254606,
+                  "camera_head": 0.0,
+                  "depth_head": 4.767765452041132
+                }
+              }
+            },
+            {
+              "role": "dannce",
+              "group": "dannce_mouse_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 3.241846989141318,
+                  "camera_head": 58.51474704994919,
+                  "depth_head": 0.0
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/FB_R3_2024-03-16_1_Trial_5",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.6314152811631046,
+                  "camera_head": 39.604942645249594,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.09061627066910982,
+                  "camera_head": 0.0,
+                  "depth_head": 0.9328492705219115
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 1.2207577228546143,
+            "depth": 0.11878368258476257,
+            "shape": 2.119774103164673,
+            "transfer": 0.21629202365875244,
+            "real_sparse": 0.1762104034423828
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": 0.010501251555979252,
+            "camera/shape": 0.025558315217494965,
+            "camera/transfer": 0.10091186314821243,
+            "camera/real_sparse": 0.01829431764781475,
+            "depth/shape": 0.6382966637611389,
+            "depth/transfer": 0.05258321017026901,
+            "depth/real_sparse": -0.3250589966773987,
+            "shape/transfer": 0.08392173051834106,
+            "shape/real_sparse": 0.053530171513557434,
+            "transfer/real_sparse": -0.04589114338159561
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:moseq_sample10_all_correlated_variants": 0.16582098603248596,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.16630062460899353,
+            "new_rig:mouse_climb_wall_91 | real:EL2L2": -0.0055601573549211025,
+            "new_rig:mouse_climb_wall_91 | real:ER3L2": -0.010398825630545616,
+            "new_rig:mouse_climb_wall_91 | dannce:dannce_mouse_1": -0.14174295961856842,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.08548177033662796,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.12395784258842468,
+            "bottom:moseq_sample10_all_correlated_variants | real:EL2L2": 0.04316595569252968,
+            "bottom:moseq_sample10_all_correlated_variants | real:ER3L2": 0.047591712325811386,
+            "bottom:moseq_sample10_all_correlated_variants | dannce:dannce_mouse_1": -0.0845181941986084,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": 0.042830321937799454,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | real:EL2L2": -0.026384655386209488,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | real:ER3L2": -0.02757231704890728,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | dannce:dannce_mouse_1": 0.439388632774353,
+            "replay:anipose_trial/E_L2_2024-11-18_1_Trial_1 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.3718433082103729,
+            "real:EL2L2 | real:ER3L2": 0.732654869556427,
+            "real:EL2L2 | dannce:dannce_mouse_1": -0.004409226588904858,
+            "real:EL2L2 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.04415217414498329,
+            "real:ER3L2 | dannce:dannce_mouse_1": 0.005641072057187557,
+            "real:ER3L2 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.025600966066122055,
+            "dannce:dannce_mouse_1 | replay:anipose_trial/FB_R3_2024-03-16_1_Trial_5": -0.12448447942733765
+          },
+          "camera_vs_other_tasks": 0.0359560027718544,
+          "camera_vs_total": 0.5028566718101501,
+          "shared_total_norm": 2.587681293487549
+        },
+        {
+          "schedule_update": 4,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 8.52430929376751,
+                  "camera_head": 121.72507175841197,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.2734205357006898,
+                  "camera_head": 0.0,
+                  "depth_head": 2.5874038769015244
+                },
+                "shape": {
+                  "shared": 0.09172476842779301,
+                  "camera_head": 0.0,
+                  "depth_head": 3.108340583237986
+                },
+                "transfer": {
+                  "shared": 1.56761982754715,
+                  "camera_head": 26.570671758105455,
+                  "depth_head": 1.1033905013305385
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.879376076143437,
+                  "camera_head": 59.81733084929779,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.26750497852087596,
+                  "camera_head": 0.0,
+                  "depth_head": 1.9950419515463447
+                },
+                "shape": {
+                  "shared": 0.12007657510403247,
+                  "camera_head": 0.0,
+                  "depth_head": 3.769378394639699
+                },
+                "transfer": {
+                  "shared": 1.535813546657885,
+                  "camera_head": 26.767137889093526,
+                  "depth_head": 1.4232879010183688
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 30.388799807102963,
+                  "camera_head": 1166.6011846596582,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.2711094783931348,
+                  "camera_head": 0.0,
+                  "depth_head": 3.086215630440631
+                },
+                "shape": {
+                  "shared": 1.4917868979137265,
+                  "camera_head": 0.0,
+                  "depth_head": 15.592733340012034
+                },
+                "transfer": {
+                  "shared": 2.7921417177332795,
+                  "camera_head": 64.5674117099892,
+                  "depth_head": 2.9697043303773185
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "crim13/021709_A25_Block22_BCfe1_t",
+              "task_norms": {
+                "camera": {
+                  "shared": 3.1088195312595763,
+                  "camera_head": 70.94961405851986,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.0875100405810784,
+                  "camera_head": 0.0,
+                  "depth_head": 0.8583858256392557
+                },
+                "shape": {
+                  "shared": 0.458496068061812,
+                  "camera_head": 0.0,
+                  "depth_head": 7.767456100728857
+                },
+                "transfer": {
+                  "shared": 0.42730309037805786,
+                  "camera_head": 9.782252747299715,
+                  "depth_head": 2.4508620636937044
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "AZL3",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.7178978891857453,
+                  "camera_head": 0.0,
+                  "depth_head": 8.318239368823436
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "AZR2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 1.0771156452961412,
+                  "camera_head": 0.0,
+                  "depth_head": 8.38631075270103
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.8028204364729943,
+                  "camera_head": 45.39273560801435,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.09717697351613007,
+                  "camera_head": 0.0,
+                  "depth_head": 1.183369117773954
+                },
+                "shape": {
+                  "shared": 0.3118871487164886,
+                  "camera_head": 0.0,
+                  "depth_head": 10.879130878500971
+                },
+                "transfer": {
+                  "shared": 0.5243542585619662,
+                  "camera_head": 12.93278302623445,
+                  "depth_head": 2.0133266253504543
+                }
+              }
+            },
+            {
+              "role": "water",
+              "group": "water_reaching_fg_cam_b",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.6690107153125524,
+                  "camera_head": 19.2316529889033,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.2912104573471463,
+                  "camera_head": 0.0,
+                  "depth_head": 2.0814135784609813
+                },
+                "shape": {
+                  "shared": 0.790820829810905,
+                  "camera_head": 0.0,
+                  "depth_head": 9.784869229295591
+                },
+                "transfer": {
+                  "shared": 0.4380412988087456,
+                  "camera_head": 8.910654047399907,
+                  "depth_head": 2.7007935624406265
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 4.258889675140381,
+            "depth": 0.05988398566842079,
+            "shape": 0.20408065617084503,
+            "transfer": 0.4575238823890686,
+            "real_sparse": 0.20944048464298248
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": 0.11764602363109589,
+            "camera/shape": 0.08223290741443634,
+            "camera/transfer": -0.2619740664958954,
+            "camera/real_sparse": -0.05620472878217697,
+            "depth/shape": 0.22340266406536102,
+            "depth/transfer": -0.026733599603176117,
+            "depth/real_sparse": -0.48799633979797363,
+            "shape/transfer": 0.06776870787143707,
+            "shape/real_sparse": -0.019910704344511032,
+            "transfer/real_sparse": 0.058627355843782425
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:mouse_climb_wall_91": 0.11925806105136871,
+            "new_rig:mouse_climb_wall_91 | replay:crim13/021709_A25_Block22_BCfe1_t": 0.17906318604946136,
+            "new_rig:mouse_climb_wall_91 | real:AZL3": -0.043049827218055725,
+            "new_rig:mouse_climb_wall_91 | real:AZR2": -0.07960990816354752,
+            "new_rig:mouse_climb_wall_91 | replay:moseq_sample10_all_correlated_variants": 0.045627448707818985,
+            "new_rig:mouse_climb_wall_91 | water:water_reaching_fg_cam_b": 0.4550766050815582,
+            "bottom:mouse_climb_wall_91 | replay:crim13/021709_A25_Block22_BCfe1_t": 0.13447269797325134,
+            "bottom:mouse_climb_wall_91 | real:AZL3": -0.015276804566383362,
+            "bottom:mouse_climb_wall_91 | real:AZR2": -0.04413875192403793,
+            "bottom:mouse_climb_wall_91 | replay:moseq_sample10_all_correlated_variants": 0.09136636555194855,
+            "bottom:mouse_climb_wall_91 | water:water_reaching_fg_cam_b": -0.005923199001699686,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | real:AZL3": -0.06522117555141449,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | real:AZR2": -0.07076075673103333,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | replay:moseq_sample10_all_correlated_variants": -0.06910016387701035,
+            "replay:crim13/021709_A25_Block22_BCfe1_t | water:water_reaching_fg_cam_b": 0.01657903380692005,
+            "real:AZL3 | real:AZR2": 0.731853723526001,
+            "real:AZL3 | replay:moseq_sample10_all_correlated_variants": -0.020619578659534454,
+            "real:AZL3 | water:water_reaching_fg_cam_b": -0.035128459334373474,
+            "real:AZR2 | replay:moseq_sample10_all_correlated_variants": -0.033227015286684036,
+            "real:AZR2 | water:water_reaching_fg_cam_b": -0.02321971207857132,
+            "replay:moseq_sample10_all_correlated_variants | water:water_reaching_fg_cam_b": 0.0024198987521231174
+          },
+          "camera_vs_other_tasks": -0.19288459420204163,
+          "camera_vs_total": 0.991385817527771,
+          "shared_total_norm": 4.187154769897461
+        },
+        {
+          "schedule_update": 5,
+          "samples": [
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 2.8652347619951253,
+                  "camera_head": 61.6433314522562,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.14949733647018218,
+                  "camera_head": 0.0,
+                  "depth_head": 1.9919761640094817
+                },
+                "shape": {
+                  "shared": 0.07553307303978689,
+                  "camera_head": 0.0,
+                  "depth_head": 2.3472523300754164
+                },
+                "transfer": {
+                  "shared": 1.2015617562386443,
+                  "camera_head": 29.105431828808875,
+                  "depth_head": 1.6633039296869077
+                }
+              }
+            },
+            {
+              "role": "new_rig",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 5.471144902573187,
+                  "camera_head": 74.87626489765766,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.18554276875130069,
+                  "camera_head": 0.0,
+                  "depth_head": 1.7360345087210827
+                },
+                "shape": {
+                  "shared": 0.08718249811502479,
+                  "camera_head": 0.0,
+                  "depth_head": 2.498484579526035
+                },
+                "transfer": {
+                  "shared": 1.289170239570598,
+                  "camera_head": 23.92726393271431,
+                  "depth_head": 1.1608885495297758
+                }
+              }
+            },
+            {
+              "role": "bottom",
+              "group": "moseq_sample10_all_correlated_variants",
+              "task_norms": {
+                "camera": {
+                  "shared": 6.0073897316152385,
+                  "camera_head": 62.003755471971665,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 1.445536419762486,
+                  "camera_head": 0.0,
+                  "depth_head": 27.510625863944682
+                },
+                "shape": {
+                  "shared": 32.76464694575431,
+                  "camera_head": 0.0,
+                  "depth_head": 971.9798312632292
+                },
+                "transfer": {
+                  "shared": 1.3834407204589292,
+                  "camera_head": 13.40014154624178,
+                  "depth_head": 28.304598096062985
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "mouse_climb_wall_91",
+              "task_norms": {
+                "camera": {
+                  "shared": 0.20953242173759704,
+                  "camera_head": 6.487462049385179,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.0361559051094767,
+                  "camera_head": 0.0,
+                  "depth_head": 0.3124435316451199
+                },
+                "shape": {
+                  "shared": 0.3139239178894839,
+                  "camera_head": 0.0,
+                  "depth_head": 11.343685318401166
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "CR2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.5500998059186778,
+                  "camera_head": 0.0,
+                  "depth_head": 5.053846893089239
+                }
+              }
+            },
+            {
+              "role": "real",
+              "group": "EL2",
+              "task_norms": {
+                "real_sparse": {
+                  "shared": 0.5829119010602716,
+                  "camera_head": 0.0,
+                  "depth_head": 6.016380115863698
+                }
+              }
+            },
+            {
+              "role": "dannce",
+              "group": "dannce_mouse_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.6361904138302459,
+                  "camera_head": 35.09351735925941,
+                  "depth_head": 0.0
+                }
+              }
+            },
+            {
+              "role": "replay",
+              "group": "anipose_trial/E_L2_2024-11-18_1_Trial_1",
+              "task_norms": {
+                "camera": {
+                  "shared": 1.5964053376248994,
+                  "camera_head": 40.7198825612047,
+                  "depth_head": 0.0
+                },
+                "depth": {
+                  "shared": 0.10584874686780399,
+                  "camera_head": 0.0,
+                  "depth_head": 1.127192875597042
+                }
+              }
+            }
+          ],
+          "aggregate_task_norms": {
+            "camera": 1.004831075668335,
+            "depth": 0.1859576404094696,
+            "shape": 4.094013690948486,
+            "transfer": 0.3061942756175995,
+            "real_sparse": 0.06155098229646683
+          },
+          "aggregate_task_cosines": {
+            "camera/depth": -0.0052436282858252525,
+            "camera/shape": 0.00022190007439348847,
+            "camera/transfer": -0.41050106287002563,
+            "camera/real_sparse": -0.009876360185444355,
+            "depth/shape": 0.7496294975280762,
+            "depth/transfer": 0.03887394815683365,
+            "depth/real_sparse": -0.07056640088558197,
+            "shape/transfer": 0.06425873190164566,
+            "shape/real_sparse": -0.06911017745733261,
+            "transfer/real_sparse": -0.02946186438202858
+          },
+          "source_cosines": {
+            "new_rig:mouse_climb_wall_91 | bottom:moseq_sample10_all_correlated_variants": -0.01859140396118164,
+            "new_rig:mouse_climb_wall_91 | replay:mouse_climb_wall_91": -0.22604049742221832,
+            "new_rig:mouse_climb_wall_91 | real:CR2": -0.0033205461222678423,
+            "new_rig:mouse_climb_wall_91 | real:EL2": -0.008234301581978798,
+            "new_rig:mouse_climb_wall_91 | dannce:dannce_mouse_1": -0.43186748027801514,
+            "new_rig:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.48851922154426575,
+            "bottom:moseq_sample10_all_correlated_variants | replay:mouse_climb_wall_91": 0.02893560566008091,
+            "bottom:moseq_sample10_all_correlated_variants | real:CR2": -0.07343699783086777,
+            "bottom:moseq_sample10_all_correlated_variants | real:EL2": 0.008058477193117142,
+            "bottom:moseq_sample10_all_correlated_variants | dannce:dannce_mouse_1": 0.03714290261268616,
+            "bottom:moseq_sample10_all_correlated_variants | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.014091682620346546,
+            "replay:mouse_climb_wall_91 | real:CR2": -0.19570720195770264,
+            "replay:mouse_climb_wall_91 | real:EL2": 0.2790384590625763,
+            "replay:mouse_climb_wall_91 | dannce:dannce_mouse_1": 0.38809671998023987,
+            "replay:mouse_climb_wall_91 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.30005109310150146,
+            "real:CR2 | real:EL2": -0.6236058473587036,
+            "real:CR2 | dannce:dannce_mouse_1": -0.015318633057177067,
+            "real:CR2 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.008977030403912067,
+            "real:EL2 | dannce:dannce_mouse_1": 0.008895198814570904,
+            "real:EL2 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": -0.0005486937006935477,
+            "dannce:dannce_mouse_1 | replay:anipose_trial/E_L2_2024-11-18_1_Trial_1": 0.5517674684524536
+          },
+          "camera_vs_other_tasks": -0.029651621356606483,
+          "camera_vs_total": 0.20196866989135742,
+          "shared_total_norm": 4.349503517150879
+        }
+      ],
+      "optimizer_steps": 0,
+      "caveat": "Read-only gradients at fixed endpoint in eval mode. Euclidean gradient cosines are not causal AdamW update attribution."
+    }
+  }
+}
