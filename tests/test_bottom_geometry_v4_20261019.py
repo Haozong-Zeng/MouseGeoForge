@@ -211,6 +211,17 @@ class GeometryNumerics(unittest.TestCase):
                 runner.run(cfg, 'P0', 'train', execute=True)
             verify.assert_not_called()
 
+    def test_seeds_change_update_order_without_changing_mixtures_or_exposures(self):
+        runner = importlib.import_module('run_bottom_geometry_v4_20261019')
+        base = [[dict(index=i*8+j, sampling_role=str(j)) for j in range(8)] for i in range(20)]
+        with patch.object(runner.data, 'schedule', return_value=base):
+            a = runner.registered_schedule({}, 20, 17)
+            b = runner.registered_schedule({}, 20, 29)
+            c = runner.registered_schedule({}, 20, 29)
+        self.assertEqual(a, base); self.assertNotEqual(a, b); self.assertEqual(b, c)
+        self.assertEqual(sorted(x[0]['index'] for x in a), sorted(x[0]['index'] for x in b))
+        self.assertTrue(all(len(x) == 8 for x in b))
+
     def test_optimizer_failure_keeps_last_atomic_checkpoint(self):
         runner = importlib.import_module('run_bottom_geometry_v4_20261019')
         diagnostic = importlib.import_module('diagnose_bottom_geometry_v4_20261019')

@@ -170,16 +170,18 @@
     "output/bottom_geometry_v4_engineering_20261019/attempt0/receipt.json"
   ],
   "implementation_validation": {
-    "cpu_tests": 18,
+    "cpu_tests": 19,
     "cpu_test_status": "passed",
     "eval_smoke": "One TRAIN rig/pack, release only, partial output, shared-scale/R-centers-K-Z oracles; passed; not a development endpoint",
     "training_disabled_by_default": true,
     "full_model_optimizer_updates": 0,
     "staged_export_tests": {
       "passed": true,
-      "tests": 18,
+      "tests": 19,
       "all_project_module_origins_from_export": true,
       "hidden_local_tool_dependencies": false
-    }
+    },
+    "seed_policy": "Seed17 historical; other seeds permute complete eight-sample updates; paired arms share the exact order; exposure totals invariant",
+    "model_forward_mode": "eval with autograd enabled for trainable parameters, identical in both arms"
   }
 }

@@ -13,6 +13,7 @@
   "workers": 4,
   "head_batch_cap": 4,
   "encoder_batch": 1,
+  "model_forward_mode": "eval",
   "camera_lr": 0.0001,
   "depth_lr": 0.00001,
   "encoder_lr": 0.000001,

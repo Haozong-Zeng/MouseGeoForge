@@ -35,6 +35,14 @@ teacher/anchor, not a validated recipe. Camera0.049 is not by itself proof of an
 insufficient update; inspect module and R/T/FoV gradients and actual angular
 learning. AdamW update size cannot be inferred linearly from a loss coefficient.
 
+Forward mode is explicitly `eval` in both v4 arms while autograd remains enabled
+for the registered parameters; no dropout or running-buffer adaptation is being
+silently compared to the teacher. Seed17 retains the historical update order.
+Seeds29/43 deterministically permute **whole eight-sample updates**, preserving
+all source mixtures and exposure totals, with identical order in both arms of
+each seed. Merely changing a model RNG seed with a fixed order and deterministic
+forward path would not provide a meaningful independent optimization replicate.
+
 If E0 supports background symmetry as a substantial contributor, register a
 **data revision before** L0/P0/P1: consistently render shared 3D asymmetric
 background/fixture layouts and varied lighting, hold out whole rigs/backgrounds,

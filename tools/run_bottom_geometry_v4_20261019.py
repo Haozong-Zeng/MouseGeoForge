@@ -13,6 +13,7 @@ import fcntl
 import json
 import math
 from pathlib import Path
+import random
 import signal
 import time
 
@@ -118,6 +119,15 @@ def resolve(config):
     return result
 
 
+def registered_schedule(manifest, updates, seed):
+    # Keep the historical seed17 order. Other seeds permute COMPLETE updates,
+    # preserving all eight-source mixtures/exposure counts. Both arms share it.
+    work = list(data.schedule(manifest, updates))
+    if seed != 17:
+        random.Random(seed).shuffle(work)
+    return work
+
+
 def verify_payload(pin_path):
     # Content identity survives cluster copies whose mtimes differ from WSL.
     for name, pin in json.loads(Path(pin_path).read_text()).items():
@@ -132,6 +142,8 @@ def prepare(config_path):
         raise ValueError('Invalid batch configuration')
     if cfg.get('encoder_batch') != 1 or cfg.get('workers') != 4:
         raise ValueError('Registered implementation uses sample-wise encoder and four workers')
+    if cfg.get('model_forward_mode') != 'eval':
+        raise ValueError('v4 uses evaluation forward mode with autograd enabled in BOTH arms')
     if not 0 < cfg['warmup_updates'] < cfg['updates']:
         raise ValueError('Warmup must leave a positive decay interval')
     if cfg['updates'] == 3000 and cfg['warmup_updates'] != 500:
@@ -151,7 +163,7 @@ def prepare(config_path):
         raise FileExistsError('Use a fresh namespace; preparation is immutable')
     manifest = rt.read_manifest(c['manifest'])
     verify_payload(c['data_file_pins'])
-    schedule = data.schedule(manifest, cfg['updates'])
+    schedule = registered_schedule(manifest, cfg['updates'], cfg['seed'])
     receipts = {}
     for name in ('calibration_receipt', 'learnability_receipt'):
         if cfg.get(name):
@@ -170,6 +182,7 @@ def prepare(config_path):
     pins = dict(config=cfg, manifest_sha256=rt.sha(c['manifest']), release_sha256=rt.sha(c['release']),
                 data_pins_sha256=rt.sha(c['data_file_pins']), receipt_pins=receipts,
                 source_pins=source_files(), schedule_sha256=state.digest(schedule),
+                schedule_seed_policy='seed17 historical order; other seeds permute complete eight-sample updates; same order in both arms',
                 scope='free-moving geometry only; no sealed inference or automatic follow-up')
     rt.write_new(c['output_dir']/'protocol.json', pins)
     rt.write_new(c['output_dir']/'schedule.json', schedule)
