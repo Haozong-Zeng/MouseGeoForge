@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-19",
+  "status": "SOURCE_AND_PLAN_UPDATE_ONLY_NO_EXPERIMENT_STARTED",
+  "completed_v3": {
+    "arms": [
+      "A0",
+      "A1-GT",
+      "A1-SI",
+      "A2"
+    ],
+    "updates_per_arm": 1500,
+    "seed": 17,
+    "all_geometry_gates_failed": true,
+    "sealed_model_scores": 0
+  },
+  "training_loss_windows": {
+    "A0": {
+      "camera": {
+        "first100_mean": 0.9783355086123628,
+        "last100_mean": 0.917934423276456,
+        "fractional_reduction": 0.061738621162363394
+      }
+    },
+    "A1-GT": {
+      "camera": {
+        "first100_mean": 0.908839900366147,
+        "last100_mean": 0.9168390204757452,
+        "fractional_reduction": -0.00880146228876555
+      }
+    },
+    "A1-SI": {
+      "camera": {
+        "first100_mean": 0.876782564731402,
+        "last100_mean": 0.8630053250078344,
+        "fractional_reduction": 0.015713405213284792
+      }
+    },
+    "A2": {
+      "camera": {
+        "first100_mean": 0.8781262185213563,
+        "last100_mean": 0.9527029460814447,
+        "fractional_reduction": -0.08492711638386718
+      },
+      "real_camera_anchor": {
+        "first100_mean": 0.5445912451669573,
+        "last100_mean": 0.39318346535786985,
+        "fractional_reduction": 0.27802095820080586
+      },
+      "teacher": {
+        "first100_mean": 0.00034917088371550165,
+        "last100_mean": 0.0010382754198508337,
+        "fractional_reduction": -1.9735452418100317
+      }
+    }
+  },
+  "original_a2_full_objective_batch_error": {
+    "relative_gradient_l2": 6.793328,
+    "gradient_cosine": 0.025643,
+    "context": "same release, original unsquared geodesic teacher, B1 vs B4"
+  },
+  "v4_gpu_engineering": {
+    "optimizer_updates": 0,
+    "checks": {
+      "P0_release": {
+        "passed": true,
+        "rows": [
+          {
+            "cap": 1,
+            "loss": 0.25695720786461607
+          },
+          {
+            "cap": 2,
+            "loss": 0.25695720687508583,
+            "relative_loss": 3.850953408749301e-09,
+            "relative_l2": 6.494033101613112e-05,
+            "cosine": 0.9999999978914113
+          },
+          {
+            "cap": 4,
+            "loss": 0.25695719942450523,
+            "relative_loss": 3.284636730992051e-08,
+            "relative_l2": 8.296446449817896e-05,
+            "cosine": 0.9999999965584535
+          }
+        ]
+      },
+      "P1_adapted": {
+        "passed": true,
+        "rows": [
+          {
+            "cap": 1,
+            "loss": 0.12726922461297363
+          },
+          {
+            "cap": 2,
+            "loss": 0.12726920936256647,
+            "relative_loss": 1.1982792545255954e-07,
+            "relative_l2": 4.421607777764057e-05,
+            "cosine": 0.9999999990251001
+          },
+          {
+            "cap": 4,
+            "loss": 0.1272692196071148,
+            "relative_loss": 3.933283049206153e-08,
+            "relative_l2": 4.567774877013112e-05,
+            "cosine": 0.9999999989571812
+          }
+        ]
+      },
+      "P1_release": {
+        "passed": true,
+        "rows": [
+          {
+            "cap": 1,
+            "loss": 0.25695720786461607
+          },
+          {
+            "cap": 2,
+            "loss": 0.25695720687508583,
+            "relative_loss": 3.850953408749301e-09,
+            "relative_l2": 6.380786366757362e-05,
+            "cosine": 0.9999999979643255
+          },
+          {
+            "cap": 4,
+            "loss": 0.25695719942450523,
+            "relative_loss": 3.284636730992051e-08,
+            "relative_l2": 8.25349483895981e-05,
+            "cosine": 0.9999999965939951
+          }
+        ]
+      }
+    },
+    "teacher_weight": 0.05,
+    "weight_status": "provisional engineering stress check, not a calibrated recipe",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "limitations": [
+      "Same eight fixed TRAIN samples; not a convergence or H100-throughput result.",
+      "P1_adapted loads existing A1-SI EMA solely for a nonzero-teacher-gradient fixture.",
+      "Further source additions include diagnostics/evaluation plumbing; formal execution requires a newly frozen protocol and cluster preflight."
+    ]
+  },
+  "data_scope": {
+    "water_reaching": false,
+    "crossed_motions": [
+      "ClimbWall",
+      "MoSeq"
+    ],
+    "rigs": {
+      "train": 48,
+      "dev": 12,
+      "sealed": 8
+    },
+    "DANNCE1": "SAM2 calibrated6of6 visual-hull pseudo-depth, not GT or raw GS depth",
+    "DANNCE2": false,
+    "real_calibration": "One physical PyMouseStudio rig; held-out captures do not demonstrate camera-rig generalization"
+  },
+  "proposed_sequence": [
+    "E0: v4 reevaluation and controlled background intervention, no training",
+    "L0: separately authorized 300-update P0 learnability probe; discard weights",
+    "P0/P1: conditional fresh-release seed17,3000 updates per arm; shared calibrated real anchor, smooth weak teacher only in P1",
+    "Confirmation: seeds29/43 or G0/G1 only after review and registration; no automatic launch",
+    "Full admitted-pool scale experiment and 2D/3D progression only after geometry and retention gates"
+  ],
+  "implementation_tests": "tests/test_bottom_geometry_v4_20261019.py",
+  "sources": [
+    "output/bottom_geometry_v3_local12h_20261018/experiment_report.json",
+    "output/bottom_geometry_v3_posthoc_audit_20261018/claude_review_cpu_audit.json",
+    "output/bottom_geometry_v3_posthoc_audit_20261018/full_a2_objective_parity.json",
+    "output/bottom_geometry_v4_engineering_20261019/attempt0/receipt.json"
+  ],
+  "implementation_validation": {
+    "cpu_tests": 18,
+    "cpu_test_status": "passed",
+    "eval_smoke": "One TRAIN rig/pack, release only, partial output, shared-scale/R-centers-K-Z oracles; passed; not a development endpoint",
+    "training_disabled_by_default": true,
+    "full_model_optimizer_updates": 0,
+    "staged_export_tests": {
+      "passed": true,
+      "tests": 18,
+      "all_project_module_origins_from_export": true,
+      "hidden_local_tool_dependencies": false
+    }
+  }
+}

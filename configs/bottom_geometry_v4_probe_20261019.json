@@ -1,0 +1,42 @@
+{
+  "version": 4,
+  "status": "DRAFT_NOT_AUTHORIZED_TO_TRAIN",
+  "execution_authorized": false,
+  "manifest": "output/bottom_geometry_v3_local12h_20261018/manifest.json",
+  "data_file_pins": "output/bottom_geometry_v3_local12h_20261018/data_file_pins.json",
+  "release": "vggt-omega/vggt_omega_1b_512.pt",
+  "output_dir": "output/bottom_geometry_v4_probe_20261019_seed17",
+  "arm_names": ["P0", "P1"],
+  "seed": 17,
+  "updates": 300,
+  "effective_batch": 8,
+  "workers": 4,
+  "head_batch_cap": 4,
+  "encoder_batch": 1,
+  "camera_lr": 0.0001,
+  "depth_lr": 0.00001,
+  "encoder_lr": 0.000001,
+  "warmup_updates": 50,
+  "clip_norm": 10.0,
+  "real_anchor": true,
+  "calibration_receipt": null,
+  "learnability_receipt": null,
+  "optimization_deadline_utc": null,
+  "hard_deadline_utc": null,
+  "weights": {
+    "camera": 0.049031080116449785,
+    "depth": 0.4108872480578351,
+    "shape": 2.182084635298126,
+    "transfer": 0.06724670623801539,
+    "real_sparse": 0.6779664453996164,
+    "quaternion_radius": 1.0,
+    "real_camera_anchor": 0.049031080116449785,
+    "teacher": 0.05
+  },
+  "weight_status": "Teacher/anchor are placeholders until TRAIN-only module calibration. Nonteacher v3 weights remain a candidate, not proof of balance.",
+  "formal_pair_override": {
+    "updates": 3000,
+    "warmup_updates": 500,
+    "note": "New namespace/config after reviewed probe; discard probe weights, both arms restart release. No automatic promotion or follow-up."
+  }
+}

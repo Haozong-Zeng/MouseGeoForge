@@ -1,5 +1,248 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Current execution override — 2026-10-19: diagnose, prove learnability, then pair
+
+**This section supersedes every execution order, data-admission suggestion and
+allocation schedule below. The remainder is dated historical context.** This
+update prepares source and an H100 handoff; it starts no training, rendering,
+cluster allocation, automation, sealed scoring or keypoint run. The completed
+local v3 cycle is closed. Keep `v3-12` and `pymousestudio` paused.
+
+Read the [reconciled route](bottom_geometry_v3_reconciled_plan_20261018.md#7-合并-claude-四臂审核事实修订与更小的决策顺序)
+and [compact evidence](experiments/bottom_geometry_v4_handoff_20261019.json).
+Four seed17 arms finished 1,500 updates each; **none passed geometry gates**.
+Do not promote A2 or resume an old arm with a new objective. A2 has an additional
+implementation defect: the original geodesic teacher gives substantial gradients
+at floating-point-sized discrepancies, and its batch preflight omitted teacher
+and real anchor. New v4 code is separate; historical v3 source/results stay intact.
+
+### Questions, evidence and stopping conditions
+
+| Stage | Exact question and comparison | Required evidence / stop rule |
+| --- | --- | --- |
+| E0: zero training | Reevaluate release + four final EMA models under v4; release original / gray-background / blurred-background inputs | Separate genuine joint failures from scale-estimator artifacts; report errors <5°/<15°, descriptive 90°/120°/180° peaks, pair lists and rig-paired differences. No new optimizer updates. |
+| L0: bounded learnability probe | A1-SI candidate, camera head LR1e-4, encoder1e-6, depth head1e-5; calibrated common real anchor; teacher OFF; 300 updates, seed17 | Discard probe weights. Tentative preregistered engineering criteria: relative-rotation component decreases ≥30% on the same fixed TRAIN probes and TRAIN bottom rotation median decreases ≥20%; report <15° and peak fractions. Total camera loss alone cannot pass. Failure rejects this recipe, not the information content of the images. Review before a formal pair. |
+| P0/P1: minimum recipe pair | Both fresh release, same data/order/effective batch8, same real anchor and fixed numeric geometry weights; **only P1 adds a smooth weak non-bottom teacher** | 3,000 updates/arm, seed17, 500 warmup then cosine, EMA/raw fixed endpoint. Other-view rotation median drift ≤0.5° and raw joint coverage loss ≤2pp are screening criteria. Bottom angular correctness must improve; report paired uncertainty. Do not compare C-without-anchor to T-with-anchor and call it teacher-only. |
+| Confirmation / scaling | Only after review of a complete P0/P1 pair: seeds29/43, then separately registered frozen-encoder G0/G1 if warranted; full admitted-pool learning curves | Preserve complete matched arms, sources and seeds. Do not automatically launch controls, more seeds or a larger run because hardware is free. Original strict geometry promotion gates remain in force. |
+| Localization | Only accepted geometry advances to frozen-encoder 2D-head convergence, same-head frozen/adapted comparison, then 3D keypoints | Known-camera manual-ray reprojection is not automatic localization or 3D keypoint accuracy. No keypoint head is created by v4. |
+
+The 300-update probe uses a short **50-update warmup** solely to make a bounded
+optimization diagnostic feasible. The formal 3,000-update pair uses **500**;
+these are different declared endpoints, not a continuation. Reinitialize both
+formal arms from release and freeze their complete schedules before either
+updates. The displayed weights in the example config are **placeholders** for
+teacher/anchor, not a validated recipe. Camera0.049 is not by itself proof of an
+insufficient update; inspect module and R/T/FoV gradients and actual angular
+learning. AdamW update size cannot be inferred linearly from a loss coefficient.
+
+If E0 supports background symmetry as a substantial contributor, register a
+**data revision before** L0/P0/P1: consistently render shared 3D asymmetric
+background/fixture layouts and varied lighting, hold out whole rigs/backgrounds,
+and cross admitted motions. Do not add camera IDs, pose-encoded colors or
+independent per-view background changes as a shortcut. Apply the same revised
+data to both arms, freeze a new manifest, and do not simultaneously attribute
+teacher gains to a data change. Masking/blur is a distribution-changing diagnostic;
+its success supports a hypothesis, its failure does not prove no symmetry issue.
+
+### Evaluation contract v4
+
+- Keep raw predicted-camera + predicted-depth transfer as a primary consistency
+  measure. One common positive scale cancels; its observed decline is real.
+  Project with positive depth validity, without an absolute-unit denominator
+  clamp. Retain invalid predictions in the denominator.
+- Fit a **single body-only log-median GT-oracle scale per multiview pack** for
+  shape/known-camera diagnosis. Report per-view body-oracle alignment separately
+  as shape-only; it cannot establish shared geometry or be used in deployment.
+  Log-L1 optimal alignment need not minimize AbsRel/reprojection. Never rank
+  differing gauges by unaligned absolute depth or known-camera transfer alone.
+- A TRAIN-fitted global real scale is a calibration diagnostic. Match its input
+  order to validation; the v3 first-pack mismatch materially biased real scores.
+  A known/predicted non-bottom baseline ratio is a candidate annotation-free
+  scale estimator, **not a proven fix**. Explicitly count unavailable estimates
+  as failures, and report its coverage and failure count.
+- Preserve original star-pair SO(3)/direction endpoints, add all-pair results,
+  explicit view IDs, GT-angle bins and strict side-side versus all-non-bottom
+  labels. Keep median/P95 alongside correctness/peak fractions. The published
+  v3 replay86.7° bin included top views; strict side-side was117.8°.
+- Other-view rotation drift is a contributor to test, not the unique cause of
+  joint regression: A2's aggregate median changed only0.022° while joint coverage
+  lost7.93pp. Examine T/Z, direction and K too. The optional `--decompose` reports GT R/center/K/Z swaps on fixed support; swapping R preserves predicted camera centers and all swaps are non-additive oracle diagnostics. Do not treat a universal32px-to-
+  rotation conversion or five model-level aggregate points as causal evidence.
+- The unseen-rig unit is a **rig**, not six frames. Use matched per-rig differences
+  and descriptive rig bootstrap intervals. Real collections share one physical
+  rig; they cannot supply independent-rig intervals. Reused development rigs are
+  not confirmation. Preserve the8 sealed rigs for a separately reviewed frozen
+  policy; none are opened by these tools.
+
+Background interventions preserve a fixed dilated body region with soft edges;
+run original/gray/blur on matched contexts and include originally correct source
+controls. **Every view needs a verified body mask.** Some real manual packs have
+no such mask; v4 reports them as skipped rather than treating empty masks as
+permission to erase the animal. Admit a real mask source before running that
+branch. Compare only explicitly matched support and report exclusions; do not
+let loss of difficult samples masquerade as improvement.
+
+### Exact data scope for this geometry route
+
+Use the full **admitted TRAIN pool**, with balanced mixed samples and source
+exposure reporting. A mechanism pilot is not an assertion that the pool was
+exhausted or training converged. No Water Reaching in any role of this route.
+Admitted crossed renders: ClimbWall and MoSeq,3 frames each,48 TRAIN/12 DEV/8
+sealed rigs. CRIM13 is free-motion replay, not a third crossed motion.
+PyMouseStudio free-moving real/rendered data may be used with fixed role
+manifests. Its nine real calibrations describe one rig: known-camera deployment
+and unknown-rig generalization remain distinct tracks.
+
+DANNCE1's full published postprocessed payload contains4,500 times/27,000 views,
+but its metadata says **SAM2 calibrated6of6 visual-hull pseudo-depth**, not raw
+Gaussian depth or independent GT. Keep confidence≥212,1px erosion, foreground
+only and pseudo-geometry weight0.2; all6 cameras/15 pairs/6 anchors remain covered
+by the admitted schedule. DANNCE2, GR2/UR2/UR3, protected synthetic TEST and
+unadmitted external sources remain excluded here. Earlier historical permission
+for other tasks does not silently admit them to this protocol. Keep the recorded
+asset-only WalkAround opening and all rejected render/preflight attempts in the
+local evidence; no protected TEST model inference occurred in this cycle.
+
+### Source package and commands
+
+New entry points:
+
+- [v4 evaluator](../tools/bottom_geometry_v4_eval_20261019.py): DEV or48 fixed
+  TRAIN-rig probes; no sealed option, existing outputs cannot be overwritten.
+- [TRAIN-only calibration](../tools/calibrate_bottom_geometry_v4_20261019.py):
+  32 group-stratified probes; fixed5°/2% student perturbation; encoder and camera
+  budgets separately. Teacher coefficient≤0.05 and≤20% of active geometry median
+  budgets at P75 probe norm; real anchor uses the same module rule at100% budget.
+  These are initialization budgets, not guarantees for every subsequent sample.
+- [v4 runner](../tools/run_bottom_geometry_v4_20261019.py): immutable preparation,
+  complete-objective B1/2/4 preflight, explicit P0/P1 training, full-state resume.
+- [gradient diagnostics](../tools/diagnose_bottom_geometry_v4_20261019.py): fixed
+  TRAIN task/module gradients, R/direction/FoV components and cross-source cosines
+  at0/every250/final, with weights frozen throughout an arm.
+- [paired report](../tools/compare_bottom_geometry_v4_20261019.py): CPU matched
+  support and per-rig bootstrap; no method promotion or follow-up dispatch.
+- [disabled probe template](../configs/bottom_geometry_v4_probe_20261019.json),
+  [CPU fixtures](../tests/test_bottom_geometry_v4_20261019.py),
+  [opt-in GPU check](../tools/check_bottom_geometry_v4_gpu_20261019.py).
+
+The runner does **not** use the old v3 supervisor. It requires an explicit
+execution-enabled config, `--execute`, absolute UTC optimization/hard deadlines,
+a TRAIN calibration receipt, content-pinned data and a passed preflight. A
+formal3,000-update pair additionally requires a reviewed300-update learnability
+receipt and both arms' preflights before either formal optimizer starts. Full
+state includes raw/EMA/AdamW/buffers/RNG/sample offset and source/data/release
+identity. A failure during optimizer/EMA mutation must retain the last complete
+checkpoint, not save a partially committed update. Endpoints are evaluated in
+separate explicit commands; no control, sealed or keypoint job is dispatched.
+
+A Git clone does **not** include payloads. On nodes separately provide the
+versioned v3 `manifest.json`, `data_file_pins.json`, referenced dataset/render
+files, release checkpoint, optional four final v3 checkpoints, and the fixed
+PyMouseStudio rectified calibration file. Keep repo-relative paths consistent;
+use node-local staging/symlinks instead of editing labels or silently replacing
+assets. `prepare` and run entry verify **content SHA256/bytes**, not copied mtimes;
+this startup cost is part of wall time. The8 sealed payloads may be checked as
+files, never scored by the model. Upstream source used locally is
+`facebookresearch/vggt-omega` commit `39a0cb8af88554f15ddcb5354cd52bde588fa014`
+with project modifications. **This repository already tracks the model and
+training-helper Python sources under `vggt-omega/`; use this parent repository's
+versions, do not overwrite them with a pristine upstream clone.** Provide the
+pinned release separately. Use Python3.11+ (the project helpers use `tomllib`),
+a node-compatible PyTorch/CUDA runtime, and install the local package plus helper
+dependencies, e.g. `python -m pip install -e ./vggt-omega pandas matplotlib scipy`.
+CPU fixtures do not validate a different GPU/kernel/runtime stack; repeat full
+preflight on H100. The new protocol pins actual model AND training-helper Python
+sources too. Do not execute historical helper-script main functions.
+
+Illustrative Bash commands from the repository root; none have been scheduled:
+
+```bash
+V4_PY=.venv-vggt-omega-eval/bin/python
+V4_MANIFEST=output/bottom_geometry_v3_local12h_20261018/manifest.json
+V4_RELEASE=vggt-omega/vggt_omega_1b_512.pt
+V4_CONFIG=configs/bottom_geometry_v4_probe_20261019.json
+
+$V4_PY tests/test_bottom_geometry_v4_20261019.py
+$V4_PY tools/bottom_geometry_v4_eval_20261019.py --manifest "$V4_MANIFEST" --release "$V4_RELEASE" --decompose --output output/v4_E0/release.json
+# Repeat explicitly for each v3 latest.pt with --checkpoint ... --state ema.
+# No default loop or automatic model selection.
+$V4_PY tools/bottom_geometry_v4_eval_20261019.py --manifest "$V4_MANIFEST" --release "$V4_RELEASE" --background gray --sources unseen_rig_gate free_motion_replay --output output/v4_E0/release_gray.json
+# Repeat the exact same selection with --background blur.
+
+$V4_PY tools/calibrate_bottom_geometry_v4_20261019.py --config "$V4_CONFIG" --output output/v4_E0/calibration.json
+# Copy the template to a new config; insert calibrated weights/receipt, reviewed
+# stage and deadlines. Keep execution_authorized=false until training is authorized.
+$V4_PY tools/run_bottom_geometry_v4_20261019.py prepare --config path/to/frozen_config.json
+$V4_PY tools/run_bottom_geometry_v4_20261019.py preflight --config path/to/frozen_config.json --arm P0
+$V4_PY tools/run_bottom_geometry_v4_20261019.py preflight --config path/to/frozen_config.json --arm P1
+# Only after separate authorization; a disabled config deliberately refuses this:
+$V4_PY tools/run_bottom_geometry_v4_20261019.py train --config path/to/frozen_config.json --arm P0 --execute
+# --resume restores the same complete state and immutable objective, not a revision.
+
+# After a fixed endpoint, evaluate EMA AND raw in distinct, fresh output files:
+$V4_PY tools/bottom_geometry_v4_eval_20261019.py --manifest "$V4_MANIFEST" --release "$V4_RELEASE" --checkpoint path/to/P0/latest.pt --state ema --train-probes --output output/v4_E0/P0_train_probes.json
+$V4_PY tools/bottom_geometry_v4_eval_20261019.py --manifest "$V4_MANIFEST" --release "$V4_RELEASE" --checkpoint path/to/P0/latest.pt --state ema --output output/v4_E0/P0_dev.json
+$V4_PY tools/compare_bottom_geometry_v4_20261019.py --reference output/v4_E0/release.json --treatment output/v4_E0/P0_dev.json --output output/v4_E0/P0_delta.json
+```
+
+For a formal pair create a new namespace/config with3,000 updates,500 warmup,
+seed17, the **same** frozen calibrated weights for both arms and a reviewed
+`learnability_receipt`. Receipt fields: `passed`, `optimizer_steps=300`,
+`manifest_sha256`, `release_sha256`, `r_component_reduction≥0.30`,
+`train_bottom_median_reduction≥0.20`, plus links/hashes of fixed TRAIN probe and
+R-component evidence. It is a reviewed engineering decision, not an automatic
+claim of generalization. Do not reuse the L0 checkpoint as a formal start.
+
+### H100 allocation and engineering readiness
+
+Prefer completing and reviewing E0/L0 locally before booking the cluster; if
+the allocation arrives first, they remain bounded prerequisites, not permission
+to fill the window with failed recipes.
+
+Four H100s for48h is a planning ceiling (192 GPU-hours), not an active booking
+or a target to exhaust. Confirm topology, VRAM, scheduler, storage and access
+first. Prefer **one GPU per independent arm/seed**; do not implement DDP merely
+to fill devices or increase effective batch. Preserve effective batch8, sample
+order and per-sample reductions. H100 may allow larger physical batches, but
+encoder batching remains sample-wise until independently passing numerical
+parity. Benchmark end-to-end loading/backward/checkpoint/evaluation cost, not
+just utilization. Local1,500-update costs were55–79min; a3,000-update arm is
+provisionally2–3h locally, **not an H100 estimate**.
+
+| Allocation-relative time | Conditional work |
+| --- | --- |
+| 0–4h | Payload/environment audit, CPU fixtures, content hashes, full state and B1/2/4 GPU checks, throughput measurement |
+| 4–10h | E0: independent zero-training evaluations/background controls; review whether data revision is needed |
+| 10–14h | L0 only if separately authorized; otherwise stop. On failed learnability, close this recipe rather than consume the remaining allocation |
+| 14–30h | Complete P0/P1 seed17 pair only after E0/L0 review; fresh common release, no treatment-only run |
+| 30–40h | Reserve for reviewed confirmation/extra seeds or necessary engineering recovery; no automatic G0/G1 or keypoints |
+| 40–48h | Optimization off; final raw/EMA evaluation, paired/source reports, closure and resource release. Sealed scoring still requires its own reviewed frozen policy |
+
+Use an absolute scheduler hard limit and earlier optimization cutoff on every
+job; start time and stage decisions must be registered after allocation.
+Within-node independent jobs can use the per-physical-GPU lock: set
+`CUDA_VISIBLE_DEVICES` to one physical `GPU-...` UUID and set
+`MOUSEGEOFORGE_GPU_LOCK_ID` to **the identical UUID**. Without this explicit
+binding tools retain the original global local lock and serialize safely.
+Record node/job ID/GPU UUID/PID/start identity before process control; do not
+start duplicates. Existing old automations are not a cluster scheduler.
+
+Validated locally on2026-10-19: CPU mathematical/state fixtures and GPU complete
+P0/P1 B1/2/4 parity, including existing adapted weights. Largest gradient relative
+L2 error was0.000083 (0.0083%); loss relative error≤1.20e-7. The old A2 counterexample
+was6.793 (679%). Teacher self-retention loss is now0 in the matched forward path.
+These are **implementation tests with zero model optimizer updates**, not new
+training, H100 throughput, E0 background results or proof of a successful recipe.
+The full-model optimization/resume loop has not been exercised with new VGGT
+updates; CPU AdamW next-update restoration and no-update GPU gradients were
+verified. Recheck finite updates and complete-state restoration on a disposable,
+separately authorized engineering state before any formal endpoint.
+
+---
+
+## Historical proposals below — not the current execution queue
+
+
 ## Bottom-geometry mechanism update — 2026-10-18
 
 Use the [reconciled v3 scale/retention plan](bottom_geometry_v3_reconciled_plan_20261018.md)
@@ -63,21 +306,56 @@ arm. All current supervisors exited with automatic next-arm dispatch disabled;
 no frozen control, keypoint job or H100 allocation is launched by this update.
 See [final raw/EMA evidence](experiments/bottom_geometry_v2_final_20261018.json).
 
+**Latest 2026-10-18 correction:** the joint geometry/2D run below was saved and stopped at step13,568 by user instruction. The active plan is [pure geometry bottom adaptation v2](pure_geometry_bottom_20261018.md): fresh release, no keypoint head, mixed8-micro updates with25% corrected real correspondence supervision and0% duplicate-rig video camera updates, measured task gradients, geodesic rotation, warmup/cosine and EMA. All nine PyMouseStudio calibrations are identical; known-rig predicted camera scores are diagnostic only. Entire newly rendered rigs are held out for camera/generalization gates. The old queued control is cancelled; closed cycles/automations remain closed.
+
+**2026-10-18 authorized priority update:** bottom-view foundation domain adaptation now precedes new keypoint architecture/3D optimization. The initiating evidence is the user's direct inspection of released-demo outputs on real multiview videos including bottom views. See [the active bottom adaptation plan](bottom_domain_adaptation_20261018.md): all admitted synthetic/real training pools, acquisition/motion-source held-out validation, side/top replay, fresh release initialization and a matched frozen-encoder control. Validate camera/depth geometry and bottom 2D localization before any 3D-keypoint promotion. Local training is authorized and started; H100 remains a future option. Historical results and closed-cycle stop markers below remain historical.
+
 Created: 2026-10-16. Updated: 2026-10-17 after the local cycle closeout and the
 July Water Reaching versus October 6 free-behavior implementation audit.
-Status: planning and evidence review only. The user's current instruction is
-**do not start new training**. The H100 allocation has not started, and the
-16-hour local precursor is closed with its automation paused.
+Priorities revised again on 2026-10-17 after an external plan review
+([experiment_plan_review_20261017.md](experiment_plan_review_20261017.md)).
+Status: the user subsequently authorized adopting this review and beginning
+local execution on 2026-10-17. The active, bounded P0 work and standing benchmark
+are defined in [local_validation_plan.md](local_validation_plan.md). The H100
+allocation has not started. Both preceding local cycles remain closed, and
+the explicitly paused automation remains paused.
 
-The immediate research priority is to test the direct spatial heatmap readout
-path before further candidate-ranking or encoder-adaptation work. The July
-success and October failure did not use the same encoder checkpoint, feature
-interface, spatial head, view context, supervision or evaluation population.
-Their difference does not establish a limitation of VGGT or DINO features.
-Keep VGGT for the first controlled bridge. Candidate identity correspondence,
-learned 3D fusion and encoder/data expansion remain conditional follow-ups.
-This revision supersedes the previous order of those tracks; it authorizes no
-new run, supervisor, queue, allocation or dataset admission.
+**Revised priority (2026-10-17).** The frozen original five-point selector
+pipeline already meets the stated quality target on FR3 CAL in all three seeds
+(coverage32 97.27%, P95 23.06/21.02/23.44 reference pixels). CAL is a
+repeatedly developed single acquisition, so this is optimistic evidence, not
+proof. The first question is therefore no longer which single-view head to
+build, but **whether the existing best system holds on unseen acquisitions**.
+
+**P0 sealed result (2026-10-18):** on GR2/UR2/UR3 (75 groups, 475 views, 1,697
+known points) the frozen selector scored coverage32 94.40/94.46/95.88% and P95
+40.1/36.4/28.8 reference pixels; the deployment gate passed for 1 of 3 seeds.
+The tail is concentrated in bottom camera A and the left hindpaw. The selector
+still beat its fixed-entropy control by 1.7–2.0 pp. GR2/UR2/UR3 have now been
+looked at once and must not be used for method selection. Details:
+`output/validation_benchmark/runs/p0b_sealed_20261018_v1/report.md`.
+
+The order is now:
+
+1. **P0 — validate and measure (local).** Independent sealed evaluation of the
+   frozen selector pipeline on GR2/UR2/UR3; a standing leave-one-session-out
+   development benchmark with effect-size gates; a Lightning Pose baseline on
+   the same protocol.
+2. **P1 — attack identity structurally (local).** Chirality-aware 3D paw
+   identity assignment in a body frame; the H0/H1/H2 heatmap bridge plus a
+   system-level July-recipe transplant arm (H3). These fit on the local GPU.
+3. **P2 — scale (H100).** Multiview-consistent pseudo-label self-training on
+   unlabeled real video and multiview end-to-end VGGT adaptation, with DANNCE,
+   SBeA and Orbbec as admitted training sources.
+4. **P3 — temporal (H100 remaining budget).** Lightning-Pose-style temporal
+   context and EKS as a controlled contrast on top of the best P2 system.
+
+The user has now permitted use of the locked GR2/UR2/UR3 data, internal
+training use of real pseudo-labels, and temporal modeling. These permissions
+change scope, not the evidence standard: each still requires manifests, role
+assignment and exposure records. Pseudo-labels remain internal; publication or
+release is still not authorized. This document authorizes no new run,
+supervisor, queue or allocation by itself.
 
 The user expects at least four NVIDIA H100 GPUs, provisionally 80 GB each, for
 48 continuous hours. Four GPUs provide a nominal ceiling of 192 GPU-hours;
@@ -87,7 +365,7 @@ are still unspecified. The user permits larger and more diverse datasets,
 subject to the admission and exposure requirements below. The October 16
 authorization applied to one bounded local cycle, which is now closed; it does
 not allocate the H100 cluster or extend either completed local cycle. The
-current request updates the route document only.
+current local execution authorization does not allocate that cluster.
 
 ## First actions for the receiving agent
 
@@ -101,12 +379,15 @@ current request updates the route document only.
    time point from an acquisition session, an animal and an image.
 4. Prepare versioned manifests for training, development and sealed testing.
    Record historical exposure, including exposure through upstream detectors.
-5. Complete the read-only error decomposition on admitted, exported predictions.
+5. Admit GR2/UR2/UR3 as **sealed test** data: build their manifests, map their
+   labels to the five-point schema and record upstream exposure, without
+   opening predictions or scores until the frozen selector pipeline is fixed.
+6. Complete the read-only error decomposition on admitted, exported predictions.
    Separate anatomical identity, spatial localization and instance detection;
    keep GT-assisted diagnostics out of the automatic endpoint.
-6. If the user later authorizes execution, verify admitted inputs and baseline
-   replay, profile a representative single-GPU job, and register the heatmap
-   bridge before launching it. Resolve allocation, absolute start/stop times,
+7. If the user later authorizes execution, run P0 and P1 on the local GPU
+   first (see "Revised priority order"). Reserve the H100 allocation for P2/P3
+   workloads that need it. Resolve allocation, absolute start/stop times,
    ownership, endpoint budgets and gates in a new configuration. The schedule
    below is relative to that future start, not an active authorization.
 
@@ -169,17 +450,111 @@ independent experiments.
 
 ## Research questions and priorities
 
-The next controlled work, if authorized, should answer:
+The next controlled work, if authorized, should answer, in this order:
 
-1. Does a stronger spatial heatmap readout improve automatic localization and
-   anatomical identity using exactly the existing frozen memory?
-2. Does bypassing the old synthetic-task compression interface improve that
-   readout further, with the encoder and inference information held fixed?
-3. Do any gains survive acquisition holdouts, rather than only improving FIT?
+1. Does the frozen original selector pipeline, which passes the quality target
+   on reused CAL, still pass on unseen acquisitions (GR2/UR2/UR3)?
+2. Is the remaining contralateral-paw confusion resolved by an identity
+   assignment that can distinguish a pose from its mirror image?
+3. Does more independent real data, via multiview-consistent pseudo-labels and
+   admitted external datasets, move held-out performance by a step, not by
+   fractions of a percentage point?
+4. Does temporal context further reduce identity swaps and severe tail errors?
 
-Only then choose a justified follow-up: data coverage, instance localization,
-cross-view identity, learned 3D fusion or encoder adaptation. Do not spend the
-allocation on a broad loss, temperature, resolution or head-size sweep.
+The single-view heatmap questions (stronger readout; bypassing the old
+compression interface) remain useful, but they are now P1 local experiments,
+not the purpose of the H100 allocation. Do not spend the allocation on a broad
+loss, temperature, resolution or head-size sweep.
+
+## Revised priority order (2026-10-17)
+
+### Why the order changed
+
+| Observation | Source | Consequence |
+| --- | --- | --- |
+| Frozen selector passes coverage32 ≥ 90% and P95 ≤ 32 px on CAL in all three seeds | `semantic_matching_cycle_20261015/final_closeout_v1.json` | Validate the best existing system before building a new one |
+| CAL has 22 groups and 573 known points from one acquisition; 0.2–0.5 pp gates equal about 1–3 points, while single-acquisition differences reach ±3.5 pp | DDMS and paw-identity gate reports | Many "gate failed" outcomes were below measurement resolution; change the benchmark and gates |
+| Largest within-project gains came from data: extra real updates +2.7 pp; synthetic scenes 64→400 raised held-out PCK 9%→58% | `paw_identity_cycle_20261013.md`, `pose_diverse_data_control.md` | Data scale is the binding constraint; real FIT is only 134 groups from 6 acquisitions |
+| Soft radial distances, triangle consistency and bone lengths are mirror-invariant | `paw_identity_cycle_20261013.md`, semantic matching decisions | They cannot in principle correct left/right swaps, the dominant error |
+| The July success combined multiview joint encoding, a geometry-adapted checkpoint, a large head and 3D losses | July/October audit table below | Single-factor additions to a failing system can each show ~0 effect when the factors interact |
+| A 4000-step head endpoint costs 5–15 GPU-minutes locally | Cycle engineering records | H0/H1/H2 need under 2 GPU-hours; they do not need the H100 allocation |
+| Static LP three-model median 24 px versus DLC 44 px; LP temporal reduced >100 px errors 102→73 | `research_review_20261006.md` | Strong external baseline never compared on the five-point protocol; temporal context targets identity swaps |
+
+### P0 Validate and measure (local, before H100)
+
+1. **Sealed independent test of the frozen selector.** Replay the archived
+   selector pipeline (extra-real 6000 heads, fixed semantic-contrast geometry,
+   original 14-feature selector, all three seeds) exactly, freeze all outputs,
+   then score once on GR2/UR2/UR3. Report coverage8/16/32, nearest-rank P95/P99
+   with failures as infinite error, per acquisition, per camera and per paw.
+   Record that the detector and VGGT checkpoint were frozen; disclose any
+   upstream exposure of these acquisitions. No tuning after this score is
+   opened; GR2/UR2/UR3 then become reported test evidence, and further method
+   development must not select against them.
+2. **Standing leave-one-session-out (LOSO) development benchmark.** Seven folds
+   over the six FIT acquisitions plus FR3. One frozen scoring harness, one
+   result table across cycles, with every new method as a new row. This
+   replaces single-CAL decisions and ends the "results across cycles are not
+   comparable" problem.
+3. **Effect-size gates.** Continuation requires a practically meaningful change
+   on LOSO (for example ≥ 3 pp coverage32 or ≥ 30% P95 reduction, with no
+   acquisition harmed by more than its fold noise), registered before running.
+   Sub-percentage-point gates are retired as continuation criteria.
+4. **External baselines on the same protocol.** Lightning Pose multiview
+   (static, then temporal in P3) and, if feasible, DANNCE on the same LOSO
+   folds and sealed test, with the same five points and units.
+
+### P1 Structural identity and the readout bridge (local)
+
+1. **Chirality-aware 3D identity assignment.** Detect paw candidates without
+   left/right labels (or pool contralateral channels), triangulate, and build
+   an inference-available body frame from nose, body axis and the vertical
+   direction. Assign left/right by the sign of the lateral coordinate and
+   fore/hind by position along the body axis, with an explicit unassigned
+   state. This is anatomical handedness in 3D, not the prohibited fixed
+   image-left rule. Compare against the frozen selector on LOSO; the candidate
+   oracle (2,417/2,432 within 32 px) shows the candidates usually exist.
+2. **Heatmap bridge.** H0/H1/H2 were completed on 2026-10-17 under the old
+   three-fold protocol ([results](heatmap_bridge_cycle_20261017.md)): H1 beat
+   H0 by +3.24 pp mean coverage32 in all three seeds with fewer swap proxies;
+   H2 showed no consistent gain. Their P95 gate could not pass for any arm
+   because 11.2% of points were rejected by the shared detector gate. Next:
+   (a) put the H1 head into the original selector pipeline and compare it with
+   the extra-real6000 head on 7-fold LOSO under one detector policy;
+   (b) H3, a system-level July-recipe transplant (multiview joint encoding,
+   final-layer features, July head, 3D-consistency losses). If H3 works,
+   ablate it downward instead of building upward from H0.
+3. **Simple single-mouse localization.** For fixed-rig single-mouse data,
+   compare the six-query detector against a mask/background-subtraction crop
+   with top-down rescaling. The detector's top-box IoU≥0.5 rate fell from
+   90.7% to 12.8% under 180° rotation, and real bottom bodies are ~2.6× the
+   synthetic scale; a normalized crop addresses both.
+
+### P2 Scale with real data (H100)
+
+1. **Multiview-consistent pseudo-label self-training.** Run the best P0/P1
+   system over unlabeled synchronized real video (existing rigs, SBeA, Orbbec
+   where calibrated). Keep a pseudo-label only when its triangulation is
+   supported by enough views with low reprojection residual and agreement
+   across seeds; manual-label triangulation reached 96.7% coverage32, so
+   consistent multiview 2D is a credible teacher. Pseudo-labels are training
+   data only, never evaluation labels, never mixed into LOSO held-out folds or
+   the sealed test, and not released.
+2. **External labeled data.** Admit DANNCE mouse (3D labels) and other mapped
+   sources as training partitions with explicit semantic mapping; evaluate them
+   separately.
+3. **Encoder adaptation at scale.** LoRA or partial fine-tuning of VGGT with
+   multiview joint encoding, real + pseudo-labeled + synthetic data. This is
+   the workload that justifies four H100s.
+4. Report learning curves by number of independent acquisitions, not frames.
+
+### P3 Temporal context (H100 remaining budget)
+
+Add Lightning-Pose-style temporal context and EKS on the best P2 system as a
+controlled on/off contrast with the same split, measuring identity-swap counts
+and >100 px errors. Keep neighbouring frames of an acquisition in one role.
+Temporal outputs may feed P2 pseudo-label filtering only after the contrast
+shows they reduce swaps on LOSO.
 
 ## July Water Reaching versus October 6 free-behavior audit
 
@@ -263,7 +638,16 @@ identity confusion plus weak generalization, with an additional detection
 bottleneck. A restricted feature interface and spatial readout remain testable
 mechanistic hypotheses, not a proven limit of the backbone.
 
-### Minimum validation bridge, proposed only
+### Minimum validation bridge
+
+**Status (2026-10-17):** H0/H1/H2 completed under the old three-fold
+acquisition-held protocol, not the 7-fold LOSO; H3 not run. See
+[heatmap_bridge_cycle_20261017.md](heatmap_bridge_cycle_20261017.md). Do not
+rerun H0–H2 as described below. For future head comparisons, keep the full
+known-label denominator as a reported outcome but do not use a P95 gate that
+every arm fails because of a shared detector rejection; compare heads under a
+common detector policy and report detection failures separately. The original
+proposal text is retained below.
 
 First use existing admitted exported predictions for an identity/localization
 decomposition: fixed anatomical identities versus a GT-assisted assignment
@@ -282,9 +666,15 @@ prefix avoids confusion with the archived A/B/C candidate and DDMS arms.
 | H0 | Existing 256-channel memory plus October-style small heatmap head | Rebuild the baseline on the common corrected protocol |
 | H1 | Identical memory plus a July-style spatial residual-convolution head | Does a richer spatial readout recover useful information already available? |
 | H2 | Raw final aggregation-layer 2048-channel features from the same frozen encoder, plus the same spatial-head family | Does bypassing the old task-specific compression interface add benefit? |
+| H3 | July-recipe transplant: synchronized views jointly encoded, final-layer features, July head, July heatmap/3D-consistency losses | Does the complete recipe that worked in July work on free-behavior data? System comparison, not a single-factor ablation |
 
-Run all seeds 17, 29 and 43: nine endpoints on the first registered development
-split. This is a focused bridge, not a full factorial or a reproduction of all
+Run all seeds 17, 29 and 43 on the LOSO benchmark. H0–H2 are a focused bridge
+(nine endpoints per fold); H3 is a system arm whose differences from H0 are
+listed, not attributed to one factor. If H3 is clearly better, ablate it
+downward (remove joint encoding, remove 3D loss) rather than adding factors to
+H0 one at a time. All four arms fit the local GPU and should run before the
+H100 window. The original first-split description follows: nine endpoints on
+the first registered development split. This is a focused bridge, not a full factorial or a reproduction of all
 July conditions. H0/H1 tests the spatial-head design as a whole, not parameter
 count alone. H1/H2 tests the feature interface including its trainable input
 projection; disclose parameter/FLOP differences rather than claiming a pure
@@ -365,7 +755,8 @@ freeze them before sealed testing.
 - Keep synchronized views, near-duplicate frames and neighboring frames from an
   acquisition within the same partition. The model still receives only a
   single instant of multiview input; grouping neighboring frames prevents
-  leakage and does not authorize temporal modeling.
+  leakage. Temporal modeling is now permitted as the P3 contrast and must
+  respect the same grouping.
 - Prefer more independent acquisitions over many correlated frames from one
   recording. Set final dataset sizes after the inventory and annotation audit;
   do not promise a particular count before checking availability.
@@ -504,8 +895,8 @@ Historical mechanism proposal, retained with its controls. The local precursor
 has since completed descriptor and automatic-endpoint experiments. Its handoff
 records that GT diagnostic gains did not rescue the negative automatic result.
 Read those frozen outputs before proposing any repeat. This section is no
-longer the next execution step; it does not override the no-training instruction
-or the heatmap bridge priority.
+longer the next execution step; it does not override the revised P0 validation
+priority or authorize another sweep.
 
 [DDMS v2](https://arxiv.org/html/2608.23850v2) combines 2D foundation features
 with frozen Depth Anything 3 geometry features, learns discriminative
@@ -587,7 +978,7 @@ The local run was `ddms_identity_cycle_20261016`. Its registered start was
 `closed_final_report_frozen_automation_paused`; the supervisor records
 `stopped`. The closeout records owned-runtime shutdown, GPU/shared-lock
 inspection, report freeze and automation pause. Do not resume this window or
-append to its queue. The current instruction explicitly prohibits new training.
+append to its queue. Subsequent local work uses a separate bounded namespace.
 
 Authoritative local records are `output/ddms_identity_cycle_20261016/plan.json`,
 `next_actions.json`, `heartbeat_launch_handoff.json`, `state.json`,
@@ -612,8 +1003,10 @@ FR3 CAL remains repeated development; it was not used in the initial FIT probes.
 The user's broader-data permission supports metadata inventory and subsequent
 explicit admission manifests; it does not make old DEV-mixed caches a valid
 source. Before loading a new payload, fix its training/development/sealed-test
-role, semantic mapping, acquisition split and upstream exposure. Never silently
-admit the previously protected GR2, UR2, UR3 or historical DEV payloads.
+role, semantic mapping, acquisition split and upstream exposure. As of
+2026-10-17 the user permits GR2, UR2 and UR3; admit them explicitly as the P0
+sealed test, never silently and never as training data. Historical DEV
+payloads remain unadmitted.
 
 The closed run used its own supervisor/queue and the shared local GPU lock at
 `output/teacher_temporal_cycle_20261001/gpu_job.lock`. Keep its STOP files, frozen
@@ -621,7 +1014,8 @@ scripts, protocols, checkpoints and raw labels intact. Do not restart the
 paused `pymousestudio` automation as part of this document update. Any future
 authorized run needs a new namespace and deadline; verify boot ID, start ticks
 and process group for process control. No model promotion or real pseudolabel
-publication is authorized by this plan.
+publication is authorized by this plan; internal training use of
+multiview-consistent pseudo-labels is permitted under P2.
 
 ## Conditional encoder and data experiments
 
@@ -651,7 +1045,7 @@ pixel changes. Masking a cached feature tensor is not pixel occlusion.
 LP3D-inspired fusion and pixel masking may be revisited only with a new,
 registered hypothesis about data diversity or encoder adaptation. Keep the
 fusion-by-pixel-masking 2x2 comparison intact if it is run. Temporal models and
-EKS remain outside scope.
+EKS are now in scope only as the P3 controlled contrast.
 
 Targeted synthetic training is also conditional. First verify the pipeline can
 produce trustworthy identity, correspondence and occlusion labels. Compare
@@ -667,26 +1061,27 @@ Set absolute UTC deadlines when the run starts; the hard stop is T0 plus 48
 hours, with optimization stopping at T0 plus 40 hours. Additional GPUs increase
 parallel capacity, not the authorized wall-clock duration.
 
+P0 and P1 (sealed selector test, LOSO harness, LP baseline, chirality-aware
+identity, H0–H3) run on the local GPU before the H100 window; their results
+choose the P2 starting system. The H100 window is then:
+
 | Elapsed time | Priority | Required output |
 | --- | --- | --- |
-| 0-6 hours | Data/exposure audit, baseline replay, loading and GPU profiling | Frozen manifests, verified baseline, feasible endpoint budgets |
-| 6-24 hours | H0/H1/H2 heatmap bridge, all three seeds | Registered fixed endpoints and full-denominator development evaluation |
-| 24-40 hours | Confirmation on additional held-out acquisitions/folds | Repeated results for the most promising complete comparison; conditional additions only if budget remains |
-| 40-48 hours | No further optimization; frozen inference and audit | Sealed-test results, visual review, resource accounting and final report |
+| 0-4 hours | Data/exposure audit of admitted training sources, P0/P1 system replay on the nodes, loading and multi-GPU profiling | Frozen manifests, verified replay, measured throughput |
+| 4-12 hours | P2 pseudo-label generation over unlabeled synchronized video with the P0/P1 system; consistency filtering | Versioned internal pseudo-label set with acceptance statistics per acquisition |
+| 12-34 hours | P2 training: multiview VGGT adaptation (LoRA/partial) on real + pseudo-labeled + admitted external + synthetic data, with a matched no-pseudo-label control; all three seeds | Registered endpoints scored on LOSO folds |
+| 34-40 hours | P3 temporal on/off contrast on the best P2 system | Identity-swap and >100 px tail comparison on LOSO |
+| 40-48 hours | No further optimization; frozen inference and audit | One sealed scoring of the final frozen policy, visual review, resource accounting and final report |
 
-Use seeds 17, 29 and 43. H0/H1/H2 require nine endpoints on one registered
-development split. Measure cost before fixing the endpoint. If the bridge cannot
-fit, reduce its common endpoint before launch or defer a complete comparison:
-H0/H1 across all seeds tests the head first, with H2 explicitly deferred. Never
-drop an unfavorable seed or complete only a treatment. This is not a commitment
-to exhaust the allocation; preserve confirmation and final-audit time.
+Use seeds 17, 29 and 43. Measure cost before fixing each endpoint. If P2 cannot
+fit, shrink the data volume of both arms equally before launch; never drop an
+unfavorable seed or complete only a treatment. Track A/B and DDMS successors
+remain conditional and must not displace P2/P3 or closure.
 
-For confirmation, prioritize one complete treatment/control pair on up to two
-additional acquisition-held-out folds with all three seeds, if feasible. Use
-development folds for this selection. Freeze the final model-selection policy
-before sealed testing. Tracks A/B, DDMS successors, encoder adaptation, synthetic
-training and external baseline reproduction must not displace bridge
-confirmation or closure. Adding views or July 3D losses is a separate contrast.
+The GR2/UR2/UR3 sealed test is scored once for the frozen P0 selector before
+the H100 window. Any H100-era final policy needs its own sealed evaluation;
+use a newly admitted held-out acquisition if available, otherwise report the
+GR2/UR2/UR3 rescore as test evidence reused after a single prior look.
 
 Parallelize independent seeds, folds and matched arms first. Use within-node
 multi-GPU training when a model requires it or a benchmark demonstrates a net
@@ -784,9 +1179,11 @@ new run. Close the run within its hard deadline without relying on a later
 heartbeat, and verify owned workers and GPU allocations have been released.
 CPU work obeys the same deadline.
 
-The continuing exclusions are temporal/adjacent-frame modeling, EKS, internal
-spine targets, collaborator-native DINOv3, hard bone-length constraints and
-fixed image-left identity rules. Preserve raw labels and old checkpoints. Keep
+The continuing exclusions are internal spine targets, collaborator-native
+DINOv3, hard bone-length constraints and fixed image-left identity rules
+(body-frame 3D handedness under P1 is not an image-left rule). Temporal
+modeling and EKS were removed from the exclusions on 2026-10-17 and are
+permitted as the P3 contrast. Preserve raw labels and old checkpoints. Keep
 data, weights, rendered assets and experiment outputs out of Git; publish only
 authorized source and documentation.
 
@@ -865,5 +1262,5 @@ because a historical script mentions them.
   learned multiview reasoning in a common 3D representation for human pose;
   mouse adaptation is a separate experiment.
 - [Lightning Pose documentation](https://lightning-pose.readthedocs.io/en/stable/):
-  reference for multiview fusion and pixel-masking mechanisms; temporal
-  components remain outside this plan.
+  reference for multiview fusion, pixel-masking and temporal context/EKS;
+  P0 external baseline and P3 temporal contrast.
