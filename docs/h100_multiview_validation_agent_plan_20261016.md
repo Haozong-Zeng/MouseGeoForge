@@ -1,5 +1,45 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Silhouette geometry correction — 2026-10-19 (CPU validation completed)
+
+Read the [revised silhouette report](bottom_pose_from_silhouettes_20261019.md)
+and [complete compact receipts](experiments/bottom_pose_from_silhouettes_20261019.json)
+before making a data-coverage decision. The old claim that two side views and
+six frames made the synthetic bottom pose unidentifiable is **withdrawn**:
+ClimbWall and MoSeq used different world origins. Both silhouette solvers now
+canonicalize each frame into its reference side-camera frame before pooling.
+Frontier median rotation error over12 development rigs is **0.76°** (10/12<5°,
+12/12<15°, worst13.28°); the old22.32° was contaminated by the coordinate bug.
+Do not expand the rendering campaign solely on that old failure claim.
+
+Invalid tangencies never become zero loss: reject invalid starts, penalize
+invalid trial pairs on fixed support, and reject invalid optimizer endpoints.
+All84 frontier endpoints in56 newly archived geometry cases succeeded with
+zero invalid final pairs. Nine CPU regression tests and an independent seeded
+repeat passed. Historical v1 results remain unchanged; old unarchived random
+numbers are superseded rather than presented as reproduced.
+
+On the **single known physical real rig**, full71-frame fitting gives1.27°;
+uniform36 frames with a prior built from those same frames gives1.18°.
+Eight seeded6/12/24-frame subsets give median1.95°/2.02°/1.47° and
+worst5.96°/2.57°/2.55°. Each subset records exact frame and side-camera IDs,
+selected-frame initialization support, R/C, convergence and input/source hashes.
+These overlapping subsets do not establish cross-rig generalization or a
+20-frame accuracy guarantee. Masks remain GT/manual, side K/E remain known;
+no neural model was loaded for this rerun and no training was started.
+
+Next zero-training geometry work should first test automatic masks and controlled
+side R/C/K perturbations. An unknown-rig route must separately specify side
+camera centers/translation directions and intrinsics: rotations/up plus one
+length do not recover all centers. Preserve the8 sealed rigs, paused automations
+and all training authorization boundaries below. This receipt does not accept a
+model, authorize H100 allocation, or launch L0/P0/P1/G0/G1/keypoints.
+
+Reproduce using `tools/validate_bottom_pose_silhouettes_20261019.py --part frontier`
+and `--part hull` with a new `--output-dir`; the report gives full CPU commands.
+`tools/summarize_bottom_pose_silhouettes_20261019.py` checks hashes and prints
+results; `--write-compact` explicitly regenerates the evidence JSON.
+
 ## Current execution override — 2026-10-19: diagnose, prove learnability, then pair
 
 **This section supersedes every execution order, data-admission suggestion and
