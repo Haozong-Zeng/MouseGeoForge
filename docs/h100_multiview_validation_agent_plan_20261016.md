@@ -1,5 +1,21 @@
 # MouseGeoForge H100 multiview validation plan and agent handoff
 
+## Current priority — 2026-10-24: real keypoint head first, while renders are pending
+
+Read the [new head-first route](head_first_progressive_encoder_route_20261024.md),
+[remote execution handoff](remote_head_first_handoff_20261024.md), and
+[machine-readable design](../configs/experiments/head_first_progressive_encoder_20261024.json)
+before scheduling work. The independent 2D branch can now advance on existing
+PyMouseStudio/PanoMouse still images without waiting for V5 or successful unknown
+camera adaptation. Train the B-style head to a recorded TRAIN plateau; from the
+same endpoint compare frozen continuation F with gradual output-near DINO thaw U.
+Unfreeze `aggregator.patch_embed.blocks`, not the unused alternating-attention
+blocks, with head3e-5, last block1e-6 and 0.65 LR decay toward earlier layers.
+Both branches use matched 6,000-update budgets; retain sealed exclusions and old
+geometry failures. The 2026-10-19 geometry L0/P0/P1 and subsequent historical
+suggestions remain separate research protocols, not prerequisites for this 2D route.
+This commit publishes a plan/source handoff only; it starts no Slurm job or local run.
+
 ## Silhouette geometry correction — 2026-10-19 (CPU validation completed)
 
 Read the [revised silhouette report](bottom_pose_from_silhouettes_20261019.md)

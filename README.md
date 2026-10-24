@@ -1,5 +1,19 @@
 # MouseGeoForge
 
+## Current route — 2026-10-24: head convergence, then gradual encoder adaptation
+
+The [head-first route](docs/head_first_progressive_encoder_route_20261024.md) and
+[remote handoff](docs/remote_head_first_handoff_20261024.md) define the work that can
+proceed while workstation rendering is pending. Train a real-data five-point head
+to a measured TRAIN plateau, then compare matched frozen continuation with
+last1/2/4-block DINO image-encoder thaw at layer-dependent low learning rates.
+PanoMouse's completed three-seed keypoint results motivate this route; new V5
+renders are not a prerequisite. This independent 2D branch does not promote the
+failed geometry models or establish unknown-rig/physical-3D accuracy.
+The [machine-readable specification](configs/experiments/head_first_progressive_encoder_20261024.json)
+is design-only; this publication has launched no training, rendering or Slurm job.
+The older experiment sections below are historical where the new route supersedes them.
+
 ## Current experiment route (2026-10-18)
 
 The [v3 scale diagnosis and staged experiment plan](docs/bottom_geometry_v3_reconciled_plan_20261018.md)
