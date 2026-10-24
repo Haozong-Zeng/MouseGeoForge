@@ -127,7 +127,7 @@
       "mask_sigmoid_bce": 5,
       "dice": 5
     },
-    "matching": "same pinned framework Hungarian matching definition in paired arms"
+    "matching": "Pure-PyTorch dense-grid Hungarian costs, per-image losses and mean auxiliary supervision; common to paired arms; not exact MMSeg point-sampled normalization"
   },
   "arms": {
     "SEG_R": {
@@ -202,8 +202,8 @@
     ],
     "same_parent": "SEG-M EMA head + released encoder",
     "updates_per_branch": 6000,
-    "head_peak_lr": 0.00003,
-    "last_block_peak_lr": 0.000001,
+    "head_peak_lr": 3e-05,
+    "last_block_peak_lr": 1e-06,
     "layer_decay": 0.65,
     "layer_new_warmup": 200,
     "cosine_floor": 0.1,
@@ -311,5 +311,16 @@
     "failure/exposure/compute receipts",
     "three-seed paired summary",
     "optional actual-DA missing-input or comparison receipt"
-  ]
+  ],
+  "local_implementation": {
+    "engine": "tools/train_mouse_semseg_20261024.py",
+    "model": "mousegeoforge/models/mouse_semseg.py",
+    "documentation": "docs/mouse_semseg_engineering_20261024.md",
+    "slurm_template": "scripts/train_mouse_semseg_h100.sbatch",
+    "smoke_receipt": "docs/experiments/mouse_semseg_smoke_20261024.json",
+    "engineering_smoke_completed": true,
+    "formal_campaign_started": false,
+    "h100_nccl_tested": false,
+    "mode": "fixed-budget explicit single-arm engine; paired common-convergence controller not yet implemented"
+  }
 }

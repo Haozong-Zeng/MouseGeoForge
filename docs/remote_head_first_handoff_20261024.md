@@ -4,6 +4,8 @@
 
 **新增并列任务：鼠体语义分割。** 用户要求参考Depth Anything的语义分割思路，可与keypoints分开。按[独立分割路线](mouse_semseg_depth_anything_route_20261024.md)和[分割设计规格](../configs/experiments/mouse_semseg_depth_anything_20261024.json)推进：VGGT图像encoder最后四层特征 + 特征金字塔 + 轻量Mask2Former，分割全图可见老鼠；用同head的单层特征对照，head先训练收敛，再做可选的独立渐进解冻配对。两任务不共享可写encoder/优化器，不要求彼此先完成。Pano现有SAM2/外壳mask是proxy，不作为人工分割GT。实际Depth Anything encoder可单列权重对照，缺其权重不阻塞主线。
 
+**分割源代码与本地smoke已补齐**：[实现与命令](mouse_semseg_engineering_20261024.md)、[训练入口](../tools/train_mouse_semseg_20261024.py)、[H100单节点多卡模板](../scripts/train_mouse_semseg_h100.sbatch)。该入口是显式固定预算的单臂引擎，完整收敛共同终点/多seed配对调度仍须按科学计划登记；不要把模板默认单臂当作全套实验。先在远端做短NCCL smoke，本机只有单卡GPU和两进程CPU/Gloo验证，未宣称H100多卡已实测。
+
 ## 给远端执行代理的任务
 
 本地新渲染不应阻塞本路线。基于现有已审核PyMouseStudio/PanoMouse静态关键点训练图，先实现并充分训练B类五点heatmap head。训练收敛后，从同一H0 EMA终点做两条各6,000更新的matched continuation：F只继续训练head；U从DINO图像编码器末端逐步解冻1→2→4个block，head LR3e-5、末层1e-6、每向前一层乘0.65，其他层冻结。严格按完整文档的收敛判据、固定日程、seed和停止门槛执行。不要直接执行历史脚本当作新协议。

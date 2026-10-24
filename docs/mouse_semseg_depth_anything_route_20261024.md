@@ -2,6 +2,8 @@
 
 2026-10-24。用户新增要求：参考 Depth Anything 做语义分割的思路，在远端单独尝试分割老鼠，可与 keypoints 分开。本支线与[关键点路线](head_first_progressive_encoder_route_20261024.md)并列，不等待本机新渲染，也不要求先训练好关键点。机器规格为 [mouse_semseg_depth_anything_20261024.json](../configs/experiments/mouse_semseg_depth_anything_20261024.json)，仍是 design_only；本次更新没有启动训练或 Slurm。
 
+同日后续已按用户要求实现并执行**本地工程smoke**，见[脚本、实现差异与H100入口](mouse_semseg_engineering_20261024.md)。仅短工程更新，未启动正式长训练或Slurm；本页原计划的官方框架匹配定义，在首版引擎中具体化为共同的dense-grid Hungarian实现，不声称与MMSeg的point-sampled loss完全一致。
+
 ## 1. 具体借鉴什么
 
 核查的 Depth Anything 官方版本：`1d03336771fe09c5398ffdd211441e33941a97dc`。[官方语义分割说明](https://github.com/LiheYoung/Depth-Anything/blob/1d03336771fe09c5398ffdd211441e33941a97dc/semseg/README.md)采用其预训练 ViT-L encoder 作下游语义分割初始化；[backbone实现](https://github.com/LiheYoung/Depth-Anything/blob/1d03336771fe09c5398ffdd211441e33941a97dc/semseg/dinov2.py)提取最后四层 token；[ADE20K配置](https://github.com/LiheYoung/Depth-Anything/blob/1d03336771fe09c5398ffdd211441e33941a97dc/semseg/config/depth_anything/depth_anything_large_mask2former_16xb1_160k_ade20k_896x896.py)将其经 Feature2Pyramid 的4/2/1/0.5缩放，输入 Mask2Former，并给 backbone 更小的 LR。

@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-24",
+  "status": "engineering_smoke_passed_not_formal_training",
+  "unit_tests": {
+    "passed": 8,
+    "framework": "unittest"
+  },
+  "environment": {
+    "torch": "2.11.0+cu128",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "available_gpus": 1
+  },
+  "verified_source_images_and_masks": 6435,
+  "source_manifest_sha256": "108dfafc9fdc341195cac903c104f6c292375891defe3cd7daf4270896591efc",
+  "real_gpu": {
+    "side": 512,
+    "precision": "bf16",
+    "steps": 3,
+    "global_batch": 4,
+    "micro_batch": 1,
+    "compressed_stage_steps": 1,
+    "feature_shapes": [
+      [
+        1,
+        1024,
+        32,
+        32
+      ],
+      [
+        1,
+        1024,
+        32,
+        32
+      ],
+      [
+        1,
+        1024,
+        32,
+        32
+      ],
+      [
+        1,
+        1024,
+        32,
+        32
+      ]
+    ],
+    "last_feature_matches_forward": true,
+    "frozen_unchanged": true,
+    "gradient_checks": [
+      {
+        "step": 1,
+        "blocks": [
+          23
+        ],
+        "head_nonzero": true,
+        "encoder_nonzero_by_block": {
+          "23": true
+        },
+        "norm_nonzero": true
+      },
+      {
+        "step": 2,
+        "blocks": [
+          22,
+          23
+        ],
+        "head_nonzero": true,
+        "encoder_nonzero_by_block": {
+          "22": true,
+          "23": true
+        },
+        "norm_nonzero": true
+      },
+      {
+        "step": 3,
+        "blocks": [
+          20,
+          21,
+          22,
+          23
+        ],
+        "head_nonzero": true,
+        "encoder_nonzero_by_block": {
+          "20": true,
+          "21": true,
+          "22": true,
+          "23": true
+        },
+        "norm_nonzero": true
+      }
+    ],
+    "peak_memory_bytes": 3797128192,
+    "resume_comparison": {
+      "model": 1.30385160446167e-06,
+      "ema": 7.450580596923828e-09,
+      "loss_difference": 0.0
+    },
+    "checkpoint_source_pins_match_current": true
+  },
+  "distributed": {
+    "world_size": 2,
+    "device": "CPU",
+    "backend": "gloo",
+    "fixture": true,
+    "steps": 4,
+    "stage_switches": [
+      1,
+      2,
+      4
+    ],
+    "frozen_unchanged": true,
+    "resume_comparison": {
+      "model": 0.0,
+      "ema": 0.0
+    },
+    "resume_logs_identical": true,
+    "single_vs_ddp_parameter_comparison": {
+      "model": 1.5366822481155396e-08,
+      "ema": 1.4901161193847656e-08
+    },
+    "parameter_tolerance": 2e-06
+  },
+  "fixed_issue": {
+    "passed": false,
+    "max_raw_parameter_difference": 6.111467882874422e-06,
+    "original_tolerance": 2e-06,
+    "affected": "query cross/self attention in_proj key-bias slice; other parameters max1.49e-8",
+    "resume_comparison": "DDP resume exact",
+    "resolution": "Mask analytically-zero constant key-bias gradients; retain old attempts; rerun without relaxing original tolerance"
+  },
+  "h100_nccl_tested": false,
+  "slurm_submitted": false,
+  "formal_training_started": false,
+  "formal_accuracy_claim": false,
+  "implementation": "independent pure-PyTorch Mask2Former-inspired lite; dense-grid Hungarian, not MMSeg exact reproduction",
+  "source_pins": {
+    "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "tools/train_mouse_semseg_20261024.py": "cc60ff95ad046f3d2345d82372bff79826aa9e3d44536d2cd03aa471243b9780",
+    "tests/test_mouse_semseg_20261024.py": "2dadcaa7b60126b672229170b7cb41c1448480ac3ceb83164fa6fa22d8b90c93",
+    "scripts/train_mouse_semseg_h100.sbatch": "0b2befc3e2646d99786d8e5035a3338631a2f7386603ad1ef39e26ee4b1dbb85"
+  },
+  "raw_receipts": {
+    "gpu": "output/mouse_semseg_engineering_20261024/gpu_U_final/completion.json",
+    "ddp": "output/mouse_semseg_engineering_20261024/ddp_U_final/completion.json",
+    "ddp_resume": "output/mouse_semseg_engineering_20261024/ddp_U_resume_final/completion.json"
+  },
+  "limitations": [
+    "Single-node NCCL path and Slurm syntax are prepared; physical multi-GPU/H100 is not locally tested",
+    "Fixed-budget single-arm engine; complete common-convergence and multi-seed campaign is not automatically scheduled",
+    "Smoke updates/weights are engineering artifacts and must not initialize the formal pair",
+    "Historical L/M head-only smokes also ran; final pinned live-weight test covers U and its four-feature path",
+    "GPU grid_sample backward is not claimed bitwise reproducible; continuation met numerical tolerances"
+  ]
+}
