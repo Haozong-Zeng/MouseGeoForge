@@ -1,0 +1,76 @@
+{
+  "schema": "mousegeoforge-v5-render-launch-v1",
+  "utc": "2026-10-24T20:20:14.147634+00:00",
+  "state": "production_render_started_not_completed",
+  "output": "output/bottom_geometry_v5_complex_20261024",
+  "user_authorization": "可以，开始渲染，注意符合合成数据的数据格式和文件夹安排",
+  "expected_scenes": 768,
+  "expected_views": 2304,
+  "expected_split_counts": {
+    "train": 576,
+    "val": 144,
+    "sealed": 48
+  },
+  "format": "v3 record/RGB/truth payloads plus an environment directory level and explicit layout/lighting/visibility hashes",
+  "unit_tests_passed": 3,
+  "engineering_smoke": {
+    "passed": true,
+    "scenes": 2,
+    "views": 6,
+    "split_counts": {
+      "train": 2
+    },
+    "camera_z_pixel_center_contract": true,
+    "sha256_verified": true,
+    "sealed_model_calls": 0,
+    "engineering_smoke": true,
+    "utc": "2026-10-24T20:19:34.384169+00:00"
+  },
+  "engineering_rows": [
+    {
+      "motion_id": "climb",
+      "frame": 49,
+      "body_pixels": [
+        9287,
+        4452,
+        6237
+      ],
+      "projection_closure_max_px": 8.866072219859689e-05
+    },
+    {
+      "motion_id": "moseq",
+      "frame": 49,
+      "body_pixels": [
+        10688,
+        4077,
+        3396
+      ],
+      "projection_closure_max_px": 9.461495513995999e-05
+    }
+  ],
+  "design_sha256": "4e1f2f9bec12eee9878d2b01e9ab9a3eb8597984648bebf131bdf5950a353792",
+  "template_sha256": "8ef4d6b47e9d3322dc396a9f1f8b815afc722e1f5085474893b29fd22c852a15",
+  "source_sha256": {
+    "climb": "e9d2a718c17ba1d2b592df42a419e1316cba453bb9cdcdd163fae82d701883bc",
+    "moseq": "d99102c9de856eb076294396458f25034abce560501987dfa0394d900c4b21dc"
+  },
+  "code_pins": {
+    "tools/v5_render_contract_20261024.py": "ac49f03804672964f5cf89e18d4c850f5647be4ce6060a2fbe8edd849a52e1e0",
+    "tools/run_v5_complex_render_20261024.py": "767a47ca3abc029b43d2bc00dcc79aaf6ab1a77329f195e9a3f3c6d5aaa5adc7",
+    "BlenderScripts/render_v5_complex_20261024.py": "607f1ce5b0ae1f69c35685b2bd64630eaf3e9b6239487963014fba11a1487535",
+    "BlenderScripts/export_visible_surface_truth_20261007.py": "ad2fc61a071fa722973da2f1a77cd72d0bd58e146bb937ad3587e2054d6267a9",
+    "BlenderScripts/audit_visible_surface_geometry_20261007.py": "f3ef6b2a0cd2bd6997270839f51485784922d7332bbb17c162e063aa7f727693",
+    "BlenderScripts/build_v5_complex_background_review_20261024.py": "10d8b56e44029c82000b2992854490c0ce87c4887d0adfd388647b0120ac97f1"
+  },
+  "initial_preflight": {
+    "archived": "output/bottom_geometry_v5_complex_20261024_preflight_import_attempt01",
+    "formal_records_written": 0,
+    "cause": "Appended objects had stale identity world matrices before dependency-graph update",
+    "correction": "Update evaluated graph before applying layout transforms; compare reference layout matrices to approved project on each import"
+  },
+  "scope": "Local rendering and geometric/file QA only; no training, sealed inference, Slurm, or uploads",
+  "limitations": [
+    "Engineering smoke covers two motions at TRAIN rig00 frame49, not all768 scenes.",
+    "The background renderer and final CPU validator must complete before this dataset is ready."
+  ]
+}
