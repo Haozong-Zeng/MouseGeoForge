@@ -2,6 +2,8 @@
 
 日期：2026-10-24（America/Los_Angeles）。这是用户要求发布给远端的新路线；本次本机操作只更新源代码、证据与计划，没有提交 Slurm、启动训练或渲染。机器可读规格为 [head_first_progressive_encoder_20261024.json](../configs/experiments/head_first_progressive_encoder_20261024.json)，远端交接入口为 [执行清单](remote_head_first_handoff_20261024.md)。规格是 `design_only`，不是现有训练器可直接读取的运行配置。
 
+同日新增用户要求：[借鉴Depth Anything的独立鼠体分割支线](mouse_semseg_depth_anything_route_20261024.md)。分割与keypoints分别训练、存盘、评价，不以联合多任务或共享可写encoder作为首轮前提；二者均可在工作站新渲染到达前推进。
+
 本路线将真实 2D 关键点学习前置，不再要求先通过未知相机几何实验才能训练独立 2D head。旧几何 checkpoint 的失败结论、几何晋升门槛、封存划分保持有效；这些几何门槛不作为本次独立关键点支线的启动条件。已有 H100 文档中的“先完成 V5 / L0 / P0/P1，再开始所有关键点工作”顺序在这条支线上由本文替代。旧文中的几何 P0/P1 与本文的 F/U 对照是不同实验。
 
 ## 1. 决策依据与 V5 的位置

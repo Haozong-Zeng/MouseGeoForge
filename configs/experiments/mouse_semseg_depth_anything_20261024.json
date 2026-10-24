@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "status": "design_only",
+  "experiment_id": "mouse_semseg_depth_anything_20261024",
+  "execution_started": false,
+  "authority": "User requested an independent mouse segmentation task inspired by Depth Anything semantic segmentation, alongside keypoint work.",
+  "route_document": "docs/mouse_semseg_depth_anything_route_20261024.md",
+  "handoff_document": "docs/remote_head_first_handoff_20261024.md",
+  "independent_from_keypoints": true,
+  "shared_trainable_encoder": false,
+  "requires_new_rendering": false,
+  "task": {
+    "input": "full-image RGB; no GT box, keypoint prompt or calibration input",
+    "primary_side": 512,
+    "resize": "aspect-preserving letterbox with recorded affine and ROI",
+    "classes": {
+      "background": 0,
+      "visible_mouse": 1,
+      "ignore": 255
+    },
+    "mask_type": "visible foreground semantic segmentation; not amodal or instance identity",
+    "padding_label": 0,
+    "padding_supervised": true,
+    "crop_valid_roi_before_inverse_warp": true,
+    "prediction": "two-class semantic argmax",
+    "postprocess": "ROI inversion only for primary metrics; no DEV-selected component deletion"
+  },
+  "reference": {
+    "repository": "https://github.com/LiheYoung/Depth-Anything",
+    "commit": "1d03336771fe09c5398ffdd211441e33941a97dc",
+    "files": [
+      "semseg/README.md",
+      "semseg/dinov2.py",
+      "semseg/config/depth_anything/depth_anything_large_mask2former_16xb1_160k_ade20k_896x896.py"
+    ],
+    "semantic_path": "depth-pretrained ViT-L -> last four intermediate layers -> Feature2Pyramid -> Mask2Former",
+    "depth_path_not_semantic_head": "DPT",
+    "adaptation_scope": "primary uses VGGT image encoder weights; optional actual Depth Anything encoder evaluated separately"
+  },
+  "inputs": {
+    "encoder": "aggregator.patch_embed",
+    "release_checkpoint": "vggt-omega/vggt_omega_1b_512.pt",
+    "release_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "reference_s1_checkpoint": "output/vggt_mouse_segmentation_16h_20261020/S1/latest.pt",
+    "own_real_train": [
+      "AZL3",
+      "AZR2",
+      "CR2",
+      "EL2",
+      "EL2L2",
+      "ER3L2"
+    ],
+    "own_real_dev": [
+      "AZR2L2",
+      "FR2",
+      "FR3"
+    ],
+    "historical_counts": {
+      "train_real_bottom": 134,
+      "train_real_other": 755,
+      "train_synthetic_bottom": 579,
+      "train_synthetic_other": 4304,
+      "dev_real_bottom": 71,
+      "dev_real_other": 376,
+      "dev_synthetic_bottom": 72,
+      "dev_synthetic_other": 144
+    },
+    "real_supervision": "confirmed visible-mouse manual masks",
+    "synthetic_supervision": "admitted body primary-ray skin truth, excludes glass/hair; surrogate boundary policy explicitly recorded",
+    "pano_supervision": false,
+    "pano_diagnostic": "fixed S03/S11 qualitative/proxy evaluation only; SAM2/hull not independent mask GT",
+    "exclusions": [
+      "Pano S04/S05",
+      "8 sealed synthetic rigs",
+      "WaterReaching",
+      "DANNCE2",
+      "GR2",
+      "UR2",
+      "UR3",
+      "protected TEST",
+      "unreviewed new render masks",
+      "Pano SAM2/hull as supervised GT"
+    ],
+    "input_and_label_pins_required": true
+  },
+  "feature_extraction": {
+    "module": "aggregator.patch_embed",
+    "call": "get_intermediate_layers(x, n=[20,21,22,23], norm=True, reshape=True)",
+    "blocks": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "n_keyword_only": true,
+    "patch_size": 16,
+    "remove_cls_storage_tokens": true,
+    "normalize": "published VGGT image encoder normalization",
+    "cross_view_aggregator_used": false
+  },
+  "decoder": {
+    "family": "Mask2Former-inspired lightweight variant, not exact official large configuration",
+    "input_channels": [
+      1024,
+      1024,
+      1024,
+      1024
+    ],
+    "projected_channels": 256,
+    "pyramid_rescales": [
+      4,
+      2,
+      1,
+      0.5
+    ],
+    "pixel_decoder_layers": 3,
+    "transformer_decoder_layers": 3,
+    "attention_heads": 8,
+    "queries": 16,
+    "semantic_classes": 2,
+    "additional_no_object_class": true,
+    "new_rgb_skip": false,
+    "depth_input": false,
+    "loss_weights": {
+      "class_ce": 2,
+      "mask_sigmoid_bce": 5,
+      "dice": 5
+    },
+    "matching": "same pinned framework Hungarian matching definition in paired arms"
+  },
+  "arms": {
+    "SEG_R": {
+      "role": "historical corrected-ROI reference only",
+      "features": "last layer",
+      "head": "frozen historical S1 weights"
+    },
+    "SEG_L": {
+      "role": "matched decoder baseline",
+      "features": "block23 replicated four times",
+      "encoder_frozen": true
+    },
+    "SEG_M": {
+      "role": "multilayer candidate",
+      "features": "blocks20/21/22/23",
+      "encoder_frozen": true
+    }
+  },
+  "frozen_head_pair": {
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "seed17_first": true,
+    "decoder_initialization": "same seed, exact common head parameters",
+    "effective_batch": 8,
+    "sampler_strata": {
+      "real/bottom": 2,
+      "real/other": 2,
+      "synthetic/bottom": 2,
+      "synthetic/other": 2
+    },
+    "min_updates": 6000,
+    "max_updates": 18000,
+    "peak_head_lr": 0.0001,
+    "weight_decay": 0.01,
+    "zero_decay": [
+      "norm",
+      "bias"
+    ],
+    "warmup_updates": 500,
+    "cosine_total_updates": 18000,
+    "cosine_floor": 0.05,
+    "ema_decay": 0.995,
+    "grad_clip": 10,
+    "monitor_every_updates": 500,
+    "plateau": {
+      "support": "fixed TRAIN-only probes",
+      "checks": 5,
+      "relative_loss_improvement_lt": 0.01,
+      "iou_span_pp_le": 0.2,
+      "boundary_f1_span_pp_le": 0.2
+    },
+    "common_endpoint": "first common TRAIN check where both arms plateau after minimum, otherwise maximum; report nonconvergence",
+    "dev_eval_updates": [
+      6000,
+      12000,
+      18000
+    ],
+    "evaluate_common_endpoint": true,
+    "dev_selects_endpoint": false,
+    "primary_weights": "common endpoint EMA",
+    "report_raw": true,
+    "matched_schedule_and_exposure": true
+  },
+  "optional_encoder_pair": {
+    "enabled_after": "SEG-M head convergence; independent segmentation adaptation question",
+    "branches": [
+      "SEG_F",
+      "SEG_U"
+    ],
+    "same_parent": "SEG-M EMA head + released encoder",
+    "updates_per_branch": 6000,
+    "head_peak_lr": 0.00003,
+    "last_block_peak_lr": 0.000001,
+    "layer_decay": 0.65,
+    "layer_new_warmup": 200,
+    "cosine_floor": 0.1,
+    "phases": [
+      {
+        "first_update": 1,
+        "last_update": 2000,
+        "blocks": [
+          23
+        ]
+      },
+      {
+        "first_update": 2001,
+        "last_update": 4000,
+        "blocks": [
+          22,
+          23
+        ]
+      },
+      {
+        "first_update": 4001,
+        "last_update": 6000,
+        "blocks": [
+          20,
+          21,
+          22,
+          23
+        ]
+      }
+    ],
+    "norm_from_first_update": true,
+    "U_online_active_encoder_required": true,
+    "stale_final_feature_cache_for_U": false,
+    "default_geometry_and_keypoint_copies_unchanged": true,
+    "metrics": "segmentation criteria, not keypoint PCK"
+  },
+  "optional_actual_depth_anything": {
+    "arm": "SEG_DA",
+    "missing_weights_blocks_primary": false,
+    "pin_version_and_weights_required": true,
+    "common_comparison_side": 560,
+    "retrain_vggt_comparator_at_same_side": true,
+    "da_patch_size": 14,
+    "vggt_patch_size": 16,
+    "decoder_and_schedule_matched": true,
+    "interpretation": "encoder systems differ in architecture/patch/pretraining; not pure depth-pretraining causal attribution"
+  },
+  "metrics": {
+    "primary": [
+      "foreground IoU",
+      "Dice",
+      "native1px boundaryF1",
+      "long-edge512 boundaryF1 at1px and2px",
+      "empty/all-foreground fraction",
+      "raw padding foreground pixels"
+    ],
+    "breakdown": [
+      "real/synthetic",
+      "bottom/other",
+      "session/rig"
+    ],
+    "secondary": [
+      "tail/limb qualitative failures unless independent part labels exist",
+      "hull deviation",
+      "detached fragments",
+      "fixed Pano proxy diagnostics"
+    ],
+    "full_failure_denominator": true
+  },
+  "screening": {
+    "comparison": "SEG-M minus SEG-L; same segmentation criteria for optional SEG-U minus SEG-F",
+    "benefit_real_bottom_mean_boundary_f1_ref512_tol2_gain_pp_ge": 2,
+    "each_stratum_mean_iou_drop_pp_le": 0.5,
+    "each_stratum_mean_boundary_f1_drop_pp_le": 0.5,
+    "empty_fraction_le": 0.02,
+    "positive_seed_directions_ge": 2,
+    "required_paired_seeds": 3,
+    "retention_each_seed": true,
+    "no_dev_threshold_or_component_rule_tuning": true,
+    "no_sealed_scoring": true
+  },
+  "engineering": {
+    "required_checks": [
+      "four-layer shape/API/normalization agreement",
+      "last-only replication is exact",
+      "forward/backward on active path",
+      "frozen parameter byte identity",
+      "letterbox and original-coordinate mask round-trip",
+      "padding as supervised background and ROI clipping",
+      "missing-label ignore semantics",
+      "class/no-object/matching/semantic-output conventions",
+      "cache pins",
+      "full optimizer/EMA/RNG/sampler/stage checkpoint resume",
+      "per-image metric denominators"
+    ],
+    "discard_preflight_updates": true
+  },
+  "deliverables": [
+    "independent source/config/input receipt",
+    "four-feature shape receipt",
+    "corrected SEG-R reference",
+    "SEG-L/M fixed endpoints",
+    "per-image raw/EMA masks and metrics",
+    "boundary/tail/paw panels",
+    "failure/exposure/compute receipts",
+    "three-seed paired summary",
+    "optional actual-DA missing-input or comparison receipt"
+  ]
+}

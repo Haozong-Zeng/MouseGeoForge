@@ -2,6 +2,8 @@
 
 先读 [完整路线](head_first_progressive_encoder_route_20261024.md)、[机器可读规格](../configs/experiments/head_first_progressive_encoder_20261024.json) 和 [PanoMouse历史证据](experiments/panomouse_head_first_evidence_20261024.json)。本页替代旧交接中“所有关键点工作必须等待V5几何成功”的顺序；不变更旧几何checkpoint失败、TEST/sealed和数据隔离规则。
 
+**新增并列任务：鼠体语义分割。** 用户要求参考Depth Anything的语义分割思路，可与keypoints分开。按[独立分割路线](mouse_semseg_depth_anything_route_20261024.md)和[分割设计规格](../configs/experiments/mouse_semseg_depth_anything_20261024.json)推进：VGGT图像encoder最后四层特征 + 特征金字塔 + 轻量Mask2Former，分割全图可见老鼠；用同head的单层特征对照，head先训练收敛，再做可选的独立渐进解冻配对。两任务不共享可写encoder/优化器，不要求彼此先完成。Pano现有SAM2/外壳mask是proxy，不作为人工分割GT。实际Depth Anything encoder可单列权重对照，缺其权重不阻塞主线。
+
 ## 给远端执行代理的任务
 
 本地新渲染不应阻塞本路线。基于现有已审核PyMouseStudio/PanoMouse静态关键点训练图，先实现并充分训练B类五点heatmap head。训练收敛后，从同一H0 EMA终点做两条各6,000更新的matched continuation：F只继续训练head；U从DINO图像编码器末端逐步解冻1→2→4个block，head LR3e-5、末层1e-6、每向前一层乘0.65，其他层冻结。严格按完整文档的收敛判据、固定日程、seed和停止门槛执行。不要直接执行历史脚本当作新协议。

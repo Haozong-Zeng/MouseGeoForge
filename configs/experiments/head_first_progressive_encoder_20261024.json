@@ -290,5 +290,14 @@
     "configuration": "scripts/configs/config_default.yaml:58",
     "adopted": "head-first, delayed backbone activation and warmup",
     "project_extensions": "TRAIN-plateau head convergence, last1/2/4-block thaw, layerwise low LR and no alignment to head"
-  }
+  },
+  "independent_side_tasks": [
+    {
+      "task": "visible_mouse_semantic_segmentation",
+      "design": "configs/experiments/mouse_semseg_depth_anything_20261024.json",
+      "route": "docs/mouse_semseg_depth_anything_route_20261024.md",
+      "train_separately": true,
+      "requires_keypoint_completion": false
+    }
+  ]
 }
