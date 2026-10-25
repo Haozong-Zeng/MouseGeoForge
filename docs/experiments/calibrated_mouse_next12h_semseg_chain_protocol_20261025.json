@@ -1,0 +1,40 @@
+{
+  "registered_utc": "2026-10-25T21:00:43.648222+00:00",
+  "purpose": "Fixed-depth mask replacement chain: historical originalM anchor vs prospectively final newFULL/newROI semseg v2, not depth recrop or retraining",
+  "source_sha256": {
+    "tools/evaluate_calibrated_mouse_semseg_chain_20261025.py": "373b9f474d19d8ae1a5805c80f69288f8f8181ba37e548b13a330eb573e7cfc9",
+    "tools/report_calibrated_mouse_semseg_chain_20261025.py": "f0949fc1cc22c4b1df98b1924ebf1a68d2b9e55b3328a8f522d9642858b5c71f",
+    "tests/test_semseg_chain_20261025.py": "0feec98f7436699ac19b0c04cf2ce3a3d8242d74845b44cb536407cfce022a37",
+    "tools/evaluate_calibrated_mouse_spatial_pipeline_20261025.py": "42296137eb00e7b161bc1035b1da466af3100602f02a7d31bb05e30585dd3305",
+    "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+    "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+    "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+    "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "tools/audit_calibrated_mouse_surface_20261025.py": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+    "tools/audit_calibrated_mouse_crossview_20261025.py": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f"
+  },
+  "depth_checkpoint": "output/calibrated_mouse_resume8h_20261025/roi_depth_s17_roi_6000_v1/step_006000.pt",
+  "depth_checkpoint_sha256": "fb82c50f0ddbd7b80f86ca1274dfbfe41d1dbbd07a14ec9444fb7cc4fdaecdd2",
+  "depth": "Fixed seed17 ROI gradient0,6000EMA; originalM-frozen720featurecache/knownKE/originalTRAINAABB; no model/feature change",
+  "mask_arms": {
+    "anchor": "OriginalM18000EMA original legacy native mask operator unchanged",
+    "full": "new semsegROI v2 FULL6000 EMA nativeFP32probability>.5",
+    "roi": "new semsegROI v2 ROI6000 EMA nativeFP32probability>.5 zerooutsidecrop"
+  },
+  "eligibility": "NewFULL/ROI require campaign6000both/actualLR-exposure verified comparable report/nativeaudit879/checkpointandmask-probabilitySHA. No earlier checkpoint/threshold selection.",
+  "engineering_gate": "Firstfixed DEVscene0 all3views originalMmask replay vs storedanchor: supportequal/depthmaximumabs<=1e-4mm existingCUDAforwardidentitytolerance; no optimization. Blocks newmask chain iffails.",
+  "common_depth_replay": "Allcommonpositivepixels newmask/oldanchor mustagree<=1e-4mm; failurepreserved. New-onlyrays inferred, noGTinput; missedGT never removed.",
+  "baseline_replay": "CPU original144scene storedpredictions/cloudP/R recalculation; originalF1@1/2/5 exactlyreplayedtol1e-12, float32storednativeK/E retained",
+  "unit_tests_passed": 5,
+  "evaluation": "144syntheticDEVscenes432nativeviews eachnewarm, originalGTdenominators inclmissing/empty; P/R/F1@1/2/5 coverage overlap-onlyRMSE and missing-zero sentinel separate; surfaces/crossview separately",
+  "optimization": false,
+  "limitations": [
+    "Onlyonefixedseed17depth; newsegmentationoneexploratoryseed17 onreusedDEV/sixcorrelatedposes, no significance/modelpromotion/generalizationclaim",
+    "DepthROIfeaturecrop remainsoldoriginalMteacher, NOTrecroppedusingnewmasks; thisisolatesmaskreplacement notend-to-endnewROIreconstruction",
+    "OriginalMlegacyinverse vsnewFP32bilinear inverse differ; oldanchorcontext notpuretraining-onlycontrol; newFULLvsROI bothsharecorrectedinverse",
+    "Depthcomparison conditionaloncoveredpixels; coverage/P_R/originalfullGTdenominators separatelyreported; missing-zero is sentinelpenalty not physicalvalidpointRMSE",
+    "No independentreal-mm/surfaceGT, hardware-sync/unseenrealpose/completewatertightbody/instancecount claim",
+    "NoGTscale/gaugefitting, confidencefilter, newdataadmission, newtraining or encoderunfreezing"
+  ]
+}

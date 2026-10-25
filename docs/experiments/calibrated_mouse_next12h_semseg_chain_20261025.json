@@ -1,0 +1,55 @@
+{
+  "utc": "2026-10-25T21:01:32.669858+00:00",
+  "registration_sha256": "5070acd959fa3085dbd308c775cfb1fd546505c2ad30cddefc5b088dbd1fcd06",
+  "all_three_complete": false,
+  "paired_full_roi_complete": false,
+  "arms": {
+    "anchor": {
+      "status": "complete",
+      "summary": {
+        "mask_iou": 0.8331986052218405,
+        "gt_depth_coverage": 0.9142678574221713,
+        "overlap_nonempty_views": 432,
+        "overlap_mean_view_rmse_mm": 4.485798003496947,
+        "missing_zero_sentinel_rmse_mm": 73.42679982273667,
+        "precision": {
+          "1": 0.4842236866305656,
+          "2": 0.7746657169953531,
+          "5": 0.9464499479448638
+        },
+        "recall": {
+          "1": 0.5446675359210675,
+          "2": 0.8342656020554711,
+          "5": 0.9794358241662966
+        },
+        "fscore": {
+          "1": 0.5102891886470657,
+          "2": 0.7989881379429398,
+          "5": 0.9573070968264425
+        }
+      },
+      "evaluation_sha256": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb",
+      "extra_metrics_sha256": "ec0903ed99beddb9066983251d2b69e682ca9321b87242a8dfa7fd21e3744d56",
+      "surface": null,
+      "crossview": null
+    },
+    "full": {
+      "status": "missing_or_partial",
+      "surface": null,
+      "crossview": null
+    },
+    "roi": {
+      "status": "missing_or_partial",
+      "surface": null,
+      "crossview": null
+    }
+  },
+  "limitations": [
+    "Onlyonefixedseed17depth; newsegmentationoneexploratoryseed17 onreusedDEV/sixcorrelatedposes, no significance/modelpromotion/generalizationclaim",
+    "DepthROIfeaturecrop remainsoldoriginalMteacher, NOTrecroppedusingnewmasks; thisisolatesmaskreplacement notend-to-endnewROIreconstruction",
+    "OriginalMlegacyinverse vsnewFP32bilinear inverse differ; oldanchorcontext notpuretraining-onlycontrol; newFULLvsROI bothsharecorrectedinverse",
+    "Depthcomparison conditionaloncoveredpixels; coverage/P_R/originalfullGTdenominators separatelyreported; missing-zero is sentinelpenalty not physicalvalidpointRMSE",
+    "No independentreal-mm/surfaceGT, hardware-sync/unseenrealpose/completewatertightbody/instancecount claim",
+    "NoGTscale/gaugefitting, confidencefilter, newdataadmission, newtraining or encoderunfreezing"
+  ]
+}

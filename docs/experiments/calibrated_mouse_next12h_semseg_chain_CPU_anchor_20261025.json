@@ -1,0 +1,51 @@
+{
+  "execution": {
+    "utc": "2026-10-25T21:01:31.410721+00:00",
+    "registration_sha256": "5070acd959fa3085dbd308c775cfb1fd546505c2ad30cddefc5b088dbd1fcd06",
+    "manual_CPU_anchor_metrics": {
+      "command": "tools/report_calibrated_mouse_semseg_chain_20261025.py --anchor-only",
+      "returncode": 0,
+      "receipt_sha256": "ec0903ed99beddb9066983251d2b69e682ca9321b87242a8dfa7fd21e3744d56"
+    },
+    "queued_jobs": [
+      "semseg_chain_anchor_GPU_smoke_v1",
+      "semseg_chain_full_v1",
+      "semseg_chain_roi_v1",
+      "semseg_chain_surface_v1",
+      "semseg_chain_crossview_v1",
+      "semseg_chain_report_v1"
+    ],
+    "queue_length": 47,
+    "GPU_smoke_pending": true,
+    "no_optimization": true
+  },
+  "anchor": {
+    "status": "complete",
+    "summary": {
+      "mask_iou": 0.8331986052218405,
+      "gt_depth_coverage": 0.9142678574221713,
+      "overlap_nonempty_views": 432,
+      "overlap_mean_view_rmse_mm": 4.485798003496947,
+      "missing_zero_sentinel_rmse_mm": 73.42679982273667,
+      "precision": {
+        "1": 0.4842236866305656,
+        "2": 0.7746657169953531,
+        "5": 0.9464499479448638
+      },
+      "recall": {
+        "1": 0.5446675359210675,
+        "2": 0.8342656020554711,
+        "5": 0.9794358241662966
+      },
+      "fscore": {
+        "1": 0.5102891886470657,
+        "2": 0.7989881379429398,
+        "5": 0.9573070968264425
+      }
+    },
+    "evaluation_sha256": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb",
+    "extra_metrics_sha256": "ec0903ed99beddb9066983251d2b69e682ca9321b87242a8dfa7fd21e3744d56",
+    "surface": null,
+    "crossview": null
+  }
+}
