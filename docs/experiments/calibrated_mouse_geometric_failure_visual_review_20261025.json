@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-25T14:51:38.258645+00:00",
+  "visually_inspected": true,
+  "image": "surface_worst_cases_v1.png",
+  "image_sha256": "eb9b99a9fc9739889abc75e0e2af35b76f3ab9b9626af18690a1c1416a685f8d",
+  "selection": "fixedseed17,worstROIlocalgradient persource/bottom-vs-side,diagnostic only",
+  "cases": [
+    {
+      "index": 54,
+      "view": 0,
+      "source": "climb"
+    },
+    {
+      "index": 44,
+      "view": 2,
+      "source": "climb"
+    },
+    {
+      "index": 404,
+      "view": 0,
+      "source": "moseq"
+    },
+    {
+      "index": 416,
+      "view": 2,
+      "source": "moseq"
+    }
+  ],
+  "observations": [
+    "Targets occupy small image regions in all four selected cases",
+    "Magenta errors reveal thin tails and limbs missed by fixed semantic mask",
+    "Climb scene44view2 FULL depth grossly biased, ROI body depth improves but tail and edge errors remain",
+    "MoSeq examples retain coarse body/tail depth and local stripe errors; aggregate accuracy is insufficient for detailed skin reconstruction"
+  ],
+  "no_model_or_threshold_selection": true
+}

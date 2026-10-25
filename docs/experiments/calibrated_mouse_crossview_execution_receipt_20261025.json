@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-25T14:55:24.638772+00:00",
+  "passed": true,
+  "tests": 6,
+  "actual_smoke_scenes": 2,
+  "full_scenes_per_pipeline": 144,
+  "full_directed_pairs_per_pipeline": 864,
+  "full_pipeline_count": 6,
+  "GT_covisible_rays_per_pipeline": 510392,
+  "GT_candidate_directed_rays_per_pipeline": 3691534,
+  "GT_visibility_closure_mean_mm": 0.1466077994668559,
+  "source_sha256": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+  "registration_sha256": "0b16b37c0aa3fca06d1306b71eff2cf5f924fcbf0a75e5816a367587c47686da",
+  "audit_sha256": "ce96c9f5482013e2ccb93767d87dd5fbeccfd8561298ec1a004071438200b184",
+  "aggregation_notes": {
+    "crossview": "pixel-weighted covered directed GT-covisible rays, with full eligible count and prediction coverage reported",
+    "surface_global": "pixel-weighted eligible adjacent pairs and normals",
+    "foreground_area_strata": "mean of per-view metrics; descriptive GTarea groups, not inference crops",
+    "depth_RMSE": "mean of per-view RMSE, overlap vs missing-as-zero separate",
+    "cloud_F1": "mean across144scenes"
+  },
+  "CPU_only": true,
+  "no_changes_to_active_training": true,
+  "consistency_not_accuracy_certificate": true
+}

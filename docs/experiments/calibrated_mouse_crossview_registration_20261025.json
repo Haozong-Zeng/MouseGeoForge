@@ -1,0 +1,31 @@
+{
+  "registered_utc": "2026-10-25T14:47:51.782830+00:00",
+  "source_sha256": {
+    "tools/audit_calibrated_mouse_crossview_20261025.py": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+    "tests/test_calibrated_mouse_crossview_20261025.py": "9a8675753e16f9de7de6b3640f77bcf62ce33b9c1a3a43a8726695c871404c84"
+  },
+  "manifest_sha256": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+  "pipeline_evaluation_sha256": {
+    "roi_pipeline_s17_full_v1": "aaecc494f183a092071ae1e2980dda0cd00151ce859c95fae93075d782159157",
+    "roi_pipeline_s17_roi_v1": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb",
+    "roi_pipeline_s29_full_v1": "4e904c9150da2ee514f2f8153f4f31a8912e1fc4a6a1c907523070e5f42f37ab",
+    "roi_pipeline_s29_roi_v1": "26925070bc5f67b295723f7f80c5ae0796b6b2ddb382b516e0c4852bffa207bf",
+    "roi_pipeline_s43_full_v1": "6bcb6a6db50c9630930e537e3a674f6e932f73545317aa44a0b00e4ce0a89f53",
+    "roi_pipeline_s43_roi_v1": "601d428d847ea9766aee1fddf45cc667945218dc557815818c474697117e02e0"
+  },
+  "GT_covisibility_tolerance_mm": 1,
+  "support": "all native reference GTbody pixels, sourceGT4cornerbilinear support, cameraZ closure<=1mm",
+  "prediction_measurement": "project predicted reference into source then bilinear compare predicted sourceZ, all4predictedsourcecorners validmask+positivefinite",
+  "denominators": "GTcovisible regardless of prediction misses, six directed pairs per scene,144scenes",
+  "K_E": "original native, fixed, savedfloat32 tolerance1e-4",
+  "consistency_cutoffs_mm": [
+    1,
+    2,
+    5
+  ],
+  "no_GTscale_fitting": true,
+  "not_an_accuracy_certificate": "shared wrong plane passes consistency; numerical test demonstrates this",
+  "tests_passed": 6,
+  "device": "CPU only, timeout600, parallel with GPU head",
+  "selection": "diagnostic only, no threshold/model/checkpoint tuning"
+}
