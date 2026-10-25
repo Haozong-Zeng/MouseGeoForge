@@ -1,9 +1,9 @@
 {
-  "utc": "2026-10-25T22:25:36.320034+00:00",
+  "utc": "2026-10-25T22:33:48.215920+00:00",
   "registration_sha256": "2f4968dbee804eb0f5f9ef69cc839701f47ce4c0b38186112f5a6fe4de8c3eb9",
   "arms": {
     "17/1": {
-      "status": "complete_depth_and_chain",
+      "status": "complete_with_surface_crossview",
       "summary": {
         "oracle_mean_view_rmse_mm": 4.594327023183858,
         "chain_overlap_mean_view_rmse_mm": 4.338368077520971,
@@ -24,8 +24,44 @@
           "2": 0.8495787490354072,
           "5": 0.9808828754637441
         },
-        "surface": null,
-        "crossview": null
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1828905.662902832,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 8905,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 60301583.36218216,
+          "normal_missing180_sum_deg": 81939563.36218216,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.55457985995085,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 37.68921982999806,
+          "normal_angle_mean_deg_missing180": 47.6342960400552,
+          "false_step_fraction_on_covered_smooth": 0.002932827545458827
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 392851,
+          "absolute_error_sum_mm": 1244324.9290761803,
+          "squared_error_sum_mm2": 11630541.112936215,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 117362,
+          "consistent_le2mm_pixels": 206486,
+          "consistent_le5mm_pixels": 323628,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7697044624523895,
+          "mean_absolute_consistency_mm_on_covered": 3.1674220737027023,
+          "rmse_consistency_mm_on_covered": 5.44109149564848,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22994482672142197,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.4045635511528394,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6340773366353705
+        }
       },
       "checkpoint_sha256": "8643e3250c8bc90a1f0223c7ffd0cc255cd73c53077b1c1d95af3fbfcbaff61d",
       "oracle_sha256": "eaac9b128407a2d4aae343fe86412d63b99cfa70608d45d9dc08612586205249",
@@ -35,7 +71,7 @@
       "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     },
     "17/3": {
-      "status": "complete_depth_and_chain",
+      "status": "complete_with_surface_crossview",
       "summary": {
         "oracle_mean_view_rmse_mm": 4.414806956494296,
         "chain_overlap_mean_view_rmse_mm": 4.215091124452926,
@@ -56,8 +92,44 @@
           "2": 0.849396671817907,
           "5": 0.9810343781637777
         },
-        "surface": null,
-        "crossview": null
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1739738.3868484497,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 8411,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 56878317.65100098,
+          "normal_missing180_sum_deg": 78516297.65100098,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.5275416280346391,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 35.54963730609842,
+          "normal_angle_mean_deg_missing180": 45.64423354009521,
+          "false_step_fraction_on_covered_smooth": 0.0027701305429370235
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 391084,
+          "absolute_error_sum_mm": 1284162.8814202016,
+          "squared_error_sum_mm2": 13084013.152017955,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 114038,
+          "consistent_le2mm_pixels": 201923,
+          "consistent_le5mm_pixels": 321971,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7662424175927522,
+          "mean_absolute_consistency_mm_on_covered": 3.283598616717129,
+          "rmse_consistency_mm_on_covered": 5.784095591430677,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.2234321854574523,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.3956233640025706,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6308308123951786
+        }
       },
       "checkpoint_sha256": "1546e8d9f45f7d4accb3f019d4bdb1daffe613d91c7a2e331a942d1c4cf96810",
       "oracle_sha256": "d1a462fc7b26fb99bfa821933d25daa0c30c087bf9a95ab4de30f37f655d5405",
@@ -67,44 +139,345 @@
       "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     },
     "29/1": {
-      "status": "missing_or_partial",
-      "missing": [
-        "spatial_depth_s29_k1_6000_v2/completion.json",
-        "spatial_depth_s29_k1_6000_v2/step_006000.pt",
-        "spatial_depth_s29_k1_6000_v2_dev/evaluation.json",
-        "spatial_pipeline_s29_k1_v2/evaluation.json"
-      ]
+      "status": "complete_with_surface_crossview",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.879090393858927,
+        "chain_overlap_mean_view_rmse_mm": 4.604562624461121,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.5308319168135796,
+          "2": 0.8134903005912589,
+          "5": 0.9587392747112872
+        },
+        "precision": {
+          "1": 0.5036869002274487,
+          "2": 0.7909131670364351,
+          "5": 0.9485038598351088
+        },
+        "recall": {
+          "1": 0.5665697512705276,
+          "2": 0.8473360820600369,
+          "5": 0.9811293293072924
+        },
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1838296.1574020386,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 9583,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 59903452.35873343,
+          "normal_missing180_sum_deg": 81541432.35873343,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.5574273436838127,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 37.44038313163157,
+          "normal_angle_mean_deg_missing180": 47.402848747650495,
+          "false_step_fraction_on_covered_smooth": 0.003156124241227618
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 390901,
+          "absolute_error_sum_mm": 1306775.4198126623,
+          "squared_error_sum_mm2": 16472754.210986607,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 116666,
+          "consistent_le2mm_pixels": 204360,
+          "consistent_le5mm_pixels": 321079,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7658838696531294,
+          "mean_absolute_consistency_mm_on_covered": 3.342983056611936,
+          "rmse_consistency_mm_on_covered": 6.491569610302221,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22858116898383987,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.4003981253624665,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6290831360993119
+        }
+      },
+      "checkpoint_sha256": "42bb52d2b9bf46a05bc6d8e9f65f391bb44d0024f08102ba119186259897cc61",
+      "oracle_sha256": "a2ab1b51a4e7e2a5882883ab0f254768ed815bc1fc195979680f204ab9e5193b",
+      "chain_sha256": "1c265ab5919aab8c49d1fc7b790550a3bae64521f4f71bf1b454d29e3262a994",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "76120403c4ea526528ea2fe5254f62702c9b7fd9a7fd3754f24f001f0ba12892",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     },
     "29/3": {
-      "status": "missing_or_partial",
-      "missing": [
-        "spatial_depth_s29_k3_6000_v2/completion.json",
-        "spatial_depth_s29_k3_6000_v2/step_006000.pt",
-        "spatial_depth_s29_k3_6000_v2_dev/evaluation.json",
-        "spatial_pipeline_s29_k3_v2/evaluation.json"
-      ]
+      "status": "complete_with_surface_crossview",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.4684198763635425,
+        "chain_overlap_mean_view_rmse_mm": 4.263297871858986,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.5377269510675569,
+          "2": 0.8183896199045723,
+          "5": 0.961157084449441
+        },
+        "precision": {
+          "1": 0.5136193017654888,
+          "2": 0.7992214515310323,
+          "5": 0.9528806632331511
+        },
+        "recall": {
+          "1": 0.5686948291011039,
+          "2": 0.8477046932289514,
+          "5": 0.9807647566280066
+        },
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1731220.7480697632,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 6913,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 57097410.406620815,
+          "normal_missing180_sum_deg": 78735390.40662082,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.5249588207216045,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 35.686572931488556,
+          "normal_angle_mean_deg_missing180": 45.77159972015767,
+          "false_step_fraction_on_covered_smooth": 0.0022767699968283964
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 393133,
+          "absolute_error_sum_mm": 1262927.7213304276,
+          "squared_error_sum_mm2": 12385710.223075962,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 114829,
+          "consistent_le2mm_pixels": 202791,
+          "consistent_le5mm_pixels": 324139,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7702569789495133,
+          "mean_absolute_consistency_mm_on_covered": 3.2124693712571255,
+          "rmse_consistency_mm_on_covered": 5.612943973485707,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22498197463910094,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.397324017617831,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6350785278766125
+        }
+      },
+      "checkpoint_sha256": "6c104c77c09ccde1d62ae506ffe697311a03d0a78adbb93bb1eea4d878943696",
+      "oracle_sha256": "b8b4905053d1a6d1bf0848021f6ef2a9cfdfdb0a86ff7815fc7db2da5c22087b",
+      "chain_sha256": "c5c5f006284ddfcf15e7d965f9db6e2d5ebacb84fbdf8bd2048b65dc8b44fcb6",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "76120403c4ea526528ea2fe5254f62702c9b7fd9a7fd3754f24f001f0ba12892",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     },
     "43/1": {
-      "status": "missing_or_partial",
-      "missing": [
-        "spatial_depth_s43_k1_6000_v2/completion.json",
-        "spatial_depth_s43_k1_6000_v2/step_006000.pt",
-        "spatial_depth_s43_k1_6000_v2_dev/evaluation.json",
-        "spatial_pipeline_s43_k1_v2/evaluation.json"
-      ]
+      "status": "complete_with_surface_crossview",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.571721752208692,
+        "chain_overlap_mean_view_rmse_mm": 4.295924583242999,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.5267981568462644,
+          "2": 0.8112131912254811,
+          "5": 0.9594940868023214
+        },
+        "precision": {
+          "1": 0.49992628360742114,
+          "2": 0.787751196916877,
+          "5": 0.9484039752773175
+        },
+        "recall": {
+          "1": 0.5624210597547239,
+          "2": 0.8461820195909829,
+          "5": 0.9813627911340284
+        },
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1826053.1814422607,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 9010,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 60006790.21265941,
+          "normal_missing180_sum_deg": 81644770.2126594,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.5537149007563964,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 37.504970541716375,
+          "normal_angle_mean_deg_missing180": 47.46292260848249,
+          "false_step_fraction_on_covered_smooth": 0.002967408892148684
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 393323,
+          "absolute_error_sum_mm": 1258044.1002379148,
+          "squared_error_sum_mm2": 11754549.374553693,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 116141,
+          "consistent_le2mm_pixels": 204812,
+          "consistent_le5mm_pixels": 324800,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7706292418376464,
+          "mean_absolute_consistency_mm_on_covered": 3.1985012324169064,
+          "rmse_consistency_mm_on_covered": 5.466738761176016,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22755254784557752,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.40128371918055145,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6363736108716438
+        }
+      },
+      "checkpoint_sha256": "a54558a1e38842fee4d346ed9aaa7eaa9a8bcb2e099848aab05b058348ee6158",
+      "oracle_sha256": "f31a72c8a8af1aa11558f1ed83d598120b61f20f3c72fb3e8769c48f17fac026",
+      "chain_sha256": "89d99eb106b3db7e0264466450c479ce32194cf8a2383a0ab51663ce4ff6523c",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "2a956d8c3e11e68e6732a0d4aa9dfe6e817186c2c9847bb8f3e862d23f42f7ea",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     },
     "43/3": {
-      "status": "missing_or_partial",
-      "missing": [
-        "spatial_depth_s43_k3_6000_v2/completion.json",
-        "spatial_depth_s43_k3_6000_v2/step_006000.pt",
-        "spatial_depth_s43_k3_6000_v2_dev/evaluation.json",
-        "spatial_pipeline_s43_k3_v2/evaluation.json"
-      ]
+      "status": "complete_with_surface_crossview",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.584575018397084,
+        "chain_overlap_mean_view_rmse_mm": 4.313039314139773,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.5243801277549166,
+          "2": 0.807012946568189,
+          "5": 0.9595588958347633
+        },
+        "precision": {
+          "1": 0.4996910253703937,
+          "2": 0.7865835294716723,
+          "5": 0.9495032244667515
+        },
+        "recall": {
+          "1": 0.5567257515641919,
+          "2": 0.8384640579123919,
+          "5": 0.980847894048559
+        },
+        "surface": {
+          "gt_eligible_adjacent_pairs": 3545389,
+          "covered_adjacent_pairs": 3297822,
+          "gradient_absolute_error_sum_mm": 1747190.3481903076,
+          "gt_smooth_pairs": 3227177,
+          "covered_gt_smooth_pairs": 3036319,
+          "false_steps_gt_le1_pred_gt5_mm": 7272,
+          "gt_eligible_normals": 1720180,
+          "covered_normals": 1599969,
+          "normal_angle_sum_deg": 57984675.92174342,
+          "normal_missing180_sum_deg": 79622655.92174342,
+          "views": 432,
+          "adjacent_pair_coverage": 0.9301721193358472,
+          "gradient_mae_mm_on_covered_pairs": 0.5298012895148093,
+          "normal_coverage": 0.9301171970375194,
+          "normal_angle_mean_deg_on_covered": 36.241124622879205,
+          "normal_angle_mean_deg_missing180": 46.28739778496635,
+          "false_step_fraction_on_covered_smooth": 0.0023950052678918124
+        },
+        "crossview": {
+          "candidate_GT_reference_pixels": 3691534,
+          "GT_covisible_pixels": 510392,
+          "covered_predictions": 391205,
+          "absolute_error_sum_mm": 1287166.7388163337,
+          "squared_error_sum_mm2": 11959450.354903346,
+          "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+          "consistent_le1mm_pixels": 110962,
+          "consistent_le2mm_pixels": 198378,
+          "consistent_le5mm_pixels": 319955,
+          "directed_view_pairs": 864,
+          "prediction_coverage": 0.7664794902741422,
+          "mean_absolute_consistency_mm_on_covered": 3.290261471137469,
+          "rmse_consistency_mm_on_covered": 5.529086848898251,
+          "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.2174054452264142,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.38867772222135144,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6268809072242512
+        }
+      },
+      "checkpoint_sha256": "19648b7737008c93d4bca880301d1e725fa9ee64b250405a7fdeb89768d6bf81",
+      "oracle_sha256": "913c9c80a173b3970fef1d28c4f71551e4c38fc7caa091b4f2dfba6414608ccf",
+      "chain_sha256": "8508877f7e06687838bf8ca695ef691c408ca2d00a083c935da9d90d18de2f42",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "2a956d8c3e11e68e6732a0d4aa9dfe6e817186c2c9847bb8f3e862d23f42f7ea",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
     }
   },
-  "all_three_pairs_comparable": false,
-  "equal_seed_mean": null,
+  "all_three_pairs_comparable": true,
+  "equal_seed_mean": {
+    "1": {
+      "oracle_mean_view_rmse_mm": 4.681713056417159,
+      "chain_overlap_mean_view_rmse_mm": 4.412951761741698,
+      "gt_depth_coverage": 0.9142678574221713,
+      "fscore": {
+        "1": 0.5302420647359184,
+        "2": 0.8134512561473536,
+        "5": 0.9590408703863407
+      },
+      "precision": {
+        "1": 0.5032715955751051,
+        "2": 0.7905670032340141,
+        "5": 0.9483239371406912
+      },
+      "recall": {
+        "1": 0.5659026754739176,
+        "2": 0.8476989502288089,
+        "5": 0.9811249986350216
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5552407014636863,
+        "false_step_fraction_on_covered_smooth": 0.003018786892945043,
+        "normal_angle_mean_deg_on_covered": 37.54485783444867,
+        "adjacent_pair_coverage": 0.9301721193358472,
+        "normal_coverage": 0.9301171970375194
+      },
+      "crossview": {
+        "mean_absolute_consistency_mm_on_covered": 3.2363021209105143,
+        "rmse_consistency_mm_on_covered": 5.799799955708906,
+        "prediction_coverage": 0.7687391913143884
+      }
+    },
+    "3": {
+      "oracle_mean_view_rmse_mm": 4.489267283751641,
+      "chain_overlap_mean_view_rmse_mm": 4.263809436817229,
+      "gt_depth_coverage": 0.9142678574221713,
+      "fscore": {
+        "1": 0.5340515147401491,
+        "2": 0.8147882136015574,
+        "5": 0.9601848063014001
+      },
+      "precision": {
+        "1": 0.5094584161196541,
+        "2": 0.7949882409608549,
+        "5": 0.9508749943826387
+      },
+      "recall": {
+        "1": 0.5661250967469428,
+        "2": 0.8451884743197501,
+        "5": 0.9808823429467811
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5274339127570177,
+        "false_step_fraction_on_covered_smooth": 0.0024806352692190773,
+        "normal_angle_mean_deg_on_covered": 35.825778286822064,
+        "adjacent_pair_coverage": 0.9301721193358472,
+        "normal_coverage": 0.9301171970375194
+      },
+      "crossview": {
+        "mean_absolute_consistency_mm_on_covered": 3.2621098197039076,
+        "rmse_consistency_mm_on_covered": 5.642042137938212,
+        "prediction_coverage": 0.7676596289388026
+      }
+    }
+  },
   "limits": [
     "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
     "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
@@ -116,5 +489,9 @@
     "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels",
     "V2fixfreezesoneunidentifiablecommonbias scalar inBOTHarms; v1hadNOformal6000results. Independentfull4repeatalsofailedonlythatbias; doNOTclaim specificallyaresumebug orallGPUkernelnondeterminismrootcause. AdamcountercomparisonmovedtoCPUvalueforcrossdeviceequality; countersremainexact."
   ],
-  "comparable_complete_seeds": []
+  "comparable_complete_seeds": [
+    17,
+    29,
+    43
+  ]
 }

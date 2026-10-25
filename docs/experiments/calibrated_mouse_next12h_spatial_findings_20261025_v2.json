@@ -1,0 +1,85 @@
+{
+  "utc": "2026-10-25T22:34:39.362439+00:00",
+  "report_sha256": "6f5d417e66f5cacccb48367d2e9ff4f49bc5ff2df57c9af8f59b58cdfe80a9bb",
+  "all_three_pairs_comparable": true,
+  "means": {
+    "1": {
+      "oracle_mean_view_rmse_mm": 4.681713056417159,
+      "chain_overlap_mean_view_rmse_mm": 4.412951761741698,
+      "gt_depth_coverage": 0.9142678574221713,
+      "fscore": {
+        "1": 0.5302420647359184,
+        "2": 0.8134512561473536,
+        "5": 0.9590408703863407
+      },
+      "precision": {
+        "1": 0.5032715955751051,
+        "2": 0.7905670032340141,
+        "5": 0.9483239371406912
+      },
+      "recall": {
+        "1": 0.5659026754739176,
+        "2": 0.8476989502288089,
+        "5": 0.9811249986350216
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5552407014636863,
+        "false_step_fraction_on_covered_smooth": 0.003018786892945043,
+        "normal_angle_mean_deg_on_covered": 37.54485783444867,
+        "adjacent_pair_coverage": 0.9301721193358472,
+        "normal_coverage": 0.9301171970375194
+      },
+      "crossview": {
+        "mean_absolute_consistency_mm_on_covered": 3.2363021209105143,
+        "rmse_consistency_mm_on_covered": 5.799799955708906,
+        "prediction_coverage": 0.7687391913143884
+      }
+    },
+    "3": {
+      "oracle_mean_view_rmse_mm": 4.489267283751641,
+      "chain_overlap_mean_view_rmse_mm": 4.263809436817229,
+      "gt_depth_coverage": 0.9142678574221713,
+      "fscore": {
+        "1": 0.5340515147401491,
+        "2": 0.8147882136015574,
+        "5": 0.9601848063014001
+      },
+      "precision": {
+        "1": 0.5094584161196541,
+        "2": 0.7949882409608549,
+        "5": 0.9508749943826387
+      },
+      "recall": {
+        "1": 0.5661250967469428,
+        "2": 0.8451884743197501,
+        "5": 0.9808823429467811
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5274339127570177,
+        "false_step_fraction_on_covered_smooth": 0.0024806352692190773,
+        "normal_angle_mean_deg_on_covered": 35.825778286822064,
+        "adjacent_pair_coverage": 0.9301721193358472,
+        "normal_coverage": 0.9301171970375194
+      },
+      "crossview": {
+        "mean_absolute_consistency_mm_on_covered": 3.2621098197039076,
+        "rmse_consistency_mm_on_covered": 5.642042137938212,
+        "prediction_coverage": 0.7676596289388026
+      }
+    }
+  },
+  "interpretation": "3x3 improves oracle/chain overlapRMSE andsurfacegradient/falsejump/normals onaverage. CrossviewcoveredMAEslightlyworse/coverageslightlylower thoughRMSbetter. SamefixedoriginalMmask. Broadmixedgain, NOTfine-surfacecompletion/real-mm/generalization/promotion.",
+  "visual_review_sha256": "a0bfbee29acb773acd829c51c06c38290ef094730fc4bb1e848ffa554453c964",
+  "limitations": [
+    "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
+    "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
+    "Onlysixcorrelatedsyntheticposes/reusedDEV; noindependent real-mm/unseenrealpose/instancecount claim",
+    "WorldnormalizedTRAINAABBprior remains; PanoMousegauge incompatibility unresolved; noGTscale/gaugefit ornewsourceadmission",
+    "OriginalMmask/ROIfeaturecache intentionallyfixed; thisdoesnot evaluatecurrentnewROIsemanticmasks",
+    "Rawframe/GT/pose/cameras unchanged; full144scene/432view failuredenominators, noconfidencefilter",
+    "Scene/referenceexposuresandallLRrecordswillbeindependentlyverified. Per-rayxy notlogged; statelesssource/seed/cachefixed.",
+    "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels",
+    "V2fixfreezesoneunidentifiablecommonbias scalar inBOTHarms; v1hadNOformal6000results. Independentfull4repeatalsofailedonlythatbias; doNOTclaim specificallyaresumebug orallGPUkernelnondeterminismrootcause. AdamcountercomparisonmovedtoCPUvalueforcrossdeviceequality; countersremainexact."
+  ],
+  "seed43_note": "Seed43 3x3 oracleRMSE4.584575 vs1x1 4.571722, chain4.313039 vs4.295925 slightlyworse; all3surfacegradientMAE improves. No unanimity/significance claim."
+}

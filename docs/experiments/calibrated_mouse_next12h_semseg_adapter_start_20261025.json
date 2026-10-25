@@ -1,0 +1,45 @@
+{
+  "utc": "2026-10-25T22:35:52.090016+00:00",
+  "GPU_preflight_receipt_sha256": "69f75fd47aadd8f29bed0269365b89d2285f92877b1acea07b58587d07b34b97",
+  "CPU_preflight_receipt_sha256": "aeea98b0baac3ffd8b7714fade73444af04a847eb727eb23e1f8f79e6b47cbd2",
+  "passed": true,
+  "actual_weights": true,
+  "resume_4_vs_2_plus_2_max_abs": {
+    "model": 5.960464477539063e-08,
+    "ema": 7.450580596923828e-09,
+    "optimizer": 2.7474015951156616e-08,
+    "buffers": 0.0
+  },
+  "tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+  "initial_identity_and_features_passed": true,
+  "adapter_gradients_passed": true,
+  "encoder_frozen": true,
+  "wrong_policy_resume_rejected": true,
+  "actual_smoke_optimizer_LRs_verified": true,
+  "actual_live_formal_record": {
+    "step": 109,
+    "loss": 0.057608462870121,
+    "grad_norm": 1.315382719039917,
+    "blocks": [],
+    "local_ids": [
+      "f1f11b4681409b4e7e7c",
+      "0afe8ecf8de8afbbbf6e",
+      "fcf52b88fe73b78e59b3_v5_0",
+      "a78cf4e8eb5e0f6ab5c6_v5_1"
+    ],
+    "global_ids": [
+      "f1f11b4681409b4e7e7c",
+      "0afe8ecf8de8afbbbf6e",
+      "fcf52b88fe73b78e59b3_v5_0",
+      "a78cf4e8eb5e0f6ab5c6_v5_1"
+    ],
+    "lrs": {
+      "head": 1.0868663478100643e-06
+    }
+  },
+  "actual_live_formal_LR_verified": true,
+  "engineering_only": true,
+  "registration_sha256": "b13a8b7404f15604775998ebe87019b9f20ccee05fc04724bbef50b28d7ea8bc",
+  "parent_sha256": "c560c3e6a16c4e95ea3237823449495cd5aa62c2ed4523593c959362552e9597",
+  "scientific_results": "pendingfinitepair; no convergence/promotionclaim"
+}

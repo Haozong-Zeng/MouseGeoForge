@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-25T22:25:58.837436+00:00",
+  "utc": "2026-10-25T22:35:24.826161+00:00",
   "report_source_sha256": "32a3e73cfee7ed151d476724f0af9e099da1e1158c9813ca1b613185cb8466d5",
   "immutable_window": {
     "start_utc": "2026-10-25T19:50:28+00:00",
@@ -11,12 +11,12 @@
   "required_evidence_complete": false,
   "all_scheduled_jobs_completed_successfully": false,
   "job_counts": {
-    "completed": 33,
+    "completed": 48,
     "failed": 2,
     "skipped_dependency": 25,
-    "pending_or_active": 14
+    "pending_or_active": 4
   },
-  "current_active_job": "spatial_depth_s29_k1_6000_v1_dev_v2",
+  "current_active_job": "semseg_adapter_pair_v1",
   "components": {
     "real_reference": {
       "status": "complete_feasibility_only",
@@ -514,7 +514,7 @@
       }
     }
   },
-  "source_pin_count": 130,
+  "source_pin_count": 157,
   "source_pin_checks": [
     {
       "registration": "classical_baselines_v1.json",
@@ -696,6 +696,188 @@
       "path": "tools/report_calibrated_mouse_spatial_depth_20261025.py",
       "expected": "2594110ea220983377654d18ed6e260ff3dd240eb56c8d3d9981e6fae9ed6627",
       "observed": "2594110ea220983377654d18ed6e260ff3dd240eb56c8d3d9981e6fae9ed6627",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/models/calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "2845c5f4bd255c05564129490e8730dbf35eb4847557bcfac2d5fa031e9721c8",
+      "observed": "2845c5f4bd255c05564129490e8730dbf35eb4847557bcfac2d5fa031e9721c8",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/semseg_adapter_safety_20261025.py",
+      "expected": "161ff3e12b44e84aa8bcf9fdbefe514997e94660c1567e3f9acc869296e57be6",
+      "observed": "161ff3e12b44e84aa8bcf9fdbefe514997e94660c1567e3f9acc869296e57be6",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/train_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "3f6db95f4b987cd798281e6396f72a3cdf7682e188fff6de2473f802c9936543",
+      "observed": "3f6db95f4b987cd798281e6396f72a3cdf7682e188fff6de2473f802c9936543",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/check_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "3811a6612fd6533b531acd7d182babb6c367734ed73518dc045a7e90c9682ca9",
+      "observed": "3811a6612fd6533b531acd7d182babb6c367734ed73518dc045a7e90c9682ca9",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/calibrated_mouse_semseg_adapter_pair_20261025.py",
+      "expected": "8e63a4ccd233eb98ca7bb6c562d8fc658ffe58f80d31db130dd617bcc62df4fc",
+      "observed": "8e63a4ccd233eb98ca7bb6c562d8fc658ffe58f80d31db130dd617bcc62df4fc",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/report_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "dafb09f6dce85b1218cf0160829cb6dd962228e51ca99ef910e8d656b96a3249",
+      "observed": "dafb09f6dce85b1218cf0160829cb6dd962228e51ca99ef910e8d656b96a3249",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tests/test_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "500bcb4df4774f9cf8f8fa9960d6f0ad6c5186d6debe06ce2d8d58b1e6e2e42a",
+      "observed": "500bcb4df4774f9cf8f8fa9960d6f0ad6c5186d6debe06ce2d8d58b1e6e2e42a",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/train_mouse_semseg_roi_20261025_v2.py",
+      "expected": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "observed": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/semseg_roi_20261025.py",
+      "expected": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "observed": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/semseg_pixel_center_20261025.py",
+      "expected": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "observed": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "mousegeoforge/models/mouse_semseg.py",
+      "expected": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "observed": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_pair_v1.json",
+      "path": "tools/audit_mouse_semseg_native_probability_20261025_v3.py",
+      "expected": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+      "observed": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/models/calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "2845c5f4bd255c05564129490e8730dbf35eb4847557bcfac2d5fa031e9721c8",
+      "observed": "2845c5f4bd255c05564129490e8730dbf35eb4847557bcfac2d5fa031e9721c8",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/semseg_adapter_safety_20261025.py",
+      "expected": "161ff3e12b44e84aa8bcf9fdbefe514997e94660c1567e3f9acc869296e57be6",
+      "observed": "161ff3e12b44e84aa8bcf9fdbefe514997e94660c1567e3f9acc869296e57be6",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/train_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "3f6db95f4b987cd798281e6396f72a3cdf7682e188fff6de2473f802c9936543",
+      "observed": "3f6db95f4b987cd798281e6396f72a3cdf7682e188fff6de2473f802c9936543",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/check_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "3811a6612fd6533b531acd7d182babb6c367734ed73518dc045a7e90c9682ca9",
+      "observed": "3811a6612fd6533b531acd7d182babb6c367734ed73518dc045a7e90c9682ca9",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/calibrated_mouse_semseg_adapter_pair_20261025.py",
+      "expected": "8e63a4ccd233eb98ca7bb6c562d8fc658ffe58f80d31db130dd617bcc62df4fc",
+      "observed": "8e63a4ccd233eb98ca7bb6c562d8fc658ffe58f80d31db130dd617bcc62df4fc",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/report_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "dafb09f6dce85b1218cf0160829cb6dd962228e51ca99ef910e8d656b96a3249",
+      "observed": "dafb09f6dce85b1218cf0160829cb6dd962228e51ca99ef910e8d656b96a3249",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tests/test_calibrated_mouse_semseg_adapter_20261025.py",
+      "expected": "500bcb4df4774f9cf8f8fa9960d6f0ad6c5186d6debe06ce2d8d58b1e6e2e42a",
+      "observed": "500bcb4df4774f9cf8f8fa9960d6f0ad6c5186d6debe06ce2d8d58b1e6e2e42a",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/train_mouse_semseg_roi_20261025_v2.py",
+      "expected": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "observed": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/semseg_roi_20261025.py",
+      "expected": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "observed": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/semseg_pixel_center_20261025.py",
+      "expected": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "observed": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "mousegeoforge/models/mouse_semseg.py",
+      "expected": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "observed": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "matches": true
+    },
+    {
+      "registration": "semseg_adapter_preflight_v1.json",
+      "path": "tools/audit_mouse_semseg_native_probability_20261025_v3.py",
+      "expected": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+      "observed": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
       "matches": true
     },
     {
@@ -1425,6 +1607,13 @@
       "expected": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
       "observed": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
       "matches": true
+    },
+    {
+      "registration": "spatial_depth_visual_review_v2.json",
+      "path": "tools/view_calibrated_mouse_spatial_depth_20261025_v2.py",
+      "expected": "7eda94059579a0668743d2e5ad11ed3d3cd2385adcff23c7bef6e01e8ddaad9a",
+      "observed": "7eda94059579a0668743d2e5ad11ed3d3cd2385adcff23c7bef6e01e8ddaad9a",
+      "matches": true
     }
   ],
   "input_JSON_receipts": {
@@ -1435,18 +1624,18 @@
     },
     "state": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/state.json",
-      "sha256": "e8395c0aad254410da46cbb090570cc59a613134b3c90cecb9b2fe256dd01de8",
-      "bytes": 12849
+      "sha256": "01ef004456ee6f809402e32bc89c34e0627c9ff47422fe7074e139b242bb17f7",
+      "bytes": 15924
     },
     "queue": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/queue.json",
-      "sha256": "a0be4962c5b86fd5b8c17b7b9e15cebb90f526260b6f879a77c8a2be817befcc",
-      "bytes": 167535
+      "sha256": "6ee4e50878e677e75fc48aa95a4ff2812d1930c8d26dbb213d4e9fc50376b1fc",
+      "bytes": 177825
     },
     "core": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/report.json",
-      "sha256": "1cd739e7599e5ba8ba4e841ab462d4ddac96f2fd57f86dd6af2840786fddf0a6",
-      "bytes": 19966
+      "sha256": "8b075d98cfc8b2e74c10ed5dc3dd9006e5bf3b08a1760e074ae1e0f8ab6c5b1c",
+      "bytes": 22728
     },
     "real": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/real_reference_feasibility_v1.json",
@@ -1465,22 +1654,22 @@
     },
     "semseg": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_report_v2.json",
-      "sha256": "a68dd1c6955298b2f24373f2059f3767639f6d9069057e5aab8b8ed770ff7a77",
+      "sha256": "0e2ed986f4ca86455813045cfaa3a5fedfc6ed7fab6a83f78cafcd22e96c3d65",
       "bytes": 4244
     },
     "readiness": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_readiness_v2.json",
-      "sha256": "3232212c5869910164d146f1602bf9e47dc08e764a935adb79d166c01867cbfd",
+      "sha256": "074fd0518e06e0422738e36fb2d0aa7321c8a656a532335394d79858bf77304b",
       "bytes": 21421
     },
     "chain": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_chain_report_v1.json",
-      "sha256": "bae93a7317221d3a9f2ffb7eaf73a05b64417e05632f5c6f107e4262bde5d987",
+      "sha256": "270355b0fe93168ab589b0f8e2912d84e966e37f9060f43b81c0bcc1cdba2d72",
       "bytes": 10994
     },
     "spatial": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_pair_report_v1.json",
-      "sha256": "8b45f16a83358b3df952419178a71fbf13bdfc842b8845bb51056f13e095054c",
+      "sha256": "4e124328ceb723a7b1890b925871614ed26cbcaefd62ae5ce6d66f45aab5d7b5",
       "bytes": 3140
     },
     "semseg_failure": {
@@ -1532,6 +1721,16 @@
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/evidence_status_v2.json",
       "sha256": "81ea8e5c2ba8522b07901c686b0e6fed33da51af0ab27fa73a292ffacc77ae19",
       "bytes": 1885
+    },
+    "registration:semseg_adapter_pair_v1.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/semseg_adapter_pair_v1.json",
+      "sha256": "b13a8b7404f15604775998ebe87019b9f20ccee05fc04724bbef50b28d7ea8bc",
+      "bytes": 4373
+    },
+    "registration:semseg_adapter_preflight_v1.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/semseg_adapter_preflight_v1.json",
+      "sha256": "33c30770260e8373993841a0f51f662308d39649abc80c97df3e0114900bd8a0",
+      "bytes": 2218
     },
     "registration:semseg_chain_v1.json": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/semseg_chain_v1.json",
@@ -1603,6 +1802,11 @@
       "sha256": "8d29752733ac2ad8f9b6f9f7ddde543a8c24722e08f825896f88c8e0ab6bcc8f",
       "bytes": 2362
     },
+    "registration:spatial_depth_visual_review_v2.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_depth_visual_review_v2.json",
+      "sha256": "2086eef30a98ce89723f7941835b22eff2cbe21e8f1ca8778dcf0598b93dbe40",
+      "bytes": 360
+    },
     "controller_process": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/controller_process.json",
       "sha256": "6ccac1ddc4720a70c32f78b3f6108569a3427f85399217ea47f86033280706f4",
@@ -1620,8 +1824,8 @@
     },
     "active_child": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/active_child.json",
-      "sha256": "8c47ca501fd055401db9a71133f1dcb1b2798137ceb87f5601b0fab91aec0fe2",
-      "bytes": 836
+      "sha256": "64e58c884a38e6eedef7c2ad261e40063a2a22b2d569e11ef1bee597433ab2e5",
+      "bytes": 349
     }
   },
   "missing_inputs": {
@@ -1710,18 +1914,18 @@
       "status": "matching_live_identity",
       "matches": true,
       "saved": {
-        "pid": 595519,
-        "start_ticks": "3436342",
-        "pgid": 595519,
+        "pid": 601390,
+        "start_ticks": "3490358",
+        "pgid": 601390,
         "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
-        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/train_calibrated_mouse_depth_spatial_20261025_v2.py evaluate --run-dir /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2_dev --checkpoint /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2/step_006000.pt --neck-kernel 1 --seed 29 --feature-mode roi --roi-cache /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/roi_cache_v1 --steps 6000 --rays 256 --planes 96 --gradient-weight 0"
+        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_adapter_pair_20261025.py"
       },
       "observed": {
-        "pid": 595519,
-        "start_ticks": "3436342",
-        "pgid": 595519,
+        "pid": 601390,
+        "start_ticks": "3490358",
+        "pgid": 601390,
         "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
-        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/train_calibrated_mouse_depth_spatial_20261025_v2.py evaluate --run-dir /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2_dev --checkpoint /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2/step_006000.pt --neck-kernel 1 --seed 29 --feature-mode roi --roi-cache /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/roi_cache_v1 --steps 6000 --rays 256 --planes 96 --gradient-weight 0"
+        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_adapter_pair_20261025.py"
       }
     }
   },

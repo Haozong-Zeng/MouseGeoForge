@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-25T22:32:56.567989+00:00",
+  "registration_sha256": "b13a8b7404f15604775998ebe87019b9f20ccee05fc04724bbef50b28d7ea8bc",
+  "comparable": false,
+  "arms": {},
+  "limitations": [
+    "Post-backbone feature adapters, NOT encoderlast-block/attention adaptation or exactAdaptFormerreproduction",
+    "Adapterarm has262144 trainableextraweights whilecontrolsamezero modulesfrozen; sameheadLR/init/exposure butcapacitydiffers",
+    "Oneexploratoryseed/reusedDEV/sixcorrelatedsyntheticposes; noindependentreal-mm/generalization/significance/instancecountclaim",
+    "ParentfixedprospectivelyFULL6000 despiteROIbetterDEV; noROI/earlier/betterfallback",
+    "Historicalold18k/extra12kgatefailures andallv1schedule/numericfailures remainfailed",
+    "TRAINsafetythresholdsareprospectiveengineeringlimits, notvalidationqualityorconvergenceproof",
+    "No newdataadmission,GTscale/gaugefit,depthtraining,confidencefilter ormodelpromotion"
+  ]
+}

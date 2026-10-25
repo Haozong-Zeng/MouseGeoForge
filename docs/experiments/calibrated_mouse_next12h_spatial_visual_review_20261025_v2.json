@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-25T22:34:10.993807+00:00",
+  "source_sha256": "7eda94059579a0668743d2e5ad11ed3d3cd2385adcff23c7bef6e01e8ddaad9a",
+  "input_sha256": {
+    "output/calibrated_mouse_10h_20261025/data_manifest.json": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Dev/frame_000001/provenance/rgb_0.png": "d79dc501f00c4a15f69a5f442e4eab4ffc78f78549f18326904cdd67105fe8ea",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k1_v2/scene000000/view0.npz": "b9172ee363d51bcced14884e014da01c06c3dcedd4206aaad6fbb43abb588319",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k3_v2/scene000000/view0.npz": "2a605bd20af18c79837b1796f6f3fd537ed5e0a7980651be0d0faf0096e17409",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Dev/frame_000001/provenance/rgb_2.png": "884cbaf84e2347884739a4b82de9e3820681cfb2592cf65e00a4f0ad971885af",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k1_v2/scene000000/view2.npz": "12f6c9e84b1397cdec9a2ebbd920d352e222fa5e9ed2f3fd9879f538473659e8",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k3_v2/scene000000/view2.npz": "82c1bf6c1b323879a6e01dc148d49ba10ace25625b19476f3fee8765d8390d41",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Dev/frame_000001/provenance/rgb_0.png": "4033321736bb498114be2cbd81185cc8f7f6b003392ebf2ff195625cb93bcb7b",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k1_v2/scene000360/view0.npz": "26fe9bc2c6fe5b85022fa17519d46c5a93aa9bdd850f01e636948fd248f49e74",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k3_v2/scene000360/view0.npz": "3b2f3b5a3204d29dce5d1a5b6a61ea56f261c34d1b803c0fcdd6948ef6fea366",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Dev/frame_000001/provenance/rgb_2.png": "654083c4166c36cb2c67a9166619fa3d8f167c46795d7c7924df108b4cd57807",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k1_v2/scene000360/view2.npz": "4f4f3cfec04d33bfb785bf034d16688520fa8e756b4c15055032944bc8d23df1",
+    "output/calibrated_mouse_next12h_20261025/spatial_pipeline_s17_k3_v2/scene000360/view2.npz": "1cc97f1a6949af4a64cd487b0fcd298b54cf73cd62e48cd35114b4d4766cddfa"
+  },
+  "image_sha256": "98822d3bd1e100b4e25ab03f17887b6f1030ca614e0a5531e87db9a82f837b81",
+  "selection": "Fixed first admitted DEV scene per source0/360,views0/2,seed17; same scenes as prior pointcloud review; no error ranking",
+  "model_calls": 0,
+  "GT_inputs": false,
+  "predicted_mask_crop": "DISPLAY ONLY",
+  "palette": "Shared per-view D1/D2 native camera-Z extrema; difference0..5mm fixed display; no numeric filtering",
+  "limitations": "Single-seed representative visual diagnosis; all-three-seed quantitative report governs tradeoffs; synthetic visible skin only; no inference or metric mutation",
+  "actual_visual_review": {
+    "utc": "2026-10-25T22:34:39.361543+00:00",
+    "actual_inspection": true,
+    "gallery_sha256": "98822d3bd1e100b4e25ab03f17887b6f1030ca614e0a5531e87db9a82f837b81",
+    "observations": [
+      "Gross visible-body depth silhouette appears in both spatial branches; fine limbs and some tail regions remain missing under fixed originalM masks.",
+      "MoSeq scene360 view0 exhibits strong repeated transverse depth bands in BOTH branches; 3x3 does not remove the stripe failure.",
+      "Climb body depth is smoother at gross scale but differences concentrate in local edges/patches; no visual proof of accurate fine skin geometry.",
+      "MoSeq side view2 target is very small; display crop enlarges original evidence without restoring missing detail."
+    ],
+    "limits": [
+      "Fixedseed17/scenes0and360/views0and2 only; quantitativeALL3seedreport separately governs tradeoffs",
+      "Samepredictedmask/knownnativeKE, noGTinput/filter/newmodelcalls",
+      "Depthpalette shared perview; displaycrop only; no metric/exportmutation"
+    ]
+  }
+}
