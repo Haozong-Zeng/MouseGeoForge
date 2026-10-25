@@ -1,0 +1,11 @@
+{
+  "registered_utc": "2026-10-25T16:47:06.940571+00:00",
+  "source_sha256": {
+    "tools/audit_calibrated_mouse_head_phase_final_gate_20261025.py": "6acf58af85a6046561e8f561212dbc3fd2cbef59cfb48af9ddfdfdb8bb799a63",
+    "tools/calibrated_mouse_semseg_head_phase_20261025.py": "117e27687c1dda58b3b8ddf00358545ea8f5b34a56b4da26e4cb5c9147ab9538",
+    "tools/train_mouse_semseg_head_phase_20261025.py": "9fe600f939ce3996fe5a82f84a7e2c96b0d6acc7f61e266308e1060d8b756fca",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d"
+  },
+  "scope": "Read-only original-rule final12000 TRAIN gate closure plus actual local sample schedule and frozen checkpoints; no DEV/threshold/stopping change",
+  "independent_verification": "Recompute all10last-windowmonitor summaries from64TRAIN rows each; compare48000actualsampleids perarm to registeredBalancedSchedule offset18000; verifyhead-onlycheckpoint andunchangedsourcepins"
+}

@@ -1,0 +1,158 @@
+{
+  "utc": "2026-10-25T16:52:12.810735+00:00",
+  "source_sha256": "93546e9ff79569817cdf6461b5efbf50692eeee96734d7e6a4a6b267bd403a92",
+  "parent_registration_sha256": "9f25ef11d9c7ccc7e969b6ac9923cb2c896fbec523b7f7b4958ee67e593beb90",
+  "before_native_audit_sha256": "49d29ad76673b973c56e5dbd279b6e671819aa0c1e9746e24711d20d3f040aab",
+  "gate_audit_sha256": "e75da08829cb2f70253efb541cf42c12918515e14bbfbcba9ffb966fdc6bfddd",
+  "TRAIN_gate_passed": false,
+  "encoder_F_U_admitted": false,
+  "arms": {
+    "L": {
+      "parent_checkpoint_sha256": "0b02fe5543b52b4917f0f9077ccd255571710b3cf8e59e801ee1824f2e7d9faa",
+      "phase_checkpoint_sha256": "b3fb5d5507abc9d98f5ae7855ad7a76ade43dce2e3698c4edbb8b88dc6ec6d4c",
+      "phase_native_audit_sha256": "1658ac110ad41514407e6c2f8d86e2c420cd0d46783c9beacbbbeac3e9103881",
+      "groups": {
+        "all": {
+          "images": 879,
+          "parent_mean_native_iou": 0.8624576367319757,
+          "phase_mean_native_iou": 0.8604968166369542,
+          "mean_phase_minus_parent": {
+            "iou": -0.0019608200950216085,
+            "dice": -0.00108947535406783,
+            "boundary_f1": -0.0025124591457538255
+          },
+          "IoU_improved_images": 249,
+          "IoU_degraded_images": 629,
+          "IoU_unchanged_images": 1
+        },
+        "real/True": {
+          "images": 71,
+          "parent_mean_native_iou": 0.8950828130661606,
+          "phase_mean_native_iou": 0.8906608767516542,
+          "mean_phase_minus_parent": {
+            "iou": -0.00442193631450625,
+            "dice": -0.0024883178451412585,
+            "boundary_f1": -0.0036917419591168408
+          },
+          "IoU_improved_images": 8,
+          "IoU_degraded_images": 63,
+          "IoU_unchanged_images": 0
+        },
+        "real/False": {
+          "images": 376,
+          "parent_mean_native_iou": 0.890834791286147,
+          "phase_mean_native_iou": 0.8888865567131286,
+          "mean_phase_minus_parent": {
+            "iou": -0.001948234573018323,
+            "dice": -0.0010948607902962,
+            "boundary_f1": -0.001186438660307615
+          },
+          "IoU_improved_images": 88,
+          "IoU_degraded_images": 288,
+          "IoU_unchanged_images": 0
+        },
+        "synthetic/True": {
+          "images": 144,
+          "parent_mean_native_iou": 0.823560549203317,
+          "phase_mean_native_iou": 0.8209708025004203,
+          "mean_phase_minus_parent": {
+            "iou": -0.00258974670289667,
+            "dice": -0.0012972355142805152,
+            "boundary_f1": -0.0068762771494021045
+          },
+          "IoU_improved_images": 40,
+          "IoU_degraded_images": 104,
+          "IoU_unchanged_images": 0
+        },
+        "synthetic/False": {
+          "images": 288,
+          "parent_mean_native_iou": 0.836815216495974,
+          "phase_mean_native_iou": 0.8357591621191613,
+          "mean_phase_minus_parent": {
+            "iou": -0.00105605437681264,
+            "dice": -0.0006337107569889857,
+            "boundary_f1": -0.001771017584134551
+          },
+          "IoU_improved_images": 113,
+          "IoU_degraded_images": 174,
+          "IoU_unchanged_images": 1
+        }
+      }
+    },
+    "M": {
+      "parent_checkpoint_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+      "phase_checkpoint_sha256": "80cf53d6fdf948508f6266966e05abc57dd36ae5590b918bbdfb0234901452dd",
+      "phase_native_audit_sha256": "95f4bf0cde8179d296a8a94554996ba49a4ad6446166bb82c45db6090473d97f",
+      "groups": {
+        "all": {
+          "images": 879,
+          "parent_mean_native_iou": 0.8629156326092963,
+          "phase_mean_native_iou": 0.8460435690490464,
+          "mean_phase_minus_parent": {
+            "iou": -0.01687206356024993,
+            "dice": -0.010146239577334496,
+            "boundary_f1": -0.03537535612833732
+          },
+          "IoU_improved_images": 55,
+          "IoU_degraded_images": 824,
+          "IoU_unchanged_images": 0
+        },
+        "real/True": {
+          "images": 71,
+          "parent_mean_native_iou": 0.8967358705131703,
+          "phase_mean_native_iou": 0.8867414357650938,
+          "mean_phase_minus_parent": {
+            "iou": -0.009994434748076457,
+            "dice": -0.005607745575237873,
+            "boundary_f1": -0.006870048098576422
+          },
+          "IoU_improved_images": 4,
+          "IoU_degraded_images": 67,
+          "IoU_unchanged_images": 0
+        },
+        "real/False": {
+          "images": 376,
+          "parent_mean_native_iou": 0.8906723319183545,
+          "phase_mean_native_iou": 0.883891336607598,
+          "mean_phase_minus_parent": {
+            "iou": -0.006780995310756452,
+            "dice": -0.0038411474848197074,
+            "boundary_f1": 0.000281527566036323
+          },
+          "IoU_improved_images": 42,
+          "IoU_degraded_images": 334,
+          "IoU_unchanged_images": 0
+        },
+        "synthetic/True": {
+          "images": 144,
+          "parent_mean_native_iou": 0.8210279674956005,
+          "phase_mean_native_iou": 0.7969891071921335,
+          "mean_phase_minus_parent": {
+            "iou": -0.024038860303466997,
+            "dice": -0.01441171483495821,
+            "boundary_f1": -0.07100767693288774
+          },
+          "IoU_improved_images": 6,
+          "IoU_degraded_images": 138,
+          "IoU_unchanged_images": 0
+        },
+        "synthetic/False": {
+          "images": 288,
+          "parent_mean_native_iou": 0.8392839240849604,
+          "phase_mean_native_iou": 0.8111252821342569,
+          "mean_phase_minus_parent": {
+            "iou": -0.02815864195070342,
+            "dice": -0.01736401479898938,
+            "boundary_f1": -0.0711385885704979
+          },
+          "IoU_improved_images": 3,
+          "IoU_degraded_images": 285,
+          "IoU_unchanged_images": 0
+        }
+      }
+    }
+  },
+  "claim": "Descriptive before/after fixed18000 parent to additional fixed12000 phase, same879DEV images; no causal LR claim, independent replication or checkpoint selection",
+  "primary_native_GT": "Original native labels, historical nearest-mask inference unchanged for both endpoints",
+  "existing_depth_ROI_masks": "Fixed original M18000 generator retained by preregistered depth/ROI protocols; not retrospectively selected based on this comparison"
+}

@@ -1,0 +1,508 @@
+{
+  "utc": "2026-10-25T16:47:09.091099+00:00",
+  "source_sha256": "6acf58af85a6046561e8f561212dbc3fd2cbef59cfb48af9ddfdfdb8bb799a63",
+  "source_pins_unchanged": true,
+  "protocol_sha256": "d8d9a1e86fafd401a58c4f9eceff2c988f981753fce81cd620b5cd6e6e123940",
+  "progress_sha256": "8482df553d887b880abfce1c6549bedc11906a2ec9b6e65f8f85e8f74cb3109a",
+  "items_sha256": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31",
+  "common_endpoint": 12000,
+  "rule": "Same last5 TRAIN span:loss<=.01mean,IoU/BF512tol2<=.002,overallAND4strataBOTHarms",
+  "arms": {
+    "L": {
+      "checkpoint_sha256": "b3fb5d5507abc9d98f5ae7855ad7a76ade43dce2e3698c4edbb8b88dc6ec6d4c",
+      "completion_sha256": "bfc262a6420756b18fbcde1da788ffcc15a0fc8ed560d7c94873a9aae730df86",
+      "monitor_sha256": {
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/L_010000/train_monitor_010000.json": "ef37e498b9c7820c62273e6f92527a3bd3115e37e4f40d979d9e2cf694ef8374",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/L_010500/train_monitor_010500.json": "39c2e80a7994017897c6d0ddaa6852a6991f8035a2bf1d1754350141629e43d1",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/L_011000/train_monitor_011000.json": "b07d6ba85fa3f3922141c782f15dcf6e0209ec421a413685b2e41077262606c8",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/L_011500/train_monitor_011500.json": "7ead5cbed0dd0e4d9542cc10ed48488f201ce1d9dd5fbfc0c9520c9269069a17",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/L_012000/train_monitor_012000.json": "0164f9957ae25a98d172e8009dcf0d7bf5c24068b14c8f9928c2b807d797610a"
+      },
+      "last5_steps": [
+        10000,
+        10500,
+        11000,
+        11500,
+        12000
+      ],
+      "all_checks": [
+        {
+          "group": "all",
+          "metric": "loss",
+          "span": 0.018667526950594038,
+          "tolerance": 0.0007875530185410753,
+          "passes": false,
+          "relative_span": 0.2370320030666027
+        },
+        {
+          "group": "all",
+          "metric": "iou",
+          "span": 0.0014633645069561663,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        },
+        {
+          "group": "all",
+          "metric": "boundary_f1",
+          "span": 0.006706863061606949,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "loss",
+          "span": 0.07338564074598253,
+          "tolerance": 0.0007668293258175254,
+          "passes": false,
+          "relative_span": 0.9570009684716383
+        },
+        {
+          "group": "real/True",
+          "metric": "iou",
+          "span": 0.0047378398032100755,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "boundary_f1",
+          "span": 0.023534054514086522,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "loss",
+          "span": 0.0023579439148306847,
+          "tolerance": 0.0005931655783206225,
+          "passes": false,
+          "relative_span": 0.039751866949301475
+        },
+        {
+          "group": "real/False",
+          "metric": "iou",
+          "span": 0.00048616379684829347,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "boundary_f1",
+          "span": 0.002922460890672385,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "loss",
+          "span": 0.0024361724499613047,
+          "tolerance": 0.000796448486391455,
+          "passes": false,
+          "relative_span": 0.030587947514334586
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "iou",
+          "span": 0.00019000702476268394,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "boundary_f1",
+          "span": 0.0005320694451763641,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "loss",
+          "span": 0.016782150836661458,
+          "tolerance": 0.0009937686836346985,
+          "passes": false,
+          "relative_span": 0.16887381453077108
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "iou",
+          "span": 0.0006238428626637038,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "boundary_f1",
+          "span": 0.0008657361906939665,
+          "tolerance": 0.002,
+          "passes": true,
+          "relative_span": null
+        }
+      ],
+      "failed_checks": [
+        {
+          "group": "all",
+          "metric": "loss",
+          "span": 0.018667526950594038,
+          "tolerance": 0.0007875530185410753,
+          "passes": false,
+          "relative_span": 0.2370320030666027
+        },
+        {
+          "group": "all",
+          "metric": "boundary_f1",
+          "span": 0.006706863061606949,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "loss",
+          "span": 0.07338564074598253,
+          "tolerance": 0.0007668293258175254,
+          "passes": false,
+          "relative_span": 0.9570009684716383
+        },
+        {
+          "group": "real/True",
+          "metric": "iou",
+          "span": 0.0047378398032100755,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "boundary_f1",
+          "span": 0.023534054514086522,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "loss",
+          "span": 0.0023579439148306847,
+          "tolerance": 0.0005931655783206225,
+          "passes": false,
+          "relative_span": 0.039751866949301475
+        },
+        {
+          "group": "real/False",
+          "metric": "boundary_f1",
+          "span": 0.002922460890672385,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "loss",
+          "span": 0.0024361724499613047,
+          "tolerance": 0.000796448486391455,
+          "passes": false,
+          "relative_span": 0.030587947514334586
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "loss",
+          "span": 0.016782150836661458,
+          "tolerance": 0.0009937686836346985,
+          "passes": false,
+          "relative_span": 0.16887381453077108
+        }
+      ],
+      "TRAIN_exposure_examples": 48000,
+      "actual_local_ids_match_registered_schedule": true,
+      "all_sampled_ids_are_TRAIN": true,
+      "encoder_frozen": true,
+      "auxiliary_global_ids_log_mismatch_steps": 12000,
+      "logging_note": "Legacy global_ids log omits phase exposure offset; actual local_ids used by optimizer match the correct registered offset. Source unchanged."
+    },
+    "M": {
+      "checkpoint_sha256": "80cf53d6fdf948508f6266966e05abc57dd36ae5590b918bbdfb0234901452dd",
+      "completion_sha256": "330f85927b664ad983c40e607c8000b893ed1aff7d0aa22b9f1e4e9e7e0a6816",
+      "monitor_sha256": {
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/M_010000/train_monitor_010000.json": "4b151bd2eabf509780588c621d0ceac4b3efa37ad43951854ddf47b453be71e5",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/M_010500/train_monitor_010500.json": "4ae49cb1021e8797458087b70c7198c58b70f7165c0fb388c3f61dce18ff97e5",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/M_011000/train_monitor_011000.json": "78480dbda8497a32e98bce55fc558c5fc71312d41f5fff9ac226b60197064c22",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/M_011500/train_monitor_011500.json": "ddc5a81fb2bfd2c0be21a278927a2bc4d6f6f901f02af80b5f62d783c4636649",
+        "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/M_012000/train_monitor_012000.json": "c8b489d7372255918a7ceb0732e904c5087eba2beb48678aa81ecd1c2c96878f"
+      },
+      "last5_steps": [
+        10000,
+        10500,
+        11000,
+        11500,
+        12000
+      ],
+      "all_checks": [
+        {
+          "group": "all",
+          "metric": "loss",
+          "span": 0.08602289723057766,
+          "tolerance": 0.0008923120282124728,
+          "passes": false,
+          "relative_span": 0.9640450258515884
+        },
+        {
+          "group": "all",
+          "metric": "iou",
+          "span": 0.009635429274236884,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "all",
+          "metric": "boundary_f1",
+          "span": 0.026618247614671908,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "loss",
+          "span": 0.059716392774134874,
+          "tolerance": 0.0017060261080041527,
+          "passes": false,
+          "relative_span": 0.35003211553424546
+        },
+        {
+          "group": "real/True",
+          "metric": "iou",
+          "span": 0.003749645031121851,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "boundary_f1",
+          "span": 0.017568700236998858,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "loss",
+          "span": 0.0862385812215507,
+          "tolerance": 0.0006781285129254684,
+          "passes": false,
+          "relative_span": 1.2717144254783606
+        },
+        {
+          "group": "real/False",
+          "metric": "iou",
+          "span": 0.005480174705970731,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "boundary_f1",
+          "span": 0.033668601223702854,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "loss",
+          "span": 0.09862553694983944,
+          "tolerance": 0.00047600656526628886,
+          "passes": false,
+          "relative_span": 2.0719364846294943
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "iou",
+          "span": 0.012364766418336948,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "boundary_f1",
+          "span": 0.024442146924656072,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "loss",
+          "span": 0.10147573181893677,
+          "tolerance": 0.0007090869266539812,
+          "passes": false,
+          "relative_span": 1.4310760501223383
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "iou",
+          "span": 0.017508528957078662,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "boundary_f1",
+          "span": 0.033480068883876224,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        }
+      ],
+      "failed_checks": [
+        {
+          "group": "all",
+          "metric": "loss",
+          "span": 0.08602289723057766,
+          "tolerance": 0.0008923120282124728,
+          "passes": false,
+          "relative_span": 0.9640450258515884
+        },
+        {
+          "group": "all",
+          "metric": "iou",
+          "span": 0.009635429274236884,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "all",
+          "metric": "boundary_f1",
+          "span": 0.026618247614671908,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "loss",
+          "span": 0.059716392774134874,
+          "tolerance": 0.0017060261080041527,
+          "passes": false,
+          "relative_span": 0.35003211553424546
+        },
+        {
+          "group": "real/True",
+          "metric": "iou",
+          "span": 0.003749645031121851,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/True",
+          "metric": "boundary_f1",
+          "span": 0.017568700236998858,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "loss",
+          "span": 0.0862385812215507,
+          "tolerance": 0.0006781285129254684,
+          "passes": false,
+          "relative_span": 1.2717144254783606
+        },
+        {
+          "group": "real/False",
+          "metric": "iou",
+          "span": 0.005480174705970731,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "real/False",
+          "metric": "boundary_f1",
+          "span": 0.033668601223702854,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "loss",
+          "span": 0.09862553694983944,
+          "tolerance": 0.00047600656526628886,
+          "passes": false,
+          "relative_span": 2.0719364846294943
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "iou",
+          "span": 0.012364766418336948,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/True",
+          "metric": "boundary_f1",
+          "span": 0.024442146924656072,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "loss",
+          "span": 0.10147573181893677,
+          "tolerance": 0.0007090869266539812,
+          "passes": false,
+          "relative_span": 1.4310760501223383
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "iou",
+          "span": 0.017508528957078662,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        },
+        {
+          "group": "synthetic/False",
+          "metric": "boundary_f1",
+          "span": 0.033480068883876224,
+          "tolerance": 0.002,
+          "passes": false,
+          "relative_span": null
+        }
+      ],
+      "TRAIN_exposure_examples": 48000,
+      "actual_local_ids_match_registered_schedule": true,
+      "all_sampled_ids_are_TRAIN": true,
+      "encoder_frozen": true,
+      "auxiliary_global_ids_log_mismatch_steps": 12000,
+      "logging_note": "Legacy global_ids log omits phase exposure offset; actual local_ids used by optimizer match the correct registered offset. Source unchanged."
+    }
+  },
+  "DEV_used_for_gate": false,
+  "actual_exposure_sha256": {
+    "L": "d4c9b0ecfa09df2ceb53973ac2e9b605791c453f2dfdc5d92962d05382441353",
+    "M": "d4c9b0ecfa09df2ceb53973ac2e9b605791c453f2dfdc5d92962d05382441353"
+  },
+  "both_pass": false,
+  "encoder_unfreeze_admitted": false,
+  "admission_conclusion": "TRAIN gate failed at registeredmax; no encoder F/U admitted"
+}

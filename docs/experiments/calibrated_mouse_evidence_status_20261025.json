@@ -1,12 +1,12 @@
 {
   "schema": "calibrated-mouse-evidence-status-v1",
-  "utc": "2026-10-25T15:51:59.410820+00:00",
+  "utc": "2026-10-25T16:53:34.467723+00:00",
   "window": {
     "start_utc": "2026-10-25T13:27:11+00:00",
     "optimization_cutoff_utc": "2026-10-25T20:57:11+00:00",
     "hard_finish_utc": "2026-10-25T21:27:11+00:00"
   },
-  "optimization_seconds_remaining": 18311.58918,
+  "optimization_seconds_remaining": 14616.532277,
   "cycle_status": "running",
   "cycle_completion": null,
   "workers": {
@@ -243,37 +243,37 @@
     },
     {
       "id": "semseg_head_phase_v1",
-      "status": "verified_running",
+      "status": "completed",
       "optimization": true
     },
     {
       "id": "roi_gradient_smoke_v1",
-      "status": "pending",
+      "status": "completed",
       "optimization": true
     },
     {
       "id": "roi_gradient_s17_6000_v1",
-      "status": "pending",
+      "status": "completed",
       "optimization": true
     },
     {
       "id": "roi_gradient_s17_6000_v1_dev",
-      "status": "pending",
+      "status": "completed",
       "optimization": false
     },
     {
       "id": "roi_gradient_pipeline_s17_v1",
-      "status": "pending",
+      "status": "completed",
       "optimization": false
     },
     {
       "id": "roi_gradient_s29_6000_v1",
-      "status": "pending",
+      "status": "completed",
       "optimization": true
     },
     {
       "id": "roi_gradient_s29_6000_v1_dev",
-      "status": "pending",
+      "status": "verified_running",
       "optimization": false
     },
     {
@@ -904,11 +904,84 @@
       }
     },
     "head_phase_native": {
-      "status": "partial",
-      "audited": {},
+      "status": "complete_L_M",
+      "audited": {
+        "L": {
+          "all": {
+            "images": 879,
+            "native_original_iou": 0.8604968166369542,
+            "native_original_dice": 0.9221402771872722,
+            "native_original_boundary_f1_tol1": 0.46342662917048927,
+            "legacy_roundtrip_iou": 0.8922169038485843
+          },
+          "real/True": {
+            "images": 71,
+            "native_original_iou": 0.8906608767516542,
+            "native_original_dice": 0.9419874428224829,
+            "native_original_boundary_f1_tol1": 0.19121386747159586,
+            "legacy_roundtrip_iou": 0.9040870807864448
+          },
+          "real/False": {
+            "images": 376,
+            "native_original_iou": 0.8888865567131286,
+            "native_original_dice": 0.9409856404090914,
+            "native_original_boundary_f1_tol1": 0.1818050968977172,
+            "legacy_roundtrip_iou": 0.9052557953041117
+          },
+          "synthetic/True": {
+            "images": 144,
+            "native_original_iou": 0.8209708025004203,
+            "native_original_dice": 0.8884295140906288,
+            "native_original_boundary_f1_tol1": 0.7540530460628927,
+            "legacy_roundtrip_iou": 0.8639973205574764
+          },
+          "synthetic/False": {
+            "images": 288,
+            "native_original_iou": 0.8357591621191613,
+            "native_original_dice": 0.9094991124456501,
+            "native_original_boundary_f1_tol1": 0.7528939839714534,
+            "legacy_roundtrip_iou": 0.8863773699737688
+          }
+        },
+        "M": {
+          "all": {
+            "images": 879,
+            "native_original_iou": 0.8460435690490464,
+            "native_original_dice": 0.913325261476761,
+            "native_original_boundary_f1_tol1": 0.4320353056476749,
+            "legacy_roundtrip_iou": 0.8750601324165228
+          },
+          "real/True": {
+            "images": 71,
+            "native_original_iou": 0.8867414357650938,
+            "native_original_dice": 0.9397598318369396,
+            "native_original_boundary_f1_tol1": 0.19086437077132795,
+            "legacy_roundtrip_iou": 0.898848010998656
+          },
+          "real/False": {
+            "images": 376,
+            "native_original_iou": 0.883891336607598,
+            "native_original_dice": 0.9381878805752581,
+            "native_original_boundary_f1_tol1": 0.18363960731426518,
+            "legacy_roundtrip_iou": 0.8989616250961892
+          },
+          "synthetic/True": {
+            "images": 144,
+            "native_original_iou": 0.7969891071921335,
+            "native_original_dice": 0.8733746351714546,
+            "native_original_boundary_f1_tol1": 0.6854749365411902,
+            "legacy_roundtrip_iou": 0.8373434033393974
+          },
+          "synthetic/False": {
+            "images": 288,
+            "native_original_iou": 0.8111252821342569,
+            "native_original_dice": 0.8943241882523046,
+            "native_original_boundary_f1_tol1": 0.6890652087758572,
+            "legacy_roundtrip_iou": 0.8568493975561756
+          }
+        }
+      },
       "unavailable": [
-        "L",
-        "M",
         "F",
         "U"
       ]
@@ -916,9 +989,102 @@
     "ROI_gradient_pair": {
       "status": "partial_or_not_comparable",
       "data": {
-        "utc": "2026-10-25T15:51:53.739157+00:00",
+        "utc": "2026-10-25T16:53:29.092360+00:00",
         "schema": "roi-gradient-pair-v1",
-        "pairs": {},
+        "pairs": {
+          "17": {
+            "comparable": true,
+            "unexpected_protocol_differences": [],
+            "same_scene_view_exposure": true,
+            "oracle": {
+              "D1": {
+                "rmse_mm": 4.728642450714553,
+                "mae_mm": 2.942617083589236,
+                "absrel": 0.012171840579766367,
+                "within_1mm": 0.313177206472666,
+                "within_2mm": 0.5596691479540701,
+                "within_5mm": 0.8646977684512233,
+                "valid_fraction": 1.0,
+                "pointcloud_fscore": {
+                  "1": 0.5345521726285095,
+                  "2": 0.8181020166882934,
+                  "5": 0.974763579242625
+                }
+              },
+              "D2": {
+                "rmse_mm": 4.648913380448465,
+                "mae_mm": 2.885151771483598,
+                "absrel": 0.011949829921057378,
+                "within_1mm": 0.3156355661069328,
+                "within_2mm": 0.5655093999180778,
+                "within_5mm": 0.8683737700705974,
+                "valid_fraction": 1.0,
+                "pointcloud_fscore": {
+                  "1": 0.5378847568452949,
+                  "2": 0.8219233462556892,
+                  "5": 0.9758588757659221
+                }
+              }
+            },
+            "chain": {
+              "D1": {
+                "mean_iou": 0.8331986052218405,
+                "mean_bbox_iou": 0.9192017331615644,
+                "gt_depth_coverage": 0.9142678574221713,
+                "pointcloud_fscore": {
+                  "1": 0.5102891886470657,
+                  "2": 0.7989881379429398,
+                  "5": 0.9573070968264425
+                },
+                "scene_denominator": 144,
+                "view_denominator": 432,
+                "mean_view_overlap_rmse_mm": 4.485798003496947,
+                "nonempty_overlap_views": 432,
+                "mean_view_missing_as_zero_rmse_mm": 73.42679982273667
+              },
+              "D2": {
+                "mean_iou": 0.8331986052218405,
+                "mean_bbox_iou": 0.9192017331615644,
+                "gt_depth_coverage": 0.9142678574221713,
+                "pointcloud_fscore": {
+                  "1": 0.5129506909922091,
+                  "2": 0.8023545980313924,
+                  "5": 0.9581234738512189
+                },
+                "scene_denominator": 144,
+                "view_denominator": 432,
+                "mean_view_overlap_rmse_mm": 4.419367735032682,
+                "nonempty_overlap_views": 432,
+                "mean_view_missing_as_zero_rmse_mm": 73.40821388474217
+              }
+            },
+            "surface": {
+              "D1": {
+                "gt_eligible_adjacent_pairs": 3545389,
+                "covered_adjacent_pairs": 3297822,
+                "gradient_absolute_error_sum_mm": 1844165.4615097046,
+                "gt_smooth_pairs": 3227177,
+                "covered_gt_smooth_pairs": 3036319,
+                "false_steps_gt_le1_pred_gt5_mm": 8340,
+                "gt_eligible_normals": 1720180,
+                "covered_normals": 1599969,
+                "normal_angle_sum_deg": 61687291.20094872,
+                "normal_missing180_sum_deg": 83325271.20094872,
+                "views": 432,
+                "adjacent_pair_coverage": 0.9301721193358472,
+                "gradient_mae_mm_on_covered_pairs": 0.5592070953222171,
+                "normal_coverage": 0.9301171970375194,
+                "normal_angle_mean_deg_on_covered": 38.555304009608136,
+                "normal_angle_mean_deg_missing180": 48.439855829592666,
+                "false_step_fraction_on_covered_smooth": 0.002746746965651501
+              }
+            },
+            "D2_minus_D1": {
+              "oracle_mean_view_rmse_mm": -0.07972907026608755,
+              "chain_f1_5mm": 0.0008163770247763269
+            }
+          }
+        },
         "exploratory_DEV_reuse": true,
         "no_threshold_or_checkpoint_selection": true,
         "no_model_promotion": true,
@@ -927,14 +1093,14 @@
           "Shared fixed original M18000 predictions and ROI cache; depth feature mode unchanged",
           "DEV surface audit motivated this separate prospective loss comparison; not fresh confirmatory validation"
         ],
-        "completed_pairs": 0,
+        "completed_pairs": 1,
         "surface_audit_complete": false
       }
     },
     "pixel_center_pair": {
       "status": "not_complete_comparable",
       "data": {
-        "utc": "2026-10-25T15:51:59.019332+00:00",
+        "utc": "2026-10-25T16:53:34.065162+00:00",
         "comparable": false,
         "arms": {
           "legacy": {
@@ -1417,13 +1583,13 @@
     "Reused DEV diagnostics do not select thresholds, checkpoints or model promotion"
   ],
   "head_phase": {
-    "common_endpoint": 7500,
+    "common_endpoint": 12000,
     "TRAIN_converged": false,
-    "completion_status": "pending",
-    "optional_encoder_pair": "pending_TRAIN_gate"
+    "completion_status": "completed",
+    "optional_encoder_pair": "not_admitted_TRAIN_gate"
   },
   "registered_source_pin_check": {
-    "entries": 58,
+    "entries": 64,
     "mismatches": [],
     "scope": "source_sha256 dictionaries in top-level registration JSONs; archived/data contracts remain separate"
   },
@@ -1433,8 +1599,8 @@
       "bytes": 1244
     },
     "output/calibrated_mouse_resume8h_20261025/state.json": {
-      "sha256": "ac0db8948540993aaeb1b492626a747d4f725f5dd57813429648f5f05dff3603",
-      "bytes": 11865
+      "sha256": "7b75185d56210150016a46ba6c28e12b1216625d5bf6b270b8dcc157780afc85",
+      "bytes": 13073
     },
     "output/calibrated_mouse_resume8h_20261025/queue.json": {
       "sha256": "63968dae0f4a19bcb7cfdbb25e07b69d744a442bff76af5e1357e123f2d38582",
@@ -1453,8 +1619,8 @@
       "bytes": 249
     },
     "output/calibrated_mouse_resume8h_20261025/active_child.json": {
-      "sha256": "4053128a884112d36657d995a5ab800c8ddc79ec199fe8891ab2353402c6bb34",
-      "bytes": 344
+      "sha256": "a227985172e4368c5e4fe3637bb84ae22b10eab89d1c86fa67f7103d25644beb",
+      "bytes": 630
     },
     "output/calibrated_mouse_resume8h_20261025/native_metric_audit_v1.json": {
       "sha256": "49d29ad76673b973c56e5dbd279b6e671819aa0c1e9746e24711d20d3f040aab",
@@ -1465,7 +1631,7 @@
       "bytes": 475251
     },
     "output/calibrated_mouse_resume8h_20261025/roi_pair_report_v1.json": {
-      "sha256": "572eaea8ae724a6a99420c9e41f49caf41782dff65b73cc85e844e30d41346db",
+      "sha256": "a5a2fffb7676c8ab79aa35ebcd8a4e8260b207061c880f7dde500ecf34ce0beb",
       "bytes": 9815
     },
     "output/calibrated_mouse_resume8h_20261025/surface_quality_audit_v1.json": {
@@ -1477,19 +1643,23 @@
       "bytes": 5548134
     },
     "output/calibrated_mouse_resume8h_20261025/head_phase_native_report_v1.json": {
-      "sha256": "c53beecdbff633a084cb59c56b8134fe5842179924eb358425d605a0b1a00f49",
-      "bytes": 369
+      "sha256": "952e3bf3c2170933c3854a64abc70fa988b028427ad63c790e8258d5cae86cf6",
+      "bytes": 51526
     },
     "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/progress.json": {
-      "sha256": "447498bcc1ce7a703b63d18ab2b390fc784f48660d5ae4b658cba897ff0eab79",
-      "bytes": 27330
+      "sha256": "8482df553d887b880abfce1c6549bedc11906a2ec9b6e65f8f85e8f74cb3109a",
+      "bytes": 43428
+    },
+    "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/completion.json": {
+      "sha256": "f62ed0ae616d71b67251feb51d9c16c82000fddca8c7a2001b3221b197b090e8",
+      "bytes": 43682
     },
     "output/calibrated_mouse_resume8h_20261025/roi_gradient_pair_report_v1.json": {
-      "sha256": "c7a61f73c372dc29d3ce1fc8762bce4586da3ce38e4696f09f4edf2ef97044cd",
-      "bytes": 593
+      "sha256": "d84263d018f72deaf99ce23f4f4868d2ddf25198d1b95fd11b6f602e7521c97e",
+      "bytes": 3897
     },
     "output/calibrated_mouse_resume8h_20261025/pixel_center_pair_report_v1.json": {
-      "sha256": "9990c817376dd0df7c337b43dea1d7ee972255e9d44f74d174e3d47001d84318",
+      "sha256": "e918660a678ab24fe9908acf4cd062eebe9691efa49ea6606ddcff6e526485cd",
       "bytes": 538
     },
     "output/calibrated_mouse_resume8h_20261025/empty_background_v1/M_common_endpoint_eval/evaluation.json": {
@@ -1536,6 +1706,10 @@
       "sha256": "eefda2cc5114afe7f0a42cdc2757d37e58830307becd8ab876d95a65fd1e0040",
       "bytes": 1882
     },
+    "output/calibrated_mouse_resume8h_20261025/head_phase_final_gate_registration_v1.json": {
+      "sha256": "8905904ef0bf5804105482507aad4a8c95f93f1574723f4524d7a928de17e98d",
+      "bytes": 967
+    },
     "output/calibrated_mouse_resume8h_20261025/head_phase_registration_v1.json": {
       "sha256": "9f25ef11d9c7ccc7e969b6ac9923cb2c896fbec523b7f7b4958ee67e593beb90",
       "bytes": 2084
@@ -1551,6 +1725,10 @@
     "output/calibrated_mouse_resume8h_20261025/pixel_center_pair_registration_v1.json": {
       "sha256": "8f2c80bd991098f4b76c95f36d66fc700f60e94f506d285bd90b33d65338611b",
       "bytes": 3137
+    },
+    "output/calibrated_mouse_resume8h_20261025/pointcloud_review_registration_v1.json": {
+      "sha256": "153fbea4188c20cf62481e8ef12470eeb67aebb1ebfb3849134d84b1e528a1c8",
+      "bytes": 1446
     },
     "output/calibrated_mouse_resume8h_20261025/roi_fullchain_registration_v1.json": {
       "sha256": "2d8296fd724e70df286a09b536bbf39a1f72be9ed2ecdafd24d7fbf365b662d4",
