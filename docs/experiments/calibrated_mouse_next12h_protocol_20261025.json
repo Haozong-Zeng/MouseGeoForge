@@ -1,0 +1,185 @@
+{
+  "plan": {
+    "schema": "calibrated-mouse-next12h-v1",
+    "authorization": "User: \u53c2\u8003calibrated_mouse_round_review_20261025.md\u548c\u8c03\u7814\u7ed3\u8bba\uff0c\u5f00\u59cb\u4e0b\u4e00\u8f6e12\u5c0f\u65f6\u81ea\u52a8\u5faa\u73af",
+    "start_utc": "2026-10-25T19:50:28+00:00",
+    "optimization_cutoff_utc": "2026-10-26T07:20:28+00:00",
+    "hard_finish_utc": "2026-10-26T07:50:28+00:00",
+    "review": "docs/calibrated_mouse_round_review_20261025.md",
+    "literature": "docs/experiments/calibrated_mouse_literature_gate_review_20261025_v1.json",
+    "parent_cycle": "output/calibrated_mouse_resume8h_20261025",
+    "old_cycle_state": "All prior jobs finished. QUEUE_CLOSED after exact identity/no active child/no tracked compute verification; original plan untouched; automation10remainsPAUSED.",
+    "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+    "local_only": true,
+    "no_subagents": true,
+    "no_other_chat_messages": true,
+    "no_model_promotion": true,
+    "no_protected_TEST_or_sealed": true,
+    "no_original_data_edits": true,
+    "no_excluded_source_admission": true,
+    "no_GT_scale_or_similarity_fit": true,
+    "known_K_E_fixed": true,
+    "depth_units": "camera-Z millimeters",
+    "phase_priorities": [
+      {
+        "id": "real_reference_feasibility",
+        "status": "first implementation",
+        "purpose": "PanoMouse admitted S03/S11 zero-training geometry/proxy eligibility; PyMouseStudio original knownKE audit; DANNCE original-label/sync/split provenance review only, no pseudo-depth GT or new model data admission"
+      },
+      {
+        "id": "classical_geometry_baselines",
+        "status": "implement before queue admission",
+        "purpose": "Same96planes TRAIN-only fixedAABB and original fixedM mask support: RGB photometric sweep and mask visual-hull first occupied depth; full144DEVscene denominators"
+      },
+      {
+        "id": "roi_segmentation",
+        "status": "implementation required",
+        "purpose": "Center-exact two-stage predicted coarse bbox ROI refinement against matched full-view arm; TRAIN-only schedule, native-original GT metrics and full chain coverage"
+      },
+      {
+        "id": "spatial_depth_regularization",
+        "status": "implementation required",
+        "purpose": "Bounded paired low-resolution spatial conv/refiner vs matched no-spatial baseline, complete depth/surface/crossview reporting"
+      },
+      {
+        "id": "controlled_adaptation",
+        "status": "conditional future registration",
+        "purpose": "Matched frozen vs limited adapter/last-block comparison only after new TRAIN readiness and actual numerical/gradient checks; historical failed gates unchanged"
+      },
+      {
+        "id": "keypoint_geometry_bridge",
+        "status": "feasibility first",
+        "purpose": "Distinguish anatomical3D points from visible skin. DANNCE-style volume/direct3D stronger task match than naive surface-depth lookup; no unverified reliability claim"
+      }
+    ],
+    "data_policy": {
+      "synthetic": "Existing canonical V5 TRAIN/DEV only;6correlatedposes",
+      "semseg": "Existing admitted3496image manifest, realmanual distinct from opaque skin",
+      "panomouse": "Only existing evaluation-admitted DEV S03/S11; released3D correlated triangulation proxy, not independent surface GT; no training or protected S04/S05",
+      "dannce": "Raw provenance/split/units review authorized by user question; no automatic model training/scoring admission; existing SAM2visualhull pseudo_depth never GT"
+    },
+    "gate_policy": {
+      "historical_unchanged": true,
+      "readiness": "New round prospective bounded warm-start/stable TRAIN readiness, not retroactive convergence pass; no joint L/M loss-span demand",
+      "monitor": "Larger deterministic four-stratum TRAIN-only native mask monitor; direction-aware non-regression, finite/resume/source checks",
+      "exact_thresholds": "Must be registered using TRAIN measurement sensitivity before any adaptation job starts; DEV cannot stop/select"
+    },
+    "confidence_policy": "Unfiltered primary geometry; fixed filter diagnostics separate with originalGT denominators; do not optimize confidence threshold on reusedDEV",
+    "budget_policy": "Never reset/extend. No optimization after cutoff; last30min evaluation/report/safe closeout. At hard finish close queue, verify all owned groups stopped and pause new heartbeat. No filler pilots.",
+    "continuation": "Implement finite useful jobs, register source/data/hash/archive before starting. Preserve failed attempts with fresh versions. No duplicate controllers or jobs."
+  },
+  "source_registration": {
+    "utc": "2026-10-25T19:54:34.266969+00:00",
+    "source_sha256": {
+      "tools/run_calibrated_mouse_next12h_20261025.py": "9442e76ccf7f7ade63b56c29ce31bad5bca7cc5bb002ab65722d5cb872785975",
+      "tools/guard_calibrated_mouse_next12h_20261025.py": "b23a7e32af516a1024c0ccb0834cd3e8ea4586489191baed8ab915ca0f6a434b",
+      "tools/report_calibrated_mouse_next12h_20261025.py": "5795b6245ec8656f5a5cda6ed41bec6726bb534c91d54ffe97550c6557572b38",
+      "tools/audit_calibrated_mouse_next12h_real_reference_20261025.py": "4775571fc518b84502506a9ffd0d38e9528a7aa9c8b45ead7d489a30ead8f1cd",
+      "tests/test_calibrated_mouse_next12h_lifecycle_20261025.py": "c83dbf0d56ddc3ad89e0f12f5d6a056e0b4b1a0ba8042b15dd47677ceba0aa66",
+      "mousegeoforge/models/calibrated_mouse_depth.py": "876b27aa9a927f9c5d52f41c515f5f82e4bdb5d114428dea50dad4ff4a1529a2"
+    },
+    "lifecycle_actual_fixture_tests_passed": 2,
+    "window": {
+      "schema": "calibrated-mouse-next12h-v1",
+      "authorization": "User: \u53c2\u8003calibrated_mouse_round_review_20261025.md\u548c\u8c03\u7814\u7ed3\u8bba\uff0c\u5f00\u59cb\u4e0b\u4e00\u8f6e12\u5c0f\u65f6\u81ea\u52a8\u5faa\u73af",
+      "start_utc": "2026-10-25T19:50:28+00:00",
+      "optimization_cutoff_utc": "2026-10-26T07:20:28+00:00",
+      "hard_finish_utc": "2026-10-26T07:50:28+00:00",
+      "review": "docs/calibrated_mouse_round_review_20261025.md",
+      "literature": "docs/experiments/calibrated_mouse_literature_gate_review_20261025_v1.json",
+      "parent_cycle": "output/calibrated_mouse_resume8h_20261025",
+      "old_cycle_state": "All prior jobs finished. QUEUE_CLOSED after exact identity/no active child/no tracked compute verification; original plan untouched; automation10remainsPAUSED.",
+      "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+      "local_only": true,
+      "no_subagents": true,
+      "no_other_chat_messages": true,
+      "no_model_promotion": true,
+      "no_protected_TEST_or_sealed": true,
+      "no_original_data_edits": true,
+      "no_excluded_source_admission": true,
+      "no_GT_scale_or_similarity_fit": true,
+      "known_K_E_fixed": true,
+      "depth_units": "camera-Z millimeters",
+      "phase_priorities": [
+        {
+          "id": "real_reference_feasibility",
+          "status": "first implementation",
+          "purpose": "PanoMouse admitted S03/S11 zero-training geometry/proxy eligibility; PyMouseStudio original knownKE audit; DANNCE original-label/sync/split provenance review only, no pseudo-depth GT or new model data admission"
+        },
+        {
+          "id": "classical_geometry_baselines",
+          "status": "implement before queue admission",
+          "purpose": "Same96planes TRAIN-only fixedAABB and original fixedM mask support: RGB photometric sweep and mask visual-hull first occupied depth; full144DEVscene denominators"
+        },
+        {
+          "id": "roi_segmentation",
+          "status": "implementation required",
+          "purpose": "Center-exact two-stage predicted coarse bbox ROI refinement against matched full-view arm; TRAIN-only schedule, native-original GT metrics and full chain coverage"
+        },
+        {
+          "id": "spatial_depth_regularization",
+          "status": "implementation required",
+          "purpose": "Bounded paired low-resolution spatial conv/refiner vs matched no-spatial baseline, complete depth/surface/crossview reporting"
+        },
+        {
+          "id": "controlled_adaptation",
+          "status": "conditional future registration",
+          "purpose": "Matched frozen vs limited adapter/last-block comparison only after new TRAIN readiness and actual numerical/gradient checks; historical failed gates unchanged"
+        },
+        {
+          "id": "keypoint_geometry_bridge",
+          "status": "feasibility first",
+          "purpose": "Distinguish anatomical3D points from visible skin. DANNCE-style volume/direct3D stronger task match than naive surface-depth lookup; no unverified reliability claim"
+        }
+      ],
+      "data_policy": {
+        "synthetic": "Existing canonical V5 TRAIN/DEV only;6correlatedposes",
+        "semseg": "Existing admitted3496image manifest, realmanual distinct from opaque skin",
+        "panomouse": "Only existing evaluation-admitted DEV S03/S11; released3D correlated triangulation proxy, not independent surface GT; no training or protected S04/S05",
+        "dannce": "Raw provenance/split/units review authorized by user question; no automatic model training/scoring admission; existing SAM2visualhull pseudo_depth never GT"
+      },
+      "gate_policy": {
+        "historical_unchanged": true,
+        "readiness": "New round prospective bounded warm-start/stable TRAIN readiness, not retroactive convergence pass; no joint L/M loss-span demand",
+        "monitor": "Larger deterministic four-stratum TRAIN-only native mask monitor; direction-aware non-regression, finite/resume/source checks",
+        "exact_thresholds": "Must be registered using TRAIN measurement sensitivity before any adaptation job starts; DEV cannot stop/select"
+      },
+      "confidence_policy": "Unfiltered primary geometry; fixed filter diagnostics separate with originalGT denominators; do not optimize confidence threshold on reusedDEV",
+      "budget_policy": "Never reset/extend. No optimization after cutoff; last30min evaluation/report/safe closeout. At hard finish close queue, verify all owned groups stopped and pause new heartbeat. No filler pilots.",
+      "continuation": "Implement finite useful jobs, register source/data/hash/archive before starting. Preserve failed attempts with fresh versions. No duplicate controllers or jobs."
+    }
+  },
+  "classical_registration": {
+    "utc": "2026-10-25T19:57:48.119554+00:00",
+    "source_sha256": {
+      "tools/calibrated_mouse_classical_baselines_20261025.py": "acad736430ce652559b0c0a4ec468898fe33edd9f9397c01bb6901edba75a5e9",
+      "tests/test_calibrated_mouse_classical_baselines_20261025.py": "8d35b261c645cfdac4a1afb8d7f1da601aa5ad52fe9d93731a2789e885e6aa8d",
+      "mousegeoforge/models/calibrated_mouse_depth.py": "876b27aa9a927f9c5d52f41c515f5f82e4bdb5d114428dea50dad4ff4a1529a2",
+      "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835"
+    },
+    "methods": {
+      "rgb": "Mean absolute RGB of5x5box-blurred nativeRGB across available other2views;96uniform cameraZplanes in originalTRAINAABB;argmin firsttie; rejectno visibility",
+      "hull": "Same96planes and original predictedM18000 masks; reference ray firstplane foreground in BOTHother synchronized views, strictinframe, nearestnativepixel; no silhouette dilation/confidencefilter"
+    },
+    "data": "Existing canonical144syntheticDEV432views, fixed originalM masks fromseed17ROIoutput (same masks allmodels), noGTinputforward",
+    "learned_weights": false,
+    "training_updates": 0,
+    "unit_tests_passed": 5,
+    "actual_gpu_smoke": "Queued engineering firstscene before full144baseline",
+    "limitations": [
+      "Only6correlated syntheticposes; reusedDEV diagnostic",
+      "Photometricweaktexture/reflection failure expected; no thresholdselection orGTfitting",
+      "Visualhull gives occupancyenvelope, not guaranteed true opaque-skin surface",
+      "Full scene/view/GTdenominators maintained; missingzero metric is sentinel notphysicalvalidpointRMSE",
+      "Thisbaseline doesnot establish realdenseGT; no original/excluded data edits/admission",
+      "Same96plane resolution andAABB but independent nonlearned algorithm, not equivalentarchitecture/compute tolearnedhead"
+    ]
+  },
+  "read_sources": {
+    "docs/calibrated_mouse_round_review_20261025.md": "24a2a9f53c67d69719cbefc7ae66cbc296bf757ea8cb0cc83776b9c4f0c0b749",
+    "docs/experiments/calibrated_mouse_literature_gate_review_20261025_v1.json": "b7a45d505c622540bfa7aaa22525d29d33392482d3e4e18cbcc2e8264ea36f33"
+  },
+  "automation_id": "calibrated-mouse-next-12h-local-cycle",
+  "old_cycle_handoff_verified": "e0878263f104e223b801021a5c5de075a51af92e952e43b61d2eab37342cfbca"
+}

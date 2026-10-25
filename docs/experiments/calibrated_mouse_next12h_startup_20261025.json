@@ -1,0 +1,344 @@
+{
+  "utc": "2026-10-25T19:58:27.872526+00:00",
+  "window": {
+    "schema": "calibrated-mouse-next12h-v1",
+    "authorization": "User: \u53c2\u8003calibrated_mouse_round_review_20261025.md\u548c\u8c03\u7814\u7ed3\u8bba\uff0c\u5f00\u59cb\u4e0b\u4e00\u8f6e12\u5c0f\u65f6\u81ea\u52a8\u5faa\u73af",
+    "start_utc": "2026-10-25T19:50:28+00:00",
+    "optimization_cutoff_utc": "2026-10-26T07:20:28+00:00",
+    "hard_finish_utc": "2026-10-26T07:50:28+00:00",
+    "review": "docs/calibrated_mouse_round_review_20261025.md",
+    "literature": "docs/experiments/calibrated_mouse_literature_gate_review_20261025_v1.json",
+    "parent_cycle": "output/calibrated_mouse_resume8h_20261025",
+    "old_cycle_state": "All prior jobs finished. QUEUE_CLOSED after exact identity/no active child/no tracked compute verification; original plan untouched; automation10remainsPAUSED.",
+    "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+    "local_only": true,
+    "no_subagents": true,
+    "no_other_chat_messages": true,
+    "no_model_promotion": true,
+    "no_protected_TEST_or_sealed": true,
+    "no_original_data_edits": true,
+    "no_excluded_source_admission": true,
+    "no_GT_scale_or_similarity_fit": true,
+    "known_K_E_fixed": true,
+    "depth_units": "camera-Z millimeters",
+    "phase_priorities": [
+      {
+        "id": "real_reference_feasibility",
+        "status": "first implementation",
+        "purpose": "PanoMouse admitted S03/S11 zero-training geometry/proxy eligibility; PyMouseStudio original knownKE audit; DANNCE original-label/sync/split provenance review only, no pseudo-depth GT or new model data admission"
+      },
+      {
+        "id": "classical_geometry_baselines",
+        "status": "implement before queue admission",
+        "purpose": "Same96planes TRAIN-only fixedAABB and original fixedM mask support: RGB photometric sweep and mask visual-hull first occupied depth; full144DEVscene denominators"
+      },
+      {
+        "id": "roi_segmentation",
+        "status": "implementation required",
+        "purpose": "Center-exact two-stage predicted coarse bbox ROI refinement against matched full-view arm; TRAIN-only schedule, native-original GT metrics and full chain coverage"
+      },
+      {
+        "id": "spatial_depth_regularization",
+        "status": "implementation required",
+        "purpose": "Bounded paired low-resolution spatial conv/refiner vs matched no-spatial baseline, complete depth/surface/crossview reporting"
+      },
+      {
+        "id": "controlled_adaptation",
+        "status": "conditional future registration",
+        "purpose": "Matched frozen vs limited adapter/last-block comparison only after new TRAIN readiness and actual numerical/gradient checks; historical failed gates unchanged"
+      },
+      {
+        "id": "keypoint_geometry_bridge",
+        "status": "feasibility first",
+        "purpose": "Distinguish anatomical3D points from visible skin. DANNCE-style volume/direct3D stronger task match than naive surface-depth lookup; no unverified reliability claim"
+      }
+    ],
+    "data_policy": {
+      "synthetic": "Existing canonical V5 TRAIN/DEV only;6correlatedposes",
+      "semseg": "Existing admitted3496image manifest, realmanual distinct from opaque skin",
+      "panomouse": "Only existing evaluation-admitted DEV S03/S11; released3D correlated triangulation proxy, not independent surface GT; no training or protected S04/S05",
+      "dannce": "Raw provenance/split/units review authorized by user question; no automatic model training/scoring admission; existing SAM2visualhull pseudo_depth never GT"
+    },
+    "gate_policy": {
+      "historical_unchanged": true,
+      "readiness": "New round prospective bounded warm-start/stable TRAIN readiness, not retroactive convergence pass; no joint L/M loss-span demand",
+      "monitor": "Larger deterministic four-stratum TRAIN-only native mask monitor; direction-aware non-regression, finite/resume/source checks",
+      "exact_thresholds": "Must be registered using TRAIN measurement sensitivity before any adaptation job starts; DEV cannot stop/select"
+    },
+    "confidence_policy": "Unfiltered primary geometry; fixed filter diagnostics separate with originalGT denominators; do not optimize confidence threshold on reusedDEV",
+    "budget_policy": "Never reset/extend. No optimization after cutoff; last30min evaluation/report/safe closeout. At hard finish close queue, verify all owned groups stopped and pause new heartbeat. No filler pilots.",
+    "continuation": "Implement finite useful jobs, register source/data/hash/archive before starting. Preserve failed attempts with fresh versions. No duplicate controllers or jobs."
+  },
+  "real_reference": {
+    "completed_utc": "2026-10-25T19:54:39.201946+00:00",
+    "model_calls": 0,
+    "training_updates": 0,
+    "protected_session_model_calls": 0,
+    "dannce": {
+      "original_files": [
+        {
+          "path": "dataset/DANNCE/raw/markerless_mouse_1/label3d_dannce.mat",
+          "sha256": "2d7c0d4560bcbae1b3bc52140dc135a99ef4f647ae9bfdc90a2cd027548227a8",
+          "mat_variables": [
+            {
+              "name": "camnames",
+              "shape": [
+                1,
+                6
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "com",
+              "shape": [
+                1,
+                1
+              ],
+              "matclass": "struct"
+            },
+            {
+              "name": "labelData",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "params",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "sync",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            }
+          ]
+        },
+        {
+          "path": "dataset/DANNCE/raw/markerless_mouse_2/label3d_dannce.mat",
+          "sha256": "a60287cd3b8cc38a6edc722c300d4021776fd37e429a9c79e09eeaf70e514b93",
+          "mat_variables": [
+            {
+              "name": "camnames",
+              "shape": [
+                1,
+                6
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "com",
+              "shape": [
+                1,
+                1
+              ],
+              "matclass": "struct"
+            },
+            {
+              "name": "labelData",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "params",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "sync",
+              "shape": [
+                6,
+                1
+              ],
+              "matclass": "cell"
+            }
+          ]
+        },
+        {
+          "path": "dataset/DANNCE/raw/common/mouse22_skeleton.mat",
+          "sha256": "b13587f0792030bb7c32e98c20a8f1e8d6c77832abb7e7bd99e3a345a6754830",
+          "mat_variables": [
+            {
+              "name": "color",
+              "shape": [
+                24,
+                4
+              ],
+              "matclass": "double"
+            },
+            {
+              "name": "joint_names",
+              "shape": [
+                1,
+                22
+              ],
+              "matclass": "cell"
+            },
+            {
+              "name": "joints_idx",
+              "shape": [
+                24,
+                2
+              ],
+              "matclass": "double"
+            }
+          ]
+        },
+        {
+          "path": "dataset/DANNCE/raw/common/dannce_mouse_config.yaml",
+          "sha256": "7578317dcf3a4b92da1e44b66bb07acb8051e921ac9af1c6157b730982cdb187"
+        },
+        {
+          "path": "dataset/DANNCE/raw/common/DANNCE_LICENSE",
+          "sha256": "01d342fac28de94478dc3777e0dc1b249be6a6b4afb186221a0c120fb352a9af"
+        }
+      ],
+      "training_or_scoring_new_admission": false,
+      "pseudo_depth_used": false,
+      "next": "Resolve existing split/provenance/semantics and allowed evaluation roles before model calls. Original label provenance does not make existing visual-hull pseudo_depth independent GT."
+    },
+    "pymousestudio": "Existing real calibration audit retained; hardware synchronization and independentmm reference not established. Do not re-undistort rectified inputs.",
+    "interpretation": [
+      "Anatomical3D cameraZ is a correlated sparse reference, not visible skin depth GT. Surface-vs-landmark residual cannot be called dense depth accuracy.",
+      "Original synthetic AABB/world-normalized prior must not be silently fitted/aligned to real reference points. Report invalid rays and coverage as failures; no GT gauge fitting.",
+      "DANNCE-style direct volumetric landmarks are task-aligned candidate; not established more reliable without matched evaluation.",
+      "PanoMouse existing evaluation-only S03/S11 remains; no training data admission or protected S04/S05 scoring."
+    ],
+    "input_sha256": {
+      "output/panomouse_stage01_20261023/stage0/admission.json": "0bbd6c5d180aa0313bc0cbd16c977427be5b79c4fa87ae90205e5e875670cc45",
+      "dataset/PanoMouse/raw/annotations/annotations_2d.json": "46dcd09235f6639b6b34b705baee1ae6cf9e49d59833465a5f83bec877745c27",
+      "dataset/PanoMouse/raw/annotations/annotations_3d.json": "134cfdd23fae727952555d5b8dd47fcc85c9e3ac410f4b697ab4646a797dc5c3",
+      "dataset/PanoMouse/raw/annotations/calib_data.json": "2577da8a53beef4406f96f29ff40bb2507d1cd2375d032cf6e0bbd1c413c0ab4",
+      "dataset/DANNCE/download_manifest.json": "759aeed22d974f7d1c485cee0d472e0df4e26749cb39f1021626e61dee131a77",
+      "dataset/DANNCE/raw/markerless_mouse_1/label3d_dannce.mat": "2d7c0d4560bcbae1b3bc52140dc135a99ef4f647ae9bfdc90a2cd027548227a8",
+      "dataset/DANNCE/raw/markerless_mouse_2/label3d_dannce.mat": "a60287cd3b8cc38a6edc722c300d4021776fd37e429a9c79e09eeaf70e514b93",
+      "dataset/DANNCE/raw/common/mouse22_skeleton.mat": "b13587f0792030bb7c32e98c20a8f1e8d6c77832abb7e7bd99e3a345a6754830",
+      "dataset/DANNCE/raw/common/dannce_mouse_config.yaml": "7578317dcf3a4b92da1e44b66bb07acb8051e921ac9af1c6157b730982cdb187",
+      "dataset/DANNCE/raw/common/DANNCE_LICENSE": "01d342fac28de94478dc3777e0dc1b249be6a6b4afb186221a0c120fb352a9af",
+      "output/calibrated_mouse_resume8h_20261025/admitted_real_calibration_audit_v2.json": "03376474165d0ac3b190d7cb2fc52f4e7686da3f9a131dac4573df5b60fd409b"
+    }
+  },
+  "panomouse_summary": {
+    "dev_sessions": [
+      "S03",
+      "S11"
+    ],
+    "timepoints": 51,
+    "views": 1150,
+    "visible_body_reference_observations": 16232,
+    "original_synthetic_volume_ray_intersection_fraction": 0.04146131099063578,
+    "released_body_point_inside_synthetic_volume_fraction": 0.0,
+    "released_cameraZ_mm_quantiles": [
+      116.6112669432436,
+      177.41824632240662,
+      262.0978652068283,
+      348.1463787033354,
+      428.3328260792419
+    ]
+  },
+  "prior_dannce4dgs": {
+    "completed_utc": "2026-10-25T19:57:52.014330+00:00",
+    "model_calls": 0,
+    "training_updates": 0,
+    "new_data_admission": false,
+    "reused_existing_model": true,
+    "source_clip": {
+      "session": "DANNCE markerless_mouse_1",
+      "raw_frames": [
+        0,
+        79
+      ],
+      "synchronized_views": 6,
+      "images": 480,
+      "coarse_updates": 1000,
+      "fine_updates": 10000,
+      "gaussians": 38963
+    },
+    "stored_observed_view_appearance": {
+      "psnr_db": 30.534595808167918,
+      "mean_mae": 0.003603721235413104
+    },
+    "stored_landmark_sanity_only": {
+      "sample_count": 259,
+      "median_absolute_error_mm": 2.4285555884850485,
+      "mean_absolute_error_mm": 6.97437297431502,
+      "p90_absolute_error_mm": 21.923317660351664,
+      "median_bias_mm": -2.04633540618282
+    },
+    "depth_semantics": "Exporter divides sum(alpha*transmittance*cameraZ) by accumulatedalpha: expected cameraZ, not guaranteed firstopaque surface. Multiplystoreddepth100for mm.",
+    "dependency_disclosure": [
+      "SAM2 masks were prompted from projected released3D atframes27and72 then propagated.",
+      "Visualhull initialization uses SAM2 silhouette masks and thetwo promptedposes.",
+      "World centering uses mouseCOM and virtualcameras; must audit derivation before any heldout-GT-independent claim.",
+      "Stored view render scores and same labelled prompt-point comparisons do not establish heldout surface accuracy.",
+      "Anatomical/internal/occluded joints differ from visible skin;2.43mmmedian is not dense depth error."
+    ],
+    "recommended_role": "Existing weakdepth/appearance/temporal consistency baseline and hypothesis source, not sensor/GT supervision. No duplicatepilot training; first establish disjoint heldout views/times with independent reference and full failuredenominators.",
+    "not_restarted": true
+  },
+  "prior_dannce4dgs_receipt_sha256": "ac34973d25ff07bfe18b075892bb802b808eb82dbaf1d32ee3d61ee99028ea94",
+  "real_reference_receipt_sha256": "8d9d7cd2dd00920acac5eed1f67983acdf235e8efd1a5808b3933be28f373e9f",
+  "startup_identity_receipt_sha256": "1ec8f3226651895bc88b8cda7e3155ad8103deab454ac587abc303e2dfe192e9",
+  "state_at_snapshot": {
+    "jobs": {
+      "real_reference_feasibility_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:54:40.596985+00:00",
+        "seconds": 6.304911814000661
+      },
+      "initial_report_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:54:41.657146+00:00",
+        "seconds": 1.0583828400012862
+      },
+      "existing_dannce4dgs_review_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:57:52.879564+00:00",
+        "seconds": 1.0062591579990112
+      },
+      "classical_actual_smoke_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:57:56.094913+00:00",
+        "seconds": 5.172413303000212
+      },
+      "classical_baselines_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:58:23.818134+00:00",
+        "seconds": 29.7528474009996
+      }
+    },
+    "started": "2026-10-25T19:54:34.291346+00:00",
+    "time": "2026-10-25T19:58:23.819564+00:00",
+    "status": "waiting_for_next_registered_stage"
+  },
+  "implementations_remaining": [
+    "ROI segmentation matchedfullpair andreleasedGPUpreflight",
+    "Spatialdepthrefinement matchedcontrol andsurfacechecks",
+    "Prospective TRAIN readiness thresholds before any limitedadaptation",
+    "Heldout protocol for oldGSweaklabel comparison;no denseGTadmission"
+  ]
+}
