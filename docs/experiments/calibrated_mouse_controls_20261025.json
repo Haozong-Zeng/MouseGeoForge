@@ -1,0 +1,115 @@
+{
+  "time": "2026-10-25T09:55:40.752332+00:00",
+  "source_sha256": "e26110e42e1cb5cf586b30dcd93eaf21b5259a5007ac77f2fc1b8de40f3ee354",
+  "coverage": {
+    "summary": {
+      "train/real/bottom": {
+        "images": 134,
+        "empty": 0,
+        "boundary_touch": 78,
+        "median_foreground_fraction": 0.13852970679012347,
+        "images_with_multiple_components_ge20px": 38,
+        "unknown_pixels": 0
+      },
+      "train/real/other": {
+        "images": 755,
+        "empty": 0,
+        "boundary_touch": 36,
+        "median_foreground_fraction": 0.09073148148148148,
+        "images_with_multiple_components_ge20px": 0,
+        "unknown_pixels": 0
+      },
+      "dev/real/bottom": {
+        "images": 71,
+        "empty": 0,
+        "boundary_touch": 46,
+        "median_foreground_fraction": 0.14927391975308643,
+        "images_with_multiple_components_ge20px": 9,
+        "unknown_pixels": 0
+      },
+      "dev/real/other": {
+        "images": 376,
+        "empty": 0,
+        "boundary_touch": 20,
+        "median_foreground_fraction": 0.08836072530864197,
+        "images_with_multiple_components_ge20px": 0,
+        "unknown_pixels": 0
+      },
+      "dev/synthetic/bottom": {
+        "images": 144,
+        "empty": 0,
+        "boundary_touch": 20,
+        "median_foreground_fraction": 0.03558010525173611,
+        "images_with_multiple_components_ge20px": 0,
+        "unknown_pixels": 0
+      },
+      "dev/synthetic/other": {
+        "images": 288,
+        "empty": 0,
+        "boundary_touch": 10,
+        "median_foreground_fraction": 0.021708170572916668,
+        "images_with_multiple_components_ge20px": 4,
+        "unknown_pixels": 0
+      },
+      "train/synthetic/bottom": {
+        "images": 576,
+        "empty": 0,
+        "boundary_touch": 108,
+        "median_foreground_fraction": 0.04429456922743055,
+        "images_with_multiple_components_ge20px": 4,
+        "unknown_pixels": 0
+      },
+      "train/synthetic/other": {
+        "images": 1152,
+        "empty": 0,
+        "boundary_touch": 16,
+        "median_foreground_fraction": 0.025397406684027776,
+        "images_with_multiple_components_ge20px": 2,
+        "unknown_pixels": 0
+      }
+    },
+    "exact_train_dev_rgb_overlap_count": 0,
+    "instance_count_ground_truth_available": false,
+    "component_counts_do_not_establish_instance_counts": true,
+    "empty_background_fpr_evaluable": false,
+    "receipt_sha256": "cfd55a6e1936eb6b2b89a14298117d5a7ddac4f828aac5103a43f024a2b6e70f"
+  },
+  "input_sensitivity": {
+    "split": "TRAIN only, 12 scenes x3views x64 fixed rays",
+    "device": "CPU; no CUDA allocation",
+    "interpretation": "Input perturbation is out-of-distribution diagnostic, not a matched retrained control; v3 matching/reference pair remains required",
+    "arms": {
+      "D1": {
+        "mean_probe_rmse_mm": 4.52584214342965,
+        "matching_disabled": {
+          "mean_absolute_prediction_change_mm": 74.5246068239212,
+          "mean_probe_rmse_mm": 76.10865354537964
+        },
+        "source_camera_x_plus10mm": {
+          "mean_absolute_prediction_change_mm": 7.370679053995344,
+          "mean_probe_rmse_mm": 8.953409314155579
+        }
+      },
+      "D2": {
+        "mean_probe_rmse_mm": 4.5180016954739886,
+        "matching_disabled": {
+          "mean_absolute_prediction_change_mm": 72.68413029776679,
+          "mean_probe_rmse_mm": 74.23562487628725
+        },
+        "source_camera_x_plus10mm": {
+          "mean_absolute_prediction_change_mm": 7.451539529694451,
+          "mean_probe_rmse_mm": 9.0746814277437
+        }
+      }
+    },
+    "receipt_sha256": "fecf4117af94b209cd400cb0ab4ca4928aac6044305cdf2183ed6cb4869dab84"
+  },
+  "held_source_frame_pairs": {},
+  "limits": [
+    "No admitted empty-background frames; absence-of-mouse false-positive rate cannot be evaluated",
+    "Mask components do not identify multiple mice; no instance-count claim",
+    "Border contact is an observation, not a certificate of which anatomy is outside the camera",
+    "TRAIN perturbation removes/changes trained inputs; it is not a matched retrained control",
+    "Six correlated synthetic poses; held source-frame experiment is not independent real metric-depth validation"
+  ]
+}
