@@ -1,0 +1,292 @@
+{
+  "utc": "2026-10-25T18:57:52.100741+00:00",
+  "scope": "Literature review and read-only gate reassessment requested by user; no scientific training or protocol mutation",
+  "original_window_unchanged": {
+    "start": "2026-10-25T13:27:11Z",
+    "optimization_cutoff": "2026-10-25T20:57:11Z",
+    "hard_finish": "2026-10-25T21:27:11Z"
+  },
+  "historical_gate_preserved": true,
+  "DEV_used_for_gate_analysis": false,
+  "gate_reviews": {
+    "head_plateau_audit_v1.json": {
+      "source_sha256": "c5bb78300bcba9d4016550fc2994dc8611b5730a3f73bdb660c014bd67ac59f7",
+      "registered_common_endpoint": 18000,
+      "arms": {
+        "L": {
+          "total_constraints": 15,
+          "failed_constraints": 7,
+          "groups": {
+            "all": {
+              "loss_relative_span": 0.06296175169173072,
+              "iou_span": 0.00042153288013557777,
+              "boundary_f1_span": 0.001766926883184361
+            },
+            "real/True": {
+              "loss_relative_span": 0.24142361051419756,
+              "iou_span": 0.00010041430950324948,
+              "boundary_f1_span": 0.0002264212854586889
+            },
+            "real/False": {
+              "loss_relative_span": 0.06337074056756521,
+              "iou_span": 0.0006536687016828191,
+              "boundary_f1_span": 0.004636532193478038
+            },
+            "synthetic/True": {
+              "loss_relative_span": 0.08166608660683704,
+              "iou_span": 0.00035910147977025186,
+              "boundary_f1_span": 0.0017457539528239474
+            },
+            "synthetic/False": {
+              "loss_relative_span": 0.03675065156974008,
+              "iou_span": 0.0008490535370921926,
+              "boundary_f1_span": 0.002045165775951263
+            }
+          },
+          "diagnostic_only_global_iou_BF_plateau": true,
+          "diagnostic_only_all_strata_iou_plateau": true,
+          "diagnostic_only_remove_loss_still_failing": [
+            "real/False/boundary_f1",
+            "synthetic/False/boundary_f1"
+          ]
+        },
+        "M": {
+          "total_constraints": 15,
+          "failed_constraints": 6,
+          "groups": {
+            "all": {
+              "loss_relative_span": 0.05995360948768984,
+              "iou_span": 0.00020977318021231373,
+              "boundary_f1_span": 0.0017638156758532642
+            },
+            "real/True": {
+              "loss_relative_span": 0.19834790148380313,
+              "iou_span": 6.459566378314019e-05,
+              "boundary_f1_span": 0.00040636457619525057
+            },
+            "real/False": {
+              "loss_relative_span": 0.07817125068312915,
+              "iou_span": 0.0010753076343253953,
+              "boundary_f1_span": 0.007631619372328258
+            },
+            "synthetic/True": {
+              "loss_relative_span": 0.08050025951544239,
+              "iou_span": 0.00024515754043363813,
+              "boundary_f1_span": 0.0006909199206875938
+            },
+            "synthetic/False": {
+              "loss_relative_span": 0.019841842815917197,
+              "iou_span": 0.000591652958882749,
+              "boundary_f1_span": 0.0014939137530031177
+            }
+          },
+          "diagnostic_only_global_iou_BF_plateau": true,
+          "diagnostic_only_all_strata_iou_plateau": true,
+          "diagnostic_only_remove_loss_still_failing": [
+            "real/False/boundary_f1"
+          ]
+        }
+      },
+      "interpretation": "Post-hoc descriptive diagnosis of the gate only. Does not retroactively pass a checkpoint, select an endpoint, admit unfreezing, change stored methods, or reuse DEV for a stopping decision."
+    },
+    "head_phase_final_gate_audit_v1.json": {
+      "source_sha256": "e75da08829cb2f70253efb541cf42c12918515e14bbfbcba9ffb966fdc6bfddd",
+      "registered_common_endpoint": 12000,
+      "arms": {
+        "L": {
+          "total_constraints": 15,
+          "failed_constraints": 9,
+          "groups": {
+            "all": {
+              "loss_relative_span": 0.2370320030666027,
+              "iou_span": 0.0014633645069561663,
+              "boundary_f1_span": 0.006706863061606949
+            },
+            "real/True": {
+              "loss_relative_span": 0.9570009684716383,
+              "iou_span": 0.0047378398032100755,
+              "boundary_f1_span": 0.023534054514086522
+            },
+            "real/False": {
+              "loss_relative_span": 0.039751866949301475,
+              "iou_span": 0.00048616379684829347,
+              "boundary_f1_span": 0.002922460890672385
+            },
+            "synthetic/True": {
+              "loss_relative_span": 0.030587947514334586,
+              "iou_span": 0.00019000702476268394,
+              "boundary_f1_span": 0.0005320694451763641
+            },
+            "synthetic/False": {
+              "loss_relative_span": 0.16887381453077108,
+              "iou_span": 0.0006238428626637038,
+              "boundary_f1_span": 0.0008657361906939665
+            }
+          },
+          "diagnostic_only_global_iou_BF_plateau": false,
+          "diagnostic_only_all_strata_iou_plateau": false,
+          "diagnostic_only_remove_loss_still_failing": [
+            "all/boundary_f1",
+            "real/True/iou",
+            "real/True/boundary_f1",
+            "real/False/boundary_f1"
+          ]
+        },
+        "M": {
+          "total_constraints": 15,
+          "failed_constraints": 15,
+          "groups": {
+            "all": {
+              "loss_relative_span": 0.9640450258515884,
+              "iou_span": 0.009635429274236884,
+              "boundary_f1_span": 0.026618247614671908
+            },
+            "real/True": {
+              "loss_relative_span": 0.35003211553424546,
+              "iou_span": 0.003749645031121851,
+              "boundary_f1_span": 0.017568700236998858
+            },
+            "real/False": {
+              "loss_relative_span": 1.2717144254783606,
+              "iou_span": 0.005480174705970731,
+              "boundary_f1_span": 0.033668601223702854
+            },
+            "synthetic/True": {
+              "loss_relative_span": 2.0719364846294943,
+              "iou_span": 0.012364766418336948,
+              "boundary_f1_span": 0.024442146924656072
+            },
+            "synthetic/False": {
+              "loss_relative_span": 1.4310760501223383,
+              "iou_span": 0.017508528957078662,
+              "boundary_f1_span": 0.033480068883876224
+            }
+          },
+          "diagnostic_only_global_iou_BF_plateau": false,
+          "diagnostic_only_all_strata_iou_plateau": false,
+          "diagnostic_only_remove_loss_still_failing": [
+            "all/iou",
+            "all/boundary_f1",
+            "real/True/iou",
+            "real/True/boundary_f1",
+            "real/False/iou",
+            "real/False/boundary_f1",
+            "synthetic/True/iou",
+            "synthetic/True/boundary_f1",
+            "synthetic/False/iou",
+            "synthetic/False/boundary_f1"
+          ]
+        }
+      },
+      "interpretation": "Post-hoc descriptive diagnosis of the gate only. Does not retroactively pass a checkpoint, select an endpoint, admit unfreezing, change stored methods, or reuse DEV for a stopping decision."
+    }
+  },
+  "assessment": [
+    "The gate is a stability/convergence rule, not an absolute high-IoU quality target. It combines30 conditions:2arms times5groups times3metrics, with fixed64 TRAIN probes and16perstratum.",
+    "At original18000, M overall mask metrics are nearly flat while loss continues falling. Near-zero subgroup loss magnifies relative-span constraints. Some real-other boundary variation remains, so removing loss alone still does not make all original conditions pass.",
+    "At extra12000, M fails all15 conditions and the separate stability report shows late loss/metric deterioration. This cannot be explained away solely by a strict gate.",
+    "Head readiness for controlled adaptation, optimization plateau, and model-quality acceptance should be distinct decisions. L readiness need not govern a separate M frozen-versus-adapted comparison."
+  ],
+  "future_protocol_proposal": {
+    "status": "Design proposal only, not registered/executed; historical gate failures remain failures",
+    "head_stage": "Predeclare a bounded warm-start and complete LR schedule; do not force all losses to be flat. Keep strict finite-gradient/frozen/resume/data checks.",
+    "monitor": "Use a larger representative TRAIN-only monitor, native-original label convention and direction-aware smoothed trends. Establish tolerances from TRAIN numerical repeatability/measurement sensitivity before a new run, not from observed DEV improvements.",
+    "transition": "Allow a trained stable head to enter a matched frozen-versus-side-adapter or limited-last-block trial; continuing loss decrease alone should not block transition. Sustained regression still blocks/stops adaptation.",
+    "fairness": "Exact same parent and subsequent exposure for frozen/adapted arms; retain the frozen baseline. Use current DEV for reporting only; no protected TEST or retroactive checkpoint/threshold selection.",
+    "warmup": "For a future non-reconstruction adaptation control, investigate longer warmup; current100/6000 is1.67%, compared with Omega authors suggestion10–15%. This is not a demonstrated cause of current instability.",
+    "surface": "First test a low-resolution spatial convolution/regularization module on existing geometry; then camera-frustum coarse-to-fine refinement. Keep full failure coverage and depth/gradient/normal/crossview metrics separate."
+  },
+  "priority": [
+    "Aligned native labels and ROI plus simple high-resolution binary segmentation refinement",
+    "Frozen pretrained features plus trainable cross-view side branch and low-resolution spatial depth regularization",
+    "Separately controlled low-LR adapter/last-block finetuning after a stable bounded head warm-start",
+    "Independent real synchronization/metric-reference/volume-gauge evidence before a real-mm deployment claim"
+  ],
+  "sources": [
+    {
+      "title": "VGGT-Omega",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2605.15195v1",
+      "sections": [
+        "3.1.3",
+        "5 How to fine-tune VGGT/VGGT-Omega",
+        "5 Dense Prediction Heads",
+        "6 Prioritizing Simplicity"
+      ],
+      "paper_findings": "Authors report patch artifacts from MLP-only dense depth heads despite strong quantitative scores; low-resolution spatial convolutions help. They recommend a full small-LR warmup/cosine cycle and longer warmup for non-reconstruction adaptation. Confidence loss may be unstable on small reconstruction finetuning sets.",
+      "application_hypothesis": "Test a small spatial neck/refiner and raw-image detail branch; examine warmup and final LR prospectively. Our ray-score head is not the paper architecture, so common artifact cause is unproven."
+    },
+    {
+      "title": "MVSFormer++",
+      "year": 2024,
+      "url": "https://arxiv.org/html/2401.11673v1",
+      "sections": [
+        "3.1",
+        "3.2"
+      ],
+      "paper_findings": "Uses a frozen DINOv2 backbone, trainable side-view attention, FPN features, and cascaded cost-volume regularization for calibrated MVS.",
+      "application_hypothesis": "Strong match for fixed-camera frozen-VGGT feature use: train a separate geometric side branch before thawing original encoder parameters."
+    },
+    {
+      "title": "Fine-Tuning can Distort Pretrained Features and Underperform Out-of-Distribution",
+      "year": 2022,
+      "url": "https://arxiv.org/pdf/2202.10054",
+      "sections": [
+        "3.4",
+        "4.2",
+        "B.1"
+      ],
+      "paper_findings": "LP-FT initializes finetuning from a fitted head to reduce feature distortion. ImageNet experiments use finite staged epochs. Its linear-classification theory is not a convergence theorem for our nonlinear semantic decoder.",
+      "application_hypothesis": "Preserve head warm-start and matched frozen controls; do not turn strict loss plateau into a universal necessary condition for adaptation."
+    },
+    {
+      "title": "AdaptFormer",
+      "year": 2022,
+      "url": "https://papers.nips.cc/paper_files/paper/2022/hash/69e2f49ab0837b71b0e0cb7c555990f8-Abstract-Conference.html",
+      "paper_findings": "Trainable lightweight parallel adapter branches adapt frozen vision transformers.",
+      "application_hypothesis": "Candidate alternative to full last-block thaw, but effectiveness on mouse dense geometry remains to be measured."
+    },
+    {
+      "title": "PointRend",
+      "year": 2020,
+      "url": "https://arxiv.org/html/1912.08193v2",
+      "paper_findings": "Adaptive point refinement combines coarse predictions and fine features to improve segmentation contours.",
+      "application_hypothesis": "Relevant for thin limbs/tail and small objects; use real high-resolution image features, not merely upsampled coarse tokens."
+    },
+    {
+      "title": "Vision Transformers for Dense Prediction",
+      "year": 2021,
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/html/Ranftl_Vision_Transformers_for_Dense_Prediction_ICCV_2021_paper.html",
+      "paper_findings": "Reassembles multi-stage transformer features and combines them through a dense convolutional decoder.",
+      "application_hypothesis": "A simpler binary dense decoder/feature-pyramid control can test whether query/Hungarian decoder complexity is necessary for a semantic union mask."
+    },
+    {
+      "title": "Cascade Cost Volume for High-Resolution Multi-View Stereo and Stereo Matching",
+      "year": 2020,
+      "url": "https://openaccess.thecvf.com/content_CVPR_2020/html/Gu_Cascade_Cost_Volume_for_High-Resolution_Multi-View_Stereo_and_Stereo_Matching_CVPR_2020_paper.html",
+      "paper_findings": "Coarse-to-fine feature pyramids and narrower depth hypotheses improve the resolution/memory tradeoff.",
+      "application_hypothesis": "Refine camera-Z around coarse predictions rather than only taking the expectation of a fixed global ray-hypothesis distribution."
+    },
+    {
+      "title": "MVSNet",
+      "year": 2018,
+      "url": "https://openaccess.thecvf.com/content_ECCV_2018/html/Yao_Yao_MVSNet_Depth_Inference_ECCV_2018_paper.html",
+      "paper_findings": "Builds a reference-camera frustum cost volume via calibrated homography warping.",
+      "application_hypothesis": "Prefer relative-camera geometry and valid camera-Z ranges to dependence on a single synthetic world AABB; physical range still needs independent rig evidence."
+    },
+    {
+      "title": "DANNCE",
+      "year": 2021,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8530226/",
+      "paper_findings": "Calibrated multi-view volumetric learning predicts animal anatomical landmarks.",
+      "application_hypothesis": "Possible separate skeletal tracking objective, not evidence or a substitute for dense visible-surface accuracy."
+    },
+    {
+      "title": "VGGT-Omega official reproduction note",
+      "year": 2026,
+      "url": "https://github.com/facebookresearch/vggt-omega/blob/main/reproduction.md",
+      "paper_findings": "Authors flag an unresolved possible contamination risk in the original checkpoint and recommend the retrained 416 checkpoint for their benchmark comparisons.",
+      "application_hypothesis": "Retain our pinned512 history; a future backbone comparison must separately register checkpoint, preprocessing, and cache identity. This notice does not establish overlap with our custom admitted mouse manifests."
+    }
+  ]
+}
