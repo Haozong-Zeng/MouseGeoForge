@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "utc": "2026-10-25T16:06:21.983290+00:00",
+  "source_sha256": "adfdad06b62a1b8ab4a4c7771ddb18a1fb42479b83ee3eb3e774ebaa005380b0",
+  "export_source_sha256": "ccb7896e81421d97c343c38f36e46ebaf577676ab7fd0a9224879f319456b9c2",
+  "export_completion_sha256": "939c5d8a9d342e9161bf34f6edacb330d5abceb95ec3fc589de91be6176e763d",
+  "all_recorded_input_and_output_hashes_match": true,
+  "PLY_colors_and_source_view_exact": true,
+  "pixel_tolerance": 0.001,
+  "cameraZ_mm_tolerance": 0.0001,
+  "clouds": {
+    "climb_scene000000_full_rgb_world_mm.ply": [
+      {
+        "view": 0,
+        "points": 9863,
+        "decoded_PLY_native_pixel_max_abs": 4.361174325140382e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.816686040001514e-05
+      },
+      {
+        "view": 1,
+        "points": 3373,
+        "decoded_PLY_native_pixel_max_abs": 7.135306729821878e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 2.146102497135871e-05
+      },
+      {
+        "view": 2,
+        "points": 4537,
+        "decoded_PLY_native_pixel_max_abs": 4.308997336011089e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.9226402400818188e-05
+      }
+    ],
+    "climb_scene000000_roi_rgb_world_mm.ply": [
+      {
+        "view": 0,
+        "points": 9863,
+        "decoded_PLY_native_pixel_max_abs": 4.312310568366229e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.812275343127112e-05
+      },
+      {
+        "view": 1,
+        "points": 3373,
+        "decoded_PLY_native_pixel_max_abs": 4.767741376099366e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.827905907703098e-05
+      },
+      {
+        "view": 2,
+        "points": 4537,
+        "decoded_PLY_native_pixel_max_abs": 4.377318640536032e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 2.0202137875457993e-05
+      }
+    ],
+    "moseq_scene000360_full_rgb_world_mm.ply": [
+      {
+        "view": 0,
+        "points": 9243,
+        "decoded_PLY_native_pixel_max_abs": 4.127751736859864e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.8049558434540813e-05
+      },
+      {
+        "view": 1,
+        "points": 2880,
+        "decoded_PLY_native_pixel_max_abs": 4.895807967386645e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.8277158233104274e-05
+      },
+      {
+        "view": 2,
+        "points": 1050,
+        "decoded_PLY_native_pixel_max_abs": 3.034272208424227e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.839698495587072e-05
+      }
+    ],
+    "moseq_scene000360_roi_rgb_world_mm.ply": [
+      {
+        "view": 0,
+        "points": 9243,
+        "decoded_PLY_native_pixel_max_abs": 3.97919416741388e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.7919154402079585e-05
+      },
+      {
+        "view": 1,
+        "points": 2880,
+        "decoded_PLY_native_pixel_max_abs": 4.885822673372786e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.8064497453451622e-05
+      },
+      {
+        "view": 2,
+        "points": 1050,
+        "decoded_PLY_native_pixel_max_abs": 2.9899517642206774e-05,
+        "decoded_PLY_cameraZ_max_abs_mm": 1.8754990605884814e-05
+      }
+    ]
+  }
+}

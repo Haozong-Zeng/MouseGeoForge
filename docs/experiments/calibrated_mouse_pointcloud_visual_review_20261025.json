@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-25T16:07:29.246221+00:00",
+  "actually_visually_inspected": true,
+  "selection": "First admitted DEV scene in manifest for each source, before viewing predicted geometry",
+  "scene_indices": [
+    0,
+    360
+  ],
+  "views_per_scene": 3,
+  "models": [
+    "fixed seed17 matchedFULL",
+    "fixed seed17 matchedROI"
+  ],
+  "assets": {
+    "docs/experiments/figures/calibrated_mouse_colored_pointcloud_20261025.png": "7c81d2d4182470e015c1f74bbe9bbedc0291c8569460545fe130e22b12efaf94",
+    "docs/experiments/figures/calibrated_mouse_native_rgbd_20261025.png": "b7add1f797a93c37571fb9f748bb612a47ba5950a6cb293839a48e22a71bb7ae"
+  },
+  "exported_clouds": {
+    "moseq_scene000360_roi_rgb_world_mm.ply": 13173,
+    "moseq_scene000360_full_rgb_world_mm.ply": 13173,
+    "climb_scene000000_roi_rgb_world_mm.ply": 17773,
+    "climb_scene000000_full_rgb_world_mm.ply": 17773
+  },
+  "source_receipt_sha256": "939c5d8a9d342e9161bf34f6edacb330d5abceb95ec3fc589de91be6176e763d",
+  "binary_verification_sha256": "7efd4e5dd5808701bd68f6a08937118a9c1f785b3d75faee5764ec8e8b2c1229",
+  "observations": [
+    "Both sources show recognizable gross body and tail silhouettes in concatenated colored points.",
+    "Climb has isolated points, including yellow structure-colored points; these are not accepted as reliable mouse surface.",
+    "MoSeq ROI native depth and colored pointcloud show repeated band/stripe-like discontinuities, consistent with the earlier surface audit.",
+    "Some side views are occluded or have tiny visible targets; no complete-body reconstruction or watertight mesh is claimed.",
+    "The two examples do not rank models or replace144scene432view metrics; no new model calls, filtering, GT fitting, or promotion."
+  ]
+}

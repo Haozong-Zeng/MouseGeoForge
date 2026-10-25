@@ -1,0 +1,23 @@
+{
+  "registered_utc": "2026-10-25T16:04:43.614132+00:00",
+  "source_sha256": {
+    "tools/export_calibrated_mouse_pointcloud_review_20261025.py": "ccb7896e81421d97c343c38f36e46ebaf577676ab7fd0a9224879f319456b9c2",
+    "tests/test_calibrated_mouse_pointcloud_review_20261025.py": "f04be0c58519a5e1212d30b078771d1f0f6857008bdf14cf100585cd1bd2c1dd"
+  },
+  "tests": "5 passed: camera-Z+rigid E+pixel RGB; invalid depth handling; binary PLY count/colors/view/mm precision; palette invalid data; reject nonfinite export",
+  "selection": "First admitted DEV manifest index for each source: Climb0 andMoSeq360,allthreeviews",
+  "seed": 17,
+  "modes": [
+    "full",
+    "roi"
+  ],
+  "inputs": "Already-complete fixed original-M predicted masks and paired depth outputs; corresponding native RGB+known K/E metadata",
+  "models_called": 0,
+  "confidence_filtering": false,
+  "new_dataset_admission": false,
+  "no_GT_depth_mask_point_or_scale_inputs": true,
+  "all_valid_predicted_points_retained": true,
+  "geometry_checks": "Match existing ASCII source cloud to1e-6mm; binaryfloat32 XYZ within5e-5mm; native reprojection maxabs<.001px",
+  "visualization": "Shared FULL/ROI per-view depthmin/max palette only; equal-axis world-mm cloud plots; predicted-mask display crop only",
+  "limits": "Two examples do not replace144scene432view denominators; concatenated visible points are not watertight/full body; no independent real-mm or model-promotion claim"
+}
