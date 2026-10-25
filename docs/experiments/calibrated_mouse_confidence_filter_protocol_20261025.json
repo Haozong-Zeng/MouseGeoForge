@@ -1,0 +1,112 @@
+{
+  "v1": {
+    "registered_utc": "2026-10-25T19:29:48.734723+00:00",
+    "request": "User requested reviewing demo confidence and other filtering for metric effects",
+    "optimization": false,
+    "model_calls": false,
+    "source_sha256": {
+      "tools/audit_calibrated_mouse_confidence_filter_20261025_v1.py": "5972023e85eb279d19dd2010e50bfb6d885f108443da1ee59df6c67bf5c1f221",
+      "tests/test_calibrated_mouse_confidence_filter_20261025_v1.py": "ff94406864ef2dc783d6f6b42cc4b36ec8adaaf94a86ac18849c3c6654d48a1c",
+      "vggt-omega/visual_util.py": "2f2ee975b274300dfc62a385da53b5fbe56ef077cba57fbe17d0cb67382a0b10",
+      "vggt-omega/demo_gradio.py": "784fd650627f231bafd1e850b511e167ab5c0bd0ed786a56217a7ec3dd73494d",
+      "vggt/visual_util.py": "04d51592f36f9101e0079f91e8f4a8cd16c461013870ea40f7ccab5c9741dea5",
+      "vggt/demo_colmap.py": "c1aaebd123ad66ee85d46e6b629f1e02c8e60a897682fc2e9afcde65937818ce",
+      "vggt/demo_viser.py": "7eb388ed7f5498440f3d3f46f939ee5bdbca440149d5003e05cbec5b2ce48ec1",
+      "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "tools/evaluate_calibrated_mouse_roi_pipeline_20261025.py": "f3e524a93ee224a774a03077d2cf7ffa86e1fb93dce281c472b0833790f67944"
+    },
+    "output": "confidence_filter_audit_v1",
+    "pipelines": [
+      "roi_pipeline_s17_full_v1",
+      "roi_pipeline_s29_full_v1",
+      "roi_pipeline_s43_full_v1",
+      "roi_pipeline_s17_roi_v1",
+      "roi_pipeline_s29_roi_v1",
+      "roi_pipeline_s43_roi_v1"
+    ],
+    "rules": [
+      "none",
+      "confidence10",
+      "confidence20",
+      "confidence50",
+      "edge3",
+      "confidence20_edge3",
+      "random_same_count_as_confidence20",
+      "black16",
+      "white240"
+    ],
+    "selection": "No threshold or checkpoint selected; all fixed rules reported, reused DEV exploratory diagnostic",
+    "confidence": "Our uncalibrated max depth-plane softmax probability, NOT upstream learned depth_conf",
+    "scope": "Scene percentile across three synchronized native views among finite valid original predicted-mask depth points. Original demo normally ranks full-image predictions; scope differs explicitly.",
+    "edge": "Exact AST-extracted pinned upstream 3x3 range/depth>0.03; zero outside sparse predicted support retained as upstream input, thus silhouette neighbors can be rejected",
+    "primary_unchanged": true,
+    "denominators": "All144scenes432views per pipeline; complete original GT cloud/body recall and coverage, failures kept; scene mean F1, view mean overlap RMSE, equal 3seed mean",
+    "limits": "No semantic mask update, no source/data/model changes, no scale alignment, no sky model, no display alignment/limiting/fallback dummy point used",
+    "unit_tests_passed": 6,
+    "limitations": [
+      "Only correlated synthetic opaque-skin DEV; reused DEV, no independent real-mm/unseen pose generalization",
+      "Filtering cannot recover missing depth or establish complete/watertight body",
+      "Overlap RMSE conditional on retained GT intersection; report original GT coverage jointly",
+      "Confidence ties retained via >= percentile; actual retention need not equal requested percentage",
+      "Black/white filters are appearance heuristics not semantic confidence",
+      "No numerical improvements attributed to learned VGGT confidence because it is absent in our custom head outputs",
+      "No threshold selection/promotion or significance claim; immutable original deadlines preserved"
+    ]
+  },
+  "v2": {
+    "registered_utc": "2026-10-25T19:30:22.904096+00:00",
+    "request": "User requested reviewing demo confidence and other filtering for metric effects",
+    "optimization": false,
+    "model_calls": false,
+    "source_sha256": {
+      "tools/audit_calibrated_mouse_confidence_filter_20261025_v2.py": "776838281baa341d84cb5d3baf46f3d345ed45c149bea19ed2c12735927a50bf",
+      "tests/test_calibrated_mouse_confidence_filter_20261025_v2.py": "c1c0a8464b9375de93190217e2e20820b637c1a535f267f918852c6d125eaca7",
+      "vggt-omega/visual_util.py": "2f2ee975b274300dfc62a385da53b5fbe56ef077cba57fbe17d0cb67382a0b10",
+      "vggt-omega/demo_gradio.py": "784fd650627f231bafd1e850b511e167ab5c0bd0ed786a56217a7ec3dd73494d",
+      "vggt/visual_util.py": "04d51592f36f9101e0079f91e8f4a8cd16c461013870ea40f7ccab5c9741dea5",
+      "vggt/demo_colmap.py": "c1aaebd123ad66ee85d46e6b629f1e02c8e60a897682fc2e9afcde65937818ce",
+      "vggt/demo_viser.py": "7eb388ed7f5498440f3d3f46f939ee5bdbca440149d5003e05cbec5b2ce48ec1",
+      "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "tools/evaluate_calibrated_mouse_roi_pipeline_20261025.py": "f3e524a93ee224a774a03077d2cf7ffa86e1fb93dce281c472b0833790f67944"
+    },
+    "output": "confidence_filter_audit_v2",
+    "pipelines": [
+      "roi_pipeline_s17_full_v1",
+      "roi_pipeline_s29_full_v1",
+      "roi_pipeline_s43_full_v1",
+      "roi_pipeline_s17_roi_v1",
+      "roi_pipeline_s29_roi_v1",
+      "roi_pipeline_s43_roi_v1"
+    ],
+    "rules": [
+      "none",
+      "confidence10",
+      "confidence20",
+      "confidence50",
+      "edge3",
+      "confidence20_edge3",
+      "random_same_count_as_confidence20",
+      "black16",
+      "white240"
+    ],
+    "selection": "No threshold or checkpoint selected; all fixed rules reported, reused DEV exploratory diagnostic",
+    "confidence": "Our uncalibrated max depth-plane softmax probability, NOT upstream learned depth_conf",
+    "scope": "Scene percentile across three synchronized native views among finite valid original predicted-mask depth points. Original demo normally ranks full-image predictions; scope differs explicitly.",
+    "edge": "Exact AST-extracted pinned upstream 3x3 range/depth>0.03; zero outside sparse predicted support retained as upstream input, thus silhouette neighbors can be rejected",
+    "primary_unchanged": true,
+    "denominators": "All144scenes432views per pipeline; complete original GT cloud/body recall and coverage, failures kept; scene mean F1, view mean overlap RMSE, equal 3seed mean",
+    "limits": "No semantic mask update, no source/data/model changes, no scale alignment, no sky model, no display alignment/limiting/fallback dummy point used",
+    "unit_tests_passed": 6,
+    "limitations": [
+      "Only correlated synthetic opaque-skin DEV; reused DEV, no independent real-mm/unseen pose generalization",
+      "Filtering cannot recover missing depth or establish complete/watertight body",
+      "Overlap RMSE conditional on retained GT intersection; report original GT coverage jointly",
+      "Confidence ties retained via >= percentile; actual retention need not equal requested percentage",
+      "Black/white filters are appearance heuristics not semantic confidence",
+      "No numerical improvements attributed to learned VGGT confidence because it is absent in our custom head outputs",
+      "No threshold selection/promotion or significance claim; immutable original deadlines preserved"
+    ],
+    "supersedes_failed_attempt": "confidence_filter_audit_v1/failure.json; v1 strict baseline replay failed due to native float64 K vs original evaluator float32 camera conversion threshold membership. No tolerance relaxed.",
+    "metric_camera_representation": "Both predicted and GT clouds use original evaluation float32 K/E, exact native GT depth/body unchanged. Assert all saved K/E equal native camera float32; exact baseline F1 replay remains mandatory."
+  }
+}
