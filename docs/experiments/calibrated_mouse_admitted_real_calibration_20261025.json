@@ -1,0 +1,685 @@
+{
+  "schema": "admitted-real-calibration-provenance-audit-v1",
+  "completed_utc": "2026-10-25T15:08:02.987475+00:00",
+  "scope": "Already pinned real TRAIN/DEV image and manual-mask hashes plus corresponding calibration/provenance metadata only",
+  "source_sha256": {
+    "output/calibrated_mouse_10h_20261025/semseg_items.json": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/ingestion_manifest.json": "2a6cb9f35165f3992445e681195f8d32a1a86e69edc447ac7c5d73f935b73e01",
+    "dataset/PyMouseStudio/sequences.json": "902b7ce990afbd3b153172994e10a6672088ab34fd5756179fefb52c07f1a9e8",
+    "dataset/PyMouseStudio/processing_config.json": "b34465ef349b59116e89895a84cdc9f681644dde212a575b6b002c842badea35",
+    "dataset/PyMouseStudio/README.md": "b44cba4cb4001eedac89a42b4205b8b4f32e73df288e18931677198cef9f08b5",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/README.md": "a9447243a7aa1c89f1ccee48005566f900fa4181cab023a3a5059aefcaa06aa8",
+    "output/calibrated_mouse_10h_20261025/data_manifest.json": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/AZL3/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/AZR2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/AZR2L2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/CR2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/EL2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/EL2L2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/ER3L2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/FR2/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+    "dataset/PyMouseStudio/annotation_returns/20260930_full_v2/calibration/FR3/rectified_calibration.json": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc"
+  },
+  "audit_source_sha256": "34911f54eaf41e021faba63a4bb22214d48e2431e28da0de4ff8572fd91b5ac7",
+  "images": 1336,
+  "split_counts": {
+    "train": 889,
+    "dev": 447
+  },
+  "context_counts": {
+    "same_frame_index": 1336,
+    "all_context_images_admitted": 1336
+  },
+  "nonadmitted_context_paths_count": 0,
+  "nonadmitted_context_images_opened": 0,
+  "excluded_images_opened": 0,
+  "old_reconstructions_or_pseudo_3D_opened": 0,
+  "image_label_hashes_verified": true,
+  "camera_K_E_numerical_checks_passed": true,
+  "unique_calibration_hashes": [
+    "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc"
+  ],
+  "synthetic_capture_AABB_mm": [
+    [
+      -110.0,
+      -125.0,
+      289.0
+    ],
+    [
+      110.0,
+      131.0,
+      466.0
+    ]
+  ],
+  "ray_diagnostic_uses_no_mouse_labels": true,
+  "synchronization": {
+    "evidence": "Equal source frame indices and nominal52fps metadata only",
+    "hardware_verified": false,
+    "independent_clock_or_trigger_receipt_found": false,
+    "scope": "This metadata package; absence here is not proof no hardware synchronization existed"
+  },
+  "units": {
+    "metadata": "world_to_camera_mm; original calibration mm provenance",
+    "independent_scale_reference_verified": false,
+    "original_world_frame_not_ground_aligned": true,
+    "synthetic_to_real_gauge_registration_verified": false
+  },
+  "limitations": [
+    "Do not undistort already rectified images again; original distortion status was a user working assumption.",
+    "Glass refraction is not removed by lens correction.",
+    "Same source index alone does not verify hardware synchronization.",
+    "Current synthetic capture AABB and world-normal prior cannot be assumed compatible with real calibration gauge.",
+    "No real depth inference, geometric GT scoring, fitting, source admission or model promotion performed."
+  ],
+  "frame_groups": 205,
+  "per_group": {
+    "AZL3": {
+      "split": "train",
+      "images": 161,
+      "frames": 23,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 23,
+        "B": 23,
+        "C": 23,
+        "D": 23,
+        "E": 23,
+        "F": 23,
+        "G": 23
+      }
+    },
+    "AZR2": {
+      "split": "train",
+      "images": 168,
+      "frames": 24,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 24,
+        "B": 24,
+        "C": 24,
+        "D": 24,
+        "E": 24,
+        "F": 24,
+        "G": 24
+      }
+    },
+    "AZR2L2": {
+      "split": "dev",
+      "images": 125,
+      "frames": 25,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "missing_camera_videos": [
+        "B",
+        "G"
+      ],
+      "admitted_camera_counts": {
+        "A": 25,
+        "C": 25,
+        "D": 25,
+        "E": 25,
+        "F": 25
+      }
+    },
+    "CR2": {
+      "split": "train",
+      "images": 112,
+      "frames": 16,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 16,
+        "B": 16,
+        "C": 16,
+        "D": 16,
+        "E": 16,
+        "F": 16,
+        "G": 16
+      }
+    },
+    "EL2": {
+      "split": "train",
+      "images": 154,
+      "frames": 22,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 22,
+        "B": 22,
+        "C": 22,
+        "D": 22,
+        "E": 22,
+        "F": 22,
+        "G": 22
+      }
+    },
+    "EL2L2": {
+      "split": "train",
+      "images": 144,
+      "frames": 24,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [
+        "C"
+      ],
+      "admitted_camera_counts": {
+        "A": 24,
+        "B": 24,
+        "D": 24,
+        "E": 24,
+        "F": 24,
+        "G": 24
+      }
+    },
+    "ER3L2": {
+      "split": "train",
+      "images": 150,
+      "frames": 25,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [
+        "C"
+      ],
+      "admitted_camera_counts": {
+        "A": 25,
+        "B": 25,
+        "D": 25,
+        "E": 25,
+        "F": 25,
+        "G": 25
+      }
+    },
+    "FR2": {
+      "split": "dev",
+      "images": 168,
+      "frames": 24,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 24,
+        "B": 24,
+        "C": 24,
+        "D": 24,
+        "E": 24,
+        "F": 24,
+        "G": 24
+      }
+    },
+    "FR3": {
+      "split": "dev",
+      "images": 154,
+      "frames": 22,
+      "calibration_sha256": "be3418cce325e690615411c61cf77a22d730f31ed81499de46b2c9d1591ef1fc",
+      "fps": 52,
+      "provided_camera_names": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "missing_camera_videos": [],
+      "admitted_camera_counts": {
+        "A": 22,
+        "B": 22,
+        "C": 22,
+        "D": 22,
+        "E": 22,
+        "F": 22,
+        "G": 22
+      }
+    }
+  },
+  "per_camera_synthetic_AABB_intersection": {
+    "AZL3": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "AZR2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "AZR2L2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "CR2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "EL2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "EL2L2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "ER3L2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "FR2": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    },
+    "FR3": {
+      "A": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "B": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "C": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "D": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 375,
+        "fraction": 0.3443526170798898
+      },
+      "E": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 293,
+        "fraction": 0.26905417814508725
+      },
+      "F": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      },
+      "G": {
+        "grid": "33x33 including image borders",
+        "rays": 1089,
+        "intersecting_positive_cameraZ_rays": 0,
+        "fraction": 0.0
+      }
+    }
+  },
+  "full_audit_sha256": "03376474165d0ac3b190d7cb2fc52f4e7686da3f9a131dac4573df5b60fd409b"
+}

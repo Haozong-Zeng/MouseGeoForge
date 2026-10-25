@@ -1,0 +1,74 @@
+{
+  "completed_utc": "2026-10-25T15:08:54.308912+00:00",
+  "status": "passed",
+  "cpu_only": true,
+  "images": 1336,
+  "frame_groups": 205,
+  "hashes_verified": true,
+  "source_sha256": "34911f54eaf41e021faba63a4bb22214d48e2431e28da0de4ff8572fd91b5ac7",
+  "full_audit_sha256": "03376474165d0ac3b190d7cb2fc52f4e7686da3f9a131dac4573df5b60fd409b",
+  "numerical_tests": "6 stdlib unittest controls passed",
+  "trained_ray_operator_CPU_crosscheck": {
+    "A": {
+      "grid_rays": 1089,
+      "valid_ray_count": 0,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 6.693881005048752e-10,
+      "valid_far_max_difference_mm": null
+    },
+    "B": {
+      "grid_rays": 1089,
+      "valid_ray_count": 0,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 3.552713678800501e-15,
+      "valid_far_max_difference_mm": null
+    },
+    "C": {
+      "grid_rays": 1089,
+      "valid_ray_count": 0,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 1.8189894035458565e-12,
+      "valid_far_max_difference_mm": null
+    },
+    "D": {
+      "grid_rays": 1089,
+      "valid_ray_count": 375,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 1.1368683772161603e-13,
+      "valid_far_max_difference_mm": 2.2737367544323206e-13
+    },
+    "E": {
+      "grid_rays": 1089,
+      "valid_ray_count": 293,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 0.0,
+      "valid_far_max_difference_mm": 1.1368683772161603e-13
+    },
+    "F": {
+      "grid_rays": 1089,
+      "valid_ray_count": 0,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 2.842170943040401e-14,
+      "valid_far_max_difference_mm": null
+    },
+    "G": {
+      "grid_rays": 1089,
+      "valid_ray_count": 0,
+      "numpy_vs_trained_ray_bounds_valid_exact": true,
+      "near_max_difference_mm": 1.7763568394002505e-15,
+      "valid_far_max_difference_mm": null
+    }
+  },
+  "failed_engineering_attempts": {
+    "status": "failed",
+    "stage": "context source-frame provenance check",
+    "reason": "Audit path comparison bug: relative context parent compared with absolute image parent. Independent pinned-string check confirmed ZERO cross-frame contexts among1336 rows. No image/data/method problem inferred; v1 preserved and corrected in v2.",
+    "different_parent_context_rows": 0
+  },
+  "notes": [
+    "Original package train_allowed=false does not create new admission: audit reads only already-pinned manual-mask semseg items.",
+    "No hardware-clock receipt in inspected metadata; equal source-index contexts are not a hardware sync verification.",
+    "Grid diagnostic is sampled; zero fraction is not a formal continuous-frustum intersection proof.",
+    "Synthetic AABB occupies world Z289..466mm; no verified synthetic-to-real gauge registration. Do not run unchanged synthetic world prior on these real cameras."
+  ]
+}

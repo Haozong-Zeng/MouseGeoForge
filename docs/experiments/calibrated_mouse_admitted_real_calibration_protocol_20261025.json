@@ -1,0 +1,13 @@
+{
+  "registered_utc": "2026-10-25T15:07:56.070775+00:00",
+  "source_sha256": {
+    "tools/audit_admitted_real_calibration_20261025_v2.py": "34911f54eaf41e021faba63a4bb22214d48e2431e28da0de4ff8572fd91b5ac7",
+    "tests/test_admitted_real_calibration_20261025_v2.py": "a89087688e7404287835b4edbdb4cc2721a3042720229ba7c4cc9318872ccbeb"
+  },
+  "cpu_tests": "6 unittest geometry/half-pixel/camera determinant controls passed",
+  "scope": "Read-only admitted real1336 images and corresponding labels/camera metadata; no unknown context/excluded image reads",
+  "ray_diagnostic": "33x33 fixed native image grid, original K/E and existing synthetic TRAIN AABB, cameraZ[1,2000]mm; no GT fitting or predicted real depth",
+  "synchronization": "audit evidence only, not certify hardware sync",
+  "training_admission_changes": false,
+  "supersedes_failed_engineering_attempt": "v1 path-normalization assertion before audit completion, no inputs changed"
+}
