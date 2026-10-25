@@ -87,7 +87,7 @@
     "head_gradients_nonzero": true,
     "encoder_frozen": true
   },
-  "actual_GPU_preflight_status": "PENDING mandatory after coarsecache before6000pair",
+  "actual_GPU_preflight_status": "PASSED; actualweights, strictoriginaltolerances; engineeringonly",
   "preflight_cutoff": {
     "utc": "2026-10-25T20:20:25.232574+00:00",
     "job": "semseg_roi_actual_GPU_preflight_v1",
@@ -95,5 +95,181 @@
     "minimum_seconds": 600,
     "reason": "Engineering GPU checks include optimizer updates and obey optimization cutoff, even though not scientific training evidence; queued job corrected before start. Source and protocol bytes unchanged."
   },
-  "classical_findings_sha256": "3a6e48fac611f1eafd597dad1208353fb8d6bf7f49cece50ef73dacbbf5c42cd"
+  "classical_findings_sha256": "3a6e48fac611f1eafd597dad1208353fb8d6bf7f49cece50ef73dacbbf5c42cd",
+  "actual_GPU_preflight": {
+    "passed": true,
+    "utc": "2026-10-25T20:22:05.388543+00:00",
+    "device": "cuda",
+    "engineering_only": true,
+    "actual_weights": true,
+    "source_sha256": {
+      "tools/train_mouse_semseg_roi_20261025.py": "714065a7067d5d4bc293584a93665d5d026ed575f85d205f74ee98b69a2e4aff",
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/check_mouse_semseg_roi_20261025.py": "360d930b7c4c7df47aef2f03f66b735b31f69fcd0891c3760ba2d924f948a0f1"
+    },
+    "resume_4_vs_2_plus_2_max_abs": {
+      "model": 1.1920928955078125e-07,
+      "ema": 7.450580596923828e-09,
+      "optimizer": 3.329478204250336e-08,
+      "buffers": 0.0
+    },
+    "CPU_exact": false,
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+    "strict_cross_crop_resume_rejected": true,
+    "head_gradients_nonzero": true,
+    "encoder_frozen": true
+  },
+  "actual_GPU_receipt_sha256": "eb1369c64fb989e980817aeba7cdae4238aade3e6796e4a49822841988d7ad7b",
+  "coarse_cache": {
+    "completed_utc": "2026-10-25T20:20:55.112984+00:00",
+    "images": 3496,
+    "train": 2617,
+    "dev": 879,
+    "items_sha256": "3f8e9b1bf79f861b667b19fdcea09006138c65803a871a137027dcf48b4d18a0",
+    "registration_sha256": "e4e56e00107219482a83c4c6930cb6048fed58e2bc54f7c6f98f84191e174a27",
+    "parent_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+    "encoder_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "no_GT_crop": true,
+    "empty_fallback_full": 0,
+    "padding_factor": 1.4,
+    "minimum_side": 96,
+    "seconds": 210.28810478800006
+  },
+  "crop_GT_coverage_diagnostic": {
+    "train/real/True": {
+      "images": 134,
+      "mean_gt_body_crop_coverage": 1.0,
+      "minimum_gt_body_crop_coverage": 1.0,
+      "images_with_any_gt_outside_crop": 0,
+      "gt_pixels": 24532254,
+      "covered_pixels": 24532254
+    },
+    "train/real/False": {
+      "images": 755,
+      "mean_gt_body_crop_coverage": 1.0,
+      "minimum_gt_body_crop_coverage": 1.0,
+      "images_with_any_gt_outside_crop": 0,
+      "gt_pixels": 90720861,
+      "covered_pixels": 90720861
+    },
+    "dev/real/True": {
+      "images": 71,
+      "mean_gt_body_crop_coverage": 1.0,
+      "minimum_gt_body_crop_coverage": 1.0,
+      "images_with_any_gt_outside_crop": 0,
+      "gt_pixels": 13474871,
+      "covered_pixels": 13474871
+    },
+    "dev/real/False": {
+      "images": 376,
+      "mean_gt_body_crop_coverage": 0.9998756182616776,
+      "minimum_gt_body_crop_coverage": 0.9738794164176481,
+      "images_with_any_gt_outside_crop": 5,
+      "gt_pixels": 46111938,
+      "covered_pixels": 46108094
+    },
+    "dev/synthetic/True": {
+      "images": 144,
+      "mean_gt_body_crop_coverage": 0.9999583541562552,
+      "minimum_gt_body_crop_coverage": 0.9940029985007496,
+      "images_with_any_gt_outside_crop": 1,
+      "gt_pixels": 726973,
+      "covered_pixels": 726965
+    },
+    "dev/synthetic/False": {
+      "images": 288,
+      "mean_gt_body_crop_coverage": 0.9999787847929397,
+      "minimum_gt_body_crop_coverage": 0.9938900203665988,
+      "images_with_any_gt_outside_crop": 1,
+      "gt_pixels": 1118794,
+      "covered_pixels": 1118788
+    },
+    "train/synthetic/True": {
+      "images": 576,
+      "mean_gt_body_crop_coverage": 1.0,
+      "minimum_gt_body_crop_coverage": 1.0,
+      "images_with_any_gt_outside_crop": 0,
+      "gt_pixels": 4176839,
+      "covered_pixels": 4176839
+    },
+    "train/synthetic/False": {
+      "images": 1152,
+      "mean_gt_body_crop_coverage": 0.9999945248789501,
+      "minimum_gt_body_crop_coverage": 0.9936926605504587,
+      "images_with_any_gt_outside_crop": 1,
+      "gt_pixels": 4532352,
+      "covered_pixels": 4532341
+    }
+  },
+  "actual_visual_review": {
+    "utc": "2026-10-25T20:24:53.777574+00:00",
+    "actually_viewed": true,
+    "gallery_sha256": "fb642f9ced65406d8148e12464a101d2c3f25fa2569e1100db7d2c807afbb0b9",
+    "fixed_eight_examples": "First deterministic sortedTRAIN/DEV ID in eachreal/synthetic bottom/otherstratum; no failure-based selection",
+    "findings": [
+      "Real firstTRAINbottom/other examples use almostfullframe coarseboxes, so littlezoomgain there.",
+      "Small syntheticDEVexamples are strongly enlarged; sourceRGB remains lowresolution/blurred, no newinformation claimed.",
+      "Representative body/tail silhouettes lie within shown boxes; fullcoverageaudits disclose7DEVimages with someGT outsidecrop, not silentlyremoved.",
+      "NoGTboxgeneration, no crop policy changes or model/threshold selection basedonthisview."
+    ],
+    "coverage_sha256": "ea0d35c7bcef6e5f1b2fd267e9fb7f764cf732560bc853ee97f9b3dc385a7686"
+  },
+  "execution_snapshot_utc": "2026-10-25T20:24:53.780058+00:00",
+  "state_at_snapshot": {
+    "jobs": {
+      "real_reference_feasibility_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:54:40.596985+00:00",
+        "seconds": 6.304911814000661
+      },
+      "initial_report_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:54:41.657146+00:00",
+        "seconds": 1.0583828400012862
+      },
+      "existing_dannce4dgs_review_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:57:52.879564+00:00",
+        "seconds": 1.0062591579990112
+      },
+      "classical_actual_smoke_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:57:56.094913+00:00",
+        "seconds": 5.172413303000212
+      },
+      "classical_baselines_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T19:58:23.818134+00:00",
+        "seconds": 29.7528474009996
+      },
+      "semseg_roi_coarse_cache_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T20:20:58.973504+00:00",
+        "seconds": 225.9647545830012
+      },
+      "semseg_roi_actual_GPU_preflight_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T20:22:04.586540+00:00",
+        "seconds": 71.62884242099972
+      }
+    },
+    "started": "2026-10-25T19:54:34.291346+00:00",
+    "time": "2026-10-25T20:22:04.588228+00:00",
+    "status": "running",
+    "active_job": "semseg_roi_pair_v1"
+  }
 }
