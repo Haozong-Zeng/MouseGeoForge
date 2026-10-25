@@ -1,0 +1,21 @@
+{
+  "registered_utc": "2026-10-25T15:51:49.898527+00:00",
+  "source_sha256": {
+    "tools/report_calibrated_mouse_evidence_status_20261025.py": "92f7d02aba6f541f3e1906eef5fa455f07e183b4dfc478fec4193a660883838f",
+    "tests/test_calibrated_mouse_evidence_status_20261025.py": "ff2223ea77185890e54fae11a483ce74c9bea77744a50e766193a475e66302b4",
+    "tools/report_calibrated_mouse_roi_pair_20261025.py": "4c3eb448c32626cb072ec6113276b684c57974ec0c6ad3381e4a2bc890bde1a9",
+    "tools/report_calibrated_mouse_roi_gradient_20261025.py": "39b69e3fb3461a440b34eeb459c29072730074baa764e5ee2e82619cbb65a298",
+    "tools/audit_calibrated_mouse_head_phase_native_20261025.py": "bfbeb73516be581abfe2c1c8ac0e0bf1bf6072fdb4eae0e7956a3bf3eb46a686",
+    "tools/audit_mouse_semseg_native_20261025_v2.py": "b7cabbd05dc4932c54c9e39a827ba311b848ee9b178100d0038f0b8f788408ac",
+    "tools/report_calibrated_mouse_geometric_failures_20261025.py": "be2a5e4e2e763b2dc6d8869de4fc8d32fb132f3e76f002c135f8b13b189becca",
+    "tools/report_calibrated_mouse_pixel_center_pair_20261025.py": "a2aafc77f23adc0109db00aa938a8c15a53caf23234fb002125ce44a2bb00fbd",
+    "tools/report_calibrated_mouse_resume8h_20261025.py": "a434cb245a68c579ff13d50a36f891a5c01259fc8adebf19c38ffc7e53791047",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d"
+  },
+  "role": "Read-only aggregate evidence validation and optional CPU-report refresh, no training/model calls or selection",
+  "tests": "7 contracts passed: native-vs-legacy, overlap-vs-missing sentinel, reject incomplete/incomparable seeds, incomplete surfaces, failed gate vs partial F/U, hash of exact parsed bytes",
+  "immutable_audits_not_overwritten": true,
+  "aggregate_snapshot_refresh_allowed": true,
+  "requires_all_three_registered_seeds_for_mean": true,
+  "preserves_pending_failed_skipped_statuses": true
+}
