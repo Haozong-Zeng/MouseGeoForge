@@ -112,7 +112,7 @@
       "all_logged_smoke_LRs_match_new_floor": true
     }
   ],
-  "actual_GPU_preflight_status": "PENDING freshv2 source, beforeformal6000pair",
+  "actual_GPU_preflight_status": "PASS freshv2 releasedweights underunchangedstrict tolerance; engineeringnotconvergence",
   "preserved_v1_failure": {
     "utc": "2026-10-25T20:26:11.416119+00:00",
     "failed_source": "tools/train_mouse_semseg_roi_20261025.py",
@@ -140,5 +140,78 @@
     "engineering_resume_checks": "Passed for v1implementation; do not substitute for freshv2 source numerical checks",
     "original_v1_source_preserved": true
   },
-  "original_deadlines_unchanged": true
+  "original_deadlines_unchanged": true,
+  "actual_GPU_preflight": {
+    "passed": true,
+    "utc": "2026-10-25T20:29:37.769955+00:00",
+    "device": "cuda",
+    "engineering_only": true,
+    "actual_weights": true,
+    "source_sha256": {
+      "tools/train_mouse_semseg_roi_20261025_v2.py": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/check_mouse_semseg_roi_20261025_v2.py": "011898231ff47476b70094bf9d629bf71ec3b6e855650fab4d21c23565341756"
+    },
+    "resume_4_vs_2_plus_2_max_abs": {
+      "model": 1.6391277313232422e-07,
+      "ema": 7.450580596923828e-09,
+      "optimizer": 2.1886080503463745e-08,
+      "buffers": 0.0
+    },
+    "CPU_exact": false,
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+    "strict_cross_crop_resume_rejected": true,
+    "head_gradients_nonzero": true,
+    "encoder_frozen": true
+  },
+  "live_formal_start_verification": {
+    "utc": "2026-10-25T20:30:54.664244+00:00",
+    "v2_actual_GPU_LRs_verified": [
+      {
+        "run": "roi_full4",
+        "actual_GPU_all_smoke_LRs_verified": true
+      },
+      {
+        "run": "roi_resumed4",
+        "actual_GPU_all_smoke_LRs_verified": true
+      },
+      {
+        "run": "full_full4",
+        "actual_GPU_all_smoke_LRs_verified": true
+      }
+    ],
+    "first_formal_progress": {
+      "step": 157,
+      "loss": 0.0878969132900238,
+      "grad_norm": 2.0526695251464844,
+      "blocks": [],
+      "local_ids": [
+        "7b3a65afe34e3b2ac49c",
+        "670395cfe6762fc9191d",
+        "a6bbaac22148f0303536_v5_0",
+        "8fd9d88c6771ee2134dc_v5_2"
+      ],
+      "global_ids": [
+        "7b3a65afe34e3b2ac49c",
+        "670395cfe6762fc9191d",
+        "a6bbaac22148f0303536_v5_0",
+        "8fd9d88c6771ee2134dc_v5_2"
+      ],
+      "lrs": {
+        "head/wd0.01": 2.612740796926737e-06,
+        "head/wd0.0": 2.612740796926737e-06
+      }
+    },
+    "first_formal_LR_verified": true,
+    "worker_identity": {
+      "pid": 581159,
+      "start_ticks": "2703465",
+      "pgid": 581159,
+      "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
+      "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_roi_pair_20261025_v2.py"
+    },
+    "old_v1_group_stopped": true,
+    "deadlines_unchanged": true
+  },
+  "actual_GPU_receipt_sha256": "c261d37b5f78043603901bf83a267ca9d108a26ac23ce19cc1e0b73ea0e331c6"
 }
