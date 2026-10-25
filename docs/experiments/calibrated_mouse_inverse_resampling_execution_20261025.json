@@ -1,0 +1,112 @@
+{
+  "completed_utc": "2026-10-25T15:23:03.320597+00:00",
+  "status": "passed",
+  "cpu_only": true,
+  "images_per_arm": 879,
+  "arms": [
+    "L",
+    "M"
+  ],
+  "primary_original_native_reference_exactly_reproduced": true,
+  "inverse_operator_unit_tests": 4,
+  "label_operator_unit_tests": 3,
+  "inverse_audit_sha256": "a5745874a656878874d73f10fa6af1e1f363b4d946f551c272f9fe764ce6592e",
+  "label_audit_sha256": "92e39bc1c2f8cb3f4ad3faa479d4aa9ce292a96f3c3d8b06e11a11654e232a33",
+  "visual_selection": {
+    "selection": "M; maximum absolute IoU delta in each fixed domain/bottom stratum; diagnostic ranking only",
+    "ids": [
+      "be9182ce1fc1d0a66069",
+      "deecb09b0cbc40daf9c9",
+      "a278ef93950f43e51aa3_v5_0",
+      "463a5a7bcdffe2203cd8_v5_2"
+    ],
+    "GT_display_crop_only": true,
+    "source_sha256": "9b5684c485471bdb4bff10cde57c27e507221577890f6923969c4920589856ca",
+    "audit_sha256": "a5745874a656878874d73f10fa6af1e1f363b4d946f551c272f9fe764ce6592e"
+  },
+  "visual_review": {
+    "image_sha256": "ef93c7af2d6e3a529ee337c3db35c344c985c868ab9bb299964a1417ef3adf54",
+    "inspected": true,
+    "observations": [
+      "Fixed probability resampling changes a narrow contour band; real tail and hindlimb errors remain.",
+      "Synthetic contour residuals frequently have yellow missing band on one side and magenta excess on the other; alternative operator reduces part of this offset.",
+      "GT crops in gallery are display-only. No crop inferred from GT in any pipeline."
+    ]
+  },
+  "M_original_native_iou": 0.8629156326092963,
+  "M_fixed_bilinear_probability_iou": 0.8717367780511449,
+  "M_ambiguous_float16_probability_pixels": 23959,
+  "label_roundtrip_summary": {
+    "all": {
+      "images": 879,
+      "legacy_nearest": {
+        "iou": 0.9380014993723227,
+        "dice": 0.9675573113588587,
+        "boundary_f1": 0.7973232671038685
+      },
+      "center_nearest_exact": {
+        "iou": 0.994113051099107,
+        "dice": 0.9970385210143,
+        "boundary_f1": 0.9995695878208316
+      }
+    },
+    "real/True": {
+      "images": 71,
+      "legacy_nearest": {
+        "iou": 0.9721654294652233,
+        "dice": 0.9858681409385599,
+        "boundary_f1": 0.6370691958338988
+      },
+      "center_nearest_exact": {
+        "iou": 0.9890827582756841,
+        "dice": 0.994509104503878,
+        "boundary_f1": 0.9983119971870297
+      }
+    },
+    "real/False": {
+      "images": 376,
+      "legacy_nearest": {
+        "iou": 0.9691654325982734,
+        "dice": 0.9843282510028372,
+        "boundary_f1": 0.5981461056985806
+      },
+      "center_nearest_exact": {
+        "iou": 0.9882991916982484,
+        "dice": 0.9941135998717933,
+        "boundary_f1": 0.9993125422718931
+      }
+    },
+    "synthetic/True": {
+      "images": 144,
+      "legacy_nearest": {
+        "iou": 0.9067774411396796,
+        "dice": 0.9506884898099077,
+        "boundary_f1": 0.9973260333304746
+      },
+      "center_nearest_exact": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "boundary_f1": 1.0
+      }
+    },
+    "synthetic/False": {
+      "images": 288,
+      "legacy_nearest": {
+        "iou": 0.9045049245665842,
+        "dice": 0.9495822005837,
+        "boundary_f1": 0.9968658136730517
+      },
+      "center_nearest_exact": {
+        "iou": 1.0,
+        "dice": 1.0,
+        "boundary_f1": 1.0
+      }
+    }
+  },
+  "interpretation": [
+    "A fixed half-pixel-consistent probability inverse operator improves saved predictions on reused DEV; exploratory, no primary method substitution.",
+    "Historical OpenCV nearest forward/inverse label resizing introduces center offsets. Synthetic384\u2192512\u2192384 GT self-IoU~.905 vs1.0 withcenter-nearest exact; real downsampling self-IoU~.97 vs~.989.",
+    "GT self-agreement is not a model accuracy upper bound.",
+    "A separately registered paired head-only label-center correction pilot is justified; do not modify any active or completed method."
+  ]
+}

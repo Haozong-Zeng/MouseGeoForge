@@ -1,0 +1,16 @@
+{
+  "registered_utc": "2026-10-25T15:20:22.461332+00:00",
+  "source_sha256": {
+    "tools/audit_calibrated_mouse_label_resampling_20261025.py": "b85276cbea3c892de3f3376d88ea13cf1073cbe9237e6084568656db3c2556b9",
+    "tests/test_calibrated_mouse_label_resampling_20261025.py": "2f6f162a469988c47ce39e17c38de0444fc43c7d392e0d637d524201e061c3e2"
+  },
+  "cpu_tests": "3 passed; center-nearest distance allowing exact-half ties; legacy differs;384\u2192512\u2192384 exactoperator label retention",
+  "images": 879,
+  "scope": "GT-only self-agreement comparing two fixed native\u2192maxside512\u2192native nearest operators",
+  "operators": [
+    "OpenCV INTER_NEAREST historical",
+    "OpenCV INTER_NEAREST_EXACT center-nearest"
+  ],
+  "no_model_accuracy_upper_bound_claim": true,
+  "no_current_training_or_primary_metric_changes": true
+}

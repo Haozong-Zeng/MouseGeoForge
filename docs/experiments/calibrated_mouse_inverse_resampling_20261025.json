@@ -1,0 +1,329 @@
+{
+  "schema": "fixed-inverse-resampling-diagnostic-v1",
+  "completed_utc": "2026-10-25T15:17:42.982681+00:00",
+  "source_sha256": "cdff407594719e15187d3c7362f18aa6d4e9c89459ed951be321821eb2d9befb",
+  "manifest_sha256": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31",
+  "reference_original_native_audit_sha256": "49d29ad76673b973c56e5dbd279b6e671819aa0c1e9746e24711d20d3f040aab",
+  "receipts": {
+    "L": {
+      "checkpoint_sha256": "0b02fe5543b52b4917f0f9077ccd255571710b3cf8e59e801ee1824f2e7d9faa",
+      "evaluation_sha256": "91d5445a688b54cea948219b329b21a8d02184aa015233f8c3e63c22d5502244",
+      "protocol_sha256": "7422b1768a979ce54d0b601395929269d65a1052eb504a6ab37e9d593cd69a85",
+      "side": 512
+    },
+    "M": {
+      "checkpoint_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+      "evaluation_sha256": "357e20b1b157b7f39a30127d323dafedb893433265abb318c4450d633143aac6",
+      "protocol_sha256": "7333a56a63266d052a46367fc5e0cf22303e7cf1206e0b19aa6398f023f369ec",
+      "side": 512
+    }
+  },
+  "groups": {
+    "L": {
+      "all": {
+        "legacy_nearest_mask": {
+          "iou": 0.8624576367319757,
+          "dice": 0.92322975254134,
+          "boundary_f1": 0.4659390883162431
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8714334366942743,
+          "dice": 0.9284549365222573,
+          "boundary_f1": 0.4926563914846127
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9380014993723227,
+          "dice": 0.9675573113588587,
+          "boundary_f1": 0.7973232671038685
+        },
+        "changed_valid_pixels": 700304,
+        "valid_pixels": 643012992,
+        "GT_foreground_pixels": 61432576,
+        "legacy_false_negative_pixels": 3729447,
+        "bilinear_false_negative_pixels": 3549137,
+        "legacy_false_positive_pixels": 3242837,
+        "bilinear_false_positive_pixels": 3046097,
+        "saved_probability_ambiguous_near_half_pixels": 23844,
+        "images": 879,
+        "changed_valid_fraction": 0.0010890977456331085,
+        "native_original_iou_delta_mean": 0.00897579996229858,
+        "native_original_boundary_f1_delta_mean": 0.02671730316836962
+      },
+      "real/True": {
+        "legacy_nearest_mask": {
+          "iou": 0.8950828130661606,
+          "dice": 0.9444757606676241,
+          "boundary_f1": 0.1949056094307127
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.9001852776462291,
+          "dice": 0.9473224153532311,
+          "boundary_f1": 0.20866463365974083
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9721654294652233,
+          "dice": 0.9858681409385599,
+          "boundary_f1": 0.6370691958338988
+        },
+        "changed_valid_pixels": 140733,
+        "valid_pixels": 92016000,
+        "GT_foreground_pixels": 13474871,
+        "legacy_false_negative_pixels": 841044,
+        "bilinear_false_negative_pixels": 805100,
+        "legacy_false_positive_pixels": 612796,
+        "bilinear_false_positive_pixels": 573915,
+        "saved_probability_ambiguous_near_half_pixels": 7131,
+        "images": 71,
+        "changed_valid_fraction": 0.0015294405320813772,
+        "native_original_iou_delta_mean": 0.0051024645800685775,
+        "native_original_boundary_f1_delta_mean": 0.013759024229028138
+      },
+      "real/False": {
+        "legacy_nearest_mask": {
+          "iou": 0.890834791286147,
+          "dice": 0.9420805011993877,
+          "boundary_f1": 0.1829915355580248
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8963456148060566,
+          "dice": 0.9451665008130236,
+          "boundary_f1": 0.19725887298855246
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9691654325982734,
+          "dice": 0.9843282510028372,
+          "boundary_f1": 0.5981461056985806
+        },
+        "changed_valid_pixels": 519012,
+        "valid_pixels": 487296000,
+        "GT_foreground_pixels": 46111938,
+        "legacy_false_negative_pixels": 2760617,
+        "bilinear_false_negative_pixels": 2627617,
+        "legacy_false_positive_pixels": 2424785,
+        "bilinear_false_positive_pixels": 2280701,
+        "saved_probability_ambiguous_near_half_pixels": 16265,
+        "images": 376,
+        "changed_valid_fraction": 0.0010650856973995271,
+        "native_original_iou_delta_mean": 0.005510823519909613,
+        "native_original_boundary_f1_delta_mean": 0.01426733743052766
+      },
+      "synthetic/True": {
+        "legacy_nearest_mask": {
+          "iou": 0.823560549203317,
+          "dice": 0.8897267496049093,
+          "boundary_f1": 0.7609293232122949
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8359631715215732,
+          "dice": 0.8970276068177763,
+          "boundary_f1": 0.8005084709575462
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9067774411396796,
+          "dice": 0.9506884898099077,
+          "boundary_f1": 0.9973260333304746
+        },
+        "changed_valid_pixels": 16763,
+        "valid_pixels": 21233664,
+        "GT_foreground_pixels": 726973,
+        "legacy_false_negative_pixels": 46523,
+        "bilinear_false_negative_pixels": 42134,
+        "legacy_false_positive_pixels": 119376,
+        "bilinear_false_positive_pixels": 114094,
+        "saved_probability_ambiguous_near_half_pixels": 163,
+        "images": 144,
+        "changed_valid_fraction": 0.0007894539538724922,
+        "native_original_iou_delta_mean": 0.012402622318256173,
+        "native_original_boundary_f1_delta_mean": 0.039579147745251286
+      },
+      "synthetic/False": {
+        "legacy_nearest_mask": {
+          "iou": 0.836815216495974,
+          "dice": 0.9101328232026389,
+          "boundary_f1": 0.7546650015555879
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8495562092888925,
+          "dice": 0.9176993681441945,
+          "boundary_f1": 0.794400080081773
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9045049245665842,
+          "dice": 0.9495822005837,
+          "boundary_f1": 0.9968658136730517
+        },
+        "changed_valid_pixels": 23796,
+        "valid_pixels": 42467328,
+        "GT_foreground_pixels": 1118794,
+        "legacy_false_negative_pixels": 81263,
+        "bilinear_false_negative_pixels": 74286,
+        "legacy_false_positive_pixels": 85880,
+        "bilinear_false_positive_pixels": 77387,
+        "saved_probability_ambiguous_near_half_pixels": 285,
+        "images": 288,
+        "changed_valid_fraction": 0.0005603366427951389,
+        "native_original_iou_delta_mean": 0.012740992792918515,
+        "native_original_boundary_f1_delta_mean": 0.039735078526185075
+      }
+    },
+    "M": {
+      "all": {
+        "legacy_nearest_mask": {
+          "iou": 0.8629156326092963,
+          "dice": 0.9234715010540955,
+          "boundary_f1": 0.4674106617760123
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8717367780511449,
+          "dice": 0.9285942837993174,
+          "boundary_f1": 0.4942169588575479
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9380014993723227,
+          "dice": 0.9675573113588587,
+          "boundary_f1": 0.7973232671038685
+        },
+        "changed_valid_pixels": 701815,
+        "valid_pixels": 643012992,
+        "GT_foreground_pixels": 61432576,
+        "legacy_false_negative_pixels": 3698742,
+        "bilinear_false_negative_pixels": 3519414,
+        "legacy_false_positive_pixels": 3274201,
+        "bilinear_false_positive_pixels": 3077384,
+        "saved_probability_ambiguous_near_half_pixels": 23959,
+        "images": 879,
+        "changed_valid_fraction": 0.0010914476203927152,
+        "native_original_iou_delta_mean": 0.008821145441848643,
+        "native_original_boundary_f1_delta_mean": 0.02680629708153559
+      },
+      "real/True": {
+        "legacy_nearest_mask": {
+          "iou": 0.8967358705131703,
+          "dice": 0.9453675774121774,
+          "boundary_f1": 0.19773441886990437
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.9017765974004709,
+          "dice": 0.9481762418669352,
+          "boundary_f1": 0.21101145532592552
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9721654294652233,
+          "dice": 0.9858681409385599,
+          "boundary_f1": 0.6370691958338988
+        },
+        "changed_valid_pixels": 140809,
+        "valid_pixels": 92016000,
+        "GT_foreground_pixels": 13474871,
+        "legacy_false_negative_pixels": 818364,
+        "bilinear_false_negative_pixels": 783118,
+        "legacy_false_positive_pixels": 613765,
+        "bilinear_false_positive_pixels": 575364,
+        "saved_probability_ambiguous_near_half_pixels": 6512,
+        "images": 71,
+        "changed_valid_fraction": 0.0015302664753955833,
+        "native_original_iou_delta_mean": 0.005040726887300617,
+        "native_original_boundary_f1_delta_mean": 0.013277036456021157
+      },
+      "real/False": {
+        "legacy_nearest_mask": {
+          "iou": 0.8906723319183545,
+          "dice": 0.9420290280600779,
+          "boundary_f1": 0.18335807974822885
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8961777157898618,
+          "dice": 0.9451099387713129,
+          "boundary_f1": 0.19843524199678486
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9691654325982734,
+          "dice": 0.9843282510028372,
+          "boundary_f1": 0.5981461056985806
+        },
+        "changed_valid_pixels": 520786,
+        "valid_pixels": 487296000,
+        "GT_foreground_pixels": 46111938,
+        "legacy_false_negative_pixels": 2751375,
+        "bilinear_false_negative_pixels": 2618602,
+        "legacy_false_positive_pixels": 2451247,
+        "bilinear_false_positive_pixels": 2306514,
+        "saved_probability_ambiguous_near_half_pixels": 17044,
+        "images": 376,
+        "changed_valid_fraction": 0.001068726195166798,
+        "native_original_iou_delta_mean": 0.005505383871507341,
+        "native_original_boundary_f1_delta_mean": 0.015077162248556014
+      },
+      "synthetic/True": {
+        "legacy_nearest_mask": {
+          "iou": 0.8210279674956005,
+          "dice": 0.8877863500064129,
+          "boundary_f1": 0.756482613474078
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.8329052749223474,
+          "dice": 0.8947877287957944,
+          "boundary_f1": 0.7960279296649398
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9067774411396796,
+          "dice": 0.9506884898099077,
+          "boundary_f1": 0.9973260333304746
+        },
+        "changed_valid_pixels": 16287,
+        "valid_pixels": 21233664,
+        "GT_foreground_pixels": 726973,
+        "legacy_false_negative_pixels": 47513,
+        "bilinear_false_negative_pixels": 43218,
+        "legacy_false_positive_pixels": 125024,
+        "bilinear_false_positive_pixels": 119680,
+        "saved_probability_ambiguous_near_half_pixels": 149,
+        "images": 144,
+        "changed_valid_fraction": 0.0007670367205584491,
+        "native_original_iou_delta_mean": 0.011877307426746975,
+        "native_original_boundary_f1_delta_mean": 0.03954531619086188
+      },
+      "synthetic/False": {
+        "legacy_nearest_mask": {
+          "iou": 0.8392839240849604,
+          "dice": 0.9116882030512939,
+          "boundary_f1": 0.7602037973463551
+        },
+        "bilinear_probability_fixed_half": {
+          "iou": 0.851837877658739,
+          "dice": 0.9191079595918041,
+          "boundary_f1": 0.7992889605732689
+        },
+        "GT_nearest_roundtrip_self_agreement": {
+          "iou": 0.9045049245665842,
+          "dice": 0.9495822005837,
+          "boundary_f1": 0.9968658136730517
+        },
+        "changed_valid_pixels": 23933,
+        "valid_pixels": 42467328,
+        "GT_foreground_pixels": 1118794,
+        "legacy_false_negative_pixels": 81490,
+        "bilinear_false_negative_pixels": 74476,
+        "legacy_false_positive_pixels": 84165,
+        "bilinear_false_positive_pixels": 75826,
+        "saved_probability_ambiguous_near_half_pixels": 254,
+        "images": 288,
+        "changed_valid_fraction": 0.0005635626522111304,
+        "native_original_iou_delta_mean": 0.012553953573778531,
+        "native_original_boundary_f1_delta_mean": 0.0390851632269138
+      }
+    }
+  },
+  "threshold": 0.5,
+  "tie_policy": "background",
+  "threshold_or_checkpoint_selection": false,
+  "primary_prediction_masks_unchanged": true,
+  "probability_precision": "saved float16; pixels within2^-11 of.5 separately reported, not assumed exact FP32 inference",
+  "limitations": [
+    "Prospective fixed inverse operator diagnostic on reused DEV; no new independent generalization claim.",
+    "GT down/up self-agreement quantifies this operator only, is NOT a model accuracy upper bound or attainable ceiling.",
+    "Manual real masks and synthetic opaque-skin surrogate kept separate.",
+    "No alternative masks written into current pipelines, no threshold tuning/filtering or model promotion."
+  ],
+  "full_audit_sha256": "a5745874a656878874d73f10fa6af1e1f363b4d946f551c272f9fe764ce6592e"
+}

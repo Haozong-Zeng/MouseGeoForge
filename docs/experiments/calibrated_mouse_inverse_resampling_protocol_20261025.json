@@ -1,0 +1,20 @@
+{
+  "registered_utc": "2026-10-25T15:16:58.486057+00:00",
+  "source_sha256": {
+    "tools/audit_calibrated_mouse_inverse_resampling_20261025.py": "cdff407594719e15187d3c7362f18aa6d4e9c89459ed951be321821eb2d9befb",
+    "tests/test_calibrated_mouse_inverse_resampling_20261025.py": "008ac937ddd09451a740dbceff86d5f953dab1d8cf05741b90bf1a5f836f7603"
+  },
+  "cpu_tests": "4 stdlib tests passed",
+  "arms": [
+    "L",
+    "M"
+  ],
+  "checkpoint": "own original fixed18000EMA, existing complete L_dev_v1/M_dev_v1 only",
+  "images_per_arm": 879,
+  "comparison": "Saved historical nearest binary native masks versus saved native bilinear foreground probability strictly>.5; tie background",
+  "probability_precision": "float16 export; separately count abs(p-.5)<=2^-11, no FP32-equivalence claim",
+  "GT_roundtrip": "512 nearest down/up self-agreement diagnostic; NOT model ceiling",
+  "selection": "No threshold, checkpoint, region, model selection; exploratory reusedDEV operator study",
+  "primary_masks_and_pipeline_unchanged": true,
+  "admitted_manifest_sha256": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31"
+}
