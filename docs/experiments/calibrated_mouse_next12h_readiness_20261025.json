@@ -1,0 +1,42 @@
+{
+  "utc": "2026-10-25T21:30:12.721199+00:00",
+  "design_sha256": "35f94d295cfc60b262bb9ce9e170c83fd461ddb5dd8ce3857a3f6c0118d322fa",
+  "historical_gate_failures_unchanged": true,
+  "optimization_updates": 0,
+  "no_DEV_reads": true,
+  "arms": {
+    "full": {
+      "status": "missing_future_window",
+      "missing": [
+        "semseg_roi_pair_v2/full_004500/train_monitor_004500.json",
+        "semseg_roi_pair_v2/full_005000/train_monitor_005000.json",
+        "semseg_roi_pair_v2/full_005500/train_monitor_005500.json",
+        "semseg_roi_pair_v2/full_006000/train_monitor_006000.json"
+      ]
+    },
+    "roi": {
+      "status": "missing_future_window",
+      "missing": [
+        "semseg_roi_pair_v2/roi_004500/train_monitor_004500.json",
+        "semseg_roi_pair_v2/roi_005000/train_monitor_005000.json",
+        "semseg_roi_pair_v2/roi_005500/train_monitor_005500.json",
+        "semseg_roi_pair_v2/roi_006000/train_monitor_006000.json"
+      ]
+    }
+  },
+  "FULL_ready_for_trial_design": false,
+  "adaptation_job_registered": false,
+  "scope": "Boundedheadwarm-start/nonregression screen forplanningmatchedfrozen/adaptedtrial, not scientific convergence/quality/generalization acceptance",
+  "limits": [
+    "TRAIN64perstratum/256images aredeterministicnotindependentrealorsyntheticdraws; no significance/generalizationclaim",
+    "Calibrationwindow3000/3500alreadyobserved; decisionwindow4500/5000/5500/6000 isfutureandunseen atregistration",
+    "NativeBFtol1px changesphysicalscale withimage resolution; do not substituteoldref512 BFtol2",
+    "Historicaloriginal18000andextra12000remainfailed; no retroactivepass ormodifiedstartedengine",
+    "Dropcriteria permitimprovement/decliningloss, whilelarge nativequalityregression orlossblowup stillblocks"
+  ],
+  "FULL_numerical_repeat": {
+    "status": "missing_or_failed",
+    "not_inferred_from_engineering_training_smoke": true
+  },
+  "next": "Noadaptationfromthisparent withoutregisteredrequirements; no earlier/ROI/DEV-selectedfallback"
+}

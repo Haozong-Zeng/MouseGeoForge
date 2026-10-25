@@ -1,0 +1,536 @@
+{
+  "registered_utc": "2026-10-25T21:28:02.683251+00:00",
+  "status": "prospective TRAIN stability assessment only; no automatic encoder adaptation",
+  "historical_gate_failures_unchanged": true,
+  "observed_common_endpoint_at_registration": 3500,
+  "future_window": [
+    4500,
+    5000,
+    5500,
+    6000
+  ],
+  "future_window_files_all_absent_at_registration": true,
+  "monitor": "EMA native-original full-frame metrics; first64TRAIN IDs per4strata=256, samefixedIDs eachwindowcheckpoint",
+  "TRAIN_monitor_ids": [
+    "00314cb9e6a793a8d969",
+    "0319950c3cd9437c7064",
+    "0352add4f4d660acdaff",
+    "0546376ad0855d233df5",
+    "08519fc94ef1814814c3",
+    "0996dbb3649c13c9ed5d",
+    "0a8f0c7e0275332e5536",
+    "0d51bc152ab5d0d50abf",
+    "0d5b75b763c75b71c4ef",
+    "0dd6d9a2b90e3edf8e50",
+    "0efcdfc0f2f3890e593b",
+    "142d5e3dda3ddc69a74a",
+    "14777ae1f4eea956752c",
+    "1a07c993b0ef8f51f126",
+    "1d7ca14412987ce6c6c9",
+    "220273181da292611968",
+    "2217dc465dfc900ad97e",
+    "2420f248397d344d227c",
+    "2572e90a7b87746ca10f",
+    "2bacc089eec1b9d9e5fd",
+    "2d4c692f77afbfdb0bf8",
+    "31ac73542b90be66f0ec",
+    "355c4daabf48a2b360ff",
+    "360d51773049693a8761",
+    "36ae4fa0bace00f202dc",
+    "36ae98ce7798e437a806",
+    "3812fd6e2f9f8caff6ae",
+    "390c6ad10c2d1b154d3c",
+    "3d2b97d69f0717b456c7",
+    "3dfb701ae6b297f00e28",
+    "3e984825de166b7146fa",
+    "43120e778a35f59a21a9",
+    "45667297758781a8445e",
+    "4617fc7f074c57c3978c",
+    "475b1851558ed74ec3ae",
+    "48a25a385b9af90b4673",
+    "4aba65465fbcb942039e",
+    "4b5c82bafcd5d8b82bc5",
+    "4c2f47bb6e4083b83752",
+    "4cc924c14e24e8aaff22",
+    "4cd0ebf3380a550971e2",
+    "4f53ca170fea67c89896",
+    "4f68e3419be0bb681aaf",
+    "508faffddf3dd6c26ba8",
+    "5109a4e284c6a1bc8314",
+    "5118f3c3cad6e7c2b499",
+    "532bcd1d7e7423620adb",
+    "58ca4c552f253afc836f",
+    "58fa86b2713272e4d44c",
+    "59606313e726b1b2ec06",
+    "5ad85b5a4fda9338dbe6",
+    "5cbf7dd10650645fe907",
+    "5e6bdfe66415e41508ae",
+    "61352e1a7515c0b2495f",
+    "640c40e321c19c565971",
+    "66123e9c91bfaa9225ef",
+    "6eafb10a4080ae12eed7",
+    "700bec45bfc3553c30d9",
+    "71bceca497251e30323d",
+    "7385b8c6c349a09d26ca",
+    "7b3a65afe34e3b2ac49c",
+    "7b6a358139d64623a458",
+    "7b757c30e491198a43de",
+    "7e0289dd27b013740481",
+    "009b4842897284cb0865",
+    "01d946480b902004559c",
+    "028a6c46b47afea20c0b",
+    "0447d51208184711131a",
+    "04e69c4f8e4e13388c2f",
+    "0532d94cd069c1332c96",
+    "054f0ae2e99a4265c0de",
+    "05516fc83af683cb96a8",
+    "0555041af69334a55263",
+    "05866ec70698117f3c30",
+    "059e73134adce34f4e3c",
+    "05d8a63da112844a9cc9",
+    "06273f11b67f621826a5",
+    "0664c5564b960691bf46",
+    "066fe782b97d36099d2a",
+    "0675fafe0c9f8b698bd5",
+    "067c1d7ca085fc453a8e",
+    "069645a27f9a90f3ed63",
+    "06b5df82afb20a100c63",
+    "06dc07b86bddc51d628b",
+    "070b55e1212f168cdb8e",
+    "0741ab11911cf9de466e",
+    "0878bacb48108e70e54c",
+    "0911eeabe34b043b9bae",
+    "091325e0582dd59551c2",
+    "09201155b328afb8347f",
+    "092c2133f550d674bbb8",
+    "09aae32fe76e3096c9d1",
+    "09bb891045c778f74f5c",
+    "09e5bdd5f0b41efe8627",
+    "0a0603bb4674231a0f12",
+    "0a339a830180141f4e50",
+    "0aaa37c0532bdce68d5d",
+    "0aaf9b53ded867ebed7c",
+    "0ab2d7563d46a9593227",
+    "0ab964d31fa90cc8c4c3",
+    "0afe8ecf8de8afbbbf6e",
+    "0b456b62b19b15728ddc",
+    "0b722d8cc689e015cce3",
+    "0b84b78cfbcb9e0e3b27",
+    "0bbdb610e9d9069d74e9",
+    "0be866fe9ca0c4e89c48",
+    "0c22912e98ca11a2b6c6",
+    "0c6fcee7a0f700a8178a",
+    "0d2c4987cb859fae6adf",
+    "0d4da218dade81538649",
+    "0e65a0ec26ba02cdbd80",
+    "0ed22742c4b36863b0b0",
+    "0fa676a1787c7b9d508b",
+    "0fcd1d0c82dedcde8146",
+    "0fd6f52ec97a03cac090",
+    "102f594d481631994179",
+    "1081ffff3df96399e3d1",
+    "10cdc957826c913c7ca9",
+    "1102a50dd71b9544bb39",
+    "11289a7d02a3d4228fcb",
+    "1132a596604a7161c52f",
+    "116b174aa2c391f6cfd2",
+    "117ec90852496ddb7987",
+    "12539d0987aa5c6c351d",
+    "12d59540df8cca90c2ca",
+    "12f2c40df91bb422a5f7",
+    "12fba01832efb79f9ab4",
+    "1348b795ffc02602a031",
+    "0017b71e83c63c3e74de_v5_0",
+    "00aa5a9e2c06e8e6cba2_v5_0",
+    "00ed43ab00b6d84eb754_v5_0",
+    "01fadbae3556f7b98e34_v5_0",
+    "02a5b69152aa1c264989_v5_0",
+    "037651cdee4cd836aef0_v5_0",
+    "03e3d2b0c7b0defd34bb_v5_0",
+    "041740201ab163c5409d_v5_0",
+    "04ce7be2bc370ad8617e_v5_0",
+    "0504b40d55ea589389dd_v5_0",
+    "052fbee4824d18b78035_v5_0",
+    "059b9faf131d0194f7af_v5_0",
+    "0680f0a29e2fc3b72c24_v5_0",
+    "06b64aacf2259efcec3c_v5_0",
+    "06bae4072a47a8b8387c_v5_0",
+    "06c9204ec524ee2dd0ab_v5_0",
+    "0729bf78bc4dc9a7a8d9_v5_0",
+    "075f5c0ad1fbf5d78317_v5_0",
+    "0823192abe1b837eb2ad_v5_0",
+    "0856544515f4c992801c_v5_0",
+    "0aa05ebaeb3f687c71a2_v5_0",
+    "0ad9eb2b2bf85ee1e64b_v5_0",
+    "0c89aad5a4942f2fb6d0_v5_0",
+    "0dd366134bc5aefef78b_v5_0",
+    "0eb230cbbdfecb238592_v5_0",
+    "0fc08d29e91f605d2fd4_v5_0",
+    "104c53df6408085d813e_v5_0",
+    "1094329157a60fe599e7_v5_0",
+    "1146ba01fd099321e025_v5_0",
+    "114c89148db351795e22_v5_0",
+    "11731f98729fc5a819e0_v5_0",
+    "11c169f09d91addaa324_v5_0",
+    "11f3697e6f61c3a8646d_v5_0",
+    "12bde5a11d8ca197f274_v5_0",
+    "12c795dbca02ddfd40c6_v5_0",
+    "12e5fd4f0ff131094eb6_v5_0",
+    "130f0a4a55c590083aeb_v5_0",
+    "133d1806b87b1e157d62_v5_0",
+    "136bba36231746ff1e54_v5_0",
+    "136cbf9cab702a8f07d0_v5_0",
+    "144350fc13dbeb89421a_v5_0",
+    "14a96460c3af15d58104_v5_0",
+    "14b5f8a990a25c640eaf_v5_0",
+    "153a92035a5645620d0c_v5_0",
+    "154d8b922d016aca7deb_v5_0",
+    "15ea13c4695e6a34b97a_v5_0",
+    "15f05d7473ef1b40121e_v5_0",
+    "16267989e7fe4978b981_v5_0",
+    "162c887460be87fa79af_v5_0",
+    "165e5dfa873be4dc0427_v5_0",
+    "166a5602da81a40217ca_v5_0",
+    "171112b13769c970a222_v5_0",
+    "173ebaa12c74b25b3209_v5_0",
+    "17a8941dac09108fdad1_v5_0",
+    "17f60960d9ba3b5ee365_v5_0",
+    "17ff246c55dfd3113d84_v5_0",
+    "1813c7fbb81087726f79_v5_0",
+    "190a4e5d46c97e72c2ac_v5_0",
+    "197e55a813661dcaffb1_v5_0",
+    "1a669b32c7de019e2faf_v5_0",
+    "1ab266bf14443ac20b40_v5_0",
+    "1b7d5475d0f91bd3b3b6_v5_0",
+    "1b91b31af40bcd0c6a2f_v5_0",
+    "1baec611dddcb193eeee_v5_0",
+    "0000e0298033d8a41c6f_v5_1",
+    "002f007fd5ae658cd7c0_v5_1",
+    "00731dffcfdedfcd56c3_v5_1",
+    "00e216859db21c96d460_v5_2",
+    "01491e19df1a754bde79_v5_2",
+    "014d847fbb60b08a8812_v5_2",
+    "014ed341416ce19f07c8_v5_2",
+    "0152aa0a5efb74df6b79_v5_1",
+    "01ba60937b3c6d60c7ef_v5_2",
+    "01cae1660bc7fe34f2f9_v5_2",
+    "02443e22f80c34cbb484_v5_2",
+    "0278c1214bbaba77f818_v5_1",
+    "029f040c61e189bcc66a_v5_2",
+    "02a549ad30d8daabc0e0_v5_1",
+    "02a96d3848a075a3abf1_v5_1",
+    "02c1b4ee95fd8e422bea_v5_1",
+    "02e71b23d69f4d46163e_v5_1",
+    "02f1e6ab8c123ec4491d_v5_2",
+    "032cda19e68970047809_v5_2",
+    "0349c113e0e812f26942_v5_2",
+    "03a4b4f7f7ca9af0fb06_v5_2",
+    "043ed7e40750d8b94030_v5_1",
+    "048675c5192dc0cfea26_v5_2",
+    "04a3ab4fdb76fedf3dc3_v5_2",
+    "04c69773355a3341c80e_v5_2",
+    "04c786e8b3b0569bb814_v5_1",
+    "04c79d6a2bf09d5cfe40_v5_2",
+    "0550431f18cfdc3f0ee2_v5_1",
+    "057ad58150758fc86b72_v5_1",
+    "070c4883fa01f5f82cfc_v5_1",
+    "07572e00faba32978c74_v5_1",
+    "07bd2e53729c3ba682cb_v5_2",
+    "07e4f4a3e615cdef6e0a_v5_2",
+    "080637b3ea1d493213f4_v5_1",
+    "08137dfe54a5fe5f1489_v5_1",
+    "081b1b3367a6dc38bf11_v5_1",
+    "08204f33e45b8fefe263_v5_2",
+    "083b5b406f7e79929f25_v5_2",
+    "084db360f59f86e755c9_v5_1",
+    "086b80edaf75c64e8c17_v5_2",
+    "0887e1f5683167fc8858_v5_2",
+    "08fbd043ee9fbb30ca69_v5_2",
+    "093a5adf60e51042d3db_v5_2",
+    "09502cdc6ddd8405c7ef_v5_2",
+    "095a2e99b5a3ba98c6c6_v5_1",
+    "09a63201cefdd71a4384_v5_1",
+    "09db046606257f59d4b1_v5_2",
+    "0a3e7d71b99f137098df_v5_2",
+    "0aa7bf0d69908cd134ce_v5_1",
+    "0aeff39595447f146e64_v5_2",
+    "0b658c8133690ee41203_v5_1",
+    "0b81eb9a076976eb5dfe_v5_2",
+    "0b88589cc2d6e8a8de43_v5_1",
+    "0ba7384f8273e1e7819f_v5_2",
+    "0bddfe2d7d8be9c93aec_v5_1",
+    "0bef063b661d32ab53c4_v5_2",
+    "0c1d22955ee76f5e90a9_v5_1",
+    "0c224928699be6c6fe2b_v5_2",
+    "0c3c4981fa1fb44e3a46_v5_2",
+    "0c3e40bf3895bf45baaa_v5_1",
+    "0c7237f0977f05a9f3a7_v5_1",
+    "0c8d1e39bbf18027832e_v5_1",
+    "0c905224adf9ff6ffacf_v5_2",
+    "0ca984d6f5251ffbefaf_v5_2"
+  ],
+  "monitor_ids_sha256": "9d91debb3b4c1cce62d5628554588b5d2e4ec8c71f5c54bc97c8e1d5570c075c",
+  "items_path": "output/calibrated_mouse_next12h_20261025/semseg_roi_coarse_cache_v1/items.json",
+  "items_sha256": "3f8e9b1bf79f861b667b19fdcea09006138c65803a871a137027dcf48b4d18a0",
+  "parent_campaign_registration_sha256": "44d0ab9ac7d1b7f6483aad2b90857bc0c3e070dfd771197a23997fc09929d0ca",
+  "calibration_input_sha256": {
+    "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_003000/train_monitor_003000.json": "e55750fcc16966a7c4aaa9d459a0ec0f943b217913486fe2b91ca3f65a28ab79",
+    "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_003500/train_monitor_003500.json": "9c9743a0d9230402c3a72105c92014619bf0cca733b3bdfbb07c9f8163c66f04",
+    "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_003000/train_monitor_003000.json": "e9af1b664c8a1ef4fb8df01f5c69a4452085ca9f0c1c1b18d61185ca235eaaed",
+    "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_003500/train_monitor_003500.json": "c309ba64dc85b6fe4358bc5cb09dbe3173e54b9a1ec8f04f00c99392443288e6"
+  },
+  "tolerance_rules": {
+    "iou": {
+      "floor": 0.001,
+      "cap": 0.003
+    },
+    "dice": {
+      "floor": 0.001,
+      "cap": 0.003
+    },
+    "boundary_f1": {
+      "floor": 0.002,
+      "cap": 0.01
+    }
+  },
+  "tolerances": {
+    "full": {
+      "all": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00015002648104744162,
+          "descriptive_paired_SE": 4.5225626981777804e-05,
+          "n": 256
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 8.228385778347256e-05,
+          "descriptive_paired_SE": 2.518442852667179e-05,
+          "n": 256
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0008249352637960784,
+          "descriptive_paired_SE": 0.0003086589154082125,
+          "n": 256
+        }
+      },
+      "real/True": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.0001062892784175519,
+          "descriptive_paired_SE": 3.995725981067521e-05,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 5.648918622735283e-05,
+          "descriptive_paired_SE": 2.126344010080934e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0017825466876652818,
+          "descriptive_paired_SE": 0.0005102249368293205,
+          "n": 64
+        }
+      },
+      "real/False": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.0002395304596138747,
+          "descriptive_paired_SE": 9.380267077508314e-05,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00012910516426876788,
+          "descriptive_paired_SE": 5.057880985906068e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0009358147211828492,
+          "descriptive_paired_SE": 0.0008737473968893434,
+          "n": 64
+        }
+      },
+      "synthetic/True": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00012706601660713093,
+          "descriptive_paired_SE": 8.629626023886686e-05,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 6.957055406953301e-05,
+          "descriptive_paired_SE": 4.848120050074424e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0004928938501644956,
+          "descriptive_paired_SE": 0.00041726254194923067,
+          "n": 64
+        }
+      },
+      "synthetic/False": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00012722016955120895,
+          "descriptive_paired_SE": 0.0001228763393711167,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 7.397052656823652e-05,
+          "descriptive_paired_SE": 6.97072424477351e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 8.848579617168686e-05,
+          "descriptive_paired_SE": 0.0005652344866062144,
+          "n": 64
+        }
+      }
+    },
+    "roi": {
+      "all": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.0001614774520993065,
+          "descriptive_paired_SE": 9.000799453892289e-05,
+          "n": 256
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 8.395200217013081e-05,
+          "descriptive_paired_SE": 4.940777925144719e-05,
+          "n": 256
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0010264424542162625,
+          "descriptive_paired_SE": 0.000376109682485942,
+          "n": 256
+        }
+      },
+      "real/True": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00011271385869908793,
+          "descriptive_paired_SE": 7.129061551723289e-05,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 5.8406403381399893e-05,
+          "descriptive_paired_SE": 3.7832755197979774e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0013780599190626923,
+          "descriptive_paired_SE": 0.0007384729597901468,
+          "n": 64
+        }
+      },
+      "real/False": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00041387990021602046,
+          "descriptive_paired_SE": 0.00013712053326276797,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00022313977844237547,
+          "descriptive_paired_SE": 7.404580643230625e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0018747195989860508,
+          "descriptive_paired_SE": 0.0009925700291863841,
+          "n": 64
+        }
+      },
+      "synthetic/True": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": -0.0002055229547024348,
+          "descriptive_paired_SE": 0.00013417803102607463,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": -0.00011312355297489647,
+          "descriptive_paired_SE": 7.296350801633065e-05,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": -0.0001323009203663527,
+          "descriptive_paired_SE": 0.0004999245822321737,
+          "n": 64
+        }
+      },
+      "synthetic/False": {
+        "iou": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.0003248390041845524,
+          "descriptive_paired_SE": 0.0002926901520857106,
+          "n": 64
+        },
+        "dice": {
+          "tolerance": 0.001,
+          "calibration_paired_mean_delta": 0.00016738537983164437,
+          "descriptive_paired_SE": 0.00016198892034931071,
+          "n": 64
+        },
+        "boundary_f1": {
+          "tolerance": 0.002,
+          "calibration_paired_mean_delta": 0.0009852912191826591,
+          "descriptive_paired_SE": 0.0006892710465244285,
+          "n": 64
+        }
+      }
+    }
+  },
+  "criteria": {
+    "native_metrics": [
+      "iou",
+      "dice",
+      "boundary_f1"
+    ],
+    "groups": [
+      "all",
+      "real/True",
+      "real/False",
+      "synthetic/True",
+      "synthetic/False"
+    ],
+    "all_must_pass": true,
+    "late_2_mean_minus_early_2_mean_at_least": "-tolerance",
+    "final_minus_first_at_least": "-tolerance",
+    "every_consecutive_delta_at_least": "-2*tolerance",
+    "loss": "Everyperimagefinite>=0; pergroup maximumwindowmean <= max(2*early2mean,early2mean+.02). No lossflatness requirement; crop-localloss onlywithinownarm.",
+    "numerical_repeat": "After6000 fixedFULL parent, freshreleasedFP32model+EMA repeatall256TRAINrows; perimagenativeabsolute<=1e-5 andlossatol1e-6rtol1e-5; otherwiseblockFULLreadiness. Nooptimization."
+  },
+  "candidate_parent": "Predetermined newFULL6000EMA only, not ROI, regardlessDEV orROI gate outcome. FULLfailure cannotfallback toearlier/better/ROIcheckpoint.",
+  "gate_meaning": "Boundedheadwarm-start/nonregression screen forplanningmatchedfrozen/adaptedtrial, not scientific convergence/quality/generalization acceptance",
+  "threshold_rationale": "Absolutepracticalcaps/floors predefined here; perarm tolerance clips2*descriptive pairedSE ofTRAIN3000vs3500 changes. Thismeasures TRAINmonitor variability,samplingcorrelation acknowledged, NOTnumericrepeatabilityorindependentstatisticalCI. Actualnumericrepeat isseparatemandatorygate.",
+  "no_DEV_reads_for_readiness": true,
+  "no_checkpoint_or_threshold_selection": true,
+  "adaptation_requirements": "Separatefuturefinitepairedprotocolwithsameparent/exposure/init/fixedFULLinput, actualreleasedGPUgradient/restore/featuresmustpass. Noautomaticunfreeze ornewoptimizationjob registeredbythisdesign.",
+  "limitations": [
+    "TRAIN64perstratum/256images aredeterministicnotindependentrealorsyntheticdraws; no significance/generalizationclaim",
+    "Calibrationwindow3000/3500alreadyobserved; decisionwindow4500/5000/5500/6000 isfutureandunseen atregistration",
+    "NativeBFtol1px changesphysicalscale withimage resolution; do not substituteoldref512 BFtol2",
+    "Historicaloriginal18000andextra12000remainfailed; no retroactivepass ormodifiedstartedengine",
+    "Dropcriteria permitimprovement/decliningloss, whilelarge nativequalityregression orlossblowup stillblocks"
+  ],
+  "optimization": false
+}

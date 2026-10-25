@@ -1,0 +1,35 @@
+{
+  "failure": {
+    "utc": "2026-10-25T21:31:27.363552+00:00",
+    "attempt": "readiness implementation v1",
+    "stage": "CPU implementationreview, before queuedGPUrepeat",
+    "failure": "Inference tensors do not track version counter.",
+    "cause": "Constructedmodelinsideinference_mode thenrequestedparameter_version; reproduction2x2CPUlinear, noofficialweights/nooptimization",
+    "actual_GPU_repeat_run": false,
+    "design_rules_unchanged": true,
+    "original_source_sha256": "8cd02af49b8cd2f95001c236c6018b6452833431eb2ea37e3290cf44266e82eb",
+    "fix": "Separatev2source constructsnormalversion-trackedfrozenparameters; no numeric tolerance/decisionwindow/sourceengine change"
+  },
+  "cancelled_v1_jobs": [
+    "semseg_readiness_FULL_GPU_repeat_v1",
+    "semseg_readiness_report_v1"
+  ],
+  "replacement_registration": {
+    "registered_utc": "2026-10-25T21:32:07.150011+00:00",
+    "design_sha256": "35f94d295cfc60b262bb9ce9e170c83fd461ddb5dd8ce3857a3f6c0118d322fa",
+    "source_sha256": {
+      "tools/check_calibrated_mouse_train_readiness_20261025_v2.py": "440f173b73ec3a34c9c1779c4723c7a910412aeaad03f818d77eba9a3459b1ab",
+      "tests/test_train_readiness_20261025_v2.py": "22b0b17e79631a75fb2e7485e2d0466bf06ad58ff61e38f9d57a56b7ed678678",
+      "tools/train_mouse_semseg_roi_20261025_v2.py": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "mousegeoforge/semseg_pixel_center_20261025.py": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b"
+    },
+    "CPU_tests_passed": 8,
+    "actual_GPU_TRAIN_native_repeat": "PENDING no optimization, all256TRAIN fixedFULL6000EMA",
+    "supersedes_v1": "CPUversioncounterbug beforeGPUnativeevaluation; oldrules/window/tolerances unchanged, v1sourceandregistrationpreserved",
+    "failure_receipt_sha256": "8a9aebc3289b324e45831cd126d328951ff7f1190f269037c15f785337508e7c",
+    "no_automatic_adaptation": true
+  }
+}
