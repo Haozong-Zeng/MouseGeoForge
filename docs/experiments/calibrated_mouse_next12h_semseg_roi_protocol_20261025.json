@@ -271,5 +271,12 @@
     "time": "2026-10-25T20:22:04.588228+00:00",
     "status": "running",
     "active_job": "semseg_roi_pair_v1"
-  }
+  },
+  "execution_status": "ABORTED_PROTOCOL_SCHEDULE_MISMATCH; notvalidregistered600warm/.1floorcomparison; no commonpairedendpoint/DEV",
+  "actual_LR_observed": {
+    "warmup": 100,
+    "floor": 0.5
+  },
+  "failure_receipt_sha256": "39ea66e8aa9b53f197cdf6d896176e3b708998d2794e94fa156d421e4c6c52b8",
+  "replacement": "Freshv2, originalparentfreshoptimizer, unchangedcoarsecacheonly; noresumeofv1"
 }

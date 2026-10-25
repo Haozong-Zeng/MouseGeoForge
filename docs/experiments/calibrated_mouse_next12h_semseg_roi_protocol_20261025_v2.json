@@ -1,0 +1,144 @@
+{
+  "registration": {
+    "registered_utc": "2026-10-25T20:28:31.325914+00:00",
+    "purpose": "Finite matchedFULL/predictedROI semantic head trial; historical convergence failures unchanged; no unfreezing",
+    "source_sha256": {
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/cache_mouse_semseg_roi_20261025.py": "a69354c92ef36f0bb84219433220b369467a89d2bf566c7d040e202cf83037b5",
+      "tests/test_semseg_roi_20261025.py": "7f709521677e9c9e1134312707fd7479a2e92b3e62d9c4dd3427a125d34e5d4d",
+      "mousegeoforge/semseg_pixel_center_20261025.py": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "tools/audit_mouse_semseg_native_probability_20261025_v3.py": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+      "tools/train_mouse_semseg_roi_20261025_v2.py": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "tools/check_mouse_semseg_roi_20261025_v2.py": "011898231ff47476b70094bf9d629bf71ec3b6e855650fab4d21c23565341756",
+      "tools/calibrated_mouse_semseg_roi_pair_20261025_v2.py": "a0d4d68335cf4b35a3a8b845f1af50d1eb36876e61e4d88d640f03bef2223fbd",
+      "tools/report_calibrated_mouse_semseg_roi_20261025_v2.py": "3b401af8b1d491b736fd2e7ed5d6a6e9050a02869653fe8dde8eda0d47a1133e",
+      "tests/test_semseg_roi_lr_20261025_v2.py": "b716121ebe74322120b8e19264a1484596987855550a137621e0e97532d599f0"
+    },
+    "parent": "output/calibrated_mouse_10h_20261025/semseg_campaign_s17_v1/M_018000/step_018000.pt",
+    "parent_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+    "encoder": "vggt-omega/vggt_omega_1b_512.pt",
+    "encoder_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "source_items_sha256": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31",
+    "CPU_preflight_sha256": "cce8bfa0105060d8c99fa25c348591fc20e945af30948f92af32ca248552971e",
+    "unit_tests": 8,
+    "arms": [
+      "full",
+      "roi"
+    ],
+    "seed": 17,
+    "steps_per_arm": 6000,
+    "global_batch": 4,
+    "micro_batch": 1,
+    "precision": "fp32",
+    "frozen_encoder": true,
+    "optimizer": "Fresh AdamW per arm; identical originalM18000EMA head initialization; exact segmented resume",
+    "peak_head_lr": 1e-05,
+    "warmup_steps": 600,
+    "cosine_floor": 0.1,
+    "ema_decay": 0.995,
+    "exposure_offset": 18000,
+    "save_cadence": 500,
+    "train_monitor": "First64 deterministic IDs of each fourTRAIN strata (256total), every500; native-original full-frame primary; crop-localref512/loss not comparable across arms; noDEV stop/select",
+    "coarse_crop": {
+      "generator": "Same originalM18000EMA frozen releasedencoder; FP32 nativebilinearprobability>.5; fullnativeimage",
+      "padding_factor": 1.4,
+      "minimum_side": 96,
+      "maximum_side": "max(nativeH,nativeW)",
+      "clamp": "crop clipped to nativeimage, rectangle if imageedge/aspect prevents square",
+      "empty": "fullimage",
+      "GT_in_box_generation": false,
+      "teacher_TRAIN_predictions": "In-sample parent predictions; disclosed, no GT boxes/selection"
+    },
+    "native_inverse": "FP32 bilinear probability of crop mapped into fullnative canvas, zero outsidecrop;>.5foreground/tiebackground; originalnative labels neverresized for primarymetrics",
+    "primary_metrics": "All879 DEV fullnativeIoU/Dice/BF1px, fourstrata, empty/missedcrop included; raw+EMA final endpoints only; noMODELpromotion",
+    "actual_GPU_preflight_required": "ROI4vs2+2 FP32 modelEMA atol1e-6rtol1e-5,optimizeratol1e-5rtol1e-4,countersexact; FULL4 nonzerohead/frozenencoder/actualfeatureidentity and wrongcropresume rejection",
+    "minimum_seconds": 9000,
+    "timeout_seconds": 12000,
+    "limitations": [
+      "Only existing admitted TRAIN/DEV; PanoMouse/DANNCE excluded as supervision in this trial",
+      "Only single exploratory seed initially; reusedDEV, no significance/generalization/selection claim",
+      "Prior label-center FULL pilot is not a matchedbaseline because this pair has its own full10percentwarmup/floor.1; use newFULL",
+      "Semantic union bbox not instance detector; coarse misses remain in fullGTdenominator",
+      "Reference512 monitor is crop-local; use fullnative metrics for comparisons and any later readiness analysis",
+      "No historical headgate pass or automatic encoderunfreeze; prospective adaptation protocol stillrequired"
+    ],
+    "supersedes_failed_attempt": "semseg_roi_pair_v1 aborted atFULL500/partialROI due actual100warm/.5floor vsregistered600/.1. No completed paired endpoint, noDEV. Allsources/logs/checkpoints preserved, no resume orselectfromv1.",
+    "coarse_cache_reused": {
+      "receipt_sha256": "2581fc518ac5852b1dfa3a082e9f5003c608914d8f60ca66863d0836c900285d",
+      "items_sha256": "3f8e9b1bf79f861b667b19fdcea09006138c65803a871a137027dcf48b4d18a0",
+      "reason": "Frozen coarse teacher/boxalgorithm unchanged, no optimizer/schedule used forcache. No rerender/reinference/reselection."
+    },
+    "lr_validation": "Actual set_roi_learning_rates helper uses shared constants600/.1 in bothprotocolandtraining.2newCPUtests verify actualoptimizerLR at0/99/100/475/599/600/2999/5999 andsmoke. Finalreport verifies EVERY loggedLR independently againstregisteredformula."
+  },
+  "CPU_preflight": {
+    "passed": true,
+    "utc": "2026-10-25T20:27:22.452387+00:00",
+    "device": "cpu",
+    "engineering_only": true,
+    "actual_weights": false,
+    "source_sha256": {
+      "tools/train_mouse_semseg_roi_20261025_v2.py": "98e2831a8686094886c2e3e46352cb7f443946b16c64fd8b3323501e8e470483",
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/check_mouse_semseg_roi_20261025_v2.py": "011898231ff47476b70094bf9d629bf71ec3b6e855650fab4d21c23565341756"
+    },
+    "resume_4_vs_2_plus_2_max_abs": {
+      "model": 0.0,
+      "ema": 0.0,
+      "optimizer": 0.0,
+      "buffers": 0.0
+    },
+    "CPU_exact": true,
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+    "strict_cross_crop_resume_rejected": true,
+    "head_gradients_nonzero": true,
+    "encoder_frozen": true
+  },
+  "actual_CPU_log_LR_verification": [
+    {
+      "run": "roi_full4",
+      "steps": 4,
+      "all_logged_smoke_LRs_match_new_floor": true
+    },
+    {
+      "run": "roi_resumed4",
+      "steps": 4,
+      "all_logged_smoke_LRs_match_new_floor": true
+    },
+    {
+      "run": "full_full4",
+      "steps": 4,
+      "all_logged_smoke_LRs_match_new_floor": true
+    }
+  ],
+  "actual_GPU_preflight_status": "PENDING freshv2 source, beforeformal6000pair",
+  "preserved_v1_failure": {
+    "utc": "2026-10-25T20:26:11.416119+00:00",
+    "failed_source": "tools/train_mouse_semseg_roi_20261025.py",
+    "actual_source_lines": [
+      323,
+      324,
+      325
+    ],
+    "registered": {
+      "warmup": 600,
+      "floor": 0.1
+    },
+    "actual": {
+      "warmup": 100,
+      "floor": 0.5
+    },
+    "owned_group_verified_stopped": {
+      "pid": 580174,
+      "start_ticks": "2655109",
+      "pgid": 580174,
+      "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
+      "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_roi_pair_20261025.py"
+    },
+    "original_deadlines_unchanged": true,
+    "engineering_resume_checks": "Passed for v1implementation; do not substitute for freshv2 source numerical checks",
+    "original_v1_source_preserved": true
+  },
+  "original_deadlines_unchanged": true
+}
