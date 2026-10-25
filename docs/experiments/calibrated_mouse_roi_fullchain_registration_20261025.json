@@ -1,0 +1,23 @@
+{
+  "registered_utc": "2026-10-25T14:01:09.247831+00:00",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "masks": "same M18000 native EMA for ALL6 evaluation arms",
+  "no_threshold_or_checkpoint_selection": true,
+  "denominators": "144scenes432nativeviews including missedforeground",
+  "guard": "actual CUDA identity control before chain runs",
+  "long_full_training_equivalence": "New FULL seed17 not bitwise equal to oldD1; preserve receipt and use new matched FULL baseline for ROI comparison",
+  "source_sha256": {
+    "tools/check_calibrated_mouse_roi_cuda_20261025.py": "56d23927de6532297220d5068906f69f5b32b0b41a56e19e7bf56c47bccf046f",
+    "tools/evaluate_calibrated_mouse_roi_pipeline_20261025.py": "f3e524a93ee224a774a03077d2cf7ffa86e1fb93dce281c472b0833790f67944",
+    "tools/report_calibrated_mouse_roi_pair_20261025.py": "4c3eb448c32626cb072ec6113276b684c57974ec0c6ad3381e4a2bc890bde1a9",
+    "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+    "mousegeoforge/models/calibrated_mouse_depth.py": "876b27aa9a927f9c5d52f41c515f5f82e4bdb5d114428dea50dad4ff4a1529a2",
+    "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+    "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d"
+  }
+}

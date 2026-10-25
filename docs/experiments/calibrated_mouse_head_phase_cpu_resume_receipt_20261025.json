@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "uninterrupted_vs_segmented4steps": {
+    "model": 0.0,
+    "ema": 0.0
+  },
+  "device": "cpu",
+  "fresh_head_phase_protocol": true,
+  "no_original_protocol_mutation": true
+}

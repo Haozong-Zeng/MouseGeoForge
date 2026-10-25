@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "fixture_only_no_training": true,
+  "calls": 22,
+  "same_parent_for_training_and_evaluation": true,
+  "minimum_common_endpoint": 4000,
+  "F_U_same_M_parent": true,
+  "F_U_same6000_exposure": true,
+  "no_duplicate_parent_flags": true
+}

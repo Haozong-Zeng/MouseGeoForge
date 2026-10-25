@@ -1,0 +1,283 @@
+{
+  "utc": "2026-10-25T14:08:42.520599+00:00",
+  "pairs": {
+    "17": {
+      "comparable": true,
+      "required_differences": [],
+      "same_recorded_scene_view_exposure": true,
+      "oracle": {
+        "full": {
+          "rmse_mm": 6.876966181728575,
+          "mae_mm": 4.803340405225754,
+          "absrel": 0.019498252659104764,
+          "within_1mm": 0.23506189658014784,
+          "within_2mm": 0.4389371591665662,
+          "within_5mm": 0.783546367751004,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.4229785851574118,
+            "2": 0.7058840080625726,
+            "5": 0.9506510037874426
+          }
+        },
+        "roi": {
+          "rmse_mm": 4.728642450714553,
+          "mae_mm": 2.942617083589236,
+          "absrel": 0.012171840579766367,
+          "within_1mm": 0.313177206472666,
+          "within_2mm": 0.5596691479540701,
+          "within_5mm": 0.8646977684512233,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.5345521726285095,
+            "2": 0.8181020166882934,
+            "5": 0.974763579242625
+          }
+        }
+      },
+      "chain": {
+        "full": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.4073706439108719,
+            "2": 0.6934370908018759,
+            "5": 0.9362724401212719
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 6.522092876610933,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 74.08799993550336
+        },
+        "roi": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.5102891886470657,
+            "2": 0.7989881379429398,
+            "5": 0.9573070968264425
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 4.485798003496947,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 73.42679982273667
+        }
+      },
+      "roi_minus_full": {
+        "oracle_mean_view_rmse_mm": -2.148323731014022,
+        "oracle_f1_5mm": 0.024112575455182417,
+        "chain_f1_5mm": 0.021034656705170685
+      }
+    },
+    "29": {
+      "comparable": true,
+      "required_differences": [],
+      "same_recorded_scene_view_exposure": true,
+      "oracle": {
+        "full": {
+          "rmse_mm": 6.810119498107168,
+          "mae_mm": 4.752636696729395,
+          "absrel": 0.01936921873776656,
+          "within_1mm": 0.22225797691315166,
+          "within_2mm": 0.4198431231451633,
+          "within_5mm": 0.768224470262274,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.4064269455324901,
+            "2": 0.6885343198465095,
+            "5": 0.9468241440130897
+          }
+        },
+        "roi": {
+          "rmse_mm": 4.8731714994819075,
+          "mae_mm": 3.005015407723409,
+          "absrel": 0.01235363013606898,
+          "within_1mm": 0.3145039088683433,
+          "within_2mm": 0.5626662141753902,
+          "within_5mm": 0.8654556428613717,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.5370233338538759,
+            "2": 0.8212798926078028,
+            "5": 0.9744192978382031
+          }
+        }
+      },
+      "chain": {
+        "full": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.39087482868843204,
+            "2": 0.6757084229930336,
+            "5": 0.9324044899063197
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 6.459613255880497,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 73.97370451468008
+        },
+        "roi": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.512236298200593,
+            "2": 0.801755189693045,
+            "5": 0.9568787489508122
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 4.619414479092315,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 73.4727566462976
+        }
+      },
+      "roi_minus_full": {
+        "oracle_mean_view_rmse_mm": -1.9369479986252607,
+        "oracle_f1_5mm": 0.02759515382511346,
+        "chain_f1_5mm": 0.024474259044492408
+      }
+    },
+    "43": {
+      "comparable": true,
+      "required_differences": [],
+      "same_recorded_scene_view_exposure": true,
+      "oracle": {
+        "full": {
+          "rmse_mm": 7.581180123267351,
+          "mae_mm": 5.383451755951952,
+          "absrel": 0.0216544953927277,
+          "within_1mm": 0.2303314381495215,
+          "within_2mm": 0.4332303715462112,
+          "within_5mm": 0.7790598837705823,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.4161225256713171,
+            "2": 0.6996884211808584,
+            "5": 0.9480839166793813
+          }
+        },
+        "roi": {
+          "rmse_mm": 4.671033329157917,
+          "mae_mm": 2.8752272222880966,
+          "absrel": 0.011863281563381423,
+          "within_1mm": 0.3158626331044186,
+          "within_2mm": 0.5639573045744777,
+          "within_5mm": 0.8660331543564341,
+          "valid_fraction": 1.0,
+          "pointcloud_fscore": {
+            "1": 0.5358827537035372,
+            "2": 0.8195906729242464,
+            "5": 0.9746301844127038
+          }
+        }
+      },
+      "chain": {
+        "full": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.3998154718385091,
+            "2": 0.6865444994030988,
+            "5": 0.9343084917718895
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 7.162556485997306,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 74.40794315603044
+        },
+        "roi": {
+          "mean_iou": 0.8331986052218405,
+          "mean_bbox_iou": 0.9192017331615644,
+          "gt_depth_coverage": 0.9142678574221713,
+          "pointcloud_fscore": {
+            "1": 0.5116133236042822,
+            "2": 0.8006474324177218,
+            "5": 0.9572279082629152
+          },
+          "scene_denominator": 144,
+          "view_denominator": 432,
+          "mean_view_overlap_rmse_mm": 4.365329832942398,
+          "nonempty_overlap_views": 432,
+          "mean_view_missing_as_zero_rmse_mm": 73.37263833151923
+        }
+      },
+      "roi_minus_full": {
+        "oracle_mean_view_rmse_mm": -2.9101467941094334,
+        "oracle_f1_5mm": 0.02654626773332247,
+        "chain_f1_5mm": 0.02291941649102569
+      }
+    }
+  },
+  "cuda_identity_control": {
+    "utc": "2026-10-25T14:06:09.693362+00:00",
+    "passed": true,
+    "rows": [
+      {
+        "scene": 123,
+        "forward_max_difference_mm": 0.0,
+        "same_original_repeat_forward_mm": 0.0,
+        "gradient_relative_linf": 4.4118535917561867e-07,
+        "same_original_repeat_gradient_relative_linf": 4.1912609121683776e-07
+      },
+      {
+        "scene": 460,
+        "forward_max_difference_mm": 0.0,
+        "same_original_repeat_forward_mm": 0.0,
+        "gradient_relative_linf": 2.4697124345871964e-07,
+        "same_original_repeat_gradient_relative_linf": 3.457597408422075e-07
+      },
+      {
+        "scene": 515,
+        "forward_max_difference_mm": 0.0,
+        "same_original_repeat_forward_mm": 0.0,
+        "gradient_relative_linf": 2.675520857022841e-07,
+        "same_original_repeat_gradient_relative_linf": 1.6722005356392756e-07
+      }
+    ],
+    "forward_tolerance_mm": 0.0001,
+    "gradient_relative_linf_tolerance": 0.0001,
+    "source_sha256": "56d23927de6532297220d5068906f69f5b32b0b41a56e19e7bf56c47bccf046f",
+    "long_training_identity": "Separate FULL6000 vs parentD1 NOT exact; compare fresh matched FULL/ROI pairs, do not reuse original D1 as bitwise paired baseline"
+  },
+  "long_training_identity": {
+    "utc": "2026-10-25T13:58:00.107011+00:00",
+    "parent_step": 6000,
+    "new_step": 6000,
+    "maximum_parameter_difference": {
+      "model": 0.2580008804798126,
+      "ema": 0.2547091841697693
+    },
+    "exact": false,
+    "interpretation": "Identity-affine FULL pilot implementation control against original D1 seed17; no model selection"
+  },
+  "limits": [
+    "Original native GT and full native support; oracle selection explicitly separate from shared fixed predicted masks",
+    "ROI mask generator was trained on admitted TRAIN poses; no unseen-pose proof",
+    "Frozen encoder, six correlated source poses, synthetic visible skin excludes glass/fur",
+    "No independent real-mm reference, GT alignment, model promotion, threshold or DEV checkpoint selection"
+  ],
+  "roi_crop_coverage_diagnostic": {
+    "train": {
+      "views": 1728,
+      "mean_gt_fraction_inside_crop": 0.9999963499193001,
+      "min_gt_fraction_inside_crop": 0.9936926605504587,
+      "full_fallback_or_fullsize_views": 65
+    },
+    "dev": {
+      "views": 432,
+      "mean_gt_fraction_inside_crop": 0.999986118052085,
+      "min_gt_fraction_inside_crop": 0.9940029985007496,
+      "full_fallback_or_fullsize_views": 18
+    }
+  }
+}

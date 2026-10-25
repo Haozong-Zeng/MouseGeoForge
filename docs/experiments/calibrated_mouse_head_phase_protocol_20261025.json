@@ -1,0 +1,47 @@
+{
+  "registered_utc": "2026-10-25T14:08:02.476788+00:00",
+  "reason": "Original18000 loss still descending last2000; exact original gate not passed. Separate head-only lowLR phase, original protocol unchanged.",
+  "parents": {
+    "L": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_10h_20261025/semseg_campaign_s17_v1/L_018000/step_018000.pt",
+      "sha256": "0b02fe5543b52b4917f0f9077ccd255571710b3cf8e59e801ee1824f2e7d9faa"
+    },
+    "M": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_10h_20261025/semseg_campaign_s17_v1/M_018000/step_018000.pt",
+      "sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc"
+    }
+  },
+  "initialization": "Own L/M original18000 EMA; fresh Adam/EMA at new phase start, strict segmented resume thereafter",
+  "seed": 17,
+  "peak_head_lr": 1e-05,
+  "warmup": 100,
+  "cosine_floor": 0.5,
+  "steps_max": 12000,
+  "steps_min": 4000,
+  "global_batch": 4,
+  "schedule_exposure_offset": 18000,
+  "cadence": 500,
+  "gate": "unchanged last5 TRAIN monitor span loss<=1percent mean; IoU/BF512tol2<=.002; all+each4strata BOTH arms",
+  "DEV_selection": false,
+  "optional_FU_requires_head_gate_and_budget": true,
+  "optional_FU_steps_each": 6000,
+  "U_last_blocks_stages": [
+    1,
+    2,
+    4
+  ],
+  "U_output_lr": 1e-06,
+  "U_earlier_multiplier": 0.65,
+  "FU_head_lr": 3e-05,
+  "FU_same_M_phase_EMA_parent": true,
+  "fixed_cameras": true,
+  "old_ROI_M_mask_generator_unchanged": true,
+  "source_sha256": {
+    "tools/train_mouse_semseg_head_phase_20261025.py": "9fe600f939ce3996fe5a82f84a7e2c96b0d6acc7f61e266308e1060d8b756fca",
+    "tools/calibrated_mouse_semseg_head_phase_20261025.py": "117e27687c1dda58b3b8ddf00358545ea8f5b34a56b4da26e4cb5c9147ab9538",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b"
+  },
+  "CPU_segmented_fixture_exact": true,
+  "campaign_argument_fixture22calls_passed": true
+}

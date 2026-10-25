@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-25T14:09:47.437467+00:00",
+  "visual_inspection_completed": true,
+  "file": "roi_depth_native_visual_review_v1.png",
+  "scope": "seed17 matched full/ROI same fixed predicted masks, Climb/MoSeq firstDEV scene bottom/side; fixed per-row GT percentile color display only, no metric scale fitting",
+  "observations": [
+    "Body depth coarse gradients improve overall per numerical metrics, but fine hands/tails still not reconstructed faithfully",
+    "MoSeq ROI bottom/side body shows visible stripe-like depth discontinuities; reduced aggregate error does not establish smooth accurate surface",
+    "Both methods share segmentation omissions and native mask aliasing; ROI changes geometry features only"
+  ],
+  "no_model_promotion": true,
+  "next_possible_new_method": "separately registered ROI local-gradient or smoothness pair, not alteration of completed ROI v1"
+}
