@@ -1,5 +1,11 @@
 # V5 complex-background rendering batch (2026-10-24)
 
+**2026-10-25 update:** all768 scenes/2304 views completed and passed raw file QA.
+The user subsequently requested the canonical `dataset/BlenderPyMouse` layout.
+The render output below is retained as the immutable source archive; use the
+[BlenderPyMouse export](v5_blenderpymouse_export_20261025.md) for the six canonical
+motion/split datasets, standard JPEG/PFM/camera files and Core23 annotations.
+
 The user approved the workstation Blender scene and explicitly requested rendering:
 “可以，开始渲染，注意符合合成数据的数据格式和文件夹安排”. This authorizes
 local data production; it does not start geometry/keypoint/segmentation training.

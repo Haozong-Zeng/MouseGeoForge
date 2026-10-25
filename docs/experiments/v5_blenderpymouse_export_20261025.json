@@ -1,0 +1,116 @@
+{
+  "schema": "v5-blenderpymouse-export-receipt-v1",
+  "completed_utc": "2026-10-25T09:08:06.883217+00:00",
+  "passed": true,
+  "scenes": 768,
+  "views": 2304,
+  "split_counts": {
+    "train": 576,
+    "val": 144,
+    "sealed": 48
+  },
+  "canonical_roots": [
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Train",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Dev",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Sealed",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Train",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Dev",
+    "dataset/BlenderPyMouse/PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Sealed"
+  ],
+  "unit_tests_passed": 3,
+  "smoke": {
+    "datasets": 6,
+    "scenes": 6,
+    "views": 18,
+    "passed": true
+  },
+  "source_replay_passed": true,
+  "source_files_unchanged": true,
+  "published_bytes": 3927461226,
+  "datasets": [
+    {
+      "name": "PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Train",
+      "split": "train",
+      "scenes": 288,
+      "views": 864,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 2.2737367544323206e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    },
+    {
+      "name": "PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Dev",
+      "split": "val",
+      "scenes": 72,
+      "views": 216,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 2.2737367544323206e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    },
+    {
+      "name": "PyMouseStudio-BrownFur-ClimbWall-Core23-ComplexBackgroundV5-Sealed",
+      "split": "sealed",
+      "scenes": 24,
+      "views": 72,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 1.7053025658242404e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    },
+    {
+      "name": "PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Train",
+      "split": "train",
+      "scenes": 288,
+      "views": 864,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 1.7053025658242404e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    },
+    {
+      "name": "PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Dev",
+      "split": "val",
+      "scenes": 72,
+      "views": 216,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 1.7053025658242404e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    },
+    {
+      "name": "PyMouseStudio-BrownFur-KeypointMoseq-Core23-Sample10-First200-ComplexBackgroundV5-Sealed",
+      "split": "sealed",
+      "scenes": 24,
+      "views": 72,
+      "legacy_loader_passed": true,
+      "keypoint_errors": 0,
+      "maximum_independent_reprojection_error_px": 1.4210854715202004e-13,
+      "depth_exact": true,
+      "mask_exact": true,
+      "K_E_exact": true,
+      "lossless_copies_verified": true
+    }
+  ],
+  "provenance_receipt": "dataset/BlenderPyMouse/_annotation_audit/v5_complex_background_20261025/conversion_receipt.json",
+  "converter_sha256": "71a44de7b341c4d5474df59b152642c78217ce609645cf9bea2c44484edd47c9",
+  "original_datasets_modified": false,
+  "original_renders_modified": false,
+  "model_calls": 0,
+  "new_RGB_renders": 0
+}
