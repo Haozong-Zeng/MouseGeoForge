@@ -1,0 +1,25 @@
+{
+  "registered_utc": "2026-10-25T21:44:04.617386+00:00",
+  "source_sha256": {
+    "tools/report_calibrated_mouse_next12h_evidence_20261025.py": "7a3b4956935c23e5eed111a20ba26f3297cd0ba4884c781f310942d1881dd39a",
+    "tests/test_next12h_evidence_20261025.py": "26ad4a7dbbc6580768c05746ee9bd12ffe2232d906cf5c1bbcb691eb7050b9cc",
+    "tools/report_calibrated_mouse_semseg_roi_20261025_v2.py": "3b401af8b1d491b736fd2e7ed5d6a6e9050a02869653fe8dde8eda0d47a1133e",
+    "tools/check_calibrated_mouse_train_readiness_20261025_v2.py": "440f173b73ec3a34c9c1779c4723c7a910412aeaad03f818d77eba9a3459b1ab",
+    "tools/report_calibrated_mouse_semseg_chain_20261025.py": "f0949fc1cc22c4b1df98b1924ebf1a68d2b9e55b3328a8f522d9642858b5c71f",
+    "tools/report_calibrated_mouse_spatial_depth_20261025.py": "2594110ea220983377654d18ed6e260ff3dd240eb56c8d3d9981e6fae9ed6627"
+  },
+  "unit_tests_passed": 7,
+  "CPU_only": true,
+  "model_calls": 0,
+  "optimization": false,
+  "purpose": "Read-onlyinputsnapshot+fourCPUreportrefreshes; aggregatecurrentcycleevidence/failures/partialresults/sourcepins andindependentrealmmunverifiedlimits",
+  "refresh_allowlist": [
+    "tools/report_calibrated_mouse_semseg_roi_20261025_v2.py",
+    "tools/check_calibrated_mouse_train_readiness_20261025_v2.py",
+    "tools/report_calibrated_mouse_semseg_chain_20261025.py",
+    "tools/report_calibrated_mouse_spatial_depth_20261025.py"
+  ],
+  "report": "output/calibrated_mouse_next12h_20261025/evidence_status_v1.json",
+  "does_not_stop_workers_or_pause_heartbeat": true,
+  "do_not_mutate_pinned_sources": "Futureadaptationorothernewcomponents requireseparatesupplements; finalreportreadthemexplicitly, nevereditthisbuildertoeraseoldfailures"
+}

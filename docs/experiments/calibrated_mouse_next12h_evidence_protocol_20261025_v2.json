@@ -1,0 +1,27 @@
+{
+  "registered_utc": "2026-10-25T21:45:36.987819+00:00",
+  "source_sha256": {
+    "tools/report_calibrated_mouse_next12h_evidence_20261025_v2.py": "32a3e73cfee7ed151d476724f0af9e099da1e1158c9813ca1b613185cb8466d5",
+    "tests/test_next12h_evidence_20261025_v2.py": "2b75c78b793a404995fb18afab356eba089000d278882f81e3d7947fe50c093e",
+    "tools/report_calibrated_mouse_semseg_roi_20261025_v2.py": "3b401af8b1d491b736fd2e7ed5d6a6e9050a02869653fe8dde8eda0d47a1133e",
+    "tools/check_calibrated_mouse_train_readiness_20261025_v2.py": "440f173b73ec3a34c9c1779c4723c7a910412aeaad03f818d77eba9a3459b1ab",
+    "tools/report_calibrated_mouse_semseg_chain_20261025.py": "f0949fc1cc22c4b1df98b1924ebf1a68d2b9e55b3328a8f522d9642858b5c71f",
+    "tools/report_calibrated_mouse_spatial_depth_20261025.py": "2594110ea220983377654d18ed6e260ff3dd240eb56c8d3d9981e6fae9ed6627"
+  },
+  "unit_tests_passed": 8,
+  "CPU_only": true,
+  "model_calls": 0,
+  "optimization": false,
+  "purpose": "Currentcycleevidenceintegration; exactparsedJSONbytes/sourcepins/partialandfailedattempts, schema-normalizedsinglesourceandmapping registrations",
+  "refresh_allowlist": [
+    "tools/report_calibrated_mouse_semseg_roi_20261025_v2.py",
+    "tools/check_calibrated_mouse_train_readiness_20261025_v2.py",
+    "tools/report_calibrated_mouse_semseg_chain_20261025.py",
+    "tools/report_calibrated_mouse_spatial_depth_20261025.py"
+  ],
+  "report": "output/calibrated_mouse_next12h_20261025/evidence_status_v2.json",
+  "supersedes_v1": "ActualCPUsourcescanlegacyregistrationformatfailure; no experimentsource/model changed; v1files/log/registrationpreserved",
+  "failure_receipt_sha256": "8432d8a9d3824d4c277dbba5d8aa0f3bbd8d1ab8ab06c95a12a42bc385ed4e5e",
+  "does_not_stop_workers_or_pause_heartbeat": true,
+  "future_components": "Readseparatesupplementsforfutureadaptation; doNOTmutatepinnedbuildertohideoldfailures"
+}
