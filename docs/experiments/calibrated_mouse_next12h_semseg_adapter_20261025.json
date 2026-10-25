@@ -1,8 +1,87 @@
 {
-  "utc": "2026-10-25T22:32:56.567989+00:00",
+  "utc": "2026-10-25T23:45:29.949198+00:00",
   "registration_sha256": "b13a8b7404f15604775998ebe87019b9f20ccee05fc04724bbef50b28d7ea8bc",
-  "comparable": false,
-  "arms": {},
+  "comparable": true,
+  "arms": {
+    "control": {
+      "status": "complete",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.8773108662168295,
+          "dice": 0.9317829607007165,
+          "boundary_f1": 0.5139454489816919
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.912850199539332,
+          "dice": 0.9542908797735952,
+          "boundary_f1": 0.2521904361000801
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.9073640781833098,
+          "dice": 0.9513167930217459,
+          "boundary_f1": 0.23809558080903945
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.8334555256818711,
+          "dice": 0.8957327053139843,
+          "boundary_f1": 0.7950489279112012
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.8512409657714816,
+          "dice": 0.9187567578146333,
+          "boundary_f1": 0.7980609190569087
+        }
+      },
+      "actual_all_LRs_and_exposures_verified": true,
+      "checkpoint_sha256": "8e79b2b47b4362c69bdc94c6d98ddefeab49fab219fb4fe338da6b650759d5e4",
+      "native_audit_sha256": "8fc404ecb24b19890d24adb1d4059f4f67dc59ea5a5eb3fd62f4247043d48e47",
+      "encoder_frozen": true
+    },
+    "adapter": {
+      "status": "complete",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.8773157755562381,
+          "dice": 0.9317861129047517,
+          "boundary_f1": 0.5139753847422686
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.9128500613964522,
+          "dice": 0.9542908824418174,
+          "boundary_f1": 0.2522135420637774
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.9073623646425629,
+          "dice": 0.9513158295843065,
+          "boundary_f1": 0.23809502684708125
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.8334737821218006,
+          "dice": 0.8957412033134029,
+          "boundary_f1": 0.7951564996268691
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.8512490924432018,
+          "dice": 0.9187633867676335,
+          "boundary_f1": 0.7980935266012298
+        }
+      },
+      "actual_all_LRs_and_exposures_verified": true,
+      "checkpoint_sha256": "27da409def945770816ae7bda896d86e83433979fc739f800f10845af19d777b",
+      "native_audit_sha256": "fef381e21eef71473474e31010df63ac7d64cb4fd679969edbd02fabb4c7f382",
+      "encoder_frozen": true
+    }
+  },
   "limitations": [
     "Post-backbone feature adapters, NOT encoderlast-block/attention adaptation or exactAdaptFormerreproduction",
     "Adapterarm has262144 trainableextraweights whilecontrolsamezero modulesfrozen; sameheadLR/init/exposure butcapacitydiffers",
@@ -11,5 +90,123 @@
     "Historicalold18k/extra12kgatefailures andallv1schedule/numericfailures remainfailed",
     "TRAINsafetythresholdsareprospectiveengineeringlimits, notvalidationqualityorconvergenceproof",
     "No newdataadmission,GTscale/gaugefit,depthtraining,confidencefilter ormodelpromotion"
-  ]
+  ],
+  "campaign": {
+    "started_utc": "2026-10-25T22:34:58.320164+00:00",
+    "registration_sha256": "b13a8b7404f15604775998ebe87019b9f20ccee05fc04724bbef50b28d7ea8bc",
+    "full_paired_endpoint": 3000,
+    "evaluations": {
+      "control": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_adapter_pair_v1/control_dev",
+      "adapter": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_adapter_pair_v1/adapter_dev"
+    },
+    "status": "completed",
+    "TRAIN_safety": [
+      {
+        "policy": "control",
+        "endpoint": 500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "control",
+        "endpoint": 1000,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 1000,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "control",
+        "endpoint": 1500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 1500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "control",
+        "endpoint": 2000,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 2000,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "control",
+        "endpoint": 2500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 2500,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "control",
+        "endpoint": 3000,
+        "violations": [],
+        "persistent": false
+      },
+      {
+        "policy": "adapter",
+        "endpoint": 3000,
+        "violations": [],
+        "persistent": false
+      }
+    ],
+    "actual_GPU_preflight_sha256": "69f75fd47aadd8f29bed0269365b89d2285f92877b1acea07b58587d07b34b97",
+    "parents": {
+      "control": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_adapter_pair_v1/control_003000/step_003000.pt",
+      "adapter": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_adapter_pair_v1/adapter_003000/step_003000.pt"
+    },
+    "finished_utc": "2026-10-25T23:30:07.563301+00:00"
+  },
+  "full_registered_endpoint_completed": true,
+  "adapter_minus_control": {
+    "all": {
+      "iou": 4.909339408554203e-06,
+      "dice": 3.152204035128392e-06,
+      "boundary_f1": 2.993576057663816e-05
+    },
+    "real/True": {
+      "iou": -1.3814287980196127e-07,
+      "dice": 2.6682221987428534e-09,
+      "boundary_f1": 2.3105963697311882e-05
+    },
+    "real/False": {
+      "iou": -1.7135407468504837e-06,
+      "dice": -9.634374393829859e-07,
+      "boundary_f1": -5.539619581940158e-07
+    },
+    "synthetic/True": {
+      "iou": 1.825643992947601e-05,
+      "dice": 8.497999418599633e-06,
+      "boundary_f1": 0.00010757171566788681
+    },
+    "synthetic/False": {
+      "iou": 8.126671720232181e-06,
+      "dice": 6.628953000187288e-06,
+      "boundary_f1": 3.260754432110602e-05
+    }
+  }
 }

@@ -1,0 +1,78 @@
+{
+  "utc": "2026-10-25T23:44:28.131643+00:00",
+  "source_sha256": "f473c72db5919e695099894ec99acf12f34e4bda4e66a44c882620d7f99551f2",
+  "paired_report_sha256": "247efa543340ac7048f24c56ae8084998dd5182990643b1b457294fd90b67974",
+  "images": 879,
+  "total_native_pixels": 643012992,
+  "changed_native_pixels": 5364,
+  "changed_fraction": 8.341977637677343e-06,
+  "identical_mask_images": 294,
+  "different_mask_images": 585,
+  "max_changed_pixels_per_image": 113,
+  "perimage_iou": {
+    "improved": 291,
+    "degraded": 285,
+    "equal": 303,
+    "mean_delta": 4.90933940845068e-06
+  },
+  "original_parent_native_iou": 0.8774462532999473,
+  "final_control_minus_parent": -0.00013538708311777725,
+  "final_adapter_minus_parent": -0.00013047774370922305,
+  "actual_checkpoints_and_TRAIN_checks": {
+    "control": {
+      "checkpoint_sha256": "8e79b2b47b4362c69bdc94c6d98ddefeab49fab219fb4fe338da6b650759d5e4",
+      "encoder_frozen": true,
+      "adapter_last_layer_norms": {
+        "model": {},
+        "ema": {}
+      },
+      "all_six_TRAIN_violation_lists": {
+        "500": [],
+        "1000": [],
+        "1500": [],
+        "2000": [],
+        "2500": [],
+        "3000": []
+      }
+    },
+    "adapter": {
+      "checkpoint_sha256": "27da409def945770816ae7bda896d86e83433979fc739f800f10845af19d777b",
+      "encoder_frozen": true,
+      "adapter_last_layer_norms": {
+        "model": {
+          "adapters.0.2.weight": 0.03864814128045633,
+          "adapters.1.2.weight": 0.04346572388424089,
+          "adapters.2.2.weight": 0.05670438021584846,
+          "adapters.3.2.weight": 0.052150179506941896
+        },
+        "ema": {
+          "adapters.0.2.weight": 0.03815840022888884,
+          "adapters.1.2.weight": 0.04302355224948599,
+          "adapters.2.2.weight": 0.0560415896369282,
+          "adapters.3.2.weight": 0.05146563132282639
+        }
+      },
+      "all_six_TRAIN_violation_lists": {
+        "500": [],
+        "1000": [],
+        "1500": [],
+        "2000": [],
+        "2500": [],
+        "3000": []
+      }
+    }
+  },
+  "optimization_updates": 0,
+  "model_calls": 0,
+  "interpretation": "Actualadapterweightsareupdated/nonzero andallregisteredTRAINsafetywindowspass; observednativeDEV effectis negligibleatthisfixed3000schedule. No practicalbenefit established; no extension/promotion or claimalladapterroutesfail.",
+  "limitations": [
+    "Post-backbone feature adapters, NOT encoderlast-block/attention adaptation or exactAdaptFormerreproduction",
+    "Adapterarm has262144 trainableextraweights whilecontrolsamezero modulesfrozen; sameheadLR/init/exposure butcapacitydiffers",
+    "Oneexploratoryseed/reusedDEV/sixcorrelatedsyntheticposes; noindependentreal-mm/generalization/significance/instancecountclaim",
+    "ParentfixedprospectivelyFULL6000 despiteROIbetterDEV; noROI/earlier/betterfallback",
+    "Historicalold18k/extra12kgatefailures andallv1schedule/numericfailures remainfailed",
+    "TRAINsafetythresholdsareprospectiveengineeringlimits, notvalidationqualityorconvergenceproof",
+    "No newdataadmission,GTscale/gaugefit,depthtraining,confidencefilter ormodelpromotion"
+  ],
+  "full_audit_sha256": "3fe620322e52a1ee35e5b09641609bb000569091111d487f2ff8ce4823f8a68f"
+}
