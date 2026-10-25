@@ -1,0 +1,35 @@
+{
+  "registered_utc": "2026-10-25T13:53:23.232927+00:00",
+  "method": "predicted semantic ROI vs full-image feature sampling; fixed-camera native rays",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 6000,
+  "planes": 96,
+  "rays": 256,
+  "head_lr": 0.001,
+  "fixed_M_checkpoint_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+  "TRAIN_scenes": 576,
+  "DEV_scenes": 144,
+  "crop_rule": "square union predicted bbox plus40percent total padding, min96, max384, empty->full",
+  "K_rule": "K_feature=A@K_native, halfpixel cv2resize convention; metric ray bounds use native K/E",
+  "truth_used_for_crop": false,
+  "mask_generator_has_seen_admitted_TRAIN_poses": true,
+  "unseen_pose_claim": false,
+  "encoder_frozen": true,
+  "same_initialization_schedule_ray_exposure": true,
+  "full_denominator_native_body_metrics": true,
+  "no_checkpoint_or_threshold_selection": true,
+  "source_sha256": {
+    "tools/cache_calibrated_mouse_roi_20261025.py": "8e3f02eb5fb450cff83c6d539ec4b44b2ce420657a04ee9e2f16ff7baa722cd1",
+    "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+    "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+    "mousegeoforge/models/calibrated_mouse_depth.py": "876b27aa9a927f9c5d52f41c515f5f82e4bdb5d114428dea50dad4ff4a1529a2",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda"
+  },
+  "cpu_tests": "5 passed; affineK projection/inverse, halfpixel centers, border+components, empty fallback, exact full-forward+gradient identity",
+  "method_changes_after_start_forbidden": true
+}

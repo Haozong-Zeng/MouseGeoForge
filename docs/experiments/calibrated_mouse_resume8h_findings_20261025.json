@@ -1,0 +1,394 @@
+{
+  "updated_utc": "2026-10-25T13:55:09.680694+00:00",
+  "window": {
+    "schema": "calibrated-mouse-resume8h-v1",
+    "start_utc": "2026-10-25T13:27:11+00:00",
+    "optimization_cutoff_utc": "2026-10-25T20:57:11+00:00",
+    "hard_finish_utc": "2026-10-25T21:27:11+00:00",
+    "authorization": "User: \u7ee7\u7eed\u63a8\u8fdb\uff0c\u6301\u7eed8\u5c0f\u65f6",
+    "supersedes_old_time_budget_only": true,
+    "parent_cycle": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_10h_20261025",
+    "no_sealed_model_calls": true,
+    "no_remote_jobs": true,
+    "no_model_promotion": true,
+    "fixed_known_cameras": true,
+    "no_gt_scale_alignment": true,
+    "head_convergence_gate_unchanged": true,
+    "old_campaign_common_endpoint": 18000,
+    "old_campaign_converged": false,
+    "optional_encoder_unfreeze_admitted": false,
+    "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+    "priority": [
+      "Complete interrupted L/M DEV evaluation in fresh directories",
+      "M+D1 full-chain fixed-camera depth and visible pointcloud",
+      "Registered source-frame145 cost/reference controls seed17/29/43",
+      "Repair separately versioned empty-background diagnostic launch and assess fixed-M FPR",
+      "Use observed failures to register ROI geometry or head-improvement pilots without changing completed protocols"
+    ]
+  },
+  "native_metric_correction": "Legacy native evaluator compared resized-back labels. Original native labels are primary here; prior artifacts retained unchanged.",
+  "segmentation_fixed18000_EMA": {
+    "L": {
+      "checkpoint_sha256": "0b02fe5543b52b4917f0f9077ccd255571710b3cf8e59e801ee1824f2e7d9faa",
+      "groups": {
+        "all": {
+          "images": 879,
+          "native_original_iou": 0.8624576367319757,
+          "legacy_roundtrip_iou": 0.8947580392342125,
+          "native_original_boundary_f1_tol1": 0.4659390883162431,
+          "changed_gt_pixels": 1924592
+        },
+        "real/True": {
+          "images": 71,
+          "native_original_iou": 0.8950828130661606,
+          "legacy_roundtrip_iou": 0.9090334504569105,
+          "native_original_boundary_f1_tol1": 0.1949056094307127,
+          "changed_gt_pixels": 372427
+        },
+        "real/False": {
+          "images": 376,
+          "native_original_iou": 0.890834791286147,
+          "legacy_roundtrip_iou": 0.9077399620950423,
+          "native_original_boundary_f1_tol1": 0.1829915355580248,
+          "changed_gt_pixels": 1401777
+        },
+        "synthetic/True": {
+          "images": 144,
+          "native_original_iou": 0.823560549203317,
+          "legacy_roundtrip_iou": 0.8678511124060491,
+          "native_original_boundary_f1_tol1": 0.7609293232122949,
+          "changed_gt_pixels": 56608
+        },
+        "synthetic/False": {
+          "images": 288,
+          "native_original_iou": 0.836815216495974,
+          "legacy_roundtrip_iou": 0.8877435957299485,
+          "native_original_boundary_f1_tol1": 0.7546650015555879,
+          "changed_gt_pixels": 93780
+        }
+      }
+    },
+    "M": {
+      "checkpoint_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+      "groups": {
+        "all": {
+          "images": 879,
+          "native_original_iou": 0.8629156326092963,
+          "legacy_roundtrip_iou": 0.8946371785470447,
+          "native_original_boundary_f1_tol1": 0.4674106617760123,
+          "changed_gt_pixels": 1924592
+        },
+        "real/True": {
+          "images": 71,
+          "native_original_iou": 0.8967358705131703,
+          "legacy_roundtrip_iou": 0.9105479161033905,
+          "native_original_boundary_f1_tol1": 0.19773441886990437,
+          "changed_gt_pixels": 372427
+        },
+        "real/False": {
+          "images": 376,
+          "native_original_iou": 0.8906723319183545,
+          "legacy_roundtrip_iou": 0.9072999293990218,
+          "native_original_boundary_f1_tol1": 0.18335807974822885,
+          "changed_gt_pixels": 1401777
+        },
+        "synthetic/True": {
+          "images": 144,
+          "native_original_iou": 0.8210279674956005,
+          "legacy_roundtrip_iou": 0.8651160927255508,
+          "native_original_boundary_f1_tol1": 0.756482613474078,
+          "changed_gt_pixels": 56608
+        },
+        "synthetic/False": {
+          "images": 288,
+          "native_original_iou": 0.8392839240849604,
+          "legacy_roundtrip_iou": 0.8889433579618056,
+          "native_original_boundary_f1_tol1": 0.7602037973463551,
+          "changed_gt_pixels": 93780
+        }
+      }
+    }
+  },
+  "full_chain": {
+    "summary": {
+      "mean_iou": 0.8331986052218405,
+      "mean_bbox_iou": 0.9192017331615644,
+      "gt_depth_coverage": 0.9142678574221713,
+      "pointcloud_fscore": {
+        "1": 0.40054380445441384,
+        "2": 0.6847557193585571,
+        "5": 0.9344344810947476
+      }
+    },
+    "scene_denominator": 144,
+    "view_denominator": 432,
+    "mean_view_overlap_rmse_mm": 6.749986835651928,
+    "mean_view_missing_as_zero_rmse_mm": 74.21056651627576,
+    "overlap_metric_excludes_missed_foreground": true,
+    "no_gt_scale_alignment": true
+  },
+  "depth_source_frame145_pairs": {
+    "17": {
+      "comparable": true,
+      "differing_required_fields": [],
+      "cost": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 6.858382706012991,
+          "pointcloud_fscore": {
+            "1": 0.4191682226394459,
+            "2": 0.7020822759356328,
+            "5": 0.9479378249576632
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 7.888083454635408,
+          "pointcloud_fscore": {
+            "1": 0.36933927000843375,
+            "2": 0.64180817344549,
+            "5": 0.9370788442641104
+          }
+        }
+      },
+      "reference": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 8.961538209683365,
+          "pointcloud_fscore": {
+            "1": 0.3033566060999679,
+            "2": 0.5391255597857255,
+            "5": 0.8418499416273888
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 12.309733380873999,
+          "pointcloud_fscore": {
+            "1": 0.2198302786679681,
+            "2": 0.4076359618392205,
+            "5": 0.7225461012237782
+          }
+        }
+      },
+      "cost_minus_reference": {
+        "seen_source_frame": {
+          "mean_view_rmse_mm": -2.103155503670374,
+          "pointcloud_fscore": {
+            "1": 0.11581161653947802,
+            "2": 0.16295671614990725,
+            "5": 0.10608788333027441
+          }
+        },
+        "held_out_source_frame": {
+          "mean_view_rmse_mm": -4.42164992623859,
+          "pointcloud_fscore": {
+            "1": 0.14950899134046566,
+            "2": 0.2341722116062695,
+            "5": 0.2145327430403322
+          }
+        }
+      }
+    },
+    "29": {
+      "comparable": true,
+      "differing_required_fields": [],
+      "cost": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 6.137508292165068,
+          "pointcloud_fscore": {
+            "1": 0.41517274290144623,
+            "2": 0.6991949078800541,
+            "5": 0.9540800187119846
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 7.386917875872718,
+          "pointcloud_fscore": {
+            "1": 0.3630267079407827,
+            "2": 0.6411662709623387,
+            "5": 0.9365248931031509
+          }
+        }
+      },
+      "reference": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 9.521175338990158,
+          "pointcloud_fscore": {
+            "1": 0.2960476094743472,
+            "2": 0.5274862442489395,
+            "5": 0.8255584206780499
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 14.569178409046597,
+          "pointcloud_fscore": {
+            "1": 0.210513357910032,
+            "2": 0.3938915669596436,
+            "5": 0.6824847082117617
+          }
+        }
+      },
+      "cost_minus_reference": {
+        "seen_source_frame": {
+          "mean_view_rmse_mm": -3.3836670468250905,
+          "pointcloud_fscore": {
+            "1": 0.11912513342709902,
+            "2": 0.1717086636311146,
+            "5": 0.1285215980339347
+          }
+        },
+        "held_out_source_frame": {
+          "mean_view_rmse_mm": -7.182260533173879,
+          "pointcloud_fscore": {
+            "1": 0.15251335003075067,
+            "2": 0.24727470400269508,
+            "5": 0.25404018489138924
+          }
+        }
+      }
+    },
+    "43": {
+      "comparable": true,
+      "differing_required_fields": [],
+      "cost": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 6.898570844696628,
+          "pointcloud_fscore": {
+            "1": 0.4184733091124395,
+            "2": 0.7006464811897001,
+            "5": 0.9481591410116206
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 7.55669741332531,
+          "pointcloud_fscore": {
+            "1": 0.3756975466291785,
+            "2": 0.6466811164004379,
+            "5": 0.9311626045758624
+          }
+        }
+      },
+      "reference": {
+        "seen_source_frame": {
+          "scenes": 96,
+          "mean_view_rmse_mm": 9.355860883990923,
+          "pointcloud_fscore": {
+            "1": 0.2877358076821039,
+            "2": 0.5162145522308504,
+            "5": 0.8252330285608371
+          }
+        },
+        "held_out_source_frame": {
+          "scenes": 48,
+          "mean_view_rmse_mm": 13.104040924045774,
+          "pointcloud_fscore": {
+            "1": 0.2090878900754445,
+            "2": 0.3978518973905622,
+            "5": 0.7060986350555115
+          }
+        }
+      },
+      "cost_minus_reference": {
+        "seen_source_frame": {
+          "mean_view_rmse_mm": -2.4572900392942953,
+          "pointcloud_fscore": {
+            "1": 0.13073750143033563,
+            "2": 0.18443192895884963,
+            "5": 0.12292611245078344
+          }
+        },
+        "held_out_source_frame": {
+          "mean_view_rmse_mm": -5.547343510720465,
+          "pointcloud_fscore": {
+            "1": 0.16660965655373397,
+            "2": 0.2488292190098757,
+            "5": 0.2250639695203509
+          }
+        }
+      }
+    }
+  },
+  "empty_diagnostic": {
+    "summary": {
+      "foreground_fraction": 2.2605613425925928e-05,
+      "any_foreground": 0.1111111111111111,
+      "component_ge20px": 0.08333333333333333,
+      "component_ge100px": 0.0
+    },
+    "full_denominator": 36,
+    "checkpoint_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+    "common_endpoint": 18000,
+    "weights": "M EMA",
+    "no_threshold_selection": true,
+    "no_postprocess_or_component_deletion": true,
+    "synthetic_only": true,
+    "independent_real_background_claim": false,
+    "unique_rgb_hashes": 36,
+    "positive_frames": [
+      {
+        "id": "climb_val_rig00_dev_env00_v0",
+        "source": "climb",
+        "rig": "val_rig00",
+        "bottom": true,
+        "false_foreground_pixels": 10,
+        "foreground_fraction": 6.781684027777778e-05,
+        "any_foreground": true,
+        "component_ge20px": false,
+        "component_ge100px": false
+      },
+      {
+        "id": "climb_val_rig01_dev_env01_v0",
+        "source": "climb",
+        "rig": "val_rig01",
+        "bottom": true,
+        "false_foreground_pixels": 26,
+        "foreground_fraction": 0.00017632378472222222,
+        "any_foreground": true,
+        "component_ge20px": true,
+        "component_ge100px": false
+      },
+      {
+        "id": "climb_val_rig11_dev_env05_v0",
+        "source": "climb",
+        "rig": "val_rig11",
+        "bottom": true,
+        "false_foreground_pixels": 56,
+        "foreground_fraction": 0.00037977430555555556,
+        "any_foreground": true,
+        "component_ge20px": true,
+        "component_ge100px": false
+      },
+      {
+        "id": "moseq_val_rig01_dev_env01_v0",
+        "source": "moseq",
+        "rig": "val_rig01",
+        "bottom": true,
+        "false_foreground_pixels": 28,
+        "foreground_fraction": 0.00018988715277777778,
+        "any_foreground": true,
+        "component_ge20px": true,
+        "component_ge100px": false
+      }
+    ]
+  },
+  "limits": [
+    "Synthetic visible skin excludes fur/glass; no real-mm reference",
+    "6 correlated source poses; no independent unseen-real-pose proof",
+    "Native boundary tolerance1 pixel differs across image resolutions",
+    "Semantic union bbox is not an instance detector",
+    "No DEV checkpoint, threshold, or component-filter selection"
+  ],
+  "evidence_paths": {
+    "native_audit": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/native_metric_audit_v1.json",
+    "empty_visual_review": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/empty_background_v1/formal_visual_review.json",
+    "roi_registration": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/roi_pair_registration_v1.json"
+  },
+  "current_next_stage": "Separate predicted ROI feature cache and matched full-vs-ROI fixed6000 pilots seeds17/29/43, no encoder unfreeze"
+}
