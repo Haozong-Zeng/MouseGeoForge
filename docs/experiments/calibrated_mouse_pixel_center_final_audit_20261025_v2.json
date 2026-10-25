@@ -1,0 +1,117 @@
+{
+  "utc": "2026-10-25T18:40:26.683359+00:00",
+  "passed": true,
+  "source_sha256": {
+    "tools/audit_mouse_semseg_native_probability_20261025_v3.py": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+    "tools/audit_calibrated_mouse_pixel_center_final_20261025_v2.py": "73bfce885de229fbebb4602d747149cc47c573fc6bd9a35bafb1cd840072c3ec",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d"
+  },
+  "registration_sha256": "ed354249ded47d483617fb2e3bbeca80e829725a858a45d888e6a77d8db066c5",
+  "campaign_completion_sha256": "90efe850736228cb2152d3e08d7d426e370243c923ed01bba5532f2896170181",
+  "arms": {
+    "legacy": {
+      "checkpoint_sha256": "b77ecbb15db6685ab5a87d0fc0cc126a2d2fb182801ce7efe06645aa9efc42ca",
+      "native_audit_sha256": "e751dab46657342ef69ff14a20aaa970afef81eac42e0826df93af2509f00583",
+      "native_groups": {
+        "all": {
+          "images": 879,
+          "native_original_iou": 0.8710144487424086,
+          "native_original_dice": 0.9282040353433141,
+          "native_original_boundary_f1_tol1": 0.4933238444716709,
+          "evaluation_saved_native_iou": 0.8710144487424086
+        },
+        "real/True": {
+          "images": 71,
+          "native_original_iou": 0.9014786637726248,
+          "native_original_dice": 0.948017121836383,
+          "native_original_boundary_f1_tol1": 0.21032048047255306,
+          "evaluation_saved_native_iou": 0.9014786637726248
+        },
+        "real/False": {
+          "images": 376,
+          "native_original_iou": 0.8953903212677429,
+          "native_original_dice": 0.9446687469837816,
+          "native_original_boundary_f1_tol1": 0.19907957863117662,
+          "evaluation_saved_native_iou": 0.8953903212677429
+        },
+        "synthetic/True": {
+          "images": 144,
+          "native_original_iou": 0.832452354715033,
+          "native_original_dice": 0.8946779120040793,
+          "native_original_boundary_f1_tol1": 0.7932517540307539,
+          "evaluation_saved_native_iou": 0.832452354715033
+        },
+        "synthetic/False": {
+          "images": 288,
+          "native_original_iou": 0.8509611647259886,
+          "native_original_dice": 0.9185870250760438,
+          "native_original_boundary_f1_tol1": 0.7972803160808904,
+          "evaluation_saved_native_iou": 0.8509611647259886
+        }
+      },
+      "steps": 6000,
+      "TRAIN_examples": 24000,
+      "all_segments_encoder_frozen": true,
+      "exact_actual_schedule_and_LR": true,
+      "head_parameters_finite": true
+    },
+    "center_exact": {
+      "checkpoint_sha256": "7b23e462ce3fd59e040dd60a9bb9a4ca6e55516c4a2e2c18fc488002b54c49e5",
+      "native_audit_sha256": "ae69d9073e35785dfffecf18556dea8ab54ed2701f87c1cbe8a73a0b4c2a0a1b",
+      "native_groups": {
+        "all": {
+          "images": 879,
+          "native_original_iou": 0.8773566874265045,
+          "native_original_dice": 0.9317985205373189,
+          "native_original_boundary_f1_tol1": 0.5141842336663984,
+          "evaluation_saved_native_iou": 0.8773566874265045
+        },
+        "real/True": {
+          "images": 71,
+          "native_original_iou": 0.9128444359941372,
+          "native_original_dice": 0.9542883674392735,
+          "native_original_boundary_f1_tol1": 0.25242264398961867,
+          "evaluation_saved_native_iou": 0.9128444359941372
+        },
+        "real/False": {
+          "images": 376,
+          "native_original_iou": 0.9073096633215436,
+          "native_original_dice": 0.9512875954463863,
+          "native_original_boundary_f1_tol1": 0.2383774148590626,
+          "evaluation_saved_native_iou": 0.9073096633215436
+        },
+        "synthetic/True": {
+          "images": 144,
+          "native_original_iou": 0.8336256190424143,
+          "native_original_dice": 0.8957421068293705,
+          "native_original_boundary_f1_tol1": 0.7951745108714056,
+          "evaluation_saved_native_iou": 0.8336256190424143
+        },
+        "synthetic/False": {
+          "images": 288,
+          "native_original_iou": 0.8513682317406448,
+          "native_original_dice": 0.9188382853918201,
+          "native_original_boundary_f1_tol1": 0.7983017226285118,
+          "evaluation_saved_native_iou": 0.8513682317406448
+        }
+      },
+      "steps": 6000,
+      "TRAIN_examples": 24000,
+      "all_segments_encoder_frozen": true,
+      "exact_actual_schedule_and_LR": true,
+      "head_parameters_finite": true
+    }
+  },
+  "exposure_sha256": {
+    "legacy": "61957c3218456cde01b73d92166a142d4d3c97620434931710fec42246bb0d4e",
+    "center_exact": "61957c3218456cde01b73d92166a142d4d3c97620434931710fec42246bb0d4e"
+  },
+  "protocol_difference_only_label_policy": true,
+  "encoder_unfreeze": false,
+  "no_model_promotion": true,
+  "limits": [
+    "Single exploratory reusedDEVseed17; no independent replication, checkpoint/threshold selection or promotion",
+    "Native masks replay exact FP32 probability>.5; original native GT label hashes checked; real manual vs synthetic skin remain distinct",
+    "Fixed6000 is an exposure budget, not evidence of TRAIN plateau or permission to unfreeze"
+  ]
+}

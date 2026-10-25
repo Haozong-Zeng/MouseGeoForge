@@ -1,0 +1,130 @@
+{
+  "utc": "2026-10-25T18:48:03.066307+00:00",
+  "seed": 17,
+  "steps_each": 6000,
+  "denominator": 879,
+  "groups": {
+    "all": {
+      "images": 879,
+      "legacy_iou": 0.8710144487424086,
+      "center_iou": 0.8773566874265045,
+      "mean_paired_iou_delta": 0.006342238684095961,
+      "median_paired_iou_delta": 0.005592841163310935,
+      "improved": 684,
+      "degraded": 190,
+      "same": 5,
+      "minimum_delta": -0.011979753878489596,
+      "maximum_delta": 0.0331330465330516
+    },
+    "real_all": {
+      "images": 447,
+      "legacy_iou": 0.8963573734329479,
+      "center_iou": 0.9081887882874365,
+      "mean_paired_iou_delta": 0.011831414854488704,
+      "median_paired_iou_delta": 0.011599698267272918,
+      "improved": 444,
+      "degraded": 3,
+      "same": 0,
+      "minimum_delta": -0.011979753878489596,
+      "maximum_delta": 0.0331330465330516
+    },
+    "synthetic_all": {
+      "images": 432,
+      "legacy_iou": 0.8447915613890034,
+      "center_iou": 0.8454540275079013,
+      "mean_paired_iou_delta": 0.0006624661188979141,
+      "median_paired_iou_delta": 0.00038792729868741826,
+      "improved": 240,
+      "degraded": 187,
+      "same": 5,
+      "minimum_delta": -0.010744466800804764,
+      "maximum_delta": 0.020070062873123184
+    },
+    "real/True": {
+      "images": 71,
+      "legacy_iou": 0.9014786637726248,
+      "center_iou": 0.9128444359941371,
+      "mean_paired_iou_delta": 0.011365772221512305,
+      "median_paired_iou_delta": 0.011173367444018978,
+      "improved": 71,
+      "degraded": 0,
+      "same": 0,
+      "minimum_delta": 0.0017388622711148605,
+      "maximum_delta": 0.0281976388643137
+    },
+    "real/False": {
+      "images": 376,
+      "legacy_iou": 0.8953903212677429,
+      "center_iou": 0.9073096633215436,
+      "mean_paired_iou_delta": 0.011919342053800738,
+      "median_paired_iou_delta": 0.011762539608050127,
+      "improved": 373,
+      "degraded": 3,
+      "same": 0,
+      "minimum_delta": -0.011979753878489596,
+      "maximum_delta": 0.0331330465330516
+    },
+    "synthetic/True": {
+      "images": 144,
+      "legacy_iou": 0.832452354715033,
+      "center_iou": 0.8336256190424143,
+      "mean_paired_iou_delta": 0.0011732643273812497,
+      "median_paired_iou_delta": 0.0006004686023154404,
+      "improved": 81,
+      "degraded": 60,
+      "same": 3,
+      "minimum_delta": -0.005837467605658175,
+      "maximum_delta": 0.020070062873123184
+    },
+    "synthetic/False": {
+      "images": 288,
+      "legacy_iou": 0.8509611647259886,
+      "center_iou": 0.8513682317406448,
+      "mean_paired_iou_delta": 0.00040706701465624627,
+      "median_paired_iou_delta": 0.0002742140111759439,
+      "improved": 159,
+      "degraded": 127,
+      "same": 2,
+      "minimum_delta": -0.010744466800804764,
+      "maximum_delta": 0.01778492300736012
+    }
+  },
+  "real_session_groups": {
+    "AZR2L2": {
+      "images": 125,
+      "mean_paired_iou_delta": 0.01353425558042794,
+      "improved": 124,
+      "degraded": 1
+    },
+    "FR2": {
+      "images": 168,
+      "mean_paired_iou_delta": 0.010019330139797122,
+      "improved": 166,
+      "degraded": 2
+    },
+    "FR3": {
+      "images": 154,
+      "mean_paired_iou_delta": 0.012426058629331441,
+      "improved": 154,
+      "degraded": 0
+    }
+  },
+  "single_seed_exploratory_reused_DEV": true,
+  "no_checkpoint_or_threshold_selection": true,
+  "no_model_promotion": true,
+  "original_ROI_masks_unchanged": true,
+  "encoder_frozen": true,
+  "interpretation": [
+    "Matched FP32 center-vs-legacy target comparison improves mean IoU in all four strata; real447 image mean improvement substantially larger than synthetic432",
+    "All71real-bottom images improve in this descriptive fixed-pair result; this is not independent generalization evidence",
+    "Some realother and synthetic images degrade. Contour/limb/tail errors remain; no ROI-cache replacement or model promotion",
+    "Comparison to original historical native0.8629 would mix inverse-operator and training differences; primary claim is matchedFP32pair .871014\u2192.877357",
+    "Full6000 exposure budget does not establish the original TRAINplateau gate and does not admit encoder F/U"
+  ],
+  "inputs_sha256": {
+    "pixel_center_legacy_native_probability_audit_v2.json": "e751dab46657342ef69ff14a20aaa970afef81eac42e0826df93af2509f00583",
+    "pixel_center_center_exact_native_probability_audit_v2.json": "ae69d9073e35785dfffecf18556dea8ab54ed2701f87c1cbe8a73a0b4c2a0a1b",
+    "pixel_center_final_audit_v2.json": "1091cfaf7dc6db88abdae06930fde5543d4b8a13e4ab8d9b445487af1eb67de6",
+    "pixel_center_visual_review_v3/visual_review.json": "0da8ecf87cbb8c40c78c82af07887184d77c397c1f0c75d0165159a0c8537465"
+  }
+}

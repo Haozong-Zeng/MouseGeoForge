@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-25T18:48:03.058755+00:00",
+  "actually_viewed": true,
+  "image_sha256": "512295b3864d78e8e4b4ce662654e99e3d99aaf0ac9eb6060fde3cb3c8d555ed",
+  "findings": [
+    "Real-bottom representative and smallest-delta image show mainly thin contour shifts; hand/tail/fur outline errors remain",
+    "Real-other minimum-delta example loses tail/contour support; aggregate improvement is not uniform",
+    "Synthetic very small foreground remains coarse with limb/tail omissions; center operator changes only narrow bands",
+    "Real-bottom minimum delta is POSITIVE: selection name corrected from v2 largest_degradation to v3 minimum_delta, preserving v2 output/source; no scientific data changed"
+  ],
+  "selection": "First sorted id and minimum center-minus-legacy IoU in every domain/bottom stratum, not a checkpoint/threshold selection",
+  "limits": "One fixed seed, reusedDEV exploratory comparison; GT-based crops are display only; no realdepth/instance or promotion claim"
+}

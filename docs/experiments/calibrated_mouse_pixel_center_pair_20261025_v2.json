@@ -1,12 +1,80 @@
 {
-  "utc": "2026-10-25T17:07:36.902392+00:00",
-  "comparable": false,
+  "utc": "2026-10-25T18:48:03.898432+00:00",
+  "comparable": true,
   "arms": {
     "legacy": {
-      "status": "evaluation_unavailable"
+      "status": "complete",
+      "checkpoint_sha256": "b77ecbb15db6685ab5a87d0fc0cc126a2d2fb182801ce7efe06645aa9efc42ca",
+      "evaluation_sha256": "8e2a878c5d8b789fc06c774b0dfc1360b644ef70da7b661e0b8b6f52e7d0e865",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.8710144487424086,
+          "dice": 0.9282040353433141,
+          "boundary_f1": 0.4933238444716709
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.9014786637726248,
+          "dice": 0.948017121836383,
+          "boundary_f1": 0.21032048047255306
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.8953903212677429,
+          "dice": 0.9446687469837816,
+          "boundary_f1": 0.19907957863117662
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.832452354715033,
+          "dice": 0.8946779120040793,
+          "boundary_f1": 0.7932517540307539
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.8509611647259886,
+          "dice": 0.9185870250760438,
+          "boundary_f1": 0.7972803160808904
+        }
+      }
     },
     "center_exact": {
-      "status": "evaluation_unavailable"
+      "status": "complete",
+      "checkpoint_sha256": "7b23e462ce3fd59e040dd60a9bb9a4ca6e55516c4a2e2c18fc488002b54c49e5",
+      "evaluation_sha256": "8d17570e47fc24b709e8a55674fba0f35981b967927989a544d4d21b8b667e22",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.8773566874265045,
+          "dice": 0.9317985205373189,
+          "boundary_f1": 0.5141842336663984
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.9128444359941372,
+          "dice": 0.9542883674392735,
+          "boundary_f1": 0.25242264398961867
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.9073096633215436,
+          "dice": 0.9512875954463863,
+          "boundary_f1": 0.2383774148590626
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.8336256190424143,
+          "dice": 0.8957421068293705,
+          "boundary_f1": 0.7951745108714056
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.8513682317406448,
+          "dice": 0.9188382853918201,
+          "boundary_f1": 0.7983017226285118
+        }
+      }
     }
   },
   "primary_native": "FP32 bilinear probability>.5; original native labels for both",
@@ -14,6 +82,46 @@
   "encoder_unfreeze": false,
   "existing_ROI_mask_generator_unchanged": true,
   "campaign": {
-    "status": "not_completed"
+    "started_utc": "2026-10-25T17:05:37.152680+00:00",
+    "registration_sha256": "ed354249ded47d483617fb2e3bbeca80e829725a858a45d888e6a77d8db066c5",
+    "full_paired_endpoint": 6000,
+    "evaluations": {
+      "legacy": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/pixel_center_pair_v2/legacy_dev",
+      "center_exact": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/pixel_center_pair_v2/center_exact_dev"
+    },
+    "status": "completed",
+    "actual_GPU_smoke_sha256": "555ce05b54883252a8e80aa6acf384f8311a3d39f0b5e61fbecf40ee99c46a29",
+    "parents": {
+      "legacy": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/pixel_center_pair_v2/legacy_006000/step_006000.pt",
+      "center_exact": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/pixel_center_pair_v2/center_exact_006000/step_006000.pt"
+    },
+    "finished_utc": "2026-10-25T18:39:54.980240+00:00"
+  },
+  "center_minus_legacy": {
+    "all": {
+      "iou": 0.006342238684095891,
+      "dice": 0.0035944851940048483,
+      "boundary_f1": 0.020860389194727547
+    },
+    "real/True": {
+      "iou": 0.011365772221512471,
+      "dice": 0.006271245602890496,
+      "boundary_f1": 0.04210216351706561
+    },
+    "real/False": {
+      "iou": 0.011919342053800741,
+      "dice": 0.006618848462604743,
+      "boundary_f1": 0.03929783622788599
+    },
+    "synthetic/True": {
+      "iou": 0.001173264327381296,
+      "dice": 0.001064194825291187,
+      "boundary_f1": 0.0019227568406516848
+    },
+    "synthetic/False": {
+      "iou": 0.0004070670146562039,
+      "dice": 0.0002512603157762694,
+      "boundary_f1": 0.0010214065476213952
+    }
   }
 }

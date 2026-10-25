@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-25T18:46:38.129927+00:00",
+  "source_sha256": {
+    "tools/view_calibrated_mouse_pixel_center_20261025_v3.py": "a57603e7afafde23a2146e4563a36189d2b12a44d51d91f07104f8cb9d3579b5"
+  },
+  "selection": "first sorted id and minimum center-minus-legacy IoU per four domain/bottom strata; minimum may be positive when all images improve",
+  "supersedes": "v2 visualization selection label said largest_degradation even though all realbottom images improve; same selected pixels, preserved v2 source/output",
+  "model_calls": 0,
+  "display_only": true
+}

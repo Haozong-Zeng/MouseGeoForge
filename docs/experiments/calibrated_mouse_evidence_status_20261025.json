@@ -1,19 +1,19 @@
 {
   "schema": "calibrated-mouse-evidence-status-v1",
-  "utc": "2026-10-25T17:07:45.261540+00:00",
+  "utc": "2026-10-25T18:48:09.906257+00:00",
   "window": {
     "start_utc": "2026-10-25T13:27:11+00:00",
     "optimization_cutoff_utc": "2026-10-25T20:57:11+00:00",
     "hard_finish_utc": "2026-10-25T21:27:11+00:00"
   },
-  "optimization_seconds_remaining": 13765.73846,
-  "cycle_status": "running",
+  "optimization_seconds_remaining": 7741.093743,
+  "cycle_status": "waiting_for_next_registered_stage",
   "cycle_completion": null,
   "workers": {
     "controller_process.json": "verified_running",
     "watchdog_process.json": "verified_running",
     "guardian_process.json": "verified_running",
-    "active_child.json": "verified_running"
+    "active_child.json": "identity_unavailable"
   },
   "queue": [
     {
@@ -343,12 +343,17 @@
     },
     {
       "id": "pixel_center_pair_v2",
-      "status": "verified_running",
+      "status": "completed",
       "optimization": true
     },
     {
       "id": "pixel_center_pair_report_v2",
-      "status": "pending",
+      "status": "completed",
+      "optimization": false
+    },
+    {
+      "id": "pixel_center_final_audit_v2",
+      "status": "completed",
       "optimization": false
     }
   ],
@@ -1004,7 +1009,7 @@
     "ROI_gradient_pair": {
       "status": "complete_three_oracle_pairs",
       "data": {
-        "utc": "2026-10-25T17:07:39.642234+00:00",
+        "utc": "2026-10-25T18:48:06.054536+00:00",
         "schema": "roi-gradient-pair-v1",
         "pairs": {
           "17": {
@@ -1365,7 +1370,7 @@
     "pixel_center_pair": {
       "status": "not_complete_comparable",
       "data": {
-        "utc": "2026-10-25T17:07:44.909357+00:00",
+        "utc": "2026-10-25T18:48:09.549599+00:00",
         "comparable": false,
         "arms": {
           "legacy": {
@@ -2002,7 +2007,7 @@
     "optional_encoder_pair": "not_admitted_TRAIN_gate"
   },
   "registered_source_pin_check": {
-    "entries": 80,
+    "entries": 85,
     "mismatches": [],
     "scope": "source_sha256 dictionaries in top-level registration JSONs; archived/data contracts remain separate"
   },
@@ -2012,12 +2017,12 @@
       "bytes": 1244
     },
     "output/calibrated_mouse_resume8h_20261025/state.json": {
-      "sha256": "ee3d8d893dcd821e6bd0281949b136423727c6b8291a8aa833ef215a61c87b25",
-      "bytes": 15898
+      "sha256": "b9b6bbf32186c1f5d87a099addd50f700547b0b94142abdbbf4812113020b0d6",
+      "bytes": 16486
     },
     "output/calibrated_mouse_resume8h_20261025/queue.json": {
-      "sha256": "e444cd9e69548c1efc8cf911808671d8e10c28bdc767fcae1ca0a82e92b30c15",
-      "bytes": 87681
+      "sha256": "b1d340015f81a1881c9c5584d8dda7af1b20f150dfa9bc0ea7c4a976630d85e7",
+      "bytes": 88372
     },
     "output/calibrated_mouse_resume8h_20261025/controller_process.json": {
       "sha256": "1ee45685ea4e24c17fa2329c9982f0c729718492e1b9c9e3b81cb67dfa1426be",
@@ -2032,8 +2037,8 @@
       "bytes": 249
     },
     "output/calibrated_mouse_resume8h_20261025/active_child.json": {
-      "sha256": "e6d4d18ae5046f5a58a23b15068060c177796ae9db7be8c170bceafb5a74e47c",
-      "bytes": 348
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
     },
     "output/calibrated_mouse_resume8h_20261025/native_metric_audit_v1.json": {
       "sha256": "49d29ad76673b973c56e5dbd279b6e671819aa0c1e9746e24711d20d3f040aab",
@@ -2044,7 +2049,7 @@
       "bytes": 475251
     },
     "output/calibrated_mouse_resume8h_20261025/roi_pair_report_v1.json": {
-      "sha256": "bd8399ed775486756e56fb74944509265a9f0497f2916b330cae38be52045213",
+      "sha256": "815a421181a6bc5bf0bac521ea1713bfd2329ca5e4b620043520431eb8563562",
       "bytes": 9815
     },
     "output/calibrated_mouse_resume8h_20261025/surface_quality_audit_v1.json": {
@@ -2056,7 +2061,7 @@
       "bytes": 5548134
     },
     "output/calibrated_mouse_resume8h_20261025/head_phase_native_report_v1.json": {
-      "sha256": "567af7d3a9b11cd94794fc83d8295fb1595ed9383f2f5ccf1c5b3ddd612061ab",
+      "sha256": "600dddcf49fe8c271b466150181d11d3a205969e3dad7650390d5b54272f149a",
       "bytes": 51526
     },
     "output/calibrated_mouse_resume8h_20261025/semseg_head_phase_v1/progress.json": {
@@ -2068,11 +2073,11 @@
       "bytes": 43682
     },
     "output/calibrated_mouse_resume8h_20261025/roi_gradient_pair_report_v1.json": {
-      "sha256": "98c363a455b71774fe33b74d0817d71c1e9f06aaf87fc9e5e827f3cb427b0011",
+      "sha256": "3ad3a514662ca757cf41757c8a5c8769e6e4093d099b39ee1847ddbc2d34a58c",
       "bytes": 13837
     },
     "output/calibrated_mouse_resume8h_20261025/pixel_center_pair_report_v1.json": {
-      "sha256": "f45b3b7ab151a4c657a0d47b04d316704f726ae76026714826820b888c4be66e",
+      "sha256": "85a8341b6f0ed49d504f051f5aaa1c0f4de399cc7503e260101e98020189d311",
       "bytes": 852
     },
     "output/calibrated_mouse_resume8h_20261025/roi_gradient_surface_audit_v1.json": {
@@ -2147,6 +2152,10 @@
       "sha256": "7b7527b08d9fed38849e88a9c0d226d3e7014be2b2afbb1427b624360a44cc79",
       "bytes": 1338
     },
+    "output/calibrated_mouse_resume8h_20261025/pixel_center_final_audit_registration_v2.json": {
+      "sha256": "85ede2212edcbb2ce1cf80ec64c59256d0b068bb3e265caac4f4e53f4d6498b1",
+      "bytes": 646
+    },
     "output/calibrated_mouse_resume8h_20261025/pixel_center_pair_registration_v1.json": {
       "sha256": "8f2c80bd991098f4b76c95f36d66fc700f60e94f506d285bd90b33d65338611b",
       "bytes": 3137
@@ -2154,6 +2163,14 @@
     "output/calibrated_mouse_resume8h_20261025/pixel_center_pair_registration_v2.json": {
       "sha256": "ed354249ded47d483617fb2e3bbeca80e829725a858a45d888e6a77d8db066c5",
       "bytes": 3650
+    },
+    "output/calibrated_mouse_resume8h_20261025/pixel_center_visual_registration_v2.json": {
+      "sha256": "51cb7452c4926a1df7d7bac67d2671b8d72a7394f1e3a9435df9730b353dabc2",
+      "bytes": 393
+    },
+    "output/calibrated_mouse_resume8h_20261025/pixel_center_visual_registration_v3.json": {
+      "sha256": "c6ba165d1dcfae8dd8ac1b02eb56cae6a118d49dd93eb086c37fc508fcefa5a6",
+      "bytes": 566
     },
     "output/calibrated_mouse_resume8h_20261025/pointcloud_review_registration_v1.json": {
       "sha256": "153fbea4188c20cf62481e8ef12470eeb67aebb1ebfb3849134d84b1e528a1c8",

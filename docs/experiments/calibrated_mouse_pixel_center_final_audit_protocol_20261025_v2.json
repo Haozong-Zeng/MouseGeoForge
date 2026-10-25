@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-25T18:31:29.096485+00:00",
+  "source_sha256": {
+    "tools/audit_mouse_semseg_native_probability_20261025_v3.py": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08",
+    "tools/audit_calibrated_mouse_pixel_center_final_20261025_v2.py": "73bfce885de229fbebb4602d747149cc47c573fc6bd9a35bafb1cd840072c3ec",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d"
+  },
+  "work": "Read-only final6000 exposure/LR/head-only/source proof and exact nativeFP32probability>.5 replay for879DEVeach",
+  "model_calls": 0,
+  "new_training": false,
+  "no_selection": true
+}
