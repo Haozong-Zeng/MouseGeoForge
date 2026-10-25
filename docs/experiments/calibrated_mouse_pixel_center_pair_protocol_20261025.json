@@ -1,0 +1,47 @@
+{
+  "registered_utc": "2026-10-25T15:38:39.404673+00:00",
+  "hypothesis": "Native center-consistent label interpolation corrects a confirmed spatial offset; isolated exploratory target-only head adaptation pair",
+  "source_sha256": {
+    "tools/train_mouse_semseg_pixel_center_20261025.py": "59234496cc3e8700c45dd659611f63819e4f9ab945cbe96c5f639fb6d32c7f37",
+    "mousegeoforge/semseg_pixel_center_20261025.py": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+    "tools/check_mouse_semseg_pixel_center_20261025.py": "4885aebd5717c5f5433d3dddf1a102d794525bf52d08a976edfca9b4508dec6a",
+    "tools/calibrated_mouse_pixel_center_pair_20261025.py": "24ccc0ab93fe76f4257930111ee42f4adab2c5f4357852b07d2a3c8f6fd052a1",
+    "tools/report_calibrated_mouse_pixel_center_pair_20261025.py": "a2aafc77f23adc0109db00aa938a8c15a53caf23234fb002125ce44a2bb00fbd",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+    "tests/test_mouse_semseg_pixel_center_20261025.py": "fd760ae7162e4584edb24f133b7da87aeefda1b0f9ff2c69de3f54668c47f831",
+    "tests/test_mouse_semseg_pixel_center_campaign_20261025.py": "76db38d9428bcca5b7453b1a9ede01b09b8c53c1248ffbc4392405334ad08699"
+  },
+  "CPU_preflight_sha256": "b21abf7aad817637eeb19f566d9679ef91a54c179a4cc378756ae0ebb72de324",
+  "CPU_preflight": {
+    "parameter_EMA_optimizer_exact": true,
+    "uninterrupted4_vs_2_plus_2": true,
+    "cross_policy_resume_rejected": true
+  },
+  "unit_tests": "5 preprocessor/ignore/affine/inverse tests;2 campaign tests with12 train/resume/eval argument checks",
+  "seed": 17,
+  "steps_each": 6000,
+  "cadence": 500,
+  "global_batch": 4,
+  "exposure_offset": 18000,
+  "peak_head_lr": 1e-05,
+  "warmup": 100,
+  "cosine_floor": 0.5,
+  "encoder_frozen": true,
+  "encoder_unfreeze_permitted": false,
+  "parent_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+  "initialization": "Same original M18000 EMA, fresh Adam/EMA at phase start, exact segmented resume",
+  "label_policies": [
+    "legacy:cv2.INTER_NEAREST",
+    "center_exact:cv2.INTER_NEAREST_EXACT"
+  ],
+  "inference_BOTH": "Same FP32 bilinear probability>.5 native inverse, tie background",
+  "GT_BOTH": "Original native manual real masks / synthetic opaque-skin masks; no GT roundtrip",
+  "GPU_preflight_required_before_formal_updates": true,
+  "GPU_preflight": "Actual released encoder and fixed parent: center full4 vs2+2; legacy4; reject wrong-policy resume; headnonzero/frozenencoder and predeclared tolerances",
+  "minimum_seconds": 7800,
+  "timeout_seconds": 9000,
+  "budget_policy": "Run after existing head/gradient/native/crossview controls only if conservative budget fits original20:57 cutoff; otherwise skip and record. No extension.",
+  "DEV_stopping_or_checkpoint_threshold_selection": false,
+  "claim": "Single-seed exploratory reusedDEV pilot only; no promotion or independent generalization claim; no change to original head/FU convergence gate or existing ROI cache/maskgenerator"
+}
