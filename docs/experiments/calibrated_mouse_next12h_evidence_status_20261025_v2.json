@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-25T21:45:42.836553+00:00",
+  "utc": "2026-10-25T22:25:58.837436+00:00",
   "report_source_sha256": "32a3e73cfee7ed151d476724f0af9e099da1e1158c9813ca1b613185cb8466d5",
   "immutable_window": {
     "start_utc": "2026-10-25T19:50:28+00:00",
@@ -11,12 +11,12 @@
   "required_evidence_complete": false,
   "all_scheduled_jobs_completed_successfully": false,
   "job_counts": {
-    "completed": 9,
-    "failed": 1,
-    "skipped_dependency": 2,
-    "pending_or_active": 38
+    "completed": 33,
+    "failed": 2,
+    "skipped_dependency": 25,
+    "pending_or_active": 14
   },
-  "current_active_job": "semseg_roi_pair_v2",
+  "current_active_job": "spatial_depth_s29_k1_6000_v1_dev_v2",
   "components": {
     "real_reference": {
       "status": "complete_feasibility_only",
@@ -77,19 +77,122 @@
       "depth_semantics": "alpha-normalized expectedcameraZ, notfirstopaque-surface"
     },
     "segmentation": {
-      "status": "missing_or_partial",
-      "comparable": false
+      "status": "complete_pair",
+      "weights": "EMA",
+      "native_original_GT": true,
+      "arms": {
+        "full": {
+          "all": {
+            "images": 879,
+            "iou": 0.8774462532999473,
+            "dice": 0.9318542094405696,
+            "boundary_f1": 0.514223957902158
+          },
+          "real/True": {
+            "images": 71,
+            "iou": 0.912992209989565,
+            "dice": 0.954368536323839,
+            "boundary_f1": 0.2526498464106981
+          },
+          "real/False": {
+            "images": 376,
+            "iou": 0.9073125175082918,
+            "dice": 0.9512889918602915,
+            "boundary_f1": 0.23749640725341306
+          },
+          "synthetic/True": {
+            "images": 144,
+            "iou": 0.8336090565958207,
+            "dice": 0.8957735544255578,
+            "boundary_f1": 0.7957127191689435
+          },
+          "synthetic/False": {
+            "images": 288,
+            "iou": 0.8516097187794398,
+            "dice": 0.9189709418142988,
+            "boundary_f1": 0.7992480528237018
+          }
+        },
+        "roi": {
+          "all": {
+            "images": 879,
+            "iou": 0.9111832738839446,
+            "dice": 0.9508453605117001,
+            "boundary_f1": 0.6013236901598995
+          },
+          "real/True": {
+            "images": 71,
+            "iou": 0.9151229817224024,
+            "dice": 0.9555590974490679,
+            "boundary_f1": 0.26479007453848613
+          },
+          "real/False": {
+            "images": 376,
+            "iou": 0.9237277899321616,
+            "dice": 0.9602541623298482,
+            "boundary_f1": 0.297570272309166
+          },
+          "synthetic/True": {
+            "images": 144,
+            "iou": 0.8702692044041634,
+            "dice": 0.915694495686313,
+            "boundary_f1": 0.8873258344678316
+          },
+          "synthetic/False": {
+            "images": 288,
+            "iou": 0.914291498586821,
+            "dice": 0.9549750123473911,
+            "boundary_f1": 0.9378544646066148
+          }
+        }
+      },
+      "roi_minus_full": {
+        "all": {
+          "iou": 0.0337370205839973,
+          "dice": 0.018991151071130474,
+          "boundary_f1": 0.08709973225774148
+        },
+        "real/True": {
+          "iou": 0.0021307717328373776,
+          "dice": 0.0011905611252288617,
+          "boundary_f1": 0.012140228127788033
+        },
+        "real/False": {
+          "iou": 0.016415272423869864,
+          "dice": 0.008965170469556694,
+          "boundary_f1": 0.060073865055752934
+        },
+        "synthetic/True": {
+          "iou": 0.0366601478083427,
+          "dice": 0.019920941260755165,
+          "boundary_f1": 0.09161311529888816
+        },
+        "synthetic/False": {
+          "iou": 0.06268177980738121,
+          "dice": 0.03600407053309229,
+          "boundary_f1": 0.138606411782913
+        }
+      },
+      "old_failed_attempt_not_eligible": true
     },
     "TRAIN_readiness": {
-      "status": "missing_or_partial",
+      "status": "assessment_complete",
       "arm_status": {
-        "full": "missing_future_window",
-        "roi": "missing_future_window"
+        "full": "TRAIN_window_passed",
+        "roi": "TRAIN_window_passed"
       },
-      "FULL_ready_for_trial_design": false,
+      "FULL_ready_for_trial_design": true,
       "numerical_repeat": {
-        "status": "missing_or_failed",
-        "not_inferred_from_engineering_training_smoke": true
+        "status": "passed",
+        "receipt_sha256": "5bbb622a28909567ed4d45a9fe4efedb538ad9683698490ab1d240a226b2cccc",
+        "comparison": {
+          "native_max_abs_difference": {
+            "iou": 0.0,
+            "dice": 0.0,
+            "boundary_f1": 0.0
+          },
+          "loss_max_abs_difference": 0.0
+        }
       },
       "convergence_claim": false,
       "model_quality_acceptance": false,
@@ -97,8 +200,8 @@
       "adaptation_job_registered": false
     },
     "mask_replacement_chain": {
-      "status": "missing_or_partial",
-      "matched_new_FULL_ROI_complete": false,
+      "status": "complete_with_surface_crossview",
+      "matched_new_FULL_ROI_complete": true,
       "fixed_depth": "oldseed17ROI6000gradient0EMA andoriginalMfeaturecrop",
       "arms": {
         "anchor": {
@@ -127,21 +230,212 @@
           },
           "evaluation_sha256": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb",
           "extra_metrics_sha256": "ec0903ed99beddb9066983251d2b69e682ca9321b87242a8dfa7fd21e3744d56",
-          "surface": null,
-          "crossview": null
+          "surface": {
+            "gt_eligible_adjacent_pairs": 3545389,
+            "covered_adjacent_pairs": 3297822,
+            "gradient_absolute_error_sum_mm": 1844165.4615097046,
+            "gt_smooth_pairs": 3227177,
+            "covered_gt_smooth_pairs": 3036319,
+            "false_steps_gt_le1_pred_gt5_mm": 8340,
+            "gt_eligible_normals": 1720180,
+            "covered_normals": 1599969,
+            "normal_angle_sum_deg": 61687291.20094872,
+            "normal_missing180_sum_deg": 83325271.20094872,
+            "views": 432,
+            "adjacent_pair_coverage": 0.9301721193358472,
+            "gradient_mae_mm_on_covered_pairs": 0.5592070953222171,
+            "normal_coverage": 0.9301171970375194,
+            "normal_angle_mean_deg_on_covered": 38.555304009608136,
+            "normal_angle_mean_deg_missing180": 48.439855829592666,
+            "false_step_fraction_on_covered_smooth": 0.002746746965651501
+          },
+          "crossview": {
+            "candidate_GT_reference_pixels": 3691534,
+            "GT_covisible_pixels": 510392,
+            "covered_predictions": 392435,
+            "absolute_error_sum_mm": 1330616.7763171168,
+            "squared_error_sum_mm2": 13289878.526631871,
+            "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+            "consistent_le1mm_pixels": 108085,
+            "consistent_le2mm_pixels": 194058,
+            "consistent_le5mm_pixels": 317463,
+            "directed_view_pairs": 864,
+            "prediction_coverage": 0.768889402655214,
+            "mean_absolute_consistency_mm_on_covered": 3.390667948366269,
+            "rmse_consistency_mm_on_covered": 5.819378950551083,
+            "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+            "fraction_consistent_le1mm_over_GT_covisible": 0.2117686013887365,
+            "fraction_consistent_le2mm_over_GT_covisible": 0.3802136397122212,
+            "fraction_consistent_le5mm_over_GT_covisible": 0.6219983855546325
+          }
         },
         "full": {
-          "status": "missing_or_partial",
-          "surface": null,
-          "crossview": null
+          "status": "complete",
+          "summary": {
+            "mask_iou": 0.8456094980515668,
+            "gt_depth_coverage": 0.9206444239704281,
+            "overlap_nonempty_views": 432,
+            "overlap_mean_view_rmse_mm": 4.4949605310404745,
+            "missing_zero_sentinel_rmse_mm": 70.59960001486319,
+            "precision": {
+              "1": 0.48723967149236763,
+              "2": 0.7768766549671496,
+              "5": 0.9478652774059992
+            },
+            "recall": {
+              "1": 0.5460087955346404,
+              "2": 0.8344864656639835,
+              "5": 0.9793273112663875
+            },
+            "fscore": {
+              "1": 0.5127200196751862,
+              "2": 0.8006621660020653,
+              "5": 0.9585949019746293
+            }
+          },
+          "evaluation_sha256": "118d66452c4f89aa25441777c4e088609dfa86d334d01c63a770ffb96434433a",
+          "segmentation_lineage": {
+            "role": "new semsegROI v2 full final6000 EMA",
+            "checkpoint_sha256": "c560c3e6a16c4e95ea3237823449495cd5aa62c2ed4523593c959362552e9597",
+            "evaluation_sha256": "5ca3e7353ac5f660d7e70ed91fcc2bdefebfaf9cd96da96a3d2dd0e76412acbc",
+            "native_audit_sha256": "9f49cc92033ff28b4cc9796854218ead27e7420ba57a0cdca157ffc554da6b8b",
+            "protocol_sha256": "ddebfff7548c0a86e0ea8519b85bd0976986a456d397f0a7645c00083d9bde7b",
+            "native_policy": "originalGT;FP32bilinear probability>.5,tiebackground;zerooutsidepredictedcrop"
+          },
+          "max_common_depth_difference_mm": 6.103515625e-05,
+          "surface": {
+            "gt_eligible_adjacent_pairs": 3545389,
+            "covered_adjacent_pairs": 3319839,
+            "gradient_absolute_error_sum_mm": 1860809.14402771,
+            "gt_smooth_pairs": 3227177,
+            "covered_gt_smooth_pairs": 3054791,
+            "false_steps_gt_le1_pred_gt5_mm": 8410,
+            "gt_eligible_normals": 1720180,
+            "covered_normals": 1611135,
+            "normal_angle_sum_deg": 62219486.19464654,
+            "normal_missing180_sum_deg": 81847586.19464654,
+            "views": 432,
+            "adjacent_pair_coverage": 0.9363821572188552,
+            "gradient_mae_mm_on_covered_pairs": 0.5605118633848539,
+            "normal_coverage": 0.9366083781929798,
+            "normal_angle_mean_deg_on_covered": 38.618418813225794,
+            "normal_angle_mean_deg_missing180": 47.58082653829631,
+            "false_step_fraction_on_covered_smooth": 0.0027530525001546752
+          },
+          "crossview": {
+            "candidate_GT_reference_pixels": 3691534,
+            "GT_covisible_pixels": 510392,
+            "covered_predictions": 397640,
+            "absolute_error_sum_mm": 1345017.4528871644,
+            "squared_error_sum_mm2": 13541314.921951823,
+            "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+            "consistent_le1mm_pixels": 109744,
+            "consistent_le2mm_pixels": 196947,
+            "consistent_le5mm_pixels": 322011,
+            "directed_view_pairs": 864,
+            "prediction_coverage": 0.7790874465117008,
+            "mean_absolute_consistency_mm_on_covered": 3.382500384486381,
+            "rmse_consistency_mm_on_covered": 5.835598266410089,
+            "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+            "fraction_consistent_le1mm_over_GT_covisible": 0.21501904418564555,
+            "fraction_consistent_le2mm_over_GT_covisible": 0.385873994890202,
+            "fraction_consistent_le5mm_over_GT_covisible": 0.6309091835295224
+          }
         },
         "roi": {
-          "status": "missing_or_partial",
-          "surface": null,
-          "crossview": null
+          "status": "complete",
+          "summary": {
+            "mask_iou": 0.8996174005259351,
+            "gt_depth_coverage": 0.9540240675598219,
+            "overlap_nonempty_views": 432,
+            "overlap_mean_view_rmse_mm": 4.534224185678694,
+            "missing_zero_sentinel_rmse_mm": 53.561441699663796,
+            "precision": {
+              "1": 0.4981470522830477,
+              "2": 0.7821478672875688,
+              "5": 0.9472337238095658
+            },
+            "recall": {
+              "1": 0.5593276665488003,
+              "2": 0.8406974916688316,
+              "5": 0.9800874366668056
+            },
+            "fscore": {
+              "1": 0.5244168066196446,
+              "2": 0.8057789646469374,
+              "5": 0.9579077623340376
+            }
+          },
+          "evaluation_sha256": "aed2f7201644f8089e231cae3cd08925afc46022c2f3eab583e6278afad4d594",
+          "segmentation_lineage": {
+            "role": "new semsegROI v2 roi final6000 EMA",
+            "checkpoint_sha256": "13e14e818ce1ee3b219a5c84866556cf4c9bd7e772773cd764659cc69779ce09",
+            "evaluation_sha256": "d2168be710833e70507741958a85bb27a36c8fb8f6247495911309adfc5bc931",
+            "native_audit_sha256": "c67e3086c30b107f9a21843c4f3e01ffddc0678feecd8a5cece427be9c6386a4",
+            "protocol_sha256": "562c50c9747759f43afea353cff4872122f2357fc6a75bb433836faf5cbbf99b",
+            "native_policy": "originalGT;FP32bilinear probability>.5,tiebackground;zerooutsidepredictedcrop"
+          },
+          "max_common_depth_difference_mm": 6.103515625e-05,
+          "surface": {
+            "gt_eligible_adjacent_pairs": 3545389,
+            "covered_adjacent_pairs": 3389364,
+            "gradient_absolute_error_sum_mm": 1921607.7442855835,
+            "gt_smooth_pairs": 3227177,
+            "covered_gt_smooth_pairs": 3110698,
+            "false_steps_gt_le1_pred_gt5_mm": 9012,
+            "gt_eligible_normals": 1720180,
+            "covered_normals": 1644407,
+            "normal_angle_sum_deg": 63827162.34713436,
+            "normal_missing180_sum_deg": 77466302.34713435,
+            "views": 432,
+            "adjacent_pair_coverage": 0.9559921351366522,
+            "gradient_mae_mm_on_covered_pairs": 0.5669523085409486,
+            "normal_coverage": 0.9559505400597612,
+            "normal_angle_mean_deg_on_covered": 38.814698762006216,
+            "normal_angle_mean_deg_missing180": 45.03383503303977,
+            "false_step_fraction_on_covered_smooth": 0.002897098979071578
+          },
+          "crossview": {
+            "candidate_GT_reference_pixels": 3691534,
+            "GT_covisible_pixels": 510392,
+            "covered_predictions": 415285,
+            "absolute_error_sum_mm": 1401140.7776107213,
+            "squared_error_sum_mm2": 14693409.609419113,
+            "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+            "consistent_le1mm_pixels": 115216,
+            "consistent_le2mm_pixels": 206749,
+            "consistent_le5mm_pixels": 337041,
+            "directed_view_pairs": 864,
+            "prediction_coverage": 0.8136589131491089,
+            "mean_absolute_consistency_mm_on_covered": 3.373925804232566,
+            "rmse_consistency_mm_on_covered": 5.9482357168836275,
+            "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+            "fraction_consistent_le1mm_over_GT_covisible": 0.22574021536387717,
+            "fraction_consistent_le2mm_over_GT_covisible": 0.40507884136114986,
+            "fraction_consistent_le5mm_over_GT_covisible": 0.6603571372592046
+          }
         }
       },
-      "roi_minus_full": null,
+      "roi_minus_full": {
+        "mask_iou": 0.05400790247436826,
+        "gt_depth_coverage": 0.033379643589393826,
+        "overlap_mean_view_rmse_mm": 0.039263654638219236,
+        "precision": {
+          "1": 0.010907380790680044,
+          "2": 0.005271212320419161,
+          "5": -0.0006315535964334096
+        },
+        "recall": {
+          "1": 0.01331887101415985,
+          "2": 0.006211026004848019,
+          "5": 0.0007601254004181435
+        },
+        "fscore": {
+          "1": 0.011696786944458415,
+          "2": 0.005116798644872134,
+          "5": -0.0006871396405916386
+        }
+      },
       "overlap_error_is_conditional": true,
       "missing_zero_is_sentinel_not_valid_point_error": true,
       "oldM_inverse_operator_differs_from_new_pair": true
@@ -220,7 +514,7 @@
       }
     }
   },
-  "source_pin_count": 89,
+  "source_pin_count": 130,
   "source_pin_checks": [
     {
       "registration": "classical_baselines_v1.json",
@@ -748,6 +1042,83 @@
       "matches": true
     },
     {
+      "registration": "semseg_roi_result_review_v1.json",
+      "path": "tools/review_calibrated_mouse_semseg_results_20261025.py",
+      "expected": "a18d482af26c11613e8200ff9c84d92e1d4b8f62664c68f849bc71b11f6b22f3",
+      "observed": "a18d482af26c11613e8200ff9c84d92e1d4b8f62664c68f849bc71b11f6b22f3",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v1.json",
+      "path": "tools/diagnose_calibrated_mouse_spatial_bias_20261025.py",
+      "expected": "44bb05bde0ffbedb3b3b1bfb94d0680e2e5571b9445e404efefbf39656bf3c1c",
+      "observed": "44bb05bde0ffbedb3b3b1bfb94d0680e2e5571b9445e404efefbf39656bf3c1c",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v1.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "observed": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v1.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_roi.py",
+      "expected": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "observed": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v1.json",
+      "path": "tools/train_calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "observed": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v1.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v2.json",
+      "path": "tools/diagnose_calibrated_mouse_spatial_bias_20261025_v2.py",
+      "expected": "20e21b23a9fba7a9ff8c66f712f353562c077fe73921d58ace3f71e01c4f02c5",
+      "observed": "20e21b23a9fba7a9ff8c66f712f353562c077fe73921d58ace3f71e01c4f02c5",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v2.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "observed": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v2.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_roi.py",
+      "expected": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "observed": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v2.json",
+      "path": "tools/train_calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "observed": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "matches": true
+    },
+    {
+      "registration": "spatial_bias_GPU_diagnostic_v2.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
       "registration": "spatial_depth_pair_v1.json",
       "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py",
       "expected": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
@@ -844,6 +1215,216 @@
       "expected": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
       "observed": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
       "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "f9d9dda10f5ad550f3f5ee6133c198ca6c2f654d5488660c9e9326b0c5de2e6b",
+      "observed": "f9d9dda10f5ad550f3f5ee6133c198ca6c2f654d5488660c9e9326b0c5de2e6b",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "observed": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_roi.py",
+      "expected": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "observed": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/train_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "aae91a0722538d0c603b60ef3758ff5c4a415cb6377fd7da6af3b75b4b0897ee",
+      "observed": "aae91a0722538d0c603b60ef3758ff5c4a415cb6377fd7da6af3b75b4b0897ee",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/check_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "3aab4a4aca45ac21fba79b57a5d2fc4afc9a18b3e8b24ab60012c314f1296d2a",
+      "observed": "3aab4a4aca45ac21fba79b57a5d2fc4afc9a18b3e8b24ab60012c314f1296d2a",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/evaluate_calibrated_mouse_spatial_pipeline_20261025_v2.py",
+      "expected": "56dde85a4006e96c7453782b5c58068d10282e6fa628798595e9c1ebf99d229a",
+      "observed": "56dde85a4006e96c7453782b5c58068d10282e6fa628798595e9c1ebf99d229a",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/verify_calibrated_mouse_spatial_preflight_20261025_v2.py",
+      "expected": "6c37246b855c69113901d03ea50a0b7a3d9cd0ff30b1fdb1a6fefdcad722b3c8",
+      "observed": "6c37246b855c69113901d03ea50a0b7a3d9cd0ff30b1fdb1a6fefdcad722b3c8",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/report_calibrated_mouse_spatial_depth_20261025_v2.py",
+      "expected": "92e97a598abe2b22821e9e32b1efef3a3b1dd4d4a64fc32e53effc4ea1137e73",
+      "observed": "92e97a598abe2b22821e9e32b1efef3a3b1dd4d4a64fc32e53effc4ea1137e73",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tests/test_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "82343324460380d3f8fe8fa4d4519b1ad52d23337d3c31c954ab738d7d9b5454",
+      "observed": "82343324460380d3f8fe8fa4d4519b1ad52d23337d3c31c954ab738d7d9b5454",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tests/test_spatial_pipeline_metrics_20261025.py",
+      "expected": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+      "observed": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/calibrated_mouse_data_20261025.py",
+      "expected": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "observed": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/train_calibrated_mouse_depth_roi_20261025.py",
+      "expected": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "observed": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/audit_calibrated_mouse_surface_20261025.py",
+      "expected": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+      "observed": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_pair_v2.json",
+      "path": "tools/audit_calibrated_mouse_crossview_20261025.py",
+      "expected": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+      "observed": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "f9d9dda10f5ad550f3f5ee6133c198ca6c2f654d5488660c9e9326b0c5de2e6b",
+      "observed": "f9d9dda10f5ad550f3f5ee6133c198ca6c2f654d5488660c9e9326b0c5de2e6b",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py",
+      "expected": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "observed": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "mousegeoforge/models/calibrated_mouse_depth_roi.py",
+      "expected": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "observed": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/train_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "aae91a0722538d0c603b60ef3758ff5c4a415cb6377fd7da6af3b75b4b0897ee",
+      "observed": "aae91a0722538d0c603b60ef3758ff5c4a415cb6377fd7da6af3b75b4b0897ee",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/check_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "3aab4a4aca45ac21fba79b57a5d2fc4afc9a18b3e8b24ab60012c314f1296d2a",
+      "observed": "3aab4a4aca45ac21fba79b57a5d2fc4afc9a18b3e8b24ab60012c314f1296d2a",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/evaluate_calibrated_mouse_spatial_pipeline_20261025_v2.py",
+      "expected": "56dde85a4006e96c7453782b5c58068d10282e6fa628798595e9c1ebf99d229a",
+      "observed": "56dde85a4006e96c7453782b5c58068d10282e6fa628798595e9c1ebf99d229a",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/verify_calibrated_mouse_spatial_preflight_20261025_v2.py",
+      "expected": "6c37246b855c69113901d03ea50a0b7a3d9cd0ff30b1fdb1a6fefdcad722b3c8",
+      "observed": "6c37246b855c69113901d03ea50a0b7a3d9cd0ff30b1fdb1a6fefdcad722b3c8",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/report_calibrated_mouse_spatial_depth_20261025_v2.py",
+      "expected": "92e97a598abe2b22821e9e32b1efef3a3b1dd4d4a64fc32e53effc4ea1137e73",
+      "observed": "92e97a598abe2b22821e9e32b1efef3a3b1dd4d4a64fc32e53effc4ea1137e73",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tests/test_calibrated_mouse_depth_spatial_20261025_v2.py",
+      "expected": "82343324460380d3f8fe8fa4d4519b1ad52d23337d3c31c954ab738d7d9b5454",
+      "observed": "82343324460380d3f8fe8fa4d4519b1ad52d23337d3c31c954ab738d7d9b5454",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tests/test_spatial_pipeline_metrics_20261025.py",
+      "expected": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+      "observed": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/calibrated_mouse_data_20261025.py",
+      "expected": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "observed": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "mousegeoforge/semseg_training.py",
+      "expected": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "observed": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/train_calibrated_mouse_depth_roi_20261025.py",
+      "expected": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "observed": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/audit_calibrated_mouse_surface_20261025.py",
+      "expected": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+      "observed": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+      "matches": true
+    },
+    {
+      "registration": "spatial_depth_v2_preflight_registration.json",
+      "path": "tools/audit_calibrated_mouse_crossview_20261025.py",
+      "expected": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+      "observed": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f",
+      "matches": true
     }
   ],
   "input_JSON_receipts": {
@@ -854,18 +1435,18 @@
     },
     "state": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/state.json",
-      "sha256": "83edb0b7ba3c967966b1525771a2669dbb6ff92c5841597c6a8e8a7afc62330d",
-      "bytes": 2575
+      "sha256": "e8395c0aad254410da46cbb090570cc59a613134b3c90cecb9b2fe256dd01de8",
+      "bytes": 12849
     },
     "queue": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/queue.json",
-      "sha256": "3469e6dcf466143bf4ef60888144395f17a0f84b49a01f1f7bab617b5985db8b",
-      "bytes": 99295
+      "sha256": "a0be4962c5b86fd5b8c17b7b9e15cebb90f526260b6f879a77c8a2be817befcc",
+      "bytes": 167535
     },
     "core": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/report.json",
-      "sha256": "a4d01fba1185310e15606e631eba817f2fe1b8f313daded42837333ff96c276a",
-      "bytes": 9677
+      "sha256": "1cd739e7599e5ba8ba4e841ab462d4ddac96f2fd57f86dd6af2840786fddf0a6",
+      "bytes": 19966
     },
     "real": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/real_reference_feasibility_v1.json",
@@ -884,22 +1465,22 @@
     },
     "semseg": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_report_v2.json",
-      "sha256": "b4377b1376183e013714418c3b90501fc6837444e32285080936077331b50d92",
-      "bytes": 287
+      "sha256": "a68dd1c6955298b2f24373f2059f3767639f6d9069057e5aab8b8ed770ff7a77",
+      "bytes": 4244
     },
     "readiness": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_readiness_v2.json",
-      "sha256": "588ea1c78c233cab77589111456afbbae7e660e4c5bc585894b7173a34312c79",
-      "bytes": 1733
+      "sha256": "3232212c5869910164d146f1602bf9e47dc08e764a935adb79d166c01867cbfd",
+      "bytes": 21421
     },
     "chain": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_chain_report_v1.json",
-      "sha256": "13c05aedd85122026ae0eb723ffc9c5b8a7b252b0825d1dea739d87678f65d1d",
-      "bytes": 2255
+      "sha256": "bae93a7317221d3a9f2ffb7eaf73a05b64417e05632f5c6f107e4262bde5d987",
+      "bytes": 10994
     },
     "spatial": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_pair_report_v1.json",
-      "sha256": "11df05885dd6858684ad27cd76a11ad919908dba53e602bb1af2b5a633ba4892",
+      "sha256": "8b45f16a83358b3df952419178a71fbf13bdfc842b8845bb51056f13e095054c",
       "bytes": 3140
     },
     "semseg_failure": {
@@ -992,10 +1573,35 @@
       "sha256": "66525d6bc9100c965a86601a7f4f4baa61456ac10bc106fc2f770d21c154e9d8",
       "bytes": 357
     },
+    "registration:semseg_roi_result_review_v1.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/semseg_roi_result_review_v1.json",
+      "sha256": "ce7fda39c118c442af4794888778d26d1b453cd93c2b0af8934150700086cd16",
+      "bytes": 614
+    },
+    "registration:spatial_bias_GPU_diagnostic_v1.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_bias_GPU_diagnostic_v1.json",
+      "sha256": "70cadb556131da85d8d4d4f5b25d030ec6fb5c9f1554b36846ae09005127c01c",
+      "bytes": 1002
+    },
+    "registration:spatial_bias_GPU_diagnostic_v2.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_bias_GPU_diagnostic_v2.json",
+      "sha256": "7aa9425f1adf2efe25098a2ed91c0fdc8acbd8865a675777ed849856cdd8459b",
+      "bytes": 993
+    },
     "registration:spatial_depth_pair_v1.json": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_depth_pair_v1.json",
       "sha256": "d8567d31dfe8e7e16362ddfe82edcf9e72d3160171c9109e9f189af2d7f4d868",
       "bytes": 5106
+    },
+    "registration:spatial_depth_pair_v2.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_depth_pair_v2.json",
+      "sha256": "2f4968dbee804eb0f5f9ef69cc839701f47ce4c0b38186112f5a6fe4de8c3eb9",
+      "bytes": 6200
+    },
+    "registration:spatial_depth_v2_preflight_registration.json": {
+      "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/registrations/spatial_depth_v2_preflight_registration.json",
+      "sha256": "8d29752733ac2ad8f9b6f9f7ddde543a8c24722e08f825896f88c8e0ab6bcc8f",
+      "bytes": 2362
     },
     "controller_process": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/controller_process.json",
@@ -1014,8 +1620,8 @@
     },
     "active_child": {
       "path": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/active_child.json",
-      "sha256": "1b7150070948aed7fbf5559e9c0d6116ff0ba7e31b7d49f44dfffca74b8a7704",
-      "bytes": 344
+      "sha256": "8c47ca501fd055401db9a71133f1dcb1b2798137ceb87f5601b0fab91aec0fe2",
+      "bytes": 836
     }
   },
   "missing_inputs": {
@@ -1104,18 +1710,18 @@
       "status": "matching_live_identity",
       "matches": true,
       "saved": {
-        "pid": 581159,
-        "start_ticks": "2703465",
-        "pgid": 581159,
+        "pid": 595519,
+        "start_ticks": "3436342",
+        "pgid": 595519,
         "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
-        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_roi_pair_20261025_v2.py"
+        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/train_calibrated_mouse_depth_spatial_20261025_v2.py evaluate --run-dir /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2_dev --checkpoint /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2/step_006000.pt --neck-kernel 1 --seed 29 --feature-mode roi --roi-cache /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/roi_cache_v1 --steps 6000 --rays 256 --planes 96 --gradient-weight 0"
       },
       "observed": {
-        "pid": 581159,
-        "start_ticks": "2703465",
-        "pgid": 581159,
+        "pid": 595519,
+        "start_ticks": "3436342",
+        "pgid": 595519,
         "boot_id": "64b870a1-7a61-4865-a7d5-431db7128482",
-        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/calibrated_mouse_semseg_roi_pair_20261025_v2.py"
+        "command": "/home/haozong/projects/MouseGeoForge/.venv-vggt-omega-eval/bin/python tools/train_calibrated_mouse_depth_spatial_20261025_v2.py evaluate --run-dir /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2_dev --checkpoint /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/spatial_depth_s29_k1_6000_v2/step_006000.pt --neck-kernel 1 --seed 29 --feature-mode roi --roi-cache /home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/roi_cache_v1 --steps 6000 --rays 256 --planes 96 --gradient-weight 0"
       }
     }
   },

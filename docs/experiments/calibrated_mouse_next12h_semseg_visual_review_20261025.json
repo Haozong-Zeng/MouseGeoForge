@@ -1,0 +1,213 @@
+{
+  "utc": "2026-10-25T22:24:41.912440+00:00",
+  "registration_sha256": "ce7fda39c118c442af4794888778d26d1b453cd93c2b0af8934150700086cd16",
+  "source_sha256": "a18d482af26c11613e8200ff9c84d92e1d4b8f62664c68f849bc71b11f6b22f3",
+  "examples": [
+    {
+      "id": "06cc377b44f963c8e9b5",
+      "domain": "real",
+      "bottom": true,
+      "display_box": [
+        0,
+        0,
+        1080,
+        1200
+      ],
+      "image_sha256": "87a4728c824183137174acf94901a520f2fa3d887ecc09350d25ce3b4218d30c",
+      "label_sha256": "196effdfa8c3e266f3ccc3198efaba6646ad79683ae9738f6c92054523ffa34b",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/06cc377b44f963c8e9b5.png",
+          "sha256": "f63f2090e6f1445cef790dd3f2fd688d822ebc7e9f8505f1680e544ce69e0316"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/06cc377b44f963c8e9b5.png",
+          "sha256": "09a964258b9113d777d72a2c5cd6a41458c56d3809b90813679fbe35175d8553"
+        }
+      }
+    },
+    {
+      "id": "0d1d682b356cad1f6bf0",
+      "domain": "real",
+      "bottom": true,
+      "display_box": [
+        0,
+        0,
+        1080,
+        1200
+      ],
+      "image_sha256": "e7de906609abc1c4fd23aa74c547b2d831922143f1504e1b784ac0d6c4da1372",
+      "label_sha256": "3a71876cf75653367cde84784ddbd2ef9dbaaf19d9061ca7fef9ec6356d3b2f8",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/0d1d682b356cad1f6bf0.png",
+          "sha256": "59c63a2f14de47d8507c341f4e56347c0731ea6b157b801e10df51019470ac18"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/0d1d682b356cad1f6bf0.png",
+          "sha256": "9f7c05642608b560ac1ee04557ee8836264c746ec699689b70f781ae0eee8175"
+        }
+      }
+    },
+    {
+      "id": "00e863e1924155c6064c",
+      "domain": "real",
+      "bottom": false,
+      "display_box": [
+        18,
+        138,
+        1080,
+        1200
+      ],
+      "image_sha256": "7d7ea6d5a95d492cabac4bef21804f943239e3c75d1eff21674c247ae0ca3797",
+      "label_sha256": "f286abde840d7498113e4d7b151bf0acfc0b8fb48ca4f5743a74871c1c3d298b",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/00e863e1924155c6064c.png",
+          "sha256": "5d3fad7c6deca39b8fc3ecd77694b94341c9516369a8d7d99a6f7c7dac564914"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/00e863e1924155c6064c.png",
+          "sha256": "4b6a99cb0cc869df2ea0044ba38b519cfe2963250e2090db5b03fc3912850835"
+        }
+      }
+    },
+    {
+      "id": "0256d7de09ad4e0019a5",
+      "domain": "real",
+      "bottom": false,
+      "display_box": [
+        276,
+        396,
+        1080,
+        1200
+      ],
+      "image_sha256": "c567b7e7f4019de97703cc749bf0a4a2e611fb55b95b18bdaebc392931f98559",
+      "label_sha256": "9fd59a5da35f4e63b52e35622808b883af78e28823e2c0db318b9edde114b39d",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/0256d7de09ad4e0019a5.png",
+          "sha256": "e32627051cbe0c7302aae975273bb868e0716a66912254f3aa06abd589864ac4"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/0256d7de09ad4e0019a5.png",
+          "sha256": "0a22f4164ce57c40819d0ab21f4e31bfcb04483baffc679ba94f95413d987876"
+        }
+      }
+    },
+    {
+      "id": "00d04014c05767dd37de_v5_0",
+      "domain": "synthetic",
+      "bottom": true,
+      "display_box": [
+        141,
+        147,
+        242,
+        248
+      ],
+      "image_sha256": "00d04014c05767dd37de48fa3e174d20bdab4f047dd18e4c564c69c051a5660d",
+      "label_sha256": "f587effc755062293c2623dfce53912d8c42de50d2ff783784d9f24f6220ea3c",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/00d04014c05767dd37de_v5_0.png",
+          "sha256": "58fac78076ccb5ad7a71fe6c4ebbb9d65a31b373bbf6c8e2abace21ae35f3a35"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/00d04014c05767dd37de_v5_0.png",
+          "sha256": "fa612322c555427fb4517335f846548a0110b25cf921f0257d3cfeed626a8dd0"
+        }
+      }
+    },
+    {
+      "id": "01ee4e70d9066c21ac97_v5_0",
+      "domain": "synthetic",
+      "bottom": true,
+      "display_box": [
+        115,
+        93,
+        384,
+        362
+      ],
+      "image_sha256": "01ee4e70d9066c21ac97e913747ccfbac9886d6619422aab3e23a56fcb32c781",
+      "label_sha256": "8d8235396ce0fb52968b2cb80f799d231fa5804e76421dabe85e897c54f24634",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/01ee4e70d9066c21ac97_v5_0.png",
+          "sha256": "cecab52a543d4aff830830459785370de65727a249fd5be29bc9be81691e8faa"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/01ee4e70d9066c21ac97_v5_0.png",
+          "sha256": "98fad2a68d9cf72f234a2d18e1e62b499f4f630a9a51a1852fa61a376b1268a6"
+        }
+      }
+    },
+    {
+      "id": "031a39256009bfa2bac0_v5_1",
+      "domain": "synthetic",
+      "bottom": false,
+      "display_box": [
+        135,
+        150,
+        231,
+        246
+      ],
+      "image_sha256": "031a39256009bfa2bac0550e5a41733f9facda265415d20ed910f5a59947216f",
+      "label_sha256": "f208b6519c416e4e3535051b25dba864f1c7ff657ac0b4830546073c7bc611b9",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/031a39256009bfa2bac0_v5_1.png",
+          "sha256": "20de1566b1f089dc1941ada119257c88b16fa474123a4da56ea5ef5a066f0bbb"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/031a39256009bfa2bac0_v5_1.png",
+          "sha256": "ff86479fc836a801b1e571ae0e53ff03a8e6c5f073a43ebad5559b268c640a3a"
+        }
+      }
+    },
+    {
+      "id": "03477c12626bb654a4d5_v5_1",
+      "domain": "synthetic",
+      "bottom": false,
+      "display_box": [
+        54,
+        81,
+        348,
+        375
+      ],
+      "image_sha256": "03477c12626bb654a4d596dafd8929a81ae2c62928ee126854d8c008045fef3c",
+      "label_sha256": "ce4ef09ebec4b8082285a8f830804d12f17370eb78e65c36e647e405fd6a3810",
+      "masks": {
+        "full": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev/masks_ema/03477c12626bb654a4d5_v5_1.png",
+          "sha256": "1c802ab8457de2e438a3164f452f7dd7b3b1a08d73deaff608e4c03f84d5daf4"
+        },
+        "roi": {
+          "path": "output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev/masks_ema/03477c12626bb654a4d5_v5_1.png",
+          "sha256": "1c4ae5975a284507d05abbeca31385083ec02a655eacb19dadf1650a7f7ba8bf"
+        }
+      }
+    }
+  ],
+  "gallery_sha256": "8e032256a9389c0fc46d49f1c4e4f20d39c5dfbfc1c6ad35d5803f0e2be1f3d5",
+  "model_calls": 0,
+  "display_only": true,
+  "limitations": [
+    "First sorted2DEV IDs per4strata, no outcome selection",
+    "Fixed teacher ROI used solely for display; no scoring/filter/exports changed",
+    "Single seed/reused DEV and six correlated synthetic poses; no real-mm/generalization claim"
+  ],
+  "actual_visual_review": {
+    "utc": "2026-10-25T22:25:17.324875+00:00",
+    "gallery_sha256": "8e032256a9389c0fc46d49f1c4e4f20d39c5dfbfc1c6ad35d5803f0e2be1f3d5",
+    "actual_inspection": true,
+    "observations": [
+      "Both arms recover gross real mouse silhouettes; real examples show residual tail, paw and boundary disagreement, with small visual differences between arms.",
+      "First synthetic bottom example: ROI recovers more tail/body support than FULL; pixel stair steps and remaining red/blue boundaries are visible.",
+      "First synthetic side example: FULL has a larger missing upper-body strip; ROI reduces it but fine limbs, ears and belly still disagree.",
+      "Representative fixed examples do not establish population-wide quality, depth accuracy, independent real-mm or instance detection."
+    ],
+    "selection": "Fixed first sorted2DEV IDs each4strata; no outcome selection",
+    "display_only": true,
+    "no_metrics_or_exports_modified": true
+  }
+}

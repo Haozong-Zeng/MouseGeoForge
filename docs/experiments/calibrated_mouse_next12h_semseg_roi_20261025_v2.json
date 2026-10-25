@@ -1,0 +1,128 @@
+{
+  "utc": "2026-10-25T22:25:53.663770+00:00",
+  "campaign": {
+    "started_utc": "2026-10-25T20:29:38.919423+00:00",
+    "registration_sha256": "44d0ab9ac7d1b7f6483aad2b90857bc0c3e070dfd771197a23997fc09929d0ca",
+    "full_paired_endpoint": 6000,
+    "evaluations": {
+      "full": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_dev",
+      "roi": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_dev"
+    },
+    "status": "completed",
+    "actual_GPU_smoke_sha256": "c261d37b5f78043603901bf83a267ca9d108a26ac23ce19cc1e0b73ea0e331c6",
+    "coarse_cache_sha256": "2581fc518ac5852b1dfa3a082e9f5003c608914d8f60ca66863d0836c900285d",
+    "parents": {
+      "full": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/full_006000/step_006000.pt",
+      "roi": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_next12h_20261025/semseg_roi_pair_v2/roi_006000/step_006000.pt"
+    },
+    "finished_utc": "2026-10-25T22:09:10.089109+00:00"
+  },
+  "comparable": true,
+  "arms": {
+    "full": {
+      "status": "complete",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.8774462532999473,
+          "dice": 0.9318542094405696,
+          "boundary_f1": 0.514223957902158
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.912992209989565,
+          "dice": 0.954368536323839,
+          "boundary_f1": 0.2526498464106981
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.9073125175082918,
+          "dice": 0.9512889918602915,
+          "boundary_f1": 0.23749640725341306
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.8336090565958207,
+          "dice": 0.8957735544255578,
+          "boundary_f1": 0.7957127191689435
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.8516097187794398,
+          "dice": 0.9189709418142988,
+          "boundary_f1": 0.7992480528237018
+        }
+      },
+      "checkpoint_sha256": "c560c3e6a16c4e95ea3237823449495cd5aa62c2ed4523593c959362552e9597"
+    },
+    "roi": {
+      "status": "complete",
+      "groups": {
+        "all": {
+          "images": 879,
+          "iou": 0.9111832738839446,
+          "dice": 0.9508453605117001,
+          "boundary_f1": 0.6013236901598995
+        },
+        "real/True": {
+          "images": 71,
+          "iou": 0.9151229817224024,
+          "dice": 0.9555590974490679,
+          "boundary_f1": 0.26479007453848613
+        },
+        "real/False": {
+          "images": 376,
+          "iou": 0.9237277899321616,
+          "dice": 0.9602541623298482,
+          "boundary_f1": 0.297570272309166
+        },
+        "synthetic/True": {
+          "images": 144,
+          "iou": 0.8702692044041634,
+          "dice": 0.915694495686313,
+          "boundary_f1": 0.8873258344678316
+        },
+        "synthetic/False": {
+          "images": 288,
+          "iou": 0.914291498586821,
+          "dice": 0.9549750123473911,
+          "boundary_f1": 0.9378544646066148
+        }
+      },
+      "checkpoint_sha256": "13e14e818ce1ee3b219a5c84866556cf4c9bd7e772773cd764659cc69779ce09"
+    }
+  },
+  "no_DEV_selection": true,
+  "no_formal_convergence_claim": true,
+  "actual_exposure_verified": {
+    "full": "d2e0fcae7b436b82666622ba85e9984231202eaddaca7ddaa6e998b91fdadc45",
+    "roi": "d2e0fcae7b436b82666622ba85e9984231202eaddaca7ddaa6e998b91fdadc45"
+  },
+  "roi_minus_full": {
+    "all": {
+      "iou": 0.0337370205839973,
+      "dice": 0.018991151071130474,
+      "boundary_f1": 0.08709973225774148
+    },
+    "real/True": {
+      "iou": 0.0021307717328373776,
+      "dice": 0.0011905611252288617,
+      "boundary_f1": 0.012140228127788033
+    },
+    "real/False": {
+      "iou": 0.016415272423869864,
+      "dice": 0.008965170469556694,
+      "boundary_f1": 0.060073865055752934
+    },
+    "synthetic/True": {
+      "iou": 0.0366601478083427,
+      "dice": 0.019920941260755165,
+      "boundary_f1": 0.09161311529888816
+    },
+    "synthetic/False": {
+      "iou": 0.06268177980738121,
+      "dice": 0.03600407053309229,
+      "boundary_f1": 0.138606411782913
+    }
+  }
+}

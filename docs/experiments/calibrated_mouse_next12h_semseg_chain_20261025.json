@@ -1,8 +1,8 @@
 {
-  "utc": "2026-10-25T21:01:32.669858+00:00",
+  "utc": "2026-10-25T22:25:57.344077+00:00",
   "registration_sha256": "5070acd959fa3085dbd308c775cfb1fd546505c2ad30cddefc5b088dbd1fcd06",
-  "all_three_complete": false,
-  "paired_full_roi_complete": false,
+  "all_three_complete": true,
+  "paired_full_roi_complete": true,
   "arms": {
     "anchor": {
       "status": "complete",
@@ -30,18 +30,190 @@
       },
       "evaluation_sha256": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb",
       "extra_metrics_sha256": "ec0903ed99beddb9066983251d2b69e682ca9321b87242a8dfa7fd21e3744d56",
-      "surface": null,
-      "crossview": null
+      "surface": {
+        "gt_eligible_adjacent_pairs": 3545389,
+        "covered_adjacent_pairs": 3297822,
+        "gradient_absolute_error_sum_mm": 1844165.4615097046,
+        "gt_smooth_pairs": 3227177,
+        "covered_gt_smooth_pairs": 3036319,
+        "false_steps_gt_le1_pred_gt5_mm": 8340,
+        "gt_eligible_normals": 1720180,
+        "covered_normals": 1599969,
+        "normal_angle_sum_deg": 61687291.20094872,
+        "normal_missing180_sum_deg": 83325271.20094872,
+        "views": 432,
+        "adjacent_pair_coverage": 0.9301721193358472,
+        "gradient_mae_mm_on_covered_pairs": 0.5592070953222171,
+        "normal_coverage": 0.9301171970375194,
+        "normal_angle_mean_deg_on_covered": 38.555304009608136,
+        "normal_angle_mean_deg_missing180": 48.439855829592666,
+        "false_step_fraction_on_covered_smooth": 0.002746746965651501
+      },
+      "crossview": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 392435,
+        "absolute_error_sum_mm": 1330616.7763171168,
+        "squared_error_sum_mm2": 13289878.526631871,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 108085,
+        "consistent_le2mm_pixels": 194058,
+        "consistent_le5mm_pixels": 317463,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.768889402655214,
+        "mean_absolute_consistency_mm_on_covered": 3.390667948366269,
+        "rmse_consistency_mm_on_covered": 5.819378950551083,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.2117686013887365,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.3802136397122212,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.6219983855546325
+      }
     },
     "full": {
-      "status": "missing_or_partial",
-      "surface": null,
-      "crossview": null
+      "status": "complete",
+      "summary": {
+        "mask_iou": 0.8456094980515668,
+        "gt_depth_coverage": 0.9206444239704281,
+        "overlap_nonempty_views": 432,
+        "overlap_mean_view_rmse_mm": 4.4949605310404745,
+        "missing_zero_sentinel_rmse_mm": 70.59960001486319,
+        "precision": {
+          "1": 0.48723967149236763,
+          "2": 0.7768766549671496,
+          "5": 0.9478652774059992
+        },
+        "recall": {
+          "1": 0.5460087955346404,
+          "2": 0.8344864656639835,
+          "5": 0.9793273112663875
+        },
+        "fscore": {
+          "1": 0.5127200196751862,
+          "2": 0.8006621660020653,
+          "5": 0.9585949019746293
+        }
+      },
+      "evaluation_sha256": "118d66452c4f89aa25441777c4e088609dfa86d334d01c63a770ffb96434433a",
+      "segmentation_lineage": {
+        "role": "new semsegROI v2 full final6000 EMA",
+        "checkpoint_sha256": "c560c3e6a16c4e95ea3237823449495cd5aa62c2ed4523593c959362552e9597",
+        "evaluation_sha256": "5ca3e7353ac5f660d7e70ed91fcc2bdefebfaf9cd96da96a3d2dd0e76412acbc",
+        "native_audit_sha256": "9f49cc92033ff28b4cc9796854218ead27e7420ba57a0cdca157ffc554da6b8b",
+        "protocol_sha256": "ddebfff7548c0a86e0ea8519b85bd0976986a456d397f0a7645c00083d9bde7b",
+        "native_policy": "originalGT;FP32bilinear probability>.5,tiebackground;zerooutsidepredictedcrop"
+      },
+      "max_common_depth_difference_mm": 6.103515625e-05,
+      "surface": {
+        "gt_eligible_adjacent_pairs": 3545389,
+        "covered_adjacent_pairs": 3319839,
+        "gradient_absolute_error_sum_mm": 1860809.14402771,
+        "gt_smooth_pairs": 3227177,
+        "covered_gt_smooth_pairs": 3054791,
+        "false_steps_gt_le1_pred_gt5_mm": 8410,
+        "gt_eligible_normals": 1720180,
+        "covered_normals": 1611135,
+        "normal_angle_sum_deg": 62219486.19464654,
+        "normal_missing180_sum_deg": 81847586.19464654,
+        "views": 432,
+        "adjacent_pair_coverage": 0.9363821572188552,
+        "gradient_mae_mm_on_covered_pairs": 0.5605118633848539,
+        "normal_coverage": 0.9366083781929798,
+        "normal_angle_mean_deg_on_covered": 38.618418813225794,
+        "normal_angle_mean_deg_missing180": 47.58082653829631,
+        "false_step_fraction_on_covered_smooth": 0.0027530525001546752
+      },
+      "crossview": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 397640,
+        "absolute_error_sum_mm": 1345017.4528871644,
+        "squared_error_sum_mm2": 13541314.921951823,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 109744,
+        "consistent_le2mm_pixels": 196947,
+        "consistent_le5mm_pixels": 322011,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.7790874465117008,
+        "mean_absolute_consistency_mm_on_covered": 3.382500384486381,
+        "rmse_consistency_mm_on_covered": 5.835598266410089,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.21501904418564555,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.385873994890202,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.6309091835295224
+      }
     },
     "roi": {
-      "status": "missing_or_partial",
-      "surface": null,
-      "crossview": null
+      "status": "complete",
+      "summary": {
+        "mask_iou": 0.8996174005259351,
+        "gt_depth_coverage": 0.9540240675598219,
+        "overlap_nonempty_views": 432,
+        "overlap_mean_view_rmse_mm": 4.534224185678694,
+        "missing_zero_sentinel_rmse_mm": 53.561441699663796,
+        "precision": {
+          "1": 0.4981470522830477,
+          "2": 0.7821478672875688,
+          "5": 0.9472337238095658
+        },
+        "recall": {
+          "1": 0.5593276665488003,
+          "2": 0.8406974916688316,
+          "5": 0.9800874366668056
+        },
+        "fscore": {
+          "1": 0.5244168066196446,
+          "2": 0.8057789646469374,
+          "5": 0.9579077623340376
+        }
+      },
+      "evaluation_sha256": "aed2f7201644f8089e231cae3cd08925afc46022c2f3eab583e6278afad4d594",
+      "segmentation_lineage": {
+        "role": "new semsegROI v2 roi final6000 EMA",
+        "checkpoint_sha256": "13e14e818ce1ee3b219a5c84866556cf4c9bd7e772773cd764659cc69779ce09",
+        "evaluation_sha256": "d2168be710833e70507741958a85bb27a36c8fb8f6247495911309adfc5bc931",
+        "native_audit_sha256": "c67e3086c30b107f9a21843c4f3e01ffddc0678feecd8a5cece427be9c6386a4",
+        "protocol_sha256": "562c50c9747759f43afea353cff4872122f2357fc6a75bb433836faf5cbbf99b",
+        "native_policy": "originalGT;FP32bilinear probability>.5,tiebackground;zerooutsidepredictedcrop"
+      },
+      "max_common_depth_difference_mm": 6.103515625e-05,
+      "surface": {
+        "gt_eligible_adjacent_pairs": 3545389,
+        "covered_adjacent_pairs": 3389364,
+        "gradient_absolute_error_sum_mm": 1921607.7442855835,
+        "gt_smooth_pairs": 3227177,
+        "covered_gt_smooth_pairs": 3110698,
+        "false_steps_gt_le1_pred_gt5_mm": 9012,
+        "gt_eligible_normals": 1720180,
+        "covered_normals": 1644407,
+        "normal_angle_sum_deg": 63827162.34713436,
+        "normal_missing180_sum_deg": 77466302.34713435,
+        "views": 432,
+        "adjacent_pair_coverage": 0.9559921351366522,
+        "gradient_mae_mm_on_covered_pairs": 0.5669523085409486,
+        "normal_coverage": 0.9559505400597612,
+        "normal_angle_mean_deg_on_covered": 38.814698762006216,
+        "normal_angle_mean_deg_missing180": 45.03383503303977,
+        "false_step_fraction_on_covered_smooth": 0.002897098979071578
+      },
+      "crossview": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 415285,
+        "absolute_error_sum_mm": 1401140.7776107213,
+        "squared_error_sum_mm2": 14693409.609419113,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 115216,
+        "consistent_le2mm_pixels": 206749,
+        "consistent_le5mm_pixels": 337041,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.8136589131491089,
+        "mean_absolute_consistency_mm_on_covered": 3.373925804232566,
+        "rmse_consistency_mm_on_covered": 5.9482357168836275,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.22574021536387717,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.40507884136114986,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.6603571372592046
+      }
     }
   },
   "limitations": [
@@ -51,5 +223,25 @@
     "Depthcomparison conditionaloncoveredpixels; coverage/P_R/originalfullGTdenominators separatelyreported; missing-zero is sentinelpenalty not physicalvalidpointRMSE",
     "No independentreal-mm/surfaceGT, hardware-sync/unseenrealpose/completewatertightbody/instancecount claim",
     "NoGTscale/gaugefitting, confidencefilter, newdataadmission, newtraining or encoderunfreezing"
-  ]
+  ],
+  "roi_minus_full": {
+    "mask_iou": 0.05400790247436826,
+    "gt_depth_coverage": 0.033379643589393826,
+    "overlap_mean_view_rmse_mm": 0.039263654638219236,
+    "precision": {
+      "1": 0.010907380790680044,
+      "2": 0.005271212320419161,
+      "5": -0.0006315535964334096
+    },
+    "recall": {
+      "1": 0.01331887101415985,
+      "2": 0.006211026004848019,
+      "5": 0.0007601254004181435
+    },
+    "fscore": {
+      "1": 0.011696786944458415,
+      "2": 0.005116798644872134,
+      "5": -0.0006871396405916386
+    }
+  }
 }

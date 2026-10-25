@@ -1,0 +1,108 @@
+{
+  "utc": "2026-10-25T22:19:13.784096+00:00",
+  "v1_formal_updates": 0,
+  "v1_failure_log_sha256": "b2a7cb2188b8428d469147875f6938607a13cadd98390215c6dde07f33771b4e",
+  "v1_failure": "StrictGPU4vs2+2 model.score.4.bias onlyatfirstfailure; formaljobsblocked",
+  "diagnostic_receipt_sha256": "91a50dcd2dfa3421f55fb8dd429ff4aab3a768ddde5b77b92aceb53cd20c4a54",
+  "diagnostic_updates": 40,
+  "prior_failed_diagnostic_partial_updates": 6,
+  "diagnostic_implementation_failure": {
+    "utc": "2026-10-25T22:15:55.417084+00:00",
+    "stage": "diagnostic comparator implementation",
+    "reason": "AdamstepcounterCPUvsCUDAaftermap_location restore; torch.equal requires same device. CompareonCPU preserving exact values, no toleranceloosen.",
+    "partial_optimizer_updates": 6,
+    "artifacts": [
+      "spatial_bias_GPU_diagnostic_v1/k1_biastrainable_resumed4.pt",
+      "spatial_bias_GPU_diagnostic_v1/k1_biastrainable_step2.pt",
+      "spatial_bias_GPU_diagnostic_v1/k1_biastrainable_full4.pt"
+    ],
+    "log_sha256": "f7f81ebf687781cfc7bc9fd050814c83983226b149fe5807634392c84df34a60",
+    "not_a_new_formal_experiment": true
+  },
+  "diagnostic": {
+    "k1_biastrainable": {
+      "softmax_common_bias_plus1_forward_max_mm": 3.0517578125e-05,
+      "prediction_resume_max_mm": 3.0517578125e-05,
+      "prediction_repeat_max_mm": 1.52587890625e-05,
+      "resume_pass": false,
+      "repeat_pass": false,
+      "resume_failures": [
+        {
+          "path": "model.score.4.bias",
+          "max_abs": 7.656421075807884e-06,
+          "exact": false,
+          "atol": 1e-06,
+          "rtol": 1e-05
+        }
+      ],
+      "repeat_failures": [
+        {
+          "path": "model.score.4.bias",
+          "max_abs": 4.29756983066909e-06,
+          "exact": false,
+          "atol": 1e-06,
+          "rtol": 1e-05
+        }
+      ]
+    },
+    "k1_biasfrozen": {
+      "softmax_common_bias_plus1_forward_max_mm": 3.0517578125e-05,
+      "prediction_resume_max_mm": 3.0517578125e-05,
+      "prediction_repeat_max_mm": 1.52587890625e-05,
+      "resume_pass": true,
+      "repeat_pass": true,
+      "resume_failures": [],
+      "repeat_failures": []
+    },
+    "k3_biastrainable": {
+      "softmax_common_bias_plus1_forward_max_mm": 3.0517578125e-05,
+      "prediction_resume_max_mm": 3.0517578125e-05,
+      "prediction_repeat_max_mm": 4.57763671875e-05,
+      "resume_pass": false,
+      "repeat_pass": false,
+      "resume_failures": [
+        {
+          "path": "model.score.4.bias",
+          "max_abs": 3.757433660211973e-06,
+          "exact": false,
+          "atol": 1e-06,
+          "rtol": 1e-05
+        }
+      ],
+      "repeat_failures": [
+        {
+          "path": "model.score.4.bias",
+          "max_abs": 4.710960638476536e-06,
+          "exact": false,
+          "atol": 1e-06,
+          "rtol": 1e-05
+        }
+      ]
+    },
+    "k3_biasfrozen": {
+      "softmax_common_bias_plus1_forward_max_mm": 3.0517578125e-05,
+      "prediction_resume_max_mm": 3.0517578125e-05,
+      "prediction_repeat_max_mm": 1.52587890625e-05,
+      "resume_pass": true,
+      "repeat_pass": true,
+      "resume_failures": [],
+      "repeat_failures": []
+    }
+  },
+  "interpretation": "Sharedscalaris mathematicallysoftmax-null. IntheseboundedrunsallstrictfailureswereonlythatbiasforresumeANDrepeat; freezingitbothbranchesremovedfailures. Notproofspecificallyaresumebug, notclaimallnondeterminismremoved.",
+  "fresh_v2_GPU_passed": true,
+  "v2_GPU_differences": {
+    "1": {
+      "model": 1.4901161193847656e-08,
+      "ema": 9.313225746154785e-10,
+      "optimizer": 2.2351741790771484e-08
+    },
+    "3": {
+      "model": 1.4901161193847656e-08,
+      "ema": 1.862645149230957e-09,
+      "optimizer": 2.9802322387695312e-08
+    }
+  },
+  "tolerances_unchanged": true,
+  "actual_CLI_engine_gate_still_required": true
+}

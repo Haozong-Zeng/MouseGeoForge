@@ -1,0 +1,120 @@
+{
+  "utc": "2026-10-25T22:25:36.320034+00:00",
+  "registration_sha256": "2f4968dbee804eb0f5f9ef69cc839701f47ce4c0b38186112f5a6fe4de8c3eb9",
+  "arms": {
+    "17/1": {
+      "status": "complete_depth_and_chain",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.594327023183858,
+        "chain_overlap_mean_view_rmse_mm": 4.338368077520971,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.5330961205479116,
+          "2": 0.8156502766253204,
+          "5": 0.9588892496454133
+        },
+        "precision": {
+          "1": 0.5062016028904457,
+          "2": 0.79303664574873,
+          "5": 0.9480639763096474
+        },
+        "recall": {
+          "1": 0.5687172153965014,
+          "2": 0.8495787490354072,
+          "5": 0.9808828754637441
+        },
+        "surface": null,
+        "crossview": null
+      },
+      "checkpoint_sha256": "8643e3250c8bc90a1f0223c7ffd0cc255cd73c53077b1c1d95af3fbfcbaff61d",
+      "oracle_sha256": "eaac9b128407a2d4aae343fe86412d63b99cfa70608d45d9dc08612586205249",
+      "chain_sha256": "6fcb42f5a75d8108b2c25179b04415f638d811ac837cb47865896bee72eee07a",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "1b1017460f922bc147c481cebebcf748e7115ffe486639e7e9b48692dacb330b",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
+    },
+    "17/3": {
+      "status": "complete_depth_and_chain",
+      "summary": {
+        "oracle_mean_view_rmse_mm": 4.414806956494296,
+        "chain_overlap_mean_view_rmse_mm": 4.215091124452926,
+        "chain_overlap_nonempty_views": 432,
+        "gt_depth_coverage": 0.9142678574221713,
+        "fscore": {
+          "1": 0.540047465397974,
+          "2": 0.8189620743319108,
+          "5": 0.959838438619996
+        },
+        "precision": {
+          "1": 0.5150649212230799,
+          "2": 0.7991597418798599,
+          "5": 0.9502410954480133
+        },
+        "recall": {
+          "1": 0.5729547095755323,
+          "2": 0.849396671817907,
+          "5": 0.9810343781637777
+        },
+        "surface": null,
+        "crossview": null
+      },
+      "checkpoint_sha256": "1546e8d9f45f7d4accb3f019d4bdb1daffe613d91c7a2e331a942d1c4cf96810",
+      "oracle_sha256": "d1a462fc7b26fb99bfa821933d25daa0c30c087bf9a95ab4de30f37f655d5405",
+      "chain_sha256": "08a276552d4784cc015204f5fe6e12ea8483194f0710090afbc5d90032a31f4c",
+      "actual_LR_and_scene_reference_sequence_verified": true,
+      "scene_reference_exposure_sha256": "1b1017460f922bc147c481cebebcf748e7115ffe486639e7e9b48692dacb330b",
+      "ray_sequence_note": "Per-rayxy notlogged; ray samplerstatelesssource/seed/cachefixed, scene/reference sequence independentlyreplayed"
+    },
+    "29/1": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s29_k1_6000_v2/completion.json",
+        "spatial_depth_s29_k1_6000_v2/step_006000.pt",
+        "spatial_depth_s29_k1_6000_v2_dev/evaluation.json",
+        "spatial_pipeline_s29_k1_v2/evaluation.json"
+      ]
+    },
+    "29/3": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s29_k3_6000_v2/completion.json",
+        "spatial_depth_s29_k3_6000_v2/step_006000.pt",
+        "spatial_depth_s29_k3_6000_v2_dev/evaluation.json",
+        "spatial_pipeline_s29_k3_v2/evaluation.json"
+      ]
+    },
+    "43/1": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s43_k1_6000_v2/completion.json",
+        "spatial_depth_s43_k1_6000_v2/step_006000.pt",
+        "spatial_depth_s43_k1_6000_v2_dev/evaluation.json",
+        "spatial_pipeline_s43_k1_v2/evaluation.json"
+      ]
+    },
+    "43/3": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s43_k3_6000_v2/completion.json",
+        "spatial_depth_s43_k3_6000_v2/step_006000.pt",
+        "spatial_depth_s43_k3_6000_v2_dev/evaluation.json",
+        "spatial_pipeline_s43_k3_v2/evaluation.json"
+      ]
+    }
+  },
+  "all_three_pairs_comparable": false,
+  "equal_seed_mean": null,
+  "limits": [
+    "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
+    "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
+    "Onlysixcorrelatedsyntheticposes/reusedDEV; noindependent real-mm/unseenrealpose/instancecount claim",
+    "WorldnormalizedTRAINAABBprior remains; PanoMousegauge incompatibility unresolved; noGTscale/gaugefit ornewsourceadmission",
+    "OriginalMmask/ROIfeaturecache intentionallyfixed; thisdoesnot evaluatecurrentnewROIsemanticmasks",
+    "Rawframe/GT/pose/cameras unchanged; full144scene/432view failuredenominators, noconfidencefilter",
+    "Scene/referenceexposuresandallLRrecordswillbeindependentlyverified. Per-rayxy notlogged; statelesssource/seed/cachefixed.",
+    "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels",
+    "V2fixfreezesoneunidentifiablecommonbias scalar inBOTHarms; v1hadNOformal6000results. Independentfull4repeatalsofailedonlythatbias; doNOTclaim specificallyaresumebug orallGPUkernelnondeterminismrootcause. AdamcountercomparisonmovedtoCPUvalueforcrossdeviceequality; countersremainexact."
+  ],
+  "comparable_complete_seeds": []
+}

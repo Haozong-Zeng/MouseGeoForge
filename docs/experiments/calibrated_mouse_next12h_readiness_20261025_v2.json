@@ -1,30 +1,568 @@
 {
-  "utc": "2026-10-25T21:32:08.266208+00:00",
+  "utc": "2026-10-25T22:25:55.432415+00:00",
   "design_sha256": "35f94d295cfc60b262bb9ce9e170c83fd461ddb5dd8ce3857a3f6c0118d322fa",
   "historical_gate_failures_unchanged": true,
   "optimization_updates": 0,
   "no_DEV_reads": true,
   "arms": {
     "full": {
-      "status": "missing_future_window",
-      "missing": [
-        "semseg_roi_pair_v2/full_004500/train_monitor_004500.json",
-        "semseg_roi_pair_v2/full_005000/train_monitor_005000.json",
-        "semseg_roi_pair_v2/full_005500/train_monitor_005500.json",
-        "semseg_roi_pair_v2/full_006000/train_monitor_006000.json"
-      ]
+      "status": "TRAIN_window_passed",
+      "assessment": {
+        "passed": true,
+        "failed": [],
+        "groups": {
+          "all": {
+            "iou": {
+              "values": [
+                0.9125160460326904,
+                0.9124671807308399,
+                0.9124772891142612,
+                0.9125328163637885
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 1.3439357259725782e-05,
+              "final_minus_first": 1.677033109803716e-05,
+              "minimum_consecutive_delta": -4.88653018505536e-05,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9539362571105272,
+                0.9539105958355689,
+                0.953916548903949,
+                0.9539470684817792
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 8.382219816027714e-06,
+              "final_minus_first": 1.0811371252028579e-05,
+              "minimum_consecutive_delta": -2.5661274958288516e-05,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.5757450293744211,
+                0.5753619322795137,
+                0.5753302871010839,
+                0.5755934453261324
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": -9.161461335915888e-05,
+              "final_minus_first": -0.00015158404828863326,
+              "minimum_consecutive_delta": -0.00038309709490735866,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.047253642894247605,
+                0.04670884355709859,
+                0.046376508172215836,
+                0.04612943322354113
+              ],
+              "early_mean": 0.0469812432256731,
+              "cap": 0.0939624864513462,
+              "passed": true
+            }
+          },
+          "real/True": {
+            "iou": {
+              "values": [
+                0.938580869056728,
+                0.9385962167888522,
+                0.9386126363016711,
+                0.9386336159028607
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 3.458317947591105e-05,
+              "final_minus_first": 5.2746846132656344e-05,
+              "minimum_consecutive_delta": 1.534773212419349e-05,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9682772376476372,
+                0.968285772651966,
+                0.9682946416017063,
+                0.9683057439153024
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 1.8687608702827596e-05,
+              "final_minus_first": 2.850626766526254e-05,
+              "minimum_consecutive_delta": 8.535004328846796e-06,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.3387397655670935,
+                0.3390155711471395,
+                0.3392524943356846,
+                0.3394932986170098
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 0.0004952281192306396,
+              "final_minus_first": 0.0007535330499162662,
+              "minimum_consecutive_delta": 0.00023692318854512395,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.016657674106681952,
+                0.01582908315685927,
+                0.015235207207297208,
+                0.01476263978111092
+              ],
+              "early_mean": 0.01624337863177061,
+              "cap": 0.036243378631770615,
+              "passed": true
+            }
+          },
+          "real/False": {
+            "iou": {
+              "values": [
+                0.9282328551631097,
+                0.9280196967175417,
+                0.9279092008503991,
+                0.928020098625143
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": -0.00016162620255466553,
+              "final_minus_first": -0.00021275653796670735,
+              "minimum_consecutive_delta": -0.000213158445568018,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9627408995508759,
+                0.9626263928718384,
+                0.9625668551920439,
+                0.9626266827240696
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": -8.687725330036589e-05,
+              "final_minus_first": -0.00011421682680634593,
+              "minimum_consecutive_delta": -0.00011450667903756262,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.27262359051088697,
+                0.2712550331847863,
+                0.2706104017553161,
+                0.2708654966465094
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": -0.0012013626469238314,
+              "final_minus_first": -0.0017580938643775856,
+              "minimum_consecutive_delta": -0.0013685573261006945,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.08142734545981511,
+                0.08069107600022107,
+                0.08041894837515429,
+                0.08013433468295261
+              ],
+              "early_mean": 0.0810592107300181,
+              "cap": 0.1621184214600362,
+              "passed": true
+            }
+          },
+          "synthetic/True": {
+            "iou": {
+              "values": [
+                0.904935011861968,
+                0.904806126784533,
+                0.9049526906485463,
+                0.9049777737728326
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 9.466288743897877e-05,
+              "final_minus_first": 4.276191086460823e-05,
+              "minimum_consecutive_delta": -0.00012888507743502586,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9498128064076106,
+                0.9497414661254817,
+                0.9498227856054808,
+                0.9498357175629459
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 5.211531766724509e-05,
+              "final_minus_first": 2.2911155335370026e-05,
+              "minimum_consecutive_delta": -7.134028212885113e-05,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.854337097952825,
+                0.8537823379961798,
+                0.8542929668110191,
+                0.8544479335364341
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 0.00031073219922417294,
+              "final_minus_first": 0.00011083558360913681,
+              "minimum_consecutive_delta": -0.0005547599566452233,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.03459728762391023,
+                0.03431492602976505,
+                0.03411925296677509,
+                0.0339061998820398
+              ],
+              "early_mean": 0.03445610682683764,
+              "cap": 0.06891221365367528,
+              "passed": true
+            }
+          },
+          "synthetic/False": {
+            "iou": {
+              "values": [
+                0.8783154480489563,
+                0.8784466826324324,
+                0.8784346286564284,
+                0.8784997771543175
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 8.613756467856781e-05,
+              "final_minus_first": 0.00018432910536114733,
+              "minimum_consecutive_delta": -1.2053976004011702e-05,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9349140848359851,
+                0.9349887516929899,
+                0.9349819132165647,
+                0.935020129724799
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 4.960320619429304e-05,
+              "final_minus_first": 0.00010604488881382768,
+              "minimum_consecutive_delta": -6.838476425241602e-06,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.8372796634668789,
+                0.8373947867899494,
+                0.8371652855023157,
+                0.8375670525045763
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 2.894387503182827e-05,
+              "final_minus_first": 0.0002873890376974275,
+              "minimum_consecutive_delta": -0.00022950128763365996,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.05633226438658312,
+                0.05600028904154897,
+                0.055732624139636755,
+                0.05571455854806118
+              ],
+              "early_mean": 0.056166276714066043,
+              "cap": 0.11233255342813209,
+              "passed": true
+            }
+          }
+        }
+      },
+      "checkpoint_sha256": "c560c3e6a16c4e95ea3237823449495cd5aa62c2ed4523593c959362552e9597",
+      "monitor_sha256": {
+        "semseg_roi_pair_v2/full_004500/train_monitor_004500.json": "4dbca424cd8a94544a428c824b13d42d2f8629da6407db105bc18e8efc792ede",
+        "semseg_roi_pair_v2/full_005000/train_monitor_005000.json": "94bec051c920a4031fe051d97231ce9962a6cd89b4d116efcb1bc5b0798f1ab9",
+        "semseg_roi_pair_v2/full_005500/train_monitor_005500.json": "736b5d65d8ec0884dc1735d99bb4638ea5c33efc2b269dadfe0a82fb54e40496",
+        "semseg_roi_pair_v2/full_006000/train_monitor_006000.json": "11eb63461c8d0258de08ad52cdace8dca6027e6fc894d69f36ac6e139ed8dcf5"
+      },
+      "actual6000LRs_and_TRAIN_exposure_verified": true,
+      "finite_checkpoint_frozen_encoder": true
     },
     "roi": {
-      "status": "missing_future_window",
-      "missing": [
-        "semseg_roi_pair_v2/roi_004500/train_monitor_004500.json",
-        "semseg_roi_pair_v2/roi_005000/train_monitor_005000.json",
-        "semseg_roi_pair_v2/roi_005500/train_monitor_005500.json",
-        "semseg_roi_pair_v2/roi_006000/train_monitor_006000.json"
-      ]
+      "status": "TRAIN_window_passed",
+      "assessment": {
+        "passed": true,
+        "failed": [],
+        "groups": {
+          "all": {
+            "iou": {
+              "values": [
+                0.9278741834444153,
+                0.9277936860785161,
+                0.9276781232936646,
+                0.928094136334198
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 5.219505246567557e-05,
+              "final_minus_first": 0.0002199528897827152,
+              "minimum_consecutive_delta": -0.00011556278485147509,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9624724343014937,
+                0.9624260671307547,
+                0.962363861720978,
+                0.9625886664931678
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 2.7013390948682492e-05,
+              "final_minus_first": 0.00011623219167411492,
+              "minimum_consecutive_delta": -6.220540977674993e-05,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.6265664676507553,
+                0.6267591502951311,
+                0.6260995410855532,
+                0.6276645121454709
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 0.00021921764256893628,
+              "final_minus_first": 0.001098044494715622,
+              "minimum_consecutive_delta": -0.0006596092095778605,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.13860164042489487,
+                0.1370921977177204,
+                0.13623809655109653,
+                0.1358009874165873
+              ],
+              "early_mean": 0.13784691907130764,
+              "cap": 0.2756938381426153,
+              "passed": true
+            }
+          },
+          "real/True": {
+            "iou": {
+              "values": [
+                0.940199650830236,
+                0.940514589548626,
+                0.9404946630472631,
+                0.940630878688403
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 0.00020565067840205842,
+              "final_minus_first": 0.0004312278581669604,
+              "minimum_consecutive_delta": -1.9926501362843574e-05,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9691262854547403,
+                0.9692935622631773,
+                0.9692826835178048,
+                0.9693550352582245
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 0.00010893552905577586,
+              "final_minus_first": 0.00022874980348419616,
+              "minimum_consecutive_delta": -1.0878745372533416e-05,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.3452099606510164,
+                0.3477325423931804,
+                0.34751793081379917,
+                0.3484768353202538
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 0.0015261315449280888,
+              "final_minus_first": 0.0032668746692374184,
+              "minimum_consecutive_delta": -0.00021461157938124087,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.05529483772988897,
+                0.05354581160645466,
+                0.05229741890798323,
+                0.051469926635036245
+              ],
+              "early_mean": 0.054420324668171816,
+              "cap": 0.10884064933634363,
+              "passed": true
+            }
+          },
+          "real/False": {
+            "iou": {
+              "values": [
+                0.9310796823888613,
+                0.9314446550122767,
+                0.9313067564014279,
+                0.9314243439940616
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 0.000103381497175703,
+              "final_minus_first": 0.00034466160520030265,
+              "minimum_consecutive_delta": -0.00013789861084878563,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.96424888170984,
+                0.9644461079721094,
+                0.9643713197702776,
+                0.9644341590913736
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 5.5244589850955705e-05,
+              "final_minus_first": 0.00018527738153362172,
+              "minimum_consecutive_delta": -7.478820183182133e-05,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.3114861034425088,
+                0.31188139071226817,
+                0.31091296124075174,
+                0.31192157757170336
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": -0.00026647767116094734,
+              "final_minus_first": 0.0004354741291945352,
+              "minimum_consecutive_delta": -0.0009684294715164299,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.18226189457345754,
+                0.1801325062988326,
+                0.1793941871728748,
+                0.17903703975025564
+              ],
+              "early_mean": 0.18119720043614507,
+              "cap": 0.36239440087229013,
+              "passed": true
+            }
+          },
+          "synthetic/True": {
+            "iou": {
+              "values": [
+                0.919114015535482,
+                0.9184789438830823,
+                0.9185201333300881,
+                0.9194423307805752
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 0.0001847523460495326,
+              "final_minus_first": 0.00032831524509324694,
+              "minimum_consecutive_delta": -0.0006350716523997324,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9577202107218326,
+                0.9573719941542027,
+                0.9573982183975276,
+                0.9579003238278473
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": 0.00010316867466975133,
+              "final_minus_first": 0.0001801131060147343,
+              "minimum_consecutive_delta": -0.0003482165676298443,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.9007398330908531,
+                0.8989749786561363,
+                0.8986552382088804,
+                0.9018939815725298
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": 0.0004172040172103486,
+              "final_minus_first": 0.001154148481676609,
+              "minimum_consecutive_delta": -0.001764854434716856,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.12703906605020165,
+                0.12637353310128674,
+                0.12615377799374983,
+                0.12568829831434414
+              ],
+              "early_mean": 0.1267062995757442,
+              "cap": 0.2534125991514884,
+              "passed": true
+            }
+          },
+          "synthetic/False": {
+            "iou": {
+              "values": [
+                0.9211033850230819,
+                0.9207365558700797,
+                0.9203909403958794,
+                0.9208789918737523
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": -0.0002850043117649248,
+              "final_minus_first": -0.00022439314932953813,
+              "minimum_consecutive_delta": -0.00036682915300212393,
+              "passed": true
+            },
+            "dice": {
+              "values": [
+                0.9587943593195619,
+                0.9585926041335294,
+                0.9584032251983021,
+                0.9586651477952258
+              ],
+              "tolerance": 0.001,
+              "late_minus_early": -0.0001592952297816419,
+              "final_minus_first": -0.0001292115243360925,
+              "minimum_consecutive_delta": -0.00020175518603249287,
+              "passed": true
+            },
+            "boundary_f1": {
+              "values": [
+                0.9488299734186425,
+                0.948447689418939,
+                0.947312034078782,
+                0.9483656541173968
+              ],
+              "tolerance": 0.002,
+              "late_minus_early": -0.0007999873207014119,
+              "final_minus_first": -0.0004643193012456859,
+              "minimum_consecutive_delta": -0.0011356553401570268,
+              "passed": true
+            },
+            "loss_blowup": {
+              "values": [
+                0.1898107633460313,
+                0.18831693986430764,
+                0.18710700212977827,
+                0.1870086849667132
+              ],
+              "early_mean": 0.18906385160516948,
+              "cap": 0.37812770321033895,
+              "passed": true
+            }
+          }
+        }
+      },
+      "checkpoint_sha256": "13e14e818ce1ee3b219a5c84866556cf4c9bd7e772773cd764659cc69779ce09",
+      "monitor_sha256": {
+        "semseg_roi_pair_v2/roi_004500/train_monitor_004500.json": "27fc29ca208cb9a488e432567e748673bd0de698c6ab1e732ad08af6eb6c5b5c",
+        "semseg_roi_pair_v2/roi_005000/train_monitor_005000.json": "b164f621a68f8aa6a7b922dbc3b1641dce287829e6f8cf981419d2c82afb2b5b",
+        "semseg_roi_pair_v2/roi_005500/train_monitor_005500.json": "9ede1d0c59d53204468b31aee855ec9428332b51590b940a31f34afb234f96da",
+        "semseg_roi_pair_v2/roi_006000/train_monitor_006000.json": "c74d1a1d000e39422af2e4d697082ae761ebec02834ae3f0847212a0fce0c664"
+      },
+      "actual6000LRs_and_TRAIN_exposure_verified": true,
+      "finite_checkpoint_frozen_encoder": true
     }
   },
-  "FULL_ready_for_trial_design": false,
+  "FULL_ready_for_trial_design": true,
   "adaptation_job_registered": false,
   "scope": "Boundedheadwarm-start/nonregression screen forplanningmatchedfrozen/adaptedtrial, not scientific convergence/quality/generalization acceptance",
   "limits": [
@@ -35,8 +573,16 @@
     "Dropcriteria permitimprovement/decliningloss, whilelarge nativequalityregression orlossblowup stillblocks"
   ],
   "FULL_numerical_repeat": {
-    "status": "missing_or_failed",
-    "not_inferred_from_engineering_training_smoke": true
+    "status": "passed",
+    "receipt_sha256": "5bbb622a28909567ed4d45a9fe4efedb538ad9683698490ab1d240a226b2cccc",
+    "comparison": {
+      "native_max_abs_difference": {
+        "iou": 0.0,
+        "dice": 0.0,
+        "boundary_f1": 0.0
+      },
+      "loss_max_abs_difference": 0.0
+    }
   },
-  "next": "Noadaptationfromthisparent withoutregisteredrequirements; no earlier/ROI/DEV-selectedfallback"
+  "next": "Separatefinitepairedadaptationprotocol/GPUgradientrestorechecks stillmandatory; noautomaticlaunch"
 }

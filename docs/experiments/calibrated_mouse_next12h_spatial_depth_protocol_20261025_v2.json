@@ -1,0 +1,72 @@
+{
+  "registered_utc": "2026-10-25T22:19:13.779128+00:00",
+  "source_sha256": {
+    "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025_v2.py": "f9d9dda10f5ad550f3f5ee6133c198ca6c2f654d5488660c9e9326b0c5de2e6b",
+    "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+    "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+    "tools/train_calibrated_mouse_depth_spatial_20261025_v2.py": "aae91a0722538d0c603b60ef3758ff5c4a415cb6377fd7da6af3b75b4b0897ee",
+    "tools/check_calibrated_mouse_depth_spatial_20261025_v2.py": "3aab4a4aca45ac21fba79b57a5d2fc4afc9a18b3e8b24ab60012c314f1296d2a",
+    "tools/evaluate_calibrated_mouse_spatial_pipeline_20261025_v2.py": "56dde85a4006e96c7453782b5c58068d10282e6fa628798595e9c1ebf99d229a",
+    "tools/verify_calibrated_mouse_spatial_preflight_20261025_v2.py": "6c37246b855c69113901d03ea50a0b7a3d9cd0ff30b1fdb1a6fefdcad722b3c8",
+    "tools/report_calibrated_mouse_spatial_depth_20261025_v2.py": "92e97a598abe2b22821e9e32b1efef3a3b1dd4d4a64fc32e53effc4ea1137e73",
+    "tests/test_calibrated_mouse_depth_spatial_20261025_v2.py": "82343324460380d3f8fe8fa4d4519b1ad52d23337d3c31c954ab738d7d9b5454",
+    "tests/test_spatial_pipeline_metrics_20261025.py": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+    "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+    "tools/audit_calibrated_mouse_surface_20261025.py": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+    "tools/audit_calibrated_mouse_crossview_20261025.py": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f"
+  },
+  "CPU_preflight_sha256": "8d93ee4d358b788f39bbca3f1c727a2a52f7d86b4c0247f2c86822b5e998744c",
+  "roi_cache_receipt_sha256": "f49595c083c789f2fb6b722ef9c44c75c2fdb53c9a5f7edd17b908c008eeab1a",
+  "original_data_manifest_sha256": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+  "fixed_mask_evaluation": "output/calibrated_mouse_resume8h_20261025/M_dev_v1",
+  "fixed_mask_evaluation_sha256": "357e20b1b157b7f39a30127d323dafedb893433265abb318c4450d633143aac6",
+  "architecture": {
+    "base": "Same originalROI rayMLP/project/temperature construction perseed;freshfromscratch, not priortraineddepthweights",
+    "arms": {
+      "k1": "biasfree1x1 32->288->32 GELU residual",
+      "k3": "biasfree3x3 32->32->32 GELU residual"
+    },
+    "neck_parameters_each": 18432,
+    "initial": "Final residual convzero; exactoriginalbaseinitialencode/depth",
+    "common_initial_base_verified": "CPU actualreleasedcache andfixture; GPU operator plusperseedCPUfactoryhash beforeformal"
+  },
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps_per_arm": 6000,
+  "rays_per_update": 256,
+  "planes": 96,
+  "feature_mode": "roi",
+  "feature_cache": "Fixed originalM predictedROIblock23 cache,720scenes including576TRAIN/144DEV; no recrop/reencode",
+  "gradient_weight": 0.0,
+  "loss": "Mean abslog cameraZ on256TRAINbodyrays; auxiliary neighboringpair sampling identicalexisting depthsource butgradientweight0",
+  "optimizer": "Fresh AdamW1e-3,wd.01,foreachFalse",
+  "warmup": 100,
+  "cosine_floor": 0.1,
+  "ema_decay": 0.995,
+  "checkpoint_cadence": 250,
+  "evaluation": "Onlyfinal6000EMA: oracle144DEV andsamefixedoriginalM predicted-mask chain144scenes432views. No checkpoint/threshold selection or confidencefilter.",
+  "quality": "ReuseunchangedCPU surfaceGTjump20mm/smooth1mm/falsejump5mm/normals; crossviewall864directedpairs andGTclosure1mm, completeGTdenominators. All3comparable seeds required for aggregate.",
+  "GPU_preflight_required": "Actualreleasedcachedfeatures(notonlineencoder):kernel1and3initialbaseexact/gradients/4vs2+2 strictrestore; CLIactual3-step engine smoke bothkernels plusactualLR/restoregate BEFOREformal. ControllerscriptsselfGPUflock,no externaldoublelock.",
+  "unit_tests_passed": 10,
+  "limitations": [
+    "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
+    "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
+    "Onlysixcorrelatedsyntheticposes/reusedDEV; noindependent real-mm/unseenrealpose/instancecount claim",
+    "WorldnormalizedTRAINAABBprior remains; PanoMousegauge incompatibility unresolved; noGTscale/gaugefit ornewsourceadmission",
+    "OriginalMmask/ROIfeaturecache intentionallyfixed; thisdoesnot evaluatecurrentnewROIsemanticmasks",
+    "Rawframe/GT/pose/cameras unchanged; full144scene/432view failuredenominators, noconfidencefilter",
+    "Scene/referenceexposuresandallLRrecordswillbeindependentlyverified. Per-rayxy notlogged; statelesssource/seed/cachefixed.",
+    "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels",
+    "V2fixfreezesoneunidentifiablecommonbias scalar inBOTHarms; v1hadNOformal6000results. Independentfull4repeatalsofailedonlythatbias; doNOTclaim specificallyaresumebug orallGPUkernelnondeterminismrootcause. AdamcountercomparisonmovedtoCPUvalueforcrossdeviceequality; countersremainexact."
+  ],
+  "actual_GPU_preflight_sha256": "f0ea3941c6358bad1946b2e252e968bb27b4ececb27fa92437e0bc36c3327c08",
+  "score_bias_trainable": false,
+  "score_bias_policy": "Botharmsfreezeseededconstantglobalplane-scorebias, whichcancelsinsoftmax; noGTfit/toleranceloosen; allotherregisteredsettingsmatched",
+  "supersedes_failed_attempt": "spatial_depth_pair_v1 GPUmodel.score.4.bias strictrestorefailed beforeformal; allformal/eval/qualityjobsskippeddependencies; v1source/log preserved",
+  "actual_GPU_preflight_required": "Freshactualreleasedcache CPUandGPUoperatorv2bothPASS; BOTHactualCLI3stepengine smokes+LR/restoregate stillMANDATORYbeforeformal"
+}
