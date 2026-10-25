@@ -1,0 +1,64 @@
+{
+  "utc": "2026-10-25T20:21:26.914675+00:00",
+  "classical": {
+    "rgb": {
+      "scenes": 144,
+      "views": 432,
+      "gt_depth_coverage": 0.9142678574221713,
+      "overlap_nonempty_views": 432,
+      "rmse_mm_on_overlap": 42.4350772970837,
+      "cloud_fscore": {
+        "1": 0.20456250737681997,
+        "2": 0.39427744098833406,
+        "5": 0.6524115434540364
+      }
+    },
+    "hull": {
+      "scenes": 144,
+      "views": 432,
+      "gt_depth_coverage": 0.8800652491527574,
+      "overlap_nonempty_views": 432,
+      "rmse_mm_on_overlap": 6.512838031530805,
+      "cloud_fscore": {
+        "1": 0.4363818172304088,
+        "2": 0.710409466255553,
+        "5": 0.9135794309241463
+      }
+    }
+  },
+  "prior_learned_seed17_fixed_originalM_support": {
+    "full": {
+      "rmse_mm_on_overlap": 6.522092876610933,
+      "gt_depth_coverage": 0.9142678574221713,
+      "cloud_fscore": {
+        "1": 0.4073706439108719,
+        "2": 0.6934370908018759,
+        "5": 0.9362724401212719
+      }
+    },
+    "roi": {
+      "rmse_mm_on_overlap": 4.485798003496947,
+      "gt_depth_coverage": 0.9142678574221713,
+      "cloud_fscore": {
+        "1": 0.5102891886470657,
+        "2": 0.7989881379429398,
+        "5": 0.9573070968264425
+      }
+    }
+  },
+  "all144scene_ids_match": true,
+  "views_per_method": 432,
+  "gt_scale_fit": false,
+  "interpretation": [
+    "Plain5x5RGB96plane photometric matching is weak here:overlapRMSE42.435mm/F1@5.65241. No claim about all strongerclassicalMVS methods.",
+    "Predicted-mask visualhull first occupied plane gives overlapRMSE6.51284mm/F1@5.91358/GTpixelcoverage.88007. Occupancy envelope doesnot recover true concavities.",
+    "Matched previous learnedROIseed17 has loweroverlaperror andhighercloudF1/coverage. LearnedFULLseed17 andhull have similarconditionalRMSE butdifferentcoverage; no scalarerroronly winner.",
+    "Only6correlated syntheticposes and reusedDEV. No independentreal-mm accuracy or statisticalsignificance claim.",
+    "AllGT/missingpoint denominators retained; missingzero metric is sentinel penalty notvalidphysicalerror."
+  ],
+  "source_and_receipt_sha256": {
+    "output/calibrated_mouse_next12h_20261025/classical_baselines_v1/completion.json": "253a9b1dad9175d1a0ce8d53b4e32b6ab12b1dd0c71a436f3b971af823478f8b",
+    "output/calibrated_mouse_resume8h_20261025/roi_pipeline_s17_full_v1/evaluation.json": "aaecc494f183a092071ae1e2980dda0cd00151ce859c95fae93075d782159157",
+    "output/calibrated_mouse_resume8h_20261025/roi_pipeline_s17_roi_v1/evaluation.json": "12424aaa39b793542c68391f57a007df2a34021b90c31ffda6f337ff197db3bb"
+  }
+}

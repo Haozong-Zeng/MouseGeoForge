@@ -1,0 +1,99 @@
+{
+  "registration": {
+    "registered_utc": "2026-10-25T20:17:15.241324+00:00",
+    "purpose": "Finite matchedFULL/predictedROI semantic head trial; historical convergence failures unchanged; no unfreezing",
+    "source_sha256": {
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/cache_mouse_semseg_roi_20261025.py": "a69354c92ef36f0bb84219433220b369467a89d2bf566c7d040e202cf83037b5",
+      "tools/train_mouse_semseg_roi_20261025.py": "714065a7067d5d4bc293584a93665d5d026ed575f85d205f74ee98b69a2e4aff",
+      "tools/check_mouse_semseg_roi_20261025.py": "360d930b7c4c7df47aef2f03f66b735b31f69fcd0891c3760ba2d924f948a0f1",
+      "tools/calibrated_mouse_semseg_roi_pair_20261025.py": "ec6495fda4a1ab262113143819bb14750964088478e0ee20d9ec17b4f22ed692",
+      "tools/report_calibrated_mouse_semseg_roi_20261025.py": "349bca758b6901305a0ac448761d7470583a6cf6de234fa3b6d5e349179aff41",
+      "tests/test_semseg_roi_20261025.py": "7f709521677e9c9e1134312707fd7479a2e92b3e62d9c4dd3427a125d34e5d4d",
+      "mousegeoforge/semseg_pixel_center_20261025.py": "b8f71594e716e5a974593dcb7a709cd5c3ccff614c8e113e0b6dfa96ed8fb378",
+      "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "mousegeoforge/models/mouse_semseg.py": "d64f11d23d25d0f22d7e4ba53d1948a33cfa657cbcf35991116385b91415c14b",
+      "tools/audit_mouse_semseg_native_probability_20261025_v3.py": "dd873b27f45c2fa358053d225b6320eb1c4db959b630d6d7b9909a2304e63e08"
+    },
+    "parent": "output/calibrated_mouse_10h_20261025/semseg_campaign_s17_v1/M_018000/step_018000.pt",
+    "parent_sha256": "30a50a5cfb67b7639b1d2e24988789a11460b8787ed9eea46963b2e9e148b8dc",
+    "encoder": "vggt-omega/vggt_omega_1b_512.pt",
+    "encoder_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "source_items_sha256": "1211e975689aaad13ccbfa2a3d99b9c1af18f721b9b97b2b83dc3bd701468a31",
+    "CPU_preflight_sha256": "576cde752430dd16fb20b2accb5d9ceb5887a8adc8dbe7c98e001445e93685ab",
+    "unit_tests": 6,
+    "arms": [
+      "full",
+      "roi"
+    ],
+    "seed": 17,
+    "steps_per_arm": 6000,
+    "global_batch": 4,
+    "micro_batch": 1,
+    "precision": "fp32",
+    "frozen_encoder": true,
+    "optimizer": "Fresh AdamW per arm; identical originalM18000EMA head initialization; exact segmented resume",
+    "peak_head_lr": 1e-05,
+    "warmup_steps": 600,
+    "cosine_floor": 0.1,
+    "ema_decay": 0.995,
+    "exposure_offset": 18000,
+    "save_cadence": 500,
+    "train_monitor": "First64 deterministic IDs of each fourTRAIN strata (256total), every500; native-original full-frame primary; crop-localref512/loss not comparable across arms; noDEV stop/select",
+    "coarse_crop": {
+      "generator": "Same originalM18000EMA frozen releasedencoder; FP32 nativebilinearprobability>.5; fullnativeimage",
+      "padding_factor": 1.4,
+      "minimum_side": 96,
+      "maximum_side": "max(nativeH,nativeW)",
+      "clamp": "crop clipped to nativeimage, rectangle if imageedge/aspect prevents square",
+      "empty": "fullimage",
+      "GT_in_box_generation": false,
+      "teacher_TRAIN_predictions": "In-sample parent predictions; disclosed, no GT boxes/selection"
+    },
+    "native_inverse": "FP32 bilinear probability of crop mapped into fullnative canvas, zero outsidecrop;>.5foreground/tiebackground; originalnative labels neverresized for primarymetrics",
+    "primary_metrics": "All879 DEV fullnativeIoU/Dice/BF1px, fourstrata, empty/missedcrop included; raw+EMA final endpoints only; noMODELpromotion",
+    "actual_GPU_preflight_required": "ROI4vs2+2 FP32 modelEMA atol1e-6rtol1e-5,optimizeratol1e-5rtol1e-4,countersexact; FULL4 nonzerohead/frozenencoder/actualfeatureidentity and wrongcropresume rejection",
+    "minimum_seconds": 9000,
+    "timeout_seconds": 12000,
+    "limitations": [
+      "Only existing admitted TRAIN/DEV; PanoMouse/DANNCE excluded as supervision in this trial",
+      "Only single exploratory seed initially; reusedDEV, no significance/generalization/selection claim",
+      "Prior label-center FULL pilot is not a matchedbaseline because this pair has its own full10percentwarmup/floor.1; use newFULL",
+      "Semantic union bbox not instance detector; coarse misses remain in fullGTdenominator",
+      "Reference512 monitor is crop-local; use fullnative metrics for comparisons and any later readiness analysis",
+      "No historical headgate pass or automatic encoderunfreeze; prospective adaptation protocol stillrequired"
+    ]
+  },
+  "CPU_preflight": {
+    "passed": true,
+    "utc": "2026-10-25T20:15:07.386008+00:00",
+    "device": "cpu",
+    "engineering_only": true,
+    "actual_weights": false,
+    "source_sha256": {
+      "tools/train_mouse_semseg_roi_20261025.py": "714065a7067d5d4bc293584a93665d5d026ed575f85d205f74ee98b69a2e4aff",
+      "mousegeoforge/semseg_roi_20261025.py": "fb1280162a91fef607469b2d4e47751f28c1eaf2edd0b158dae8fed4f6961716",
+      "tools/check_mouse_semseg_roi_20261025.py": "360d930b7c4c7df47aef2f03f66b735b31f69fcd0891c3760ba2d924f948a0f1"
+    },
+    "resume_4_vs_2_plus_2_max_abs": {
+      "model": 0.0,
+      "ema": 0.0,
+      "optimizer": 0.0,
+      "buffers": 0.0
+    },
+    "CPU_exact": true,
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+    "strict_cross_crop_resume_rejected": true,
+    "head_gradients_nonzero": true,
+    "encoder_frozen": true
+  },
+  "actual_GPU_preflight_status": "PENDING mandatory after coarsecache before6000pair",
+  "preflight_cutoff": {
+    "utc": "2026-10-25T20:20:25.232574+00:00",
+    "job": "semseg_roi_actual_GPU_preflight_v1",
+    "optimization": true,
+    "minimum_seconds": 600,
+    "reason": "Engineering GPU checks include optimizer updates and obey optimization cutoff, even though not scientific training evidence; queued job corrected before start. Source and protocol bytes unchanged."
+  },
+  "classical_findings_sha256": "3a6e48fac611f1eafd597dad1208353fb8d6bf7f49cece50ef73dacbbf5c42cd"
+}
