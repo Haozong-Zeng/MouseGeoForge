@@ -1,0 +1,31 @@
+{
+  "registered_utc": "2026-10-25T14:21:04.108377+00:00",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "steps": 6000,
+  "gradient_weight": 0.2,
+  "loss": "L1 log-depth +.2 L1 adjacent log-depth-gradient on TRAIN same-body pairs with GT jump<=20mm",
+  "control": "Existing ROI D1 seed17/29/43; same init,stateless ray exposure,LR,cache,M18000 masks,knownK/E,AABB",
+  "feature_mode": "roi",
+  "same_fixed_original_M_and_cache": true,
+  "exploratory_DEV_reuse": true,
+  "reason": "Separate followup after native surface audit: ROI improves absolute depth/cloud F1 but increases local gradients/false steps",
+  "surface_audit_registration": "/home/haozong/projects/MouseGeoForge/output/calibrated_mouse_resume8h_20261025/surface_quality_registration_v1.json",
+  "thresholds_unchanged": true,
+  "no_checkpoint_or_threshold_selection": true,
+  "no_model_promotion": true,
+  "source_sha256": {
+    "tools/report_calibrated_mouse_roi_gradient_20261025.py": "39b69e3fb3461a440b34eeb459c29072730074baa764e5ee2e82619cbb65a298",
+    "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+    "tools/evaluate_calibrated_mouse_roi_pipeline_20261025.py": "f3e524a93ee224a774a03077d2cf7ffa86e1fb93dce281c472b0833790f67944",
+    "tools/audit_calibrated_mouse_surface_20261025.py": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+    "tools/report_calibrated_mouse_roi_pair_20261025.py": "4c3eb448c32626cb072ec6113276b684c57974ec0c6ad3381e4a2bc890bde1a9",
+    "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+    "mousegeoforge/models/calibrated_mouse_depth.py": "876b27aa9a927f9c5d52f41c515f5f82e4bdb5d114428dea50dad4ff4a1529a2",
+    "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+    "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda"
+  }
+}

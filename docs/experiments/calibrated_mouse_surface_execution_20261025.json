@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-25T14:24:31.417639+00:00",
+  "completed": true,
+  "device": "CPU",
+  "runtime_timeout_seconds": 600,
+  "manifest_sha256": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+  "registration_sha256": "1543271ce219af4ccc3f2843f4856de3f3f33757623524f97aab47ce0ea4d0bc",
+  "audit_sha256": "a468613df5eedfb8ee7fcf647c5578e19a90615b2a4a0d5698367737a5f64286",
+  "all6pipelines": true,
+  "views_per_pipeline": 432,
+  "GPU_training_untouched": true,
+  "local_metric_support": "GT local-body pairs and triangles only; false-positive surfaces outside GT body are covered by separate full-chain cloud metrics, not these normal angles"
+}
