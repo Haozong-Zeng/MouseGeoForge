@@ -1,0 +1,29 @@
+{
+  "schema": "calibrated-mouse-local-10h-v1",
+  "start_utc": "2026-10-25T09:29:14+00:00",
+  "optimization_cutoff_utc": "2026-10-25T18:59:14+00:00",
+  "hard_finish_utc": "2026-10-25T19:29:14+00:00",
+  "seed": 17,
+  "objective": "synchronized calibrated multiview mouse detection/segmentation and millimeter camera-Z/visible-surface pointcloud",
+  "priority": [
+    "truth and calibration audit",
+    "calibrated frozen-feature depth learnability",
+    "matched segmentation L/M pilot",
+    "depth paired losses and complete-chain evaluation",
+    "matched frozen/progressive encoder only after head convergence"
+  ],
+  "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+  "no_old_queue_restart": true,
+  "no_sealed_model_calls": true,
+  "no_remote_jobs": true,
+  "no_model_promotion": true,
+  "geometry_policy": "camera-Z mm; world-to-camera OpenCV; skin surrogate excludes glass/hair; only same-time fusion",
+  "pose_limit": "V5 six unique motion poses; rig/environment DEV is not unseen-pose or independent real-depth validation",
+  "unfreeze_requires_train_convergence": true,
+  "failed_attempts_preserved": true,
+  "supervisor": "tools/run_calibrated_mouse_10h_20261025.py",
+  "status": "running",
+  "output_dir": "output/calibrated_mouse_10h_20261025",
+  "queue_registration": "output/calibrated_mouse_10h_20261025/queue.json",
+  "heartbeat_automation_id": "10"
+}

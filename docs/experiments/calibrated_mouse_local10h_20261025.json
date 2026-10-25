@@ -1,0 +1,215 @@
+{
+  "time": "2026-10-25T09:45:23.855963+00:00",
+  "plan": {
+    "schema": "calibrated-mouse-local-10h-v1",
+    "start_utc": "2026-10-25T09:29:14+00:00",
+    "optimization_cutoff_utc": "2026-10-25T18:59:14+00:00",
+    "hard_finish_utc": "2026-10-25T19:29:14+00:00",
+    "seed": 17,
+    "objective": "synchronized calibrated multiview mouse detection/segmentation and millimeter camera-Z/visible-surface pointcloud",
+    "priority": [
+      "truth and calibration audit",
+      "calibrated frozen-feature depth learnability",
+      "matched segmentation L/M pilot",
+      "depth paired losses and complete-chain evaluation",
+      "matched frozen/progressive encoder only after head convergence"
+    ],
+    "gpu_lock": "output/teacher_temporal_cycle_20261001/gpu_job.lock",
+    "no_old_queue_restart": true,
+    "no_sealed_model_calls": true,
+    "no_remote_jobs": true,
+    "no_model_promotion": true,
+    "geometry_policy": "camera-Z mm; world-to-camera OpenCV; skin surrogate excludes glass/hair; only same-time fusion",
+    "pose_limit": "V5 six unique motion poses; rig/environment DEV is not unseen-pose or independent real-depth validation",
+    "unfreeze_requires_train_convergence": true,
+    "failed_attempts_preserved": true,
+    "supervisor": "tools/run_calibrated_mouse_10h_20261025.py",
+    "status": "preparing"
+  },
+  "state": {
+    "jobs": {
+      "audit_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:32:17.252179+00:00",
+        "seconds": 31.702592634945177
+      },
+      "cache_depth_v1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:32:59.905429+00:00",
+        "seconds": 44.83727313298732
+      },
+      "depth_smoke_v1": {
+        "status": "failed",
+        "returncode": 1,
+        "reason": null,
+        "time": "2026-10-25T09:34:33.047135+00:00",
+        "seconds": 6.08516925398726
+      },
+      "depth_fit300_v1": {
+        "status": "skipped_dependency",
+        "dependencies": [
+          "depth_smoke_v1"
+        ],
+        "time": "2026-10-25T09:34:33.047758+00:00"
+      },
+      "depth_smoke_v2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:35:08.171571+00:00",
+        "seconds": 6.0864171320572495
+      },
+      "depth_fit300_v2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:35:17.308134+00:00",
+        "seconds": 9.134654134977609
+      },
+      "depth_fit300_eval_v2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:36:16.581055+00:00",
+        "seconds": 6.096316600916907
+      },
+      "depth_D1_6000_s17_v2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:37:39.602111+00:00",
+        "seconds": 86.3105154670775
+      },
+      "depth_D1_6000_s17_v2_dev": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:37:59.656282+00:00",
+        "seconds": 20.052655126084574
+      },
+      "depth_D2_6000_s17_v2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:39:19.949373+00:00",
+        "seconds": 83.62617959396448
+      },
+      "depth_D2_6000_s17_v2_dev": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:39:40.064538+00:00",
+        "seconds": 20.112875913036987
+      },
+      "semseg_smoke_U_part1": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:39:51.124753+00:00",
+        "seconds": 12.154524572077207
+      },
+      "semseg_smoke_U_part2": {
+        "status": "completed",
+        "returncode": 0,
+        "reason": null,
+        "time": "2026-10-25T09:40:04.336447+00:00",
+        "seconds": 13.209812185028568
+      }
+    },
+    "started": "2026-10-25T09:31:46.643700+00:00",
+    "time": "2026-10-25T09:40:04.338619+00:00",
+    "status": "running",
+    "active_job": "semseg_campaign_s17_v1"
+  },
+  "audit": {
+    "passed": true,
+    "scenes": 720,
+    "views": 2160,
+    "splits": {
+      "dev": 144,
+      "train": 576
+    },
+    "own_reprojection_max_px": 0.00024928984328198567,
+    "capture_aabb_mm": [
+      [
+        -110.0,
+        -125.0,
+        289.0
+      ],
+      [
+        110.0,
+        131.0,
+        466.0
+      ]
+    ],
+    "semseg_counts": {
+      "train/real": 889,
+      "dev/real": 447,
+      "dev/synthetic": 432,
+      "train/synthetic": 1728
+    },
+    "semseg_policy": "historically admitted real manual masks plus canonical V5 clean skin; old synthetic masks excluded",
+    "pose_generalization_claim": false,
+    "independent_real_depth_gt": false,
+    "manifest_sha256": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+    "seconds": 28.06566430500243
+  },
+  "depth": {
+    "depth_fit300_eval_v2": {
+      "rmse_mm": 5.395425796508789,
+      "mae_mm": 3.995232744349374,
+      "absrel": 0.0177630623543842,
+      "within_1mm": 0.18191055498174327,
+      "within_2mm": 0.35429129792625075,
+      "within_5mm": 0.7197010518359065,
+      "valid_fraction": 1.0,
+      "pointcloud_fscore": {
+        "1": 0.4323158506904816,
+        "2": 0.7235584024304859,
+        "5": 0.9698148667172916
+      }
+    },
+    "depth_D1_6000_s17_v2_dev": {
+      "rmse_mm": 7.079517095177262,
+      "mae_mm": 5.036739346329813,
+      "absrel": 0.020520637059773975,
+      "within_1mm": 0.23016811912938812,
+      "within_2mm": 0.43032001073742426,
+      "within_5mm": 0.7785667605933871,
+      "valid_fraction": 1.0,
+      "pointcloud_fscore": {
+        "1": 0.41640496360124507,
+        "2": 0.6974144374343324,
+        "5": 0.9486488456511675
+      }
+    },
+    "depth_D2_6000_s17_v2_dev": {
+      "rmse_mm": 7.340647504837425,
+      "mae_mm": 5.257806179148179,
+      "absrel": 0.021264408253719686,
+      "within_1mm": 0.2313784309770094,
+      "within_2mm": 0.4358561060943184,
+      "within_5mm": 0.7829411575195033,
+      "valid_fraction": 1.0,
+      "pointcloud_fscore": {
+        "1": 0.417137396548487,
+        "2": 0.7008638037553789,
+        "5": 0.9486565130573301
+      }
+    }
+  },
+  "segmentation": {},
+  "campaign": null,
+  "full_pipeline": null,
+  "limits": [
+    "V5 six motion poses; rig/environment DEV not unseen-pose proof",
+    "Real mask data not dense real depth truth; no real millimeter-accuracy claim",
+    "Depth-only evaluation uses oracle support; full-pipeline evaluation uses predicted masks",
+    "Hair/glass excluded from synthetic skin truth",
+    "Single-mouse union bbox is not multi-mouse instance detection"
+  ]
+}
