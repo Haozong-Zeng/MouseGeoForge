@@ -1,0 +1,188 @@
+{
+  "registration": {
+    "registered_utc": "2026-10-25T20:47:49.910250+00:00",
+    "source_sha256": {
+      "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "mousegeoforge/models/calibrated_mouse_depth_roi.py": "4a7cc276f3bb0f1c85016471efbbc3583d20e835e81462b895c0b225a3b839b6",
+      "tools/train_calibrated_mouse_depth_spatial_20261025.py": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "tools/check_calibrated_mouse_depth_spatial_20261025.py": "623b54fea0ba56c24df9efb8f6c8227b48f0b055e7504397a4a59a3d3a3e2466",
+      "tools/evaluate_calibrated_mouse_spatial_pipeline_20261025.py": "42296137eb00e7b161bc1035b1da466af3100602f02a7d31bb05e30585dd3305",
+      "tools/verify_calibrated_mouse_spatial_preflight_20261025.py": "b67b10fae78916180b84d902cf9e5bf83ee86059368a0284792f95eb1581838c",
+      "tools/report_calibrated_mouse_spatial_depth_20261025.py": "2594110ea220983377654d18ed6e260ff3dd240eb56c8d3d9981e6fae9ed6627",
+      "tests/test_calibrated_mouse_depth_spatial_20261025.py": "609aa313e639821d36655cde684874f2e18c34a9d16e3f2948a34bc8deb4a7d1",
+      "tests/test_spatial_pipeline_metrics_20261025.py": "bcb2d09aa688b46d6356481ddf6705f5a255ef26a32870ace91d1b3bdc74e44f",
+      "tools/calibrated_mouse_data_20261025.py": "12abdf600d1a9e6bd945951e0311a120f99da37006adb351be27f40a4f066fda",
+      "mousegeoforge/semseg_training.py": "df48234892c0ce429825fdec5cd1a76fc199351a14f88f7b647a84c5d42b6d6d",
+      "tools/train_calibrated_mouse_depth_roi_20261025.py": "cf603029021f17a7b5056f7b838cc7ea7092377e38e8c8f1c5374428d5af3835",
+      "tools/audit_calibrated_mouse_surface_20261025.py": "ebeb90b73c2d04700b19c027d085e77a68179c617467a42b864a0136db5b6722",
+      "tools/audit_calibrated_mouse_crossview_20261025.py": "8315a75a8a00db61a66cca7e35f668106f4d95733181e1d1481728842e01707f"
+    },
+    "CPU_preflight_sha256": "951de55029ff5870b739ed86b93b6c68656e1ee66ffe730de1f7182587a64d8e",
+    "roi_cache_receipt_sha256": "f49595c083c789f2fb6b722ef9c44c75c2fdb53c9a5f7edd17b908c008eeab1a",
+    "original_data_manifest_sha256": "d8fd589ce1168a720f491c0a0b59d225a4f4db39f806c9b6e5d8fc8260265873",
+    "fixed_mask_evaluation": "output/calibrated_mouse_resume8h_20261025/M_dev_v1",
+    "fixed_mask_evaluation_sha256": "357e20b1b157b7f39a30127d323dafedb893433265abb318c4450d633143aac6",
+    "architecture": {
+      "base": "Same originalROI rayMLP/project/temperature construction perseed;freshfromscratch, not priortraineddepthweights",
+      "arms": {
+        "k1": "biasfree1x1 32->288->32 GELU residual",
+        "k3": "biasfree3x3 32->32->32 GELU residual"
+      },
+      "neck_parameters_each": 18432,
+      "initial": "Final residual convzero; exactoriginalbaseinitialencode/depth",
+      "common_initial_base_verified": "CPU actualreleasedcache andfixture; GPU operator plusperseedCPUfactoryhash beforeformal"
+    },
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "steps_per_arm": 6000,
+    "rays_per_update": 256,
+    "planes": 96,
+    "feature_mode": "roi",
+    "feature_cache": "Fixed originalM predictedROIblock23 cache,720scenes including576TRAIN/144DEV; no recrop/reencode",
+    "gradient_weight": 0.0,
+    "loss": "Mean abslog cameraZ on256TRAINbodyrays; auxiliary neighboringpair sampling identicalexisting depthsource butgradientweight0",
+    "optimizer": "Fresh AdamW1e-3,wd.01,foreachFalse",
+    "warmup": 100,
+    "cosine_floor": 0.1,
+    "ema_decay": 0.995,
+    "checkpoint_cadence": 250,
+    "evaluation": "Onlyfinal6000EMA: oracle144DEV andsamefixedoriginalM predicted-mask chain144scenes432views. No checkpoint/threshold selection or confidencefilter.",
+    "quality": "ReuseunchangedCPU surfaceGTjump20mm/smooth1mm/falsejump5mm/normals; crossviewall864directedpairs andGTclosure1mm, completeGTdenominators. All3comparable seeds required for aggregate.",
+    "GPU_preflight_required": "Actualreleasedcachedfeatures(notonlineencoder):kernel1and3initialbaseexact/gradients/4vs2+2 strictrestore; CLIactual3-step engine smoke bothkernels plusactualLR/restoregate BEFOREformal. ControllerscriptsselfGPUflock,no externaldoublelock.",
+    "unit_tests_passed": 9,
+    "limitations": [
+      "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
+      "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
+      "Onlysixcorrelatedsyntheticposes/reusedDEV; noindependent real-mm/unseenrealpose/instancecount claim",
+      "WorldnormalizedTRAINAABBprior remains; PanoMousegauge incompatibility unresolved; noGTscale/gaugefit ornewsourceadmission",
+      "OriginalMmask/ROIfeaturecache intentionallyfixed; thisdoesnot evaluatecurrentnewROIsemanticmasks",
+      "Rawframe/GT/pose/cameras unchanged; full144scene/432view failuredenominators, noconfidencefilter",
+      "Scene/referenceexposuresandallLRrecordswillbeindependentlyverified. Per-rayxy notlogged; statelesssource/seed/cachefixed.",
+      "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels"
+    ]
+  },
+  "registration_sha256": "d8567d31dfe8e7e16362ddfe82edcf9e72d3160171c9109e9f189af2d7f4d868",
+  "CPU_engineering_preflight": {
+    "passed": true,
+    "utc": "2026-10-25T20:39:32.578133+00:00",
+    "engineering_only": true,
+    "device": "cpu",
+    "actual_released_cached_features": true,
+    "online_encoder": false,
+    "TRAIN_scene_index": 72,
+    "actual_cache_file_sha256": "bfa933986e0b01128f564c9686da2fe92aa783cf73d0a7ebc09ddf8335682382",
+    "roi_cache_receipt_sha256": "f49595c083c789f2fb6b722ef9c44c75c2fdb53c9a5f7edd17b908c008eeab1a",
+    "base_initial_weights_identical": true,
+    "feature_values_and_file_unchanged": true,
+    "results": {
+      "1": {
+        "neck_parameters": 18432,
+        "base_initial_forward_exact": true,
+        "gradient_receipts": [
+          {
+            "step": 1,
+            "first_neck_norm": 0.0,
+            "last_neck_norm": 0.19252628087997437,
+            "lr": 1e-05
+          },
+          {
+            "step": 2,
+            "first_neck_norm": 5.533773946808651e-05,
+            "last_neck_norm": 0.19244816899299622,
+            "lr": 1.999999876629948e-05
+          },
+          {
+            "step": 3,
+            "first_neck_norm": 0.00016513215086888522,
+            "last_neck_norm": 0.19222860038280487,
+            "lr": 2.9999992597797377e-05
+          },
+          {
+            "step": 4,
+            "first_neck_norm": 0.0003265522827859968,
+            "last_neck_norm": 0.19172492623329163,
+            "lr": 3.999997779339467e-05
+          },
+          {
+            "step": 3,
+            "first_neck_norm": 0.00016513215086888522,
+            "last_neck_norm": 0.19222860038280487,
+            "lr": 2.9999992597797377e-05
+          },
+          {
+            "step": 4,
+            "first_neck_norm": 0.0003265522827859968,
+            "last_neck_norm": 0.19172492623329163,
+            "lr": 3.999997779339467e-05
+          }
+        ],
+        "uninterrupted4_vs_2plus2_max_abs": {
+          "model": 0.0,
+          "ema": 0.0,
+          "optimizer": 0.0
+        }
+      },
+      "3": {
+        "neck_parameters": 18432,
+        "base_initial_forward_exact": true,
+        "gradient_receipts": [
+          {
+            "step": 1,
+            "first_neck_norm": 0.0,
+            "last_neck_norm": 0.2369074821472168,
+            "lr": 1e-05
+          },
+          {
+            "step": 2,
+            "first_neck_norm": 0.0005142908776178956,
+            "last_neck_norm": 0.2366597205400467,
+            "lr": 1.999999876629948e-05
+          },
+          {
+            "step": 3,
+            "first_neck_norm": 0.0015387601451948285,
+            "last_neck_norm": 0.23664136230945587,
+            "lr": 2.9999992597797377e-05
+          },
+          {
+            "step": 4,
+            "first_neck_norm": 0.003052597166970372,
+            "last_neck_norm": 0.23635096848011017,
+            "lr": 3.999997779339467e-05
+          },
+          {
+            "step": 3,
+            "first_neck_norm": 0.0015387601451948285,
+            "last_neck_norm": 0.23664136230945587,
+            "lr": 2.9999992597797377e-05
+          },
+          {
+            "step": 4,
+            "first_neck_norm": 0.003052597166970372,
+            "last_neck_norm": 0.23635096848011017,
+            "lr": 3.999997779339467e-05
+          }
+        ],
+        "uninterrupted4_vs_2plus2_max_abs": {
+          "model": 0.0,
+          "ema": 0.0,
+          "optimizer": 0.0
+        }
+      }
+    },
+    "CPU_exact": true,
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5;optimizeratol1e-5rtol1e-4;countersexact",
+    "source_sha256": {
+      "mousegeoforge/models/calibrated_mouse_depth_spatial_20261025.py": "4b06a45aca53b7d715e6a61236209c8da13c52f589a6e53cafacabd622d88ff5",
+      "tools/train_calibrated_mouse_depth_spatial_20261025.py": "dc823cb0834de5f6c90457597d14365d317ad47bbcdec4861f76c146580da2c2",
+      "tools/check_calibrated_mouse_depth_spatial_20261025.py": "623b54fea0ba56c24df9efb8f6c8227b48f0b055e7504397a4a59a3d3a3e2466"
+    }
+  },
+  "actual_GPU_preflight_status": "PENDING: queued after semseg_roi_pair_v2, mandatory before formal6000",
+  "scientific_results_available": false,
+  "immutable_optimization_cutoff": "2026-10-26T07:20:28Z",
+  "immutable_hard_finish": "2026-10-26T07:50:28Z"
+}

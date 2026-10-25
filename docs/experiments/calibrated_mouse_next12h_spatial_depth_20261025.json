@@ -1,0 +1,73 @@
+{
+  "utc": "2026-10-25T20:53:59.523359+00:00",
+  "registration_sha256": "d8567d31dfe8e7e16362ddfe82edcf9e72d3160171c9109e9f189af2d7f4d868",
+  "arms": {
+    "17/1": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s17_k1_6000_v1/completion.json",
+        "spatial_depth_s17_k1_6000_v1/step_006000.pt",
+        "spatial_depth_s17_k1_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s17_k1_v1/evaluation.json"
+      ]
+    },
+    "17/3": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s17_k3_6000_v1/completion.json",
+        "spatial_depth_s17_k3_6000_v1/step_006000.pt",
+        "spatial_depth_s17_k3_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s17_k3_v1/evaluation.json"
+      ]
+    },
+    "29/1": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s29_k1_6000_v1/completion.json",
+        "spatial_depth_s29_k1_6000_v1/step_006000.pt",
+        "spatial_depth_s29_k1_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s29_k1_v1/evaluation.json"
+      ]
+    },
+    "29/3": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s29_k3_6000_v1/completion.json",
+        "spatial_depth_s29_k3_6000_v1/step_006000.pt",
+        "spatial_depth_s29_k3_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s29_k3_v1/evaluation.json"
+      ]
+    },
+    "43/1": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s43_k1_6000_v1/completion.json",
+        "spatial_depth_s43_k1_6000_v1/step_006000.pt",
+        "spatial_depth_s43_k1_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s43_k1_v1/evaluation.json"
+      ]
+    },
+    "43/3": {
+      "status": "missing_or_partial",
+      "missing": [
+        "spatial_depth_s43_k3_6000_v1/completion.json",
+        "spatial_depth_s43_k3_6000_v1/step_006000.pt",
+        "spatial_depth_s43_k3_6000_v1_dev/evaluation.json",
+        "spatial_pipeline_s43_k3_v1/evaluation.json"
+      ]
+    }
+  },
+  "all_three_pairs_comparable": false,
+  "equal_seed_mean": null,
+  "limits": [
+    "Feature-side convolution, not costvolume regularization or outputdepth smoothing; cannot claim exactOmega/MVSFormer++ architecture reproduction",
+    "Parametercounts exactlymatched buthiddenwidth288vs32 andactivationmemory differ; receptivefield effect not perfectly isolatedfromrepresentation width",
+    "Onlysixcorrelatedsyntheticposes/reusedDEV; noindependent real-mm/unseenrealpose/instancecount claim",
+    "WorldnormalizedTRAINAABBprior remains; PanoMousegauge incompatibility unresolved; noGTscale/gaugefit ornewsourceadmission",
+    "OriginalMmask/ROIfeaturecache intentionallyfixed; thisdoesnot evaluatecurrentnewROIsemanticmasks",
+    "Rawframe/GT/pose/cameras unchanged; full144scene/432view failuredenominators, noconfidencefilter",
+    "Scene/referenceexposuresandallLRrecordswillbeindependentlyverified. Per-rayxy notlogged; statelesssource/seed/cachefixed.",
+    "Pastnegativeheadgate andfailedROIsemsegv1retained; thisindependentdepthtrialdoesnot unfreezeencoder orpromotemodels"
+  ],
+  "comparable_complete_seeds": []
+}
