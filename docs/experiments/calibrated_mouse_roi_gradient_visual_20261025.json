@@ -1,0 +1,12 @@
+{
+  "reviewed_utc": "2026-10-25T17:04:47.949778+00:00",
+  "image_sha256": "7ddb859a1557e5d7ababb2542a44e3ca99bdb8d8072fa4ce72c1706a04a58d8d",
+  "actually_viewed": true,
+  "findings": [
+    "Climb representative native depth appearances remain broadly similar; fine limbs/mask omissions persist",
+    "MoSeq view0 repeated body depth bands visibly remain in both D1 and gradient.2",
+    "MoSeq sideview target is very small and incomplete in both fixed identical masks",
+    "Differences concentrate locally around bands/contours; representative visual does not establish aggregate smoothness improvement"
+  ],
+  "limits": "Fixed source scenes0/360 views0/2 seed17 only; all3-seed surface and fullchain metrics govern claims; no filtering or parameter selection"
+}

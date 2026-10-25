@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-25T17:07:36.902392+00:00",
+  "comparable": false,
+  "arms": {
+    "legacy": {
+      "status": "evaluation_unavailable"
+    },
+    "center_exact": {
+      "status": "evaluation_unavailable"
+    }
+  },
+  "primary_native": "FP32 bilinear probability>.5; original native labels for both",
+  "selection": "One fixed seed17/fixed6000 pair, reused DEV exploratory only; no selection/promotion",
+  "encoder_unfreeze": false,
+  "existing_ROI_mask_generator_unchanged": true,
+  "campaign": {
+    "status": "not_completed"
+  }
+}

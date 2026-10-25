@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-25T14:51:40.155340+00:00",
+  "utc": "2026-10-25T17:07:43.378555+00:00",
   "source_sha256": "be2a5e4e2e763b2dc6d8869de4fc8d32fb132f3e76f002c135f8b13b189becca",
   "crossview": {
     "roi_pipeline_s17_full_v1": {
@@ -367,6 +367,189 @@
           "fraction_consistent_le5mm_over_GT_covisible": 0.636651358783639
         }
       }
+    },
+    "roi_gradient_pipeline_s17_v1": {
+      "summary": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 394583,
+        "absolute_error_sum_mm": 1325290.634396961,
+        "squared_error_sum_mm2": 12816029.097977811,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 109481,
+        "consistent_le2mm_pixels": 195890,
+        "consistent_le5mm_pixels": 319661,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.773097932569476,
+        "mean_absolute_consistency_mm_on_covered": 3.358711942473348,
+        "rmse_consistency_mm_on_covered": 5.6991167936032365,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.21450375397733507,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.38380303766516716,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.6263048793868242
+      },
+      "by_source": {
+        "climb": {
+          "candidate_GT_reference_pixels": 2051326,
+          "GT_covisible_pixels": 291115,
+          "covered_predictions": 227530,
+          "absolute_error_sum_mm": 830860.2982946935,
+          "squared_error_sum_mm2": 8953728.650418926,
+          "GT_visibility_closure_error_sum_mm": 46982.49355926875,
+          "consistent_le1mm_pixels": 57650,
+          "consistent_le2mm_pixels": 105506,
+          "consistent_le5mm_pixels": 179000,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7815811620837126,
+          "mean_absolute_consistency_mm_on_covered": 3.65165164283696,
+          "rmse_consistency_mm_on_covered": 6.273106069292851,
+          "GT_mean_visibility_closure_error_mm": 0.161388089103168,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.198031705683321,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.3624203493464782,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6148772821737114
+        },
+        "moseq": {
+          "candidate_GT_reference_pixels": 1640208,
+          "GT_covisible_pixels": 219277,
+          "covered_predictions": 167053,
+          "absolute_error_sum_mm": 494430.3361022673,
+          "squared_error_sum_mm2": 3862300.4475588864,
+          "GT_visibility_closure_error_sum_mm": 27844.954426218766,
+          "consistent_le1mm_pixels": 51831,
+          "consistent_le2mm_pixels": 90384,
+          "consistent_le5mm_pixels": 140661,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7618354866219439,
+          "mean_absolute_consistency_mm_on_covered": 2.959721382449087,
+          "rmse_consistency_mm_on_covered": 4.808347953141922,
+          "GT_mean_visibility_closure_error_mm": 0.12698529451889057,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.23637225974452405,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.4121909730614702,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.641476306224547
+        }
+      }
+    },
+    "roi_gradient_pipeline_s29_v1": {
+      "summary": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 391935,
+        "absolute_error_sum_mm": 1339609.3296055219,
+        "squared_error_sum_mm2": 13866026.628169484,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 106677,
+        "consistent_le2mm_pixels": 193173,
+        "consistent_le5mm_pixels": 316682,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.7679097634759166,
+        "mean_absolute_consistency_mm_on_covered": 3.4179374886282723,
+        "rmse_consistency_mm_on_covered": 5.947973034752268,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.2090099374598348,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.3784796783648647,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.6204681891565699
+      },
+      "by_source": {
+        "climb": {
+          "candidate_GT_reference_pixels": 2051326,
+          "GT_covisible_pixels": 291115,
+          "covered_predictions": 227264,
+          "absolute_error_sum_mm": 852848.3036500496,
+          "squared_error_sum_mm2": 10114591.65966611,
+          "GT_visibility_closure_error_sum_mm": 46982.49355926875,
+          "consistent_le1mm_pixels": 56591,
+          "consistent_le2mm_pixels": 104176,
+          "consistent_le5mm_pixels": 178207,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7806674338319908,
+          "mean_absolute_consistency_mm_on_covered": 3.75267663884315,
+          "rmse_consistency_mm_on_covered": 6.6712751651812665,
+          "GT_mean_visibility_closure_error_mm": 0.161388089103168,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.1943939680195112,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.35785170808786904,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6121532727616235
+        },
+        "moseq": {
+          "candidate_GT_reference_pixels": 1640208,
+          "GT_covisible_pixels": 219277,
+          "covered_predictions": 164671,
+          "absolute_error_sum_mm": 486761.02595547226,
+          "squared_error_sum_mm2": 3751434.9685033746,
+          "GT_visibility_closure_error_sum_mm": 27844.954426218766,
+          "consistent_le1mm_pixels": 50086,
+          "consistent_le2mm_pixels": 88997,
+          "consistent_le5mm_pixels": 138475,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7509725142171774,
+          "mean_absolute_consistency_mm_on_covered": 2.9559608307198735,
+          "rmse_consistency_mm_on_covered": 4.772985881550049,
+          "GT_mean_visibility_closure_error_mm": 0.12698529451889057,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22841428877629666,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.4058656402632287,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6315071804156387
+        }
+      }
+    },
+    "roi_gradient_pipeline_s43_v1": {
+      "summary": {
+        "candidate_GT_reference_pixels": 3691534,
+        "GT_covisible_pixels": 510392,
+        "covered_predictions": 392958,
+        "absolute_error_sum_mm": 1340458.8537006392,
+        "squared_error_sum_mm2": 13516673.027031695,
+        "GT_visibility_closure_error_sum_mm": 74827.44798548751,
+        "consistent_le1mm_pixels": 109635,
+        "consistent_le2mm_pixels": 195387,
+        "consistent_le5mm_pixels": 318837,
+        "directed_view_pairs": 864,
+        "prediction_coverage": 0.7699141052367592,
+        "mean_absolute_consistency_mm_on_covered": 3.411201333731949,
+        "rmse_consistency_mm_on_covered": 5.864916545433871,
+        "GT_mean_visibility_closure_error_mm": 0.1466077994668559,
+        "fraction_consistent_le1mm_over_GT_covisible": 0.2148054828445587,
+        "fraction_consistent_le2mm_over_GT_covisible": 0.3828175206507939,
+        "fraction_consistent_le5mm_over_GT_covisible": 0.624690434019342
+      },
+      "by_source": {
+        "climb": {
+          "candidate_GT_reference_pixels": 2051326,
+          "GT_covisible_pixels": 291115,
+          "covered_predictions": 226828,
+          "absolute_error_sum_mm": 840701.8436056374,
+          "squared_error_sum_mm2": 9557558.550346617,
+          "GT_visibility_closure_error_sum_mm": 46982.49355926875,
+          "consistent_le1mm_pixels": 59499,
+          "consistent_le2mm_pixels": 106923,
+          "consistent_le5mm_pixels": 179504,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7791697439156348,
+          "mean_absolute_consistency_mm_on_covered": 3.706340679306071,
+          "rmse_consistency_mm_on_covered": 6.491202413764255,
+          "GT_mean_visibility_closure_error_mm": 0.161388089103168,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.2043831475533724,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.36728784157463545,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6166085567559212
+        },
+        "moseq": {
+          "candidate_GT_reference_pixels": 1640208,
+          "GT_covisible_pixels": 219277,
+          "covered_predictions": 166130,
+          "absolute_error_sum_mm": 499757.01009500184,
+          "squared_error_sum_mm2": 3959114.47668508,
+          "GT_visibility_closure_error_sum_mm": 27844.954426218766,
+          "consistent_le1mm_pixels": 50136,
+          "consistent_le2mm_pixels": 88464,
+          "consistent_le5mm_pixels": 139333,
+          "directed_view_pairs": 432,
+          "prediction_coverage": 0.7576261988261422,
+          "mean_absolute_consistency_mm_on_covered": 3.008228556522012,
+          "rmse_consistency_mm_on_covered": 4.881743955343942,
+          "GT_mean_visibility_closure_error_mm": 0.12698529451889057,
+          "fraction_consistent_le1mm_over_GT_covisible": 0.22864231086707681,
+          "fraction_consistent_le2mm_over_GT_covisible": 0.40343492477551224,
+          "fraction_consistent_le5mm_over_GT_covisible": 0.6354200394934261
+        }
+      }
     }
   },
   "foreground_area_strata": {
@@ -540,7 +723,7 @@
     "error_colors": "fixed0..20mm; magentaGTmiss,whitepredoutsidebody",
     "depth_colors": "shared per-row GT1..99percentile, visualization only, no metric fitting"
   },
-  "gradient_crossview_available": false,
+  "gradient_crossview_available": true,
   "limits": [
     "All descriptive DEV reuse, no model/threshold/checkpoint selection",
     "Cross-view support selected by diagnostic GT visibility; consistency is not correctness",
@@ -568,6 +751,26 @@
       "mean_absolute_consistency_mm_on_covered": -2.2460852852514166,
       "rmse_consistency_mm_on_covered": -9.460973078740167,
       "fraction_consistent_le5mm_over_GT_covisible": 0.08617298076772362
+    }
+  },
+  "gradient_minus_ROI_D1_consistency": {
+    "17": {
+      "prediction_coverage": 0.004208529914262016,
+      "mean_absolute_consistency_mm_on_covered": -0.03195600589292136,
+      "rmse_consistency_mm_on_covered": -0.12026215694784614,
+      "fraction_consistent_le5mm_over_GT_covisible": 0.004306493832191727
+    },
+    "29": {
+      "prediction_coverage": -0.002043527328014494,
+      "mean_absolute_consistency_mm_on_covered": -0.020151596081666945,
+      "rmse_consistency_mm_on_covered": -0.46257597424429076,
+      "fraction_consistent_le5mm_over_GT_covisible": -0.004412294863555877
+    },
+    "43": {
+      "prediction_coverage": 0.0036540541387796166,
+      "mean_absolute_consistency_mm_on_covered": 0.1004663099090215,
+      "rmse_consistency_mm_on_covered": 0.3482003012907384,
+      "fraction_consistent_le5mm_over_GT_covisible": -0.0004800231978557834
     }
   },
   "visual_review": {

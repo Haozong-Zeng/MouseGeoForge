@@ -1,0 +1,96 @@
+{
+  "utc": "2026-10-25T17:06:18.710383+00:00",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "fixed_steps_each": 6000,
+  "exploratory_DEV_reuse": true,
+  "no_model_promotion": true,
+  "means": {
+    "D1": {
+      "mean_view_overlap_rmse_mm": 4.490180771843886,
+      "mean_view_missing_as_zero_rmse_mm": 73.42406493351783,
+      "cloud_F1": {
+        "1": 0.5113796034839804,
+        "2": 0.8004635866845689,
+        "5": 0.95713791801339
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5579466108635969,
+        "normal_angle_mean_deg_on_covered": 38.24635992598302,
+        "false_step_fraction_on_covered_smooth": 0.002751138247770848
+      },
+      "crossview": {
+        "prediction_coverage": 0.7683675815190415,
+        "mean_absolute_consistency_mm_on_covered": 3.379830685633045,
+        "rmse_consistency_mm_on_covered": 5.915548067896925
+      }
+    },
+    "D2": {
+      "mean_view_overlap_rmse_mm": 4.47740109467212,
+      "mean_view_missing_as_zero_rmse_mm": 73.42157774648548,
+      "cloud_F1": {
+        "1": 0.5098766473067503,
+        "2": 0.7989391367960168,
+        "5": 0.9577449553352195
+      },
+      "surface": {
+        "gradient_mae_mm_on_covered_pairs": 0.5531554621635526,
+        "normal_angle_mean_deg_on_covered": 38.11532824743071,
+        "false_step_fraction_on_covered_smooth": 0.002552322949817416
+      },
+      "crossview": {
+        "prediction_coverage": 0.7703072670940506,
+        "mean_absolute_consistency_mm_on_covered": 3.395950254944523,
+        "rmse_consistency_mm_on_covered": 5.837335457929792
+      }
+    }
+  },
+  "per_seed_deltas": {
+    "17": {
+      "oracle_mean_view_rmse_mm": -0.07972907026608755,
+      "chain_f1_5mm": 0.0008163770247763269,
+      "gradient_mae_mm_on_covered_pairs": -0.00692564185942568,
+      "normal_angle_mean_deg_on_covered": -0.5265298974086079,
+      "false_step_fraction_on_covered_smooth": -7.080942417446922e-05
+    },
+    "29": {
+      "oracle_mean_view_rmse_mm": -0.07046001238955402,
+      "chain_f1_5mm": -3.1958412316512863e-07,
+      "gradient_mae_mm_on_covered_pairs": -0.009497172811475552,
+      "normal_angle_mean_deg_on_covered": -0.2738450805217525,
+      "false_step_fraction_on_covered_smooth": -0.0003026691200759871
+    },
+    "43": {
+      "oracle_mean_view_rmse_mm": 0.10750441197995819,
+      "chain_f1_5mm": 0.001005054524835458,
+      "gradient_mae_mm_on_covered_pairs": 0.0020493685707685394,
+      "normal_angle_mean_deg_on_covered": 0.40727994227342634,
+      "false_step_fraction_on_covered_smooth": -0.0002229673496098399
+    }
+  },
+  "interpretation": [
+    "Gradient.2 gives small mean changes: overlap RMSE4.49018\u21924.47740mm,F1@5 .957138\u2192.957745; F1@1 slightly worsens .511380\u2192.509877",
+    "Surface gradient mean improves .557947\u2192.553155mm per adjacentpixel, falsejump fraction .002751\u2192.002552; gradient MAE worsens seed43, normal angle worsens seed43",
+    "No consistent all-seed depth/surface gain: oracle RMSE worsens seed43 and F1@5 is essentially unchanged seed29",
+    "Representative fixed seed17 first-source scenes retain MoSeq stripes and smalltarget/limb/mask limitations",
+    "Crossview consistency is diagnostic, not independent accuracy; missing-as-zero is sentinel penalty; means are equal-weight seed means, not confidence intervals"
+  ],
+  "denominators": {
+    "per_seed_scenes": 144,
+    "per_seed_views": 432,
+    "GT_eligible_pairs": 3545389,
+    "GT_eligible_normals": 1720180,
+    "GT_covisible_rays": 510392,
+    "directed_pairs": 864
+  },
+  "input_sha256": {
+    "roi_gradient_pair_report_v1.json": "2c529fad701d5ada94f75d7735814fbe8179dea3d4bec1ac6559218afced44a8",
+    "roi_gradient_surface_audit_v1.json": "77a945d6f39fc8be71584b159d0147fdbc2029d5d19e2c0b005dc7811fa3199a",
+    "roi_gradient_crossview_audit_v1.json": "7672394f710d08e9665d4b1376457704427f073268388caf968a18945c016028",
+    "crossview_audit_v1.json": "ce96c9f5482013e2ccb93767d87dd5fbeccfd8561298ec1a004071438200b184",
+    "roi_gradient_visual_review_v1/visual_review.json": "28fdb577408209d01328a4d98e02cbaa770024445420b97a0b20529806b8d38f"
+  }
+}

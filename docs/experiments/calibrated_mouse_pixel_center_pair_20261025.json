@@ -1,5 +1,5 @@
 {
-  "utc": "2026-10-25T15:38:40.534408+00:00",
+  "utc": "2026-10-25T17:07:44.909357+00:00",
   "comparable": false,
   "arms": {
     "legacy": {
@@ -14,6 +14,12 @@
   "encoder_unfreeze": false,
   "existing_ROI_mask_generator_unchanged": true,
   "campaign": {
-    "status": "not_completed"
+    "started_utc": "2026-10-25T16:56:42.865936+00:00",
+    "registration_sha256": "8f2c80bd991098f4b76c95f36d66fc700f60e94f506d285bd90b33d65338611b",
+    "full_paired_endpoint": 0,
+    "evaluations": {},
+    "status": "failed",
+    "error": "RuntimeError('actual_GPU_smoke returncode1')",
+    "finished_utc": "2026-10-25T16:57:37.614484+00:00"
   }
 }

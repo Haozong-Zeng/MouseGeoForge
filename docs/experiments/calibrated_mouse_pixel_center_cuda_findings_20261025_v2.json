@@ -1,0 +1,84 @@
+{
+  "utc": "2026-10-25T17:07:35.423060+00:00",
+  "v1_status": "FAILED in actual BF16 engineering smoke before any formal6000pair updates",
+  "v1_formal_paired_endpoint": 0,
+  "diagnostic_comparisons": {
+    "bf16_repeatability": {
+      "passed": false,
+      "max_abs": {
+        "model": 3.13841737806797e-05,
+        "ema": 4.6566128730773926e-07,
+        "buffers": 0.0
+      },
+      "strict_original_tolerances": null,
+      "error": "model.head.level_embedding",
+      "left_sha256": "5aa94229bf44ad70901acdc545319fd2af03b39942f5636618e34c9cfa4f9ab6",
+      "right_sha256": "611e65456f9fbb9722b141ad0a1bc77dab4aea2a95775c37126b2bb5a3a96120",
+      "same_exposure": true
+    },
+    "fp32_resume": {
+      "passed": true,
+      "max_abs": {
+        "model": 9.190989658236504e-08,
+        "ema": 7.450580596923828e-09,
+        "buffers": 0.0
+      },
+      "strict_original_tolerances": {
+        "model": 9.190989658236504e-08,
+        "ema": 7.450580596923828e-09,
+        "optimizer": 3.4924596548080444e-08,
+        "buffers": 0.0
+      },
+      "error": null,
+      "left_sha256": "860e7762c72ac77aa7f9ad209ecdaf26eac7d11090968c7828acf0c56f356459",
+      "right_sha256": "36fa9e3e47b1edf77350bd33487491713f9575994392532ab1b07f220aafa0f4",
+      "same_exposure": true
+    },
+    "fp32_repeatability": {
+      "passed": true,
+      "max_abs": {
+        "model": 7.735798135399818e-08,
+        "ema": 7.450580596923828e-09,
+        "buffers": 0.0
+      },
+      "strict_original_tolerances": {
+        "model": 7.735798135399818e-08,
+        "ema": 7.450580596923828e-09,
+        "optimizer": 2.1420419216156006e-08,
+        "buffers": 0.0
+      },
+      "error": null,
+      "left_sha256": "860e7762c72ac77aa7f9ad209ecdaf26eac7d11090968c7828acf0c56f356459",
+      "right_sha256": "ef8d3878f76e23dda2d34c5e195af0b7d6233a3354a4312d7be3151ab0a243e9",
+      "same_exposure": true
+    }
+  },
+  "invalid_deterministic_algorithm_probe": "Wrapper runpy relative __file__ made existing engine path.relative_to(ROOT) fail before numerical probe. Preserved original receipt/log; no algorithm-rootcause inference.",
+  "v2_protocol": "Separate registered FP32 BOTH arms; unchanged parent/head/labels/data/exposure/schedule/inverse/gate. Same strict original numerical tolerances. v1 not overwritten.",
+  "v2_actual_GPU_smoke": {
+    "passed": true,
+    "utc": "2026-10-25T17:06:46.574366+00:00",
+    "actual_weights": true,
+    "resume_4_vs_2_plus_2_max_abs": {
+      "model": 1.3317912817001343e-07,
+      "ema": 7.450580596923828e-09,
+      "optimizer": 2.6542693376541138e-08,
+      "buffers": 0.0
+    },
+    "GPU_tolerance": "model/EMA atol1e-6 rtol1e-5; optimizer atol1e-5 rtol1e-4; counters exact",
+    "strict_cross_policy_resume_rejected": true,
+    "head_gradients_nonzero": true,
+    "encoder_frozen": true
+  },
+  "inferences": [
+    "Independent BF16 full4 repetition differs beyond same tolerance, so v1 failure cannot be attributed specifically to resume implementation",
+    "FP32 short repeated and4vs2+2 comparisons meet original tolerances; fresh v2 full GPU checker also passed",
+    "Engineering checks do not prove exact long-run repeatability or scientific benefit; no kernel or original-head-instability root cause established"
+  ],
+  "inputs_sha256": {
+    "pixel_center_pair_v1/completion.json": "b718386c4f056b008fb9676e0df021d9c9d3969dabaa23c0c482f7e29f602485",
+    "pixel_center_cuda_diagnostic_v2/receipt.json": "c51bde54a8c78cbe7cfed4743e40b35b5d7ed2f15b72100fbbb87aaa05080c45",
+    "pixel_center_pair_registration_v2.json": "ed354249ded47d483617fb2e3bbeca80e829725a858a45d888e6a77d8db066c5",
+    "pixel_center_pair_v2/actual_GPU_smoke/receipt.json": "555ce05b54883252a8e80aa6acf384f8311a3d39f0b5e61fbecf40ee99c46a29"
+  }
+}
