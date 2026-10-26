@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "status": "registered_test_one_seed",
+  "experiment_id": "head_first_protected_encoder_20261024",
+  "parent": "configs/experiments/head_first_progressive_encoder_20261024.json",
+  "authority": "User asked (2026-10-24) to implement lp_anyup's protected encoder schedule as a new arm, one seed as a test.",
+  "registered_before_training": true,
+  "motivation": "The parent U arm (block 23 peak 1e-6, blocks 20-23 only, 6,000 updates) moved the encoder by at most 0.03% relative and matched F. lp_anyup's protected schedule on the same encoder family (DINOv3 ViT-L/16) produced encoders that beat both the frozen pretrained encoder and stock Lightning Pose's schedule in few-shot transfer.",
+  "source_recipe": {
+    "repository": "/grid/hou/home/tfong/lp_anyup",
+    "code": [
+      "lp_anyup/integration.py:discriminative_backbone_lr",
+      "scripts/lp_train_launch.py:_install_protected_backbone"
+    ],
+    "reference_run": "inseption_model/run_lp_protected_vitl-dinov3_3576643 (head LR 5e-5, encoder cap 1e-5, LLRD 0.65, unfreeze epoch 10 of 60, 6-epoch warm-up from 0.1x, halvings at 36/48/54)",
+    "evidence": "few_shot/home_heldout/summary.md: N=64 no-ear median 7.40 px protected vs 8.18 stock vs 9.92 frozen pretrained; few_shot/panomouse/full/summary.md: face N=100 34.8 px protected vs 66.4 stock"
+  },
+  "dev_reuse_disclosure": "The DEV sets were already scored once for the parent F/U pair. This arm is specified from lp_anyup's recipe and the parent U's measured encoder drift, not from DEV scores; DEV is again scored only at the fixed updates below.",
+  "start": "converged parent H0 EMA head (output/head_first_kp_20261024/H0_seed<N>/endpoint.pt) + released encoder; fresh AdamW and EMA for both branches",
+  "seeds": [
+    17
+  ],
+  "pair": {
+    "branches": [
+      "FP",
+      "UP"
+    ],
+    "FP": "head only, identical to the parent F except the budget",
+    "UP": "head as FP plus the whole image encoder under the protected schedule",
+    "updates_per_branch": 12000,
+    "head_peak_lr": 3e-05,
+    "head_warmup_updates": 200,
+    "cosine_total_updates": 12000,
+    "cosine_floor": 0.1,
+    "weight_decay": 0.01,
+    "zero_decay": [
+      "normalization modules",
+      "bias",
+      "cls/storage tokens"
+    ],
+    "grad_clip": 10,
+    "clipping": "head and encoder parameter sets clipped separately",
+    "ema_decay": 0.995,
+    "dev_eval_updates": [
+      4000,
+      8000,
+      12000
+    ],
+    "primary_endpoint_updates": 12000,
+    "primary_weights": "EMA",
+    "report_raw": true
+  },
+  "protected_encoder": {
+    "module": "aggregator.patch_embed",
+    "depths": "0 = patch_embed.proj + cls_token + storage_tokens; d = blocks.(d-1) for d = 1..24; final norm with depth 24",
+    "top_cap_lr": 1e-05,
+    "layer_decay": 0.65,
+    "lr_formula": "min(top_cap_lr * 0.65**(24 - d) * ramp(u) * envelope(u), head_lr(u))",
+    "ramp": "geometric from 0.1 at update 1 to 1.0 at update 2001: min(1, 0.1 * 10**((u-1)/2000))",
+    "warmup_updates": 2000,
+    "warmup_initial_ratio": 0.1,
+    "envelope": "the head's cosine envelope (floor 0.1), i.e. the encoder tracks the head's scheduled decay",
+    "start_update": 1,
+    "frozen": [
+      "mask_token (enters as 0 * mask_token: zero gradient)",
+      "attn.qkv.bias of all 24 blocks (release bias_mask is all zero)",
+      "rope_embed.periods (buffer)",
+      "cross-view aggregator, camera head, dense head"
+    ],
+    "forward": "online encoder for every update, all blocks and the embedding in the autograd graph, bf16 autocast, features rounded to fp16 like the frozen cache",
+    "guard": "each encoder group is capped at the head current LR (parent rule: encoder LR always below the head); binds only while the head warms up (about updates 1-7 for the top group)"
+  },
+  "screening": "parent screening rules (U-minus-F replaced by UP-minus-FP at update 12,000); one seed is a test, not a three-seed claim",
+  "outputs": "output/head_first_kp_20261024/{FP,UP}_seed<N>/, gate_protected_seed<N>.json"
+}
