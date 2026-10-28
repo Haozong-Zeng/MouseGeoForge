@@ -1,5 +1,10 @@
 # 深度—关键点联合：调研、决策与工作记录
 
+## 2026-10-28 route clarification: part-balanced depth and shared two-head encoder
+
+The owner clarified that keypoint semantic loss means spatial depth-loss budgeting for small parts. The new [route](part_balanced_depth_joint_route_20261028.md) and [cloud handoff](remote_part_balanced_joint_handoff_20261028.md) separate this factor from joint two-head training. This updates the future protocol; historical bridge results below are unchanged. Components have CPU tests, while the uncommitted cloud depth-trainer binding and H100 validation remain pending. Publication starts no job.
+
+
 2026-09-09。目标：固定机位、多实例、RGB 推理；训练可用 Blender 真值、RGB-D、
 人工关键点和有置信度的伪深度。不能把有传感器深度的测试与 RGB-only 测试混报。
 
