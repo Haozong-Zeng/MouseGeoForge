@@ -1,0 +1,72 @@
+{
+  "schema": "part-balanced-depth-joint-v1",
+  "status": "source_ready_cloud_binding_and_H100_preflight_required",
+  "execution_enabled": false,
+  "meaning_of_semantic_loss": "Spatial depth-error weighting for small anatomical regions, not joint-Z equals surface-Z and not merely a keypoint auxiliary head.",
+  "seeds": [17, 29, 43],
+  "encoder": {
+    "initialization": "release aggregator.patch_embed only",
+    "release_sha256": "c02da418b18bb01d0392598d3f6147366bcde1bb70fd08a5e3bf7925b0667934",
+    "tap_indices": [5, 11, 17, 23],
+    "learning_rate": 0.0001,
+    "forward_mode": "eval_with_live_autograd",
+    "final_token_cache_allowed": false,
+    "depth_feature_normalization": "Must match the cloud parent decoder exactly; verify all-tap and head-output parity before training."
+  },
+  "heads": {
+    "depth_mask": "Load the matched frozen-release H EMA head, retaining its architecture and output semantics.",
+    "keypoints": "Load a head fitted on the SAME release encoder (H0), not silently the UX adapted-encoder head. If unavailable, fit on TRAIN with release frozen and save/pin one common initialization.",
+    "head_learning_rates": "Copy each task's existing preregistered parent head schedule into the cloud binding; do not guess new rates."
+  },
+  "depth_parent": {
+    "default": "anchor0.3 + plane0.3; otherwise freeze the final cloud light/heavy decision before any comparison",
+    "unchanged": ["dense targets", "hull sampling", "mask BCE", "source weights", "metric anchor", "plane term", "augmentation", "scale gauge", "EMA", "optimizer schedule"],
+    "global_scale_alignment": "One original full-support per-view gauge only; never align each part separately."
+  },
+  "part_balance": {
+    "cloud_mode": "bounded_focus_auxiliary",
+    "strength": 0.5,
+    "max_pixel_boost": 4.0,
+    "roi_radius_fraction_of_bbox_long_side": 0.06,
+    "min_region_pixels": 8,
+    "min_region_mass": 2.0,
+    "points": ["nose", "left_forepaw", "right_forepaw", "left_hindpaw", "right_hindpaw"],
+    "part_weights": [1.0, 0.5, 0.5, 0.5, 0.5],
+    "tail_ears": "Enable only with a pre-output registered semantic mapping and reliable visible TRAIN support; absence stays missing and is reported, not silently synthesised.",
+    "roi_source": "Frozen TRAIN-visible 2D labels or independently defined synthetic part support, intersected with target depth validity/confidence; never the student's current predicted mask.",
+    "missing_support": "Keep the complete sample and original depth loss; part reduction falls back to baseline. Report per-source/view/part availability and cap saturation.",
+    "pseudo_depth_limit": "ROI weighting cannot create missing toe/tail geometry or turn a visual hull into accurate local surface truth.",
+    "nondecomposable_parent_loss": "Keep the cloud global SILog exactly; add returned focus_loss from nonnegative SmoothL1 log-depth residuals under the same original full-support gauge. strength is already inside focus_loss; do not multiply it twice. OFF strength0 adds exactly0. The cap bounds the auxiliary error-map weights, not the total network gradient of SILog+anchor+plane."
+  },
+  "arms": {
+    "D0": {"joint_keypoints": false, "part_balance": false},
+    "D1": {"joint_keypoints": false, "part_balance": true},
+    "J0": {"joint_keypoints": true, "part_balance": false},
+    "J1": {"joint_keypoints": true, "part_balance": true}
+  },
+  "schedule": {
+    "depth_updates": 12000,
+    "joint_update": "One depth and one keypoint microbatch, gradients accumulated then one shared optimizer step; same 12000 depth updates as D arms.",
+    "joint_task_loss_weights": {"depth": 1.0, "keypoints": 1.0},
+    "task_gradient_diagnostic": "Measure both task encoder norms/cosines on fixed TRAIN batches before the formal arms; if units make fixed1:1 unusable, preregister ONE common TRAIN-only coefficient for J0/J1 before either run. No per-arm or DEV-driven tuning.",
+    "domain_reduction": "Preserve parent per-domain averaging/weights; do not pool pixels across sources or double depth updates for a joint arm.",
+    "encoder_ramp": "Preserve the cloud protected ramp over the first sixth and all exclusions (including masked biases)."
+  },
+  "evaluation": {
+    "primary": ["per-part metric depth median and P90 in mm", "per-part AbsRel", "valid/total landmark support and failure counts"],
+    "secondary": ["raw and globally aligned whole-body depth", "synthetic unseen-rig depth", "own bottom and sides", "DANNCE", "cross-view front violations", "mask support", "fixed pointcloud visual review"],
+    "joint_targets": {"pano_bottom_paw_PCK_min": 97.5, "own_DEV_bottom_aligned_AbsRel_max": 0.016},
+    "retention": "Keep the cloud parent synthetic20% guard and all existing per-domain/view keypoint regression gates; separately report raw metric scale, no oracle-scale deployment claim.",
+    "selection": "Fixed EMA endpoints, no best-step picking. Start matched seed17 controls, then preregistered complete29/43 confirmation for a candidate. Report paired seed/session results; changes~0.001 aligned may be noise."
+  },
+  "boundaries": {
+    "own_DEV": ["AZR2L2", "FR2", "FR3"],
+    "pano_DEV": ["S03", "S11"],
+    "sealed_excluded": ["own GR2/UR2/UR3", "Pano S04/S05", "eight sealed synthetic rigs", "Water Reaching", "DANNCE2", "protected TEST"],
+    "gauge_only_landmarks": "The205 own-rig evaluation moments must not be recruited to ROI training, teacher fitting or joint losses. Join only independently admitted TRAIN items.",
+    "synthetic_DEV_rigs": "12 unseen rigs remain evaluation-only",
+    "payloads_in_git": false,
+    "start_slurm_on_publish": false,
+    "old_automations": "Remain paused; this source publication does not restart them."
+  }
+}

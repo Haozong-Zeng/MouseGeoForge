@@ -1,5 +1,23 @@
 # MouseGeoForge
 
+## Current route — 2026-10-28: part-balanced depth and a shared two-head encoder
+
+The [new route](docs/part_balanced_depth_joint_route_20261028.md),
+[cloud handoff](docs/remote_part_balanced_joint_handoff_20261028.md) and
+[four-arm design](configs/experiments/part_balanced_depth_joint_20261028.json)
+separate small-part depth supervision from joint depth/keypoint training.
+"Semantic loss" here means nose/paw/tail regions receive an area-normalised,
+bounded depth-loss budget; internal joint-Z is not a surface-depth target.
+D0/D1/J0/J1 preserve the cloud depth recipe and isolate these two factors.
+
+Loss, live shared-patch-encoder composition, joint optimisation/full resume
+helpers and a cloud-factory preflight have CPU tests. The cloud depth trainer
+is reported uncommitted and absent at the current h100-branch tip; its real
+head/data binding and H100 preflight remain required. This source publication
+starts no training/Slurm job, scores no sealed data and restarts no paused run.
+Reported DEV gains remain separate from this new, unmeasured proposal.
+Older route sections below are historical where this update supersedes them.
+
 ## Current route — 2026-10-24: head convergence, then gradual encoder adaptation
 
 The [head-first route](docs/head_first_progressive_encoder_route_20261024.md) and
